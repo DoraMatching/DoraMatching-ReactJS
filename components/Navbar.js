@@ -1,43 +1,83 @@
-import React, { Component } from 'react'
-import { Input, Menu } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import Link from 'next/link';
+import Head from 'next/head'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons'
+import { Button } from "./Button";
+
+// const Circle = ({clicked, onClick}) => {
+//   return (
+//     <div onClick={onClick}>
+//       <FontAwesomeIcon icon={clicked ? faTimes : faBars} />
+//     </div>
+//   )
+// }
 
 class Navbar extends Component {
-  state = { activeItem: 'home' }
-
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  constructor( props ){
+    super(props);
+    this.state = { clicked: false };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  
+  handleClick = () => {
+    this.setState(state => ({clicked: !state.clicked}))
+  }
 
   render() {
-    const { activeItem } = this.state
-
     return (
-      <Menu secondary>
-        <Menu.Item
-          name='home'
-          active={activeItem === 'home'}
-          onClick={this.handleItemClick}
-        />
-        <Menu.Item
-          name='messages'
-          active={activeItem === 'messages'}
-          onClick={this.handleItemClick}
-        />
-        <Menu.Item
-          name='friends'
-          active={activeItem === 'friends'}
-          onClick={this.handleItemClick}
-        />
-        <Menu.Menu position='right'>
-          <Menu.Item>
-            <Input icon='search' placeholder='Search...' />
-          </Menu.Item>
-          <Menu.Item
-            name='Login'
-            active={activeItem === 'logout'}
-            onClick={this.handleItemClick}
+      <>
+        <Head>
+          <link
+            rel="stylesheet"
+            href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+            integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+            crossOrigin="anonymous"
           />
-        </Menu.Menu>
-      </Menu>
-    )
+        </Head>
+        <nav className="NavbarItems">
+          <img
+            className="navbarLogo"
+            src="/static/logo.png"
+            alt="logo"
+            width="40px"
+            height="40px"
+          />
+          <div className="menuIcon" onClick={this.handleClick}>
+            <i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
+            {/* <Circle clicked={this.state.clicked} onClick={this.onClick} /> */}
+          </div>
+          <ul className={this.state.clicked ? 'navMenu active' : 'navMenu'}>
+            <li>
+              <Link href="/">
+                <a className="navLinks">Home</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/">
+                <a className="navLinks">Trainers</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/">
+                <a className="navLinks">Questions</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/">
+                <a className="navLinks">Blogs</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/">
+                <a className="navLinksMobile">Login</a>
+              </Link>
+            </li>
+          </ul>
+          <Button>Login</Button>
+        </nav>
+      </>
+    );
   }
 }
 export default Navbar;

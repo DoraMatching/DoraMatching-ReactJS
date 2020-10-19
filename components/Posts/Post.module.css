@@ -1,0 +1,104 @@
+.postCard {
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 1px 15px 0px rgba(51, 51, 51, 0.2);
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  margin-bottom: 30px;
+  min-width: 0;
+  padding: 30px;
+  position: relative;
+  width: 500px;
+}
+
+.postHeader{
+  align-items: center;
+  display: flex;
+}
+
+.postThumb{
+  display: inline-block;
+  position: relative;
+}
+
+.postThumbImage{
+  margin: 0;
+  display: block;
+  overflow: hidden;
+}
+
+.postTitle{
+  margin-left: 20px;
+}
+
+.postTitleContent{
+  margin: 0;
+}
+
+.postAuthor{
+  display: flex;
+}
+
+.postAuthor > span{
+  color: #228099;
+}
+
+.postAuthor > p{
+  color: #999999;
+  margin-left: 5px;
+}
+
+.postImage{
+  margin: 0 auto;
+}
+
+.postDescript{
+  margin-top: 10px !important;
+}
+
+.postMore{
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonPrimary {
+  border: none;
+  box-shadow: none;
+  font-family: inherit;
+  background-color:transparent;
+  color: #228099;
+  font-size: 15px;
+}
+
+.buttonPrimary:hover {
+  color: #7bdaff;
+  cursor: pointer;
+  outline: none;
+  transition:.25s;
+}
+.buttonPrimary:focus {
+  cursor: pointer;
+  outline: none;
+}
+
+.faTag > span{
+  margin-left: 5px;
+}
+
+.postMeta{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.postMeta > button {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  box-shadow: none;
+  transition: 0.4s;
+  background-color: transparent;
+}

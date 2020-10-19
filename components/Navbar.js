@@ -4,6 +4,7 @@ import Head from 'next/head'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons'
 import { Button } from "./Button";
+import { Search } from 'semantic-ui-react';
 
 // const Circle = ({clicked, onClick}) => {
 //   return (
@@ -14,14 +15,14 @@ import { Button } from "./Button";
 // }
 
 class Navbar extends Component {
-  constructor( props ){
+  constructor(props) {
     super(props);
     this.state = { clicked: false };
     this.handleClick = this.handleClick.bind(this);
   }
-  
+
   handleClick = () => {
-    this.setState(state => ({clicked: !state.clicked}))
+    this.setState(state => ({ clicked: !state.clicked }))
   }
 
   render() {
@@ -47,6 +48,7 @@ class Navbar extends Component {
             <i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
             {/* <Circle clicked={this.state.clicked} onClick={this.onClick} /> */}
           </div>
+          <div className="navSearch"><Search /></div>
           <ul className={this.state.clicked ? 'navMenu active' : 'navMenu'}>
             <li>
               <Link href="/">

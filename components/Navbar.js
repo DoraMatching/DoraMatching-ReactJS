@@ -61,7 +61,7 @@ class Navbar extends Component {
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href="/questions">
                 <a className="navLinks">Questions</a>
               </Link>
             </li>

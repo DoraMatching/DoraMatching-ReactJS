@@ -1,0 +1,89 @@
+.classCard{
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 1px 15px 0px rgba(51, 51, 51, 0.2);
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  margin: 20px 0px;
+  min-width: 0;
+  padding: 10px 20px;
+  position: relative;
+  width: 100%;
+}
+.classHeader{
+  display: flex;
+}
+
+.classThumb{
+  border-radius: 10px;
+  padding: 10px 20px;
+  border: 3px solid #228099;
+  text-align: center;
+  display: table;
+}
+
+.classThumb > h2{
+  margin: 0;
+  padding: 0;
+}
+
+.classTitle{
+  margin-left: 10px;
+}
+
+.classTitle > h5{
+  margin-bottom: 5px;
+}
+
+.classAuthor{
+  display: flex;
+}
+
+.classAuthor > p {
+  border-right: 1px solid #000000;
+  margin-right: 5px;
+  padding-right: 5px;
+}
+
+.classAuthor > span {
+  color: #228099;
+}
+.classMeta{
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  justify-items: center;
+  margin-top: 10px;
+}
+
+.classMeta > i {
+  align-self: center;
+}
+
+.classMeta > i:hover  {
+  cursor: pointer;
+}
+
+.classMeta > button {
+  border: none;
+  background: none;
+  background-color: #228099;
+  border-radius: 10px;
+  padding: 5px 10px;
+  color: #ffffff;
+}
+
+.classMeta > button:hover{
+  cursor: pointer;
+}
+
+.classMetaTrain{
+  display: flex;
+  align-items: center;
+}
+.classMetaTrain > i {
+  align-self: center;
+  margin-right: 5px;
+}

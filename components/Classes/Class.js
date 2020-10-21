@@ -22,7 +22,7 @@ class Class extends Component {
         </div>
         <div className={styles.classMeta}>
           <div className={styles.classMetaTrain}>
-            <i class="fas fa-graduation-cap"></i>
+            <i className="fas fa-graduation-cap"></i>
             <p>30 trainees</p>
           </div>
           <i className="fas fa-heart"></i>

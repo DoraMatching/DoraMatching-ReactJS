@@ -43,19 +43,22 @@ class Post extends Component {
             </button>
             <div className={styles.faTag}>
               <i className="fa fa-tag">
-                <span>C++</span>
-              </i>{" "}
+              </i>
+              <span>C++</span>
             </div>
           </div>
           <div className={styles.postMeta}>
-            <button className="postMetaLike">
-              <i className="fas fa-thumbs-up">25 likes</i>
+            <button className={`${styles.postMetaCommon} ${styles.postMetaLike}`}>
+              <i className="far fa-thumbs-up"> </i>
+              <span>25 likes</span>
             </button>
-            <button className="postMetaComment">
-              <i className="fas fa-comments">25 comments</i>
+            <button className={`${styles.postMetaCommon} ${styles.postMetaComment}`}>
+              <i className="far fa-comment"></i>
+              <span>25 comments</span>
             </button>
-            <button className="postMetaShare">
-              <i className="fas fa-share">25 shares</i>
+            <button className={`${styles.postMetaCommon} ${styles.postMetaShare}`}>
+              <i className="far fa-share"></i>
+              <span>25 shares</span>
             </button>
           </div>
         </div>

@@ -20,7 +20,7 @@ class Question extends Component {
               What's the best way to implement a 2D interval search in C++?
             </h3>
             <span className={styles.questionAuthor}>
-              <span>Christian</span> <p>published Oct 01 2020</p>
+              <span>Raymond</span> <p>asked Oct 01 2020</p>
             </span>
           </div>
         </div>
@@ -41,14 +41,17 @@ class Question extends Component {
             </button>
           </div>
           <div className={styles.questionMeta}>
-            <button className="questionMetaLike">
-              <i className="fas fa-thumbs-up">25 likes</i>
+            <button className={`${styles.questionMetaCommon} ${styles.questionMetaLike}`}>
+              <i className="far fa-thumbs-up"> </i>
+              <span>25 likes</span>
             </button>
-            <button className="questionMetaComment">
-              <i className="fas fa-comments">25 comments</i>
+            <button className={`${styles.questionMetaCommon} ${styles.questionMetaComment}`}>
+              <i className="far fa-comment"></i>
+              <span>25 comments</span>
             </button>
-            <button className="questionMetaShare">
-              <i className="fas fa-share">25 shares</i>
+            <button className={`${styles.questionMetaCommon} ${styles.questionMetaShare}`}>
+              <i className="far fa-share"></i>
+              <span>25 shares</span>
             </button>
           </div>
         </div>

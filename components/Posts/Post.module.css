@@ -90,16 +90,37 @@
 
 .postMeta{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-top: 20px;
 }
 
-.postMeta > button {
+.postMetaCommon{
   border: none;
   cursor: pointer;
   outline: none;
-  padding: 0;
+  padding: 8px 0;
   box-shadow: none;
   transition: 0.4s;
   background-color: transparent;
+  font-size: 1.2rem;
+  color: #606770;
+}
+.postMetaCommon:hover{
+  background: #f7f7f7;
+  border: none;
+  border-radius: 10px;
+}
+
+.postMetaCommon span{
+  margin-left: 5px;
+}
+
+.postMetaLike{
+  width: 30%;
+}
+.postMetaComment{
+  width: 30%;
+}
+.postMetaShare {
+  width: 30%;
 }

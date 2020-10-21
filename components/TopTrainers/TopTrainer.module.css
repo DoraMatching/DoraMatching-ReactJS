@@ -1,0 +1,87 @@
+.topTrainerCard{
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 1px 15px 0px rgba(51, 51, 51, 0.2);
+  display: flex;
+  height: auto;
+  margin: 20px 0px;
+  min-width: 0;
+  padding: 10px;
+  position: relative;
+  width: 100%;
+}
+
+.topTrainerHeader{
+  display: flex;
+  position: relative;
+}
+
+
+.topTrainerCardContainer {
+	background-color: #231E39;
+	border-radius: 10px;
+	box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.75);
+	color: #B3B8CD;
+	padding-top: 10px;
+	position: relative;
+	width: 100%;
+	max-width: 100%;
+  text-align: center;
+  margin: 5px;
+}
+
+
+.topTrainerCardContainer h3 {
+	margin: 10px 0;
+}
+
+.topTrainerCardContainer .round {
+	border: 1px solid #03BFCB;
+	border-radius: 50%;
+	padding: 5px;
+}
+
+.topTrainerButton .primary {
+	background-color: #03BFCB;
+	border: 1px solid #03BFCB;
+	border-radius: 5px;
+	color: #231E39;
+	font-family: Montserrat, sans-serif;
+	font-weight: 500;
+  padding: 5px 10px;
+}
+
+.topTrainerButton .ghost {
+	background-color: transparent;
+	color: #02899C;
+}
+
+.topTrainerSkills {
+	background-color: #1F1A36;
+	text-align: left;
+  padding: 5px 10px;
+  margin-top: 5px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.topTrainerSkills > h6 {
+	margin: 2px 0;
+	text-transform: uppercase;
+}
+
+.topTrainerSkills > ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.topTrainerSkills ul li {
+	border: 1px solid #2D2747;
+	border-radius: 5px;
+	display: inline-block;
+	font-size: 10px;
+	margin: 0 5px 5px 0;
+	padding: 3px;
+}

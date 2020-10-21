@@ -48,7 +48,7 @@ class Navbar extends Component {
             <i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
             {/* <Circle clicked={this.state.clicked} onClick={this.onClick} /> */}
           </div>
-          <div className="navSearch"><Search size='small' /></div>
+          <div className="navSearch"><Search placeholder="Search traniner, question, blog" size='mini' className="searchBar" /></div>
           <ul className={this.state.clicked ? 'navMenu active' : 'navMenu'}>
             <li>
               <Link href="/">

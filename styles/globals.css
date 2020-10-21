@@ -17,7 +17,7 @@ body {
   display: flex;
   font-size: 1.2rem;
   height: 60px;
-  justify-content: center;
+  justify-content: space-around;
   position: fixed;
   top:0;
   width: 100%;
@@ -67,8 +67,12 @@ body {
 .menuIcon{
   display: none;
 }
-.navSearch{
-  margin-left: 150px;
+
+.searchBar{
+  width: 300px;
+}
+.searchBar .input{
+  width: 100%;
 }
 
 @media screen and (max-width: 960px){
@@ -145,8 +149,8 @@ body {
   Button{
     display: none;
   }
-  .navSearch{
-    margin-left: 30px;
+  .searchBar{
+    width: 200px;
   }
 }
 

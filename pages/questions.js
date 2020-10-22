@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import QuestionsPage from '../containers/QuestionsPage';
+import styles from '../styles/Home.module.css'
 
 class questions extends Component {
   render() {
     return (
-      <div style={{paddingTop: "60px"}}>
-        Question's Page
+      <div className={styles.container}>
+        <QuestionsPage />
       </div>
     );
   }

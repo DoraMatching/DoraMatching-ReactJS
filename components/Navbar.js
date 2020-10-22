@@ -1,18 +1,8 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
-import Head from 'next/head'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons'
+import Head from "next/head";
 import { Button } from "./Button";
 import { Search } from 'semantic-ui-react';
-
-// const Circle = ({clicked, onClick}) => {
-//   return (
-//     <div onClick={onClick}>
-//       <FontAwesomeIcon icon={clicked ? faTimes : faBars} />
-//     </div>
-//   )
-// }
 
 class Navbar extends Component {
   constructor(props) {
@@ -45,11 +35,18 @@ class Navbar extends Component {
             height="40px"
           />
           <div className="menuIcon" onClick={this.handleClick}>
-            <i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
-            {/* <Circle clicked={this.state.clicked} onClick={this.onClick} /> */}
+            <i
+              className={this.state.clicked ? "fas fa-times" : "fas fa-bars"}
+            ></i>
           </div>
-          <div className="navSearch"><Search /></div>
-          <ul className={this.state.clicked ? 'navMenu active' : 'navMenu'}>
+          <div className="navSearch">
+            <Search
+              placeholder="Search trainer, question, blog"
+              size="mini"
+              className="searchBar"
+            />
+          </div>
+          <ul className={this.state.clicked ? "navMenu active" : "navMenu"}>
             <li>
               <Link href="/">
                 <a className="navLinks">Home</a>
@@ -61,7 +58,7 @@ class Navbar extends Component {
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href="/questions">
                 <a className="navLinks">Questions</a>
               </Link>
             </li>

@@ -1,22 +1,30 @@
 html,
-body {
+body, h1, h2, h3, h4, h5, p {
   padding: 0;
   margin: 0;
-  font-family: Roboto, sans-serif;
+  font-family: 'Roboto', sans-serif !important;
 }
 
-* {
+
+*{
   box-sizing: border-box;
 }
 
+
 /* NAVBAR */
 .NavbarItems {
-  background: #228099;
-  height: 80px;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  background: #228099;
+  border-bottom: 1px solid #808080;
+  box-shadow: 0px 2px 10px 0px #808080;
+  display: flex;
   font-size: 1.2rem;
+  height: 60px;
+  justify-content: space-around;
+  position: fixed;
+  top:0;
+  width: 100%;
+  z-index:100;
 }
 
 .navbarLogo{
@@ -31,7 +39,7 @@ body {
   grid-gap: 10px;
   list-style: none;
   text-align: center;
-  width: 60vw;
+  width: 50vw;
   justify-content: end;
   margin-right: 2rem;
 }
@@ -62,12 +70,17 @@ body {
 .menuIcon{
   display: none;
 }
-.navSearch{
-  margin-left: 60px;
+
+.searchBar{
+  width: 300px;
+}
+.searchBar .input{
+  width: 100%;
 }
 
 @media screen and (max-width: 960px){
   .NavbarItems {
+    height: 80px;
     position: relative;
   }
   .NavbarItems ul {
@@ -136,13 +149,12 @@ body {
     color: #6568f4;
     transition: 250ms;
   }
-  Button{
+  .NavbarItems Button{
     display: none;
   }
-  /* .navSearch{
-    width: 180px;
-    margin-left: 20px;
-  } */
+  .searchBar{
+    width: 200px;
+  }
 }
 
 

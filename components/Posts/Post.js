@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import styles from './Post.module.css';
+import React, { Component } from "react";
+import styles from "./Post.module.css";
 
 class Post extends Component {
   render() {
@@ -7,7 +7,13 @@ class Post extends Component {
       <div className={styles.postCard}>
         <div className={styles.postHeader}>
           <div className={styles.postThumb}>
-            <figure className={styles.postThumbImage}><img src="/static/iconBlog.png" alt="iconBlog" style={{"width": "100%"}}/></figure>
+            <figure className={styles.postThumbImage}>
+              <img
+                src="/static/iconBlog.png"
+                alt="iconBlog"
+                style={{ width: "45px" }}
+              />
+            </figure>
           </div>
           <div className={styles.postTitle}>
             <h3 className={styles.postTitleContent}>
@@ -19,7 +25,11 @@ class Post extends Component {
           </div>
         </div>
         <div className={styles.postImage}>
-          <img src="/static/imageBlog.png" alt="imageBlog" style={{"width": "100%"}}/>
+          <img
+            src="/static/imageBlog.png"
+            alt="imageBlog"
+            style={{ width: "100%" }}
+          />
         </div>
         <div className="postContent">
           <p className={styles.postDescript}>
@@ -31,17 +41,24 @@ class Post extends Component {
             <button className={styles.buttonPrimary}>
               <i className="fa fa-chevron-right"></i> Read more
             </button>
-            <div className={styles.faTag}><i className="fa fa-tag"><span>C++</span></i> </div>
+            <div className={styles.faTag}>
+              <i className="fa fa-tag">
+              </i>
+              <span>C++</span>
+            </div>
           </div>
           <div className={styles.postMeta}>
-            <button className="postMetaLike">
-            <i className="fas fa-thumbs-up">25 likes</i>
+            <button className={`${styles.postMetaCommon} ${styles.postMetaLike}`}>
+              <i className="far fa-thumbs-up"> </i>
+              <span>25 likes</span>
             </button>
-            <button className="postMetaComment">
-            <i className="fas fa-comments">25 comments</i>
+            <button className={`${styles.postMetaCommon} ${styles.postMetaComment}`}>
+              <i className="far fa-comment"></i>
+              <span>25 comments</span>
             </button>
-            <button className="postMetaShare">
-            <i className="fas fa-share">25 shares</i>
+            <button className={`${styles.postMetaCommon} ${styles.postMetaShare}`}>
+              <i className="far fa-share"></i>
+              <span>25 shares</span>
             </button>
           </div>
         </div>

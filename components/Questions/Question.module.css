@@ -1,4 +1,4 @@
-.postCard {
+.questionCard{
   background-color: #ffffff;
   border-radius: 5px;
   border: none;
@@ -13,63 +13,76 @@
   width: 100%;
 }
 
-.postHeader{
+.questionHeader{
   align-items: center;
   display: flex;
 }
 
-.postThumb{
+.questionThumb{
   display: inline-block;
   position: relative;
 }
 
-.postThumbImage{
+.questionThumbImage{
   margin: 0;
   display: block;
   overflow: hidden;
 }
 
-.postTitle{
+.questionTitle{
   margin-left: 20px;
 }
 
-.postTitleContent{
+.questionTitleContent{
   margin: 0;
 }
 
-.postAuthor{
+.questionAuthor{
   display: flex;
 }
 
-.postAuthor > span{
+.questionAuthor > span{
   color: #228099;
 }
 
-.postAuthor > p{
+.questionAuthor > p{
   color: #999999;
   margin-left: 5px;
 }
 
-.postImage > img{
-  margin-top: 10px;
-  border-radius: 5px;
+.questionButton > button{
+  border: none;
+  background-color: #999999 ;
+  border-radius: 6px;
+  color: #ffffff;
+  margin-right: 5px;
+  padding: 5px;
 }
 
-.postDescript{
+.questionCard > button {
+  border: none;
+  background: none;
+  background-color: #c4c4c4;
+  border-radius: 10px;
+  padding: 5px 10px;
+  color: #ffffff;
+}
+
+.questionDescript{
   margin-top: 10px !important;
 }
 
-.postMore{
+.questionMore{
   display: flex;
   justify-content: space-between;
 }
 
 .buttonPrimary {
-  background-color:transparent;
   border: none;
   box-shadow: none;
-  color: #228099;
   font-family: inherit;
+  background-color:transparent;
+  color: #228099;
   font-size: 15px;
 }
 
@@ -84,43 +97,39 @@
   outline: none;
 }
 
-.faTag > span{
-  margin-left: 5px;
-}
-
-.postMeta{
+.questionMeta{
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
 }
 
-.postMetaCommon{
-  background-color: transparent;
+.questionMetaCommon{
   border: none;
-  box-shadow: none;
-  color: #606770;
   cursor: pointer;
-  font-size: 1.2rem;
   outline: none;
   padding: 8px 0;
+  box-shadow: none;
   transition: 0.4s;
+  background-color: transparent;
+  font-size: 1.2rem;
+  color: #606770;
 }
-.postMetaCommon:hover{
+.questionMetaCommon:hover{
   background: #f7f7f7;
   border: none;
   border-radius: 10px;
 }
 
-.postMetaCommon span{
+.questionMetaCommon span{
   margin-left: 5px;
 }
 
-.postMetaLike{
+.questionMetaLike{
   width: 30%;
 }
-.postMetaComment{
+.questionMetaComment{
   width: 30%;
 }
-.postMetaShare {
+.questionMetaShare {
   width: 30%;
 }

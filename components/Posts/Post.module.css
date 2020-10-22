@@ -65,11 +65,11 @@
 }
 
 .buttonPrimary {
+  background-color:transparent;
   border: none;
   box-shadow: none;
-  font-family: inherit;
-  background-color:transparent;
   color: #228099;
+  font-family: inherit;
   font-size: 15px;
 }
 
@@ -95,15 +95,15 @@
 }
 
 .postMetaCommon{
+  background-color: transparent;
   border: none;
+  box-shadow: none;
+  color: #606770;
   cursor: pointer;
+  font-size: 1.2rem;
   outline: none;
   padding: 8px 0;
-  box-shadow: none;
   transition: 0.4s;
-  background-color: transparent;
-  font-size: 1.2rem;
-  color: #606770;
 }
 .postMetaCommon:hover{
   background: #f7f7f7;

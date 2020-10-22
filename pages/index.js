@@ -4,7 +4,7 @@ import Post from "../components/Posts/Post";
 import Question from "../components/Questions/Question";
 import TopTrainer from "../components/TopTrainers/TopTrainer";
 import styles from "../styles/Home.module.css";
-import React, {Component } from "react";
+import React, { Component } from "react";
 
 class Home extends Component {
   render() {
@@ -19,10 +19,10 @@ class Home extends Component {
             <Question />
           </Grid.Column>
           <Grid.Column width={4}>
-              <Class />
-              <Class />
-              <Class />
-              <Class />
+            <Class />
+            <Class />
+            <Class />
+            <Class />
           </Grid.Column>
         </Grid>
       </div>

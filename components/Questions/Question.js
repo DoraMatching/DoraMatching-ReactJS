@@ -41,15 +41,21 @@ class Question extends Component {
             </button>
           </div>
           <div className={styles.questionMeta}>
-            <button className={`${styles.questionMetaCommon} ${styles.questionMetaLike}`}>
+            <button
+              className={`${styles.questionMetaCommon} ${styles.questionMetaLike}`}
+            >
               <i className="far fa-thumbs-up"> </i>
               <span>25 likes</span>
             </button>
-            <button className={`${styles.questionMetaCommon} ${styles.questionMetaComment}`}>
+            <button
+              className={`${styles.questionMetaCommon} ${styles.questionMetaComment}`}
+            >
               <i className="far fa-comment"></i>
               <span>25 comments</span>
             </button>
-            <button className={`${styles.questionMetaCommon} ${styles.questionMetaShare}`}>
+            <button
+              className={`${styles.questionMetaCommon} ${styles.questionMetaShare}`}
+            >
               <i className="far fa-share"></i>
               <span>25 shares</span>
             </button>

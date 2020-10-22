@@ -1,17 +1,23 @@
 import React, { Component } from "react";
 import styles from "./TopTrainer.module.css";
-import Carousel from 'react-elastic-carousel';
+import Carousel from "react-elastic-carousel";
 
 class TopTrainer extends Component {
   render() {
     const breakPoints = [
-      {width: 200, itemsToShow: 1},
-      {width: 240, itemsToShow: 2},
-      {width: 400, itemsToShow: 3},
+      { width: 200, itemsToShow: 1 },
+      { width: 240, itemsToShow: 2 },
+      { width: 400, itemsToShow: 3 },
     ];
     return (
       <div className={styles.topTrainerCard}>
-        <Carousel className={styles.topTrainerHeader} breakPoints={breakPoints} showArrows={false} enableAutoPlay={true} pagination={false} >
+        <Carousel
+          className={styles.topTrainerHeader}
+          breakPoints={breakPoints}
+          showArrows={false}
+          enableAutoPlay={true}
+          pagination={true}
+        >
           <div className={styles.topTrainerCardContainer}>
             <img
               className={styles.round}

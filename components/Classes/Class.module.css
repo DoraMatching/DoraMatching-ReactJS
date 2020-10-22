@@ -18,10 +18,10 @@
 
 .classThumb{
   border-radius: 10px;
-  padding: 10px 20px;
   border: 3px solid #228099;
-  text-align: center;
   display: table;
+  padding: 10px 20px;
+  text-align: center;
 }
 
 .classThumb > h2{
@@ -52,10 +52,10 @@
 }
 .classMeta{
   display: flex;
-  text-align: center;
   justify-content: space-between;
   justify-items: center;
   margin-top: 10px;
+  text-align: center;
 }
 
 .classMeta > i {
@@ -67,12 +67,12 @@
 }
 
 .classMeta > button {
-  border: none;
-  background: none;
   background-color: #228099;
+  background: none;
   border-radius: 10px;
-  padding: 5px 10px;
+  border: none;
   color: #ffffff;
+  padding: 5px 10px;
 }
 
 .classMeta > button:hover{

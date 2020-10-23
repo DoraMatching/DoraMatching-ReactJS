@@ -25,17 +25,17 @@ function Navbar() {
         />
       </Head>
       <nav className="NavbarItems">
-        <img
-          className="navbarLogo"
-          src="/static/logo.png"
-          alt="logo"
-          width="40px"
-          height="40px"
-        />
+        <Link href="/">
+          <img
+            className="navbarLogo"
+            src="/static/logo.png"
+            alt="logo"
+            width="40px"
+            height="40px"
+          />
+        </Link>
         <div className="menuIcon" onClick={handleClick}>
-          <i
-            className={clicked ? "fas fa-times" : "fas fa-bars"}
-          ></i>
+          <i className={clicked ? "fas fa-times" : "fas fa-bars"}></i>
         </div>
         <div className="navSearch">
           <Search
@@ -61,7 +61,7 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <Link href="/">
+            <Link href="/blogs">
               <a className="navLinks">Blogs</a>
             </Link>
           </li>

@@ -6,3 +6,12 @@
 .homeGrid{
   justify-content: center;
 }
+
+/* QUESTION PAGE */
+
+.questionsPage{
+  margin-top: 20px;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+}

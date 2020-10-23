@@ -1,11 +1,16 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import Question from "../Questions/Question";
+import styles from "./CardQuestionPage.module.css";
 
-export default class CardQuestionCenter extends Component {
-  render() {
-    return (
-      <div>
-        center
-      </div>
-    )
-  }
+function CardQuestionCenter({ questions }) {
+  return (
+    <div className={styles.cardQuestionCenter}>
+      <h3>All Question</h3>
+      {questions.map((question, id) => {
+        return <Question question={question} key={id} />;
+      })}
+    </div>
+  );
 }
+
+export default CardQuestionCenter;

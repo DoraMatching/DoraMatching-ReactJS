@@ -43,18 +43,18 @@
 }
 
 .topTrainerButton .primary {
-	background-color: #03BFCB;
 	border: 1px solid #03BFCB;
 	border-radius: 5px;
-	color: #231E39;
-	font-family: Montserrat, sans-serif;
+	color: #228099;
 	font-weight: 500;
-  padding: 5px 10px;
+	padding: 5px 10px;
+	background-color: transparent;
 }
 
-.topTrainerButton .ghost {
-	background-color: transparent;
-	color: #02899C;
+.topTrainerButton .primary:hover{
+	background-color: #228099;
+	color: #FDC632;
+	cursor: pointer;
 }
 
 .topTrainerSkills {

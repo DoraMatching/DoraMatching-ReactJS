@@ -17,7 +17,6 @@
     "@fullcalendar/react": "^5.3.1",
     "@fullcalendar/timegrid": "^5.3.1",
     "axios": "^0.20.0",
-    "isomorphic-unfetch": "^3.1.0",
     "jquery": "^3.5.1",
     "lodash": "^4.17.20",
     "next": "9.5.3",

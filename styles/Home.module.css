@@ -9,9 +9,11 @@
 
 /* QUESTION PAGE */
 
-.questionsPage{
+.questionsPage, .blogsPage{
   margin-top: 20px;
   max-width: 1200px;
   display: flex;
   justify-content: center;
 }
+
+/* BLOG PAGE */

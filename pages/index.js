@@ -1,7 +1,7 @@
 import { Grid } from "semantic-ui-react";
-import Class from "../components/Classes/Class";
-import Post from "../components/Posts/Post";
-import Question from "../components/Questions/Question";
+import Class from "../components/CardClasses/Class";
+import Post from "../components/CardPosts/Post";
+import Question from "../components/CardQuestions/Question";
 import TopTrainer from "../components/TopTrainers/TopTrainer";
 import styles from "../styles/Home.module.css";
 import React, { Component } from "react";
@@ -18,12 +18,12 @@ class Home extends Component {
       return home.map((item) => {
         switch (item.type) {
           case "post":
-            return <Post post={item} />;
+            return <Post post={item} key={item.id} />;
           case "question":
-            console.log('L23', item);
             return <Question question={item} key={item.id} />;
           case "user":
-            return <TopTrainer trainer={item} />;
+            console.log('L25', item);
+            return <TopTrainer users={item} key={item.id} />;
         }
       });
     };
@@ -32,10 +32,6 @@ class Home extends Component {
       <div className={styles.container}>
         <Grid divided="vertically" columns="12" className={styles.homeGrid}>
           <Grid.Column width={8}>
-            {/* <Post />
-            <Question />
-            <Post />
-            <TopTrainer /> */}
             {renderComponents()}
           </Grid.Column>
           <Grid.Column width={4}>

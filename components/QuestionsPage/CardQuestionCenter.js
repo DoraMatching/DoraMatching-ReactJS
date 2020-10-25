@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Question from "../Questions/Question";
+import Question from "../CardQuestions/Question";
 import styles from "./CardQuestionPage.module.css";
 
 function CardQuestionCenter({ questions }) {

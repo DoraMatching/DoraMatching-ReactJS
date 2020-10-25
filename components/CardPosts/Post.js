@@ -1,18 +1,17 @@
 import React from "react";
 import styles from "./Post.module.css";
-import fetch from "isomorphic-unfetch";
+import Link from "next/link";
 
 const Post = ({ post }) => {
-  // console.log('LOGGG',posts)
   return (
     <div className={styles.postCard}>
       <div className={styles.postHeader}>
-        <div className={styles.postThumb}>
+        <div className={styles.postAva}>
           <figure className={styles.postThumbImage}>
             <img
-              src={"/static/iconBlog.png"}
-              alt="iconBlog"
-              style={{ width: "45px" }}
+              src={post.author.avatarUrl}
+              alt="iconAuthor"
+              style={{ width: "40px", borderRadius: "50%" }}
             />
           </figure>
         </div>
@@ -21,6 +20,15 @@ const Post = ({ post }) => {
           <span className={styles.postAuthor}>
             <span>{post.author.name}</span> <p>published {post.createdAt}</p>
           </span>
+        </div>
+        <div className={styles.postThumb}>
+          <figure className={styles.postThumbImage}>
+            <img
+              src={"/static/iconBlog.png"}
+              alt="iconBlog"
+              style={{ width: "30px" }}
+            />
+          </figure>
         </div>
       </div>
       <div className={styles.postImage}>
@@ -39,11 +47,13 @@ const Post = ({ post }) => {
           <div className={styles.faTag}>
             <i className="fa fa-tag"></i>
             <span>
-              {post.tags
-                .map((tag) => {
-                  return tag.name;
-                })
-                .join(", ")}
+              <Link href="/">
+                {post.tags
+                  .map((tag) => {
+                    return tag.name;
+                  })
+                  .join(", ")}
+              </Link>
             </span>
           </div>
         </div>
@@ -69,9 +79,4 @@ const Post = ({ post }) => {
     </div>
   );
 };
-
-Post.getInitialProps = async () => {
-  const res = await fetch("https://");
-};
-
 export default Post;

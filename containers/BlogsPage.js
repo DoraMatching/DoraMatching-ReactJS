@@ -1,22 +1,22 @@
 import React, { Component } from 'react'
+import CardBlogsLeft from '../components/BlogsPage/CardBlogLeft';
+import CardBlogsRight from '../components/BlogsPage/CardBlogRight';
 import styles from '../styles/Home.module.css'
 
 
-export default class QuestionsPage extends Component {
+class BlogsPage extends Component {
   render() {
     return (
       <div>
-        <div className={styles.questionsPage}>
-          <div style={{ width: "15%" }}><CardQuestionLeft /></div>
-          <div style={{ width: "60%" }}>
-            <CardQuestionCenter />
-            <CardQuestionCenter />
-            <CardQuestionCenter />
-            <CardQuestionCenter />
+        <div className={styles.blogsPage}>
+          <div style={{ width: "70%" }}><CardBlogsLeft {...this.props} /></div>
+          <div style={{ width: "20%", marginLeft: '20px' }}>
+            <CardBlogsRight />
           </div>
-          <div style={{ width: "15%" }}><CardQuestionRight /> </div>
         </div>
       </div>
     );
   }
 }
+
+export default BlogsPage;

@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { Grid, Segment } from 'semantic-ui-react';
-import Class from '../components/Classes/Class';
-import Post from '../components/Posts/Post';
-import Question from '../components/Questions/Question';
+import CardQuestionCenter from '../components/QuestionsPage/CardQuestionCenter';
+import CardQuestionLeft from '../components/QuestionsPage/CardQuestionLeft';
+import CardQuestionRight from '../components/QuestionsPage/CardQuestionRight';
 import styles from '../styles/Home.module.css'
 
 
@@ -10,17 +9,13 @@ export default class QuestionsPage extends Component {
   render() {
     return (
       <div>
-        <Grid columns="equal" className={styles.homeGrid}>
-          <Grid.Column>
-            <Segment>1</Segment>
-          </Grid.Column>
-          <Grid.Column width={8}>
-            <Question />
-          </Grid.Column>
-          <Grid.Column>
-            <Segment>3</Segment>
-          </Grid.Column>
-        </Grid>
+        <div className={styles.questionsPage}>
+          <div style={{ width: "15%" }}><CardQuestionLeft /></div>
+          <div style={{ width: "60%" }}>
+            <CardQuestionCenter {...this.props}/>
+          </div>
+          <div style={{ width: "15%" }}><CardQuestionRight /> </div>
+        </div>
       </div>
     );
   }

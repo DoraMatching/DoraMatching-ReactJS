@@ -1,4 +1,3 @@
-import { Grid } from "semantic-ui-react";
 import Class from "../components/CardClasses/Class";
 import Post from "../components/CardPosts/Post";
 import Question from "../components/CardQuestions/Question";
@@ -22,25 +21,22 @@ class Home extends Component {
           case "question":
             return <Question question={item} key={item.id} />;
           case "user-list":
-            console.log('L25', item);
             return <TopTrainer users={item.userList} key={item.userList.id} />;
         }
       });
     };
 
     return (
-      <div className={styles.container}>
-        <Grid divided="vertically" columns="12" className={styles.homeGrid}>
-          <Grid.Column width={8}>
+      <div style={{ width: "100%" }} className={`${styles.container} ${styles.homeGrid}`}>
+          <div style={{ width: "100%", paddingLeft: "20px", gridColumn: "1/3" }}>
             {renderComponents()}
-          </Grid.Column>
-          <Grid.Column width={4}>
+          </div>
+          <div style={{ width: "100%", paddingRight: "20px" }}>
             <Class />
             <Class />
             <Class />
             <Class />
-          </Grid.Column>
-        </Grid>
+          </div>
       </div>
     );
   }

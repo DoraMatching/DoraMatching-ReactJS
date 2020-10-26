@@ -1,0 +1,150 @@
+.questionCard{
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 1px 15px 0px rgba(51, 51, 51, 0.2);
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  margin: 20px 0px;
+  min-width: 0;
+  padding: 20px;
+  position: relative;
+  width: 100%;
+}
+
+.questionHeader{
+  align-items: center;
+  display: flex;
+}
+.questionAva{
+  display: inline-block;
+  position: relative;
+  width: 10%;
+  margin-bottom: auto;
+}
+
+.questionThumb{
+  display: inline-block;
+  position: relative;
+  margin-inline-start: auto;
+  margin-bottom: auto;
+}
+
+.questionThumbImage{
+  margin: 0;
+  display: block;
+  overflow: hidden;
+}
+
+.questionTitle{
+  width: 80%;
+}
+
+.questionTitleContent{
+  margin: 0;
+}
+
+.questionAuthor{
+  display: flex;
+}
+
+.questionAuthor > span{
+  color: #228099;
+}
+
+.questionAuthor > p{
+  color: #999999;
+  margin-left: 5px;
+}
+
+.questionButton {
+  margin-top: 10px;
+  display: flex;
+}
+.questionButton .dum {
+  width: 10%;
+}
+.questionButton > button{
+  border: none;
+  background-color: #999999 ;
+  border-radius: 6px;
+  color: #ffffff;
+  margin-right: 5px;
+  padding: 5px;
+}
+
+.questionCard > button {
+  border: none;
+  background: none;
+  background-color: #c4c4c4;
+  border-radius: 10px;
+  padding: 5px 10px;
+  color: #ffffff;
+}
+
+.questionDescript{
+  margin-top: 10px !important;
+}
+
+.questionMore{
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonPrimary {
+  border: none;
+  box-shadow: none;
+  font-family: inherit;
+  background-color:transparent;
+  color: #228099;
+  font-size: 15px;
+}
+
+.buttonPrimary:hover {
+  color: #7bdaff;
+  cursor: pointer;
+  outline: none;
+  transition:.25s;
+}
+.buttonPrimary:focus {
+  cursor: pointer;
+  outline: none;
+}
+
+.questionMeta{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.questionMetaCommon{
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 8px 0;
+  box-shadow: none;
+  transition: 0.4s;
+  background-color: transparent;
+  font-size: 1.2rem;
+  color: #606770;
+}
+.questionMetaCommon:hover{
+  background: #f7f7f7;
+  border: none;
+  border-radius: 10px;
+}
+
+.questionMetaCommon span{
+  margin-left: 5px;
+}
+
+.questionMetaLike{
+  width: 30%;
+}
+.questionMetaComment{
+  width: 30%;
+}
+.questionMetaShare {
+  width: 30%;
+}

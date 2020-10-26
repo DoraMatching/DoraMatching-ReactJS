@@ -44,9 +44,6 @@ class LoginPage extends Component {
   render() {
     return (
       <div className={styles.loginContainer}>
-        <div className={styles.loginLeft}>
-          <img src="/static/worker.png" alt="worker" />
-        </div>
         <div className={styles.loginRight}>
           <h2 style={{ textAlign: "center" }}>SIGN IN</h2>
           <Form>
@@ -74,6 +71,9 @@ class LoginPage extends Component {
               <a>Sign Up</a>
             </Link>
           </div>
+        </div>
+        <div className={styles.loginLeft}>
+          <img src="/static/worker.png" alt="worker" />
         </div>
       </div>
     );

@@ -66,12 +66,16 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <Link href="/">
+            <Link href="/sign-in">
               <a className="navLinksMobile">Login</a>
             </Link>
           </li>
         </ul>
-        <Button>Login</Button>
+        <Button>
+          <Link href="/sign-in">
+            <a>Login</a>
+          </Link>
+        </Button>
       </nav>
     </>
   );

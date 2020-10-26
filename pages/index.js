@@ -21,9 +21,9 @@ class Home extends Component {
             return <Post post={item} key={item.id} />;
           case "question":
             return <Question question={item} key={item.id} />;
-          case "user":
+          case "user-list":
             console.log('L25', item);
-            return <TopTrainer users={item} key={item.id} />;
+            return <TopTrainer users={item.userList} key={item.userList.id} />;
         }
       });
     };

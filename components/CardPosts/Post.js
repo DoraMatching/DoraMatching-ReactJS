@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Post.module.css";
 import Link from "next/link";
+import moment from 'moment'
 
 const Post = ({ post }) => {
   return (
@@ -18,7 +19,7 @@ const Post = ({ post }) => {
         <div className={styles.postTitle}>
           <h3 className={styles.postTitleContent}>{post.title}</h3>
           <span className={styles.postAuthor}>
-            <span>{post.author.name}</span> <p>published {post.createdAt}</p>
+            <span>{post.author.name}</span> <p>published {moment(post.createdAt).format("LLL")}</p>
           </span>
         </div>
         <div className={styles.postThumb}>

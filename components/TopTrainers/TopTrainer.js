@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import styles from "./TopTrainer.module.css";
 import Carousel from "react-elastic-carousel";
 
-class TopTrainer extends Component {
-  render() {
+function TopTrainer() {
+  // console.log(users);
     const breakPoints = [
       { width: 200, itemsToShow: 1 },
       { width: 240, itemsToShow: 2 },
@@ -21,128 +21,18 @@ class TopTrainer extends Component {
           <div className={styles.topTrainerCardContainer}>
             <img
               className={styles.round}
-              src="https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png"
+              src="https://cdn1.iconfinder.com/data/icons/avatar-97/32/avatar-02-512.png"
               alt="user"
               width="90px"
             />
-            <h3>Raymond Le</h3>
+            <h3>Quan</h3>
             <div className={styles.topTrainerButton}>
-              <button className={`${styles.primary} ${styles.ghost}`}>
+              <button className={styles.primary}>
                 Follow
               </button>
             </div>
             <div className={styles.topTrainerSkills}>
-              <h6>Top Skills</h6>
-              <ul>
-                <li>JavaScript</li>
-                <li>React Native</li>
-                <li>NodeJS</li>
-              </ul>
-            </div>
-          </div>
-          <div className={styles.topTrainerCardContainer}>
-            <img
-              className={styles.round}
-              src="https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png"
-              alt="user"
-              width="90px"
-            />
-            <h3>Raymond Le</h3>
-            <div className={styles.topTrainerButton}>
-              <button className={`${styles.primary} ${styles.ghost}`}>
-                Follow
-              </button>
-            </div>
-            <div className={styles.topTrainerSkills}>
-              <h6>Top Skills</h6>
-              <ul>
-                <li>JavaScript</li>
-                <li>React Native</li>
-                <li>NodeJS</li>
-              </ul>
-            </div>
-          </div>
-          <div className={styles.topTrainerCardContainer}>
-            <img
-              className={styles.round}
-              src="https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png"
-              alt="user"
-              width="90px"
-            />
-            <h3>Raymond Le</h3>
-            <div className={styles.topTrainerButton}>
-              <button className={`${styles.primary} ${styles.ghost}`}>
-                Follow
-              </button>
-            </div>
-            <div className={styles.topTrainerSkills}>
-              <h6>Top Skills</h6>
-              <ul>
-                <li>JavaScript</li>
-                <li>React Native</li>
-                <li>NodeJS</li>
-              </ul>
-            </div>
-          </div>
-          <div className={styles.topTrainerCardContainer}>
-            <img
-              className={styles.round}
-              src="https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png"
-              alt="user"
-              width="90px"
-            />
-            <h3>Raymond Le</h3>
-            <div className={styles.topTrainerButton}>
-              <button className={`${styles.primary} ${styles.ghost}`}>
-                Follow
-              </button>
-            </div>
-            <div className={styles.topTrainerSkills}>
-              <h6>Top Skills</h6>
-              <ul>
-                <li>JavaScript</li>
-                <li>React Native</li>
-                <li>NodeJS</li>
-              </ul>
-            </div>
-          </div>
-          <div className={styles.topTrainerCardContainer}>
-            <img
-              className={styles.round}
-              src="https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png"
-              alt="user"
-              width="90px"
-            />
-            <h3>Raymond Le</h3>
-            <div className={styles.topTrainerButton}>
-              <button className={`${styles.primary} ${styles.ghost}`}>
-                Follow
-              </button>
-            </div>
-            <div className={styles.topTrainerSkills}>
-              <h6>Top Skills</h6>
-              <ul>
-                <li>JavaScript</li>
-                <li>React Native</li>
-                <li>NodeJS</li>
-              </ul>
-            </div>
-          </div>
-          <div className={styles.topTrainerCardContainer}>
-            <img
-              className={styles.round}
-              src="https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png"
-              alt="user"
-              width="90px"
-            />
-            <h3>Raymond Le</h3>
-            <div className={styles.topTrainerButton}>
-              <button className={`${styles.primary} ${styles.ghost}`}>
-                Follow
-              </button>
-            </div>
-            <div className={styles.topTrainerSkills}>
-              <h6>Top Skills</h6>
+              <h4>Top Skills</h4>
               <ul>
                 <li>JavaScript</li>
                 <li>React Native</li>
@@ -153,7 +43,6 @@ class TopTrainer extends Component {
         </Carousel>
       </div>
     );
-  }
 }
 
 export default TopTrainer;

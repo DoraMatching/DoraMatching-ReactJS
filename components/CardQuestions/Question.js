@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Question.module.css';
+import moment from 'moment';
 
 function Question({ question }) {
   return (
@@ -17,7 +18,7 @@ function Question({ question }) {
         <div className={styles.questionTitle}>
           <h3 className={styles.questionTitleContent}>{question.title}</h3>
           <span className={styles.questionAuthor}>
-            <span>{question.author.name}</span> <p>{question.createdAt}</p>
+            <span>{question.author.name}</span> <p>asked {moment(question.createdAt).format("LLL")}</p>
           </span>
         </div>
         <div className={styles.questionThumb}>

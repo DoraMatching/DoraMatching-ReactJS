@@ -1,83 +1,88 @@
-import React, { Component } from 'react';
-import { Button, Form, FormField } from 'semantic-ui-react';
-import styles from './LoginPage.module.css'
-import Link from 'next/link'
-import axios from 'axios';
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import React, {useState } from "react";
+import {useRouter} from 'next/router';
+import { Button, Form, FormField } from "semantic-ui-react";
+import styles from "./LoginPage.module.css";
+import Link from "next/link";
+import axios from "axios";
+import cookie from 'js-cookie';
+import LoginGithub from "./LoginGithub";
 
-const API_URL = 'https://api.dev.doramatching.tk';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCMry94rbb_fD9tUpxlab7Bpuf_uqBWxWY",
-  authDomain: "doramatching.firebaseapp.com",
-  databaseURL: "https://doramatching.firebaseio.com",
-  projectId: "doramatching",
-  storageBucket: "doramatching.appspot.com",
-  messagingSenderId: "1074902429461",
-  appId: "1:1074902429461:web:bf78c961dd39da9370c31c",
-  measurementId: "G-DSE4Q6V3H8"
-};
 
-!firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();
+function LoginPage() {
+  const router = useRouter();
 
-let provider = new firebase.auth.GithubAuthProvider().addScope("user,repo");
+  const [loginError, setLoginError ] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-class LoginPage extends Component {
-  state ={
-    name: ''
+  function handleSubmit(e){
+    e.preventDefault();
+
+    axios("https://api.dev.doramatching.tk/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        username,
+        password,
+      },
+    })
+      // .then((res) => {
+      //   return res.json();
+      // })
+      .then((data) => {
+        console.log("L36", data);
+          cookie.set("token", data.token); //{expires: 2}
+          router.push("/");
+      })
+      .catch((error) => {
+        console.log(error.data);
+      });
   }
-  loginWithGithub = async () => {
-    try {
-      const { credential, user } = await firebase.auth().signInWithPopup(provider);
-      const { accessToken } = credential;
-      console.log('RESULT', { user, accessToken });
 
-      const { data } = await axios.post(`${API_URL}/github`, { user, accessToken });
-
-      console.log('RESPONSE FROM API', data);
-
-    } catch ({ code, message, email, credential }) {
-      console.error({ code, message, email, credential });
-    };
-  }
-  render() {
-    return (
-      <div className={styles.loginContainer}>
-        <div className={styles.loginRight}>
-          <h2 style={{ textAlign: "center" }}>SIGN IN</h2>
-          <Form>
-            <FormField>
-              <label>Email or Username</label>
-              <input type="text" />
-            </FormField>
-            <FormField>
-              <label>Password</label>
-              <input type="password" />
-            </FormField>
-          </Form>
+  return (
+    <div className={styles.loginContainer}>
+      <div className={styles.loginRight}>
+        <h2 style={{ textAlign: "center" }}>SIGN IN</h2>
+        <Form onSubmit={handleSubmit}>
+          <FormField>
+            <label>Email or Username</label>
+            <input
+              name="username"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </FormField>
+          <FormField>
+            <label>Password</label>
+            <input
+              name="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </FormField>
           <div className={styles.loginButton}>
-            <Button color={"linkedin"}>LOGIN</Button>
-            <Button color={"black"} onClick={this.loginWithGithub}>
-              <div className={styles.loginButtonSecond}>
-                <i className="fab fa-github"></i>
-                <p style={{ marginLeft: "10px" }}>Login with Github</p>
-              </div>
-            </Button>
-          </div>
-          <div className={styles.notRegis}>
-            <p className={styles.notRegisP}>Not registered yet?</p>
-            <Link href="/sign-up">
-              <a>Sign Up</a>
-            </Link>
-          </div>
+          <Button type='submit' color={"linkedin"}>LOGIN</Button>
+          <LoginGithub />
         </div>
-        <div className={styles.loginLeft}>
-          <img src="/static/worker.png" alt="worker" />
+        </Form>
+        <div className={styles.notRegis}>
+          <p className={styles.notRegisP}>Not registered yet?</p>
+          <Link href="/sign-up">
+            <a>Sign Up</a>
+          </Link>
         </div>
+        {loginError && <p style={{color: 'red'}}>{loginError}</p>}
       </div>
-    );
-  }
+      <div className={styles.loginLeft}>
+        <img src="/static/worker.png" alt="worker" />
+      </div>
+    </div>
+  );
 }
 
 export default LoginPage;

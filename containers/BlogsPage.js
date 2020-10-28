@@ -7,12 +7,12 @@ import styles from '../styles/Home.module.css'
 class BlogsPage extends Component {
   render() {
     return (
-      <div>
-        <div className={styles.blogsPage}>
-          <div style={{ width: "70%" }}><CardBlogsLeft {...this.props} /></div>
-          <div style={{ width: "20%", marginLeft: '20px' }}>
-            <CardBlogsRight />
-          </div>
+      <div className={styles.blogsPage}>
+        <div style={{ width: "70%" }}>
+          <CardBlogsLeft {...this.props} />
+        </div>
+        <div style={{ width: "20%", marginLeft: "20px" }}>
+          <CardBlogsRight />
         </div>
       </div>
     );

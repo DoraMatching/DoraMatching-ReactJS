@@ -56,6 +56,11 @@ function Navbar() {
             </Link>
           </li>
           <li>
+            <Link href="/">
+              <a className="navLinks">Classes</a>
+            </Link>
+          </li>
+          <li>
             <Link href="/questions">
               <a className="navLinks">Questions</a>
             </Link>

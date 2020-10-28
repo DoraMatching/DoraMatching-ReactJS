@@ -29,9 +29,6 @@ function LoginPage() {
         password,
       },
     })
-      // .then((res) => {
-      //   return res.json();
-      // })
       .then((data) => {
         console.log("L36", data);
           cookie.set("token", data.token); //{expires: 2}

@@ -1,5 +1,5 @@
 html,
-body, h1, h2, h3, h4, h5, p {
+body, h1, h2, h3, h4, h5, p, button, span, ul, li {
   padding: 0;
   margin: 0;
   font-family: 'Roboto', sans-serif !important;
@@ -36,6 +36,9 @@ body, h1, h2, h3, h4, h5, p {
   width: 50vw;
   justify-content: end;
   margin-right: 2rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 15px;
 }
 
 .navLinks {

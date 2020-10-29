@@ -43,6 +43,7 @@
 
 .questionTitleContent{
   margin: 0;
+  color: #000000 !important;
 }
 
 .questionAuthor{
@@ -134,7 +135,6 @@
   border: none;
   border-radius: 10px;
 }
-
 .questionMetaCommon span{
   margin-left: 5px;
 }

@@ -4,7 +4,6 @@ import Carousel from "react-elastic-carousel";
 import CardTrainer from "../CardTrainer/CardTrainer";
 
 function TopTrainer({users}) {
-  console.log(users);
     const breakPoints = [
       { width: 200, itemsToShow: 1 },
       { width: 240, itemsToShow: 2 },

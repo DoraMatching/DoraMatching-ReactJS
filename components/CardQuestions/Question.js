@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Question.module.css';
 import moment from 'moment';
+import Link from 'next/link';
 
 function Question({ question }) {
   return (
@@ -16,7 +17,7 @@ function Question({ question }) {
           </figure>
         </div>
         <div className={styles.questionTitle}>
-          <h3 className={styles.questionTitleContent}>{question.title}</h3>
+          <h3 className={styles.questionTitleContent}><Link href='/'>{question.title}</Link></h3>
           <span className={styles.questionAuthor}>
             <span>{question.author.name}</span> <p>asked {moment(question.createdAt).format("LLL")}</p>
           </span>

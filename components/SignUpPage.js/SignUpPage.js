@@ -1,22 +1,23 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import _ from "lodash/fp";
 import { Button, Checkbox, Form, FormField } from "semantic-ui-react";
 import Link from "next/link";
 import styles from "./SignUpPage.module.css";
 import LoginGithub from "../LoginPage/LoginGithub";
 import axios from "axios";
 import { useRouter } from "next/router";
+import cookie from 'js-cookie';
 
 function SignUpPage() {
   const router = useRouter();
-
-  const [signupError, setSignupError] = useState('');
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
-  const [avatarUrl, setAvatarUrl] = useState('');
   const [password, setPassword] = useState('');
 
-  function handleSubmit(e){
-    e.preventDefault();
+  const { register, handleSubmit, errors } = useForm();
+
+  function onSubmit() {
     axios("https://api.dev.doramatching.tk/register", {
       method: "POST",
       headers: {
@@ -25,14 +26,14 @@ function SignUpPage() {
       data: {
         email,
         username,
-        avatarUrl,
-        password
+        password,
       },
     })
       .then((data) => {
         console.log("L28", data);
-          cookie.set("token", data.token); //{expires: 2}
-          router.push("/");
+        cookie.set("token", data.token); //{expires: 2}
+        router.push("/");
+        console.log('L37', router);
       })
       .catch((error) => {
         console.log(error.data);
@@ -46,7 +47,7 @@ function SignUpPage() {
       </div>
       <div className={styles.loginRight}>
         <h2 style={{ textAlign: "center" }}>REGISTER</h2>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit(onSubmit)}>
           <FormField>
             <label>Email</label>
             <input
@@ -54,6 +55,10 @@ function SignUpPage() {
               onChange={(e) => setEmail(e.target.value)}
               name="email"
               type="email"
+              ref={register({
+                required: true,
+                pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+              })}
             />
           </FormField>
           <FormField>
@@ -66,29 +71,42 @@ function SignUpPage() {
             />
           </FormField>
           <FormField>
-            <label>Avatar</label>
-            <input
-              value={avatarUrl}
-              onChange={(e) => setAvatarUrl(e.target.value)}
-              name="avatarUrl"
-              type="text"
-            />
+            <label>Phone number</label>
+            <input name="phonenumber" type="text" />
           </FormField>
           <FormField>
             <label>Password</label>
             <input
-              value={password}
               onChange={(e) => setPassword(e.target.value)}
               name="password"
               type="password"
+              ref={register({
+                required: true,
+                minLength: 8,
+                pattern: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+              })}
             />
+            {_.get("password.type", errors) === "required" && (
+              <p>This field is required</p>
+            )}
+            {_.get("password.type", errors) === "minLength" && (
+              <p>Password (8 characters minimum)</p>
+            )}
+            {_.get("password.type", errors) === "pattern" && (
+              <p>Password must container following "A lowercase/uppercase - a special character - a number" </p>
+            )}
           </FormField>
           <FormField>
             <Checkbox label="Confirm Password" />
           </FormField>
           <div className={styles.loginButton}>
-            <Button color={"linkedin"}>SIGN UP</Button>
-            {signupError && <p style={{ color: "red" }}>{signupError}</p>}
+            <Button
+              type="submit"
+              color={"linkedin"}
+              disabled={!email || !username || !password}
+            >
+              SIGN UP
+            </Button>
             <LoginGithub />
           </div>
         </Form>

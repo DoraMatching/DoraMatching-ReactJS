@@ -1,18 +1,36 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React, { useState } from "react";
+import Link from "next/link";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import { Button } from "./Button";
-import { Search } from 'semantic-ui-react';
-
+import { Search } from "semantic-ui-react";
+import cookie from 'js-cookie';
 
 function Navbar() {
   const [clicked, setClicked] = useState(false);
-  const router = useRouter();
 
   const handleClick = () => {
     setClicked(!clicked);
-  }
+  };
+
+  const loginRegLink = (
+    <Button>
+      <Link href="/sign-in">
+        <a>Login</a>
+      </Link>
+    </Button>
+  );
+  const userLink = (
+    <>
+      <Link href='/'><a>aaa</a></Link>
+      <Button onClick={() => {
+        cookie.remove('token')
+      }}>
+        <Link href="/sign-in" >
+          <a>Log out</a>
+        </Link>
+      </Button>
+    </>
+  );
 
   return (
     <>
@@ -76,11 +94,7 @@ function Navbar() {
             </Link>
           </li>
         </ul>
-        <Button>
-          <Link href="/sign-in">
-            <a>Login</a>
-          </Link>
-        </Button>
+        {loginRegLink}
       </nav>
     </>
   );

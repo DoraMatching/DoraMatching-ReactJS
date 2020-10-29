@@ -1,13 +1,12 @@
 import React, {useState } from "react";
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
+import { useForm } from "react-hook-form";
 import { Button, Form, FormField } from "semantic-ui-react";
 import styles from "./LoginPage.module.css";
 import Link from "next/link";
 import axios from "axios";
 import cookie from 'js-cookie';
 import LoginGithub from "./LoginGithub";
-
-
 
 function LoginPage() {
   const router = useRouter();
@@ -16,8 +15,9 @@ function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  function handleSubmit(e){
-    e.preventDefault();
+  const { register, handleSubmit, errors } = useForm();
+
+  function onSubmit(e){
 
     axios("https://api.dev.doramatching.tk/login", {
       method: "POST",
@@ -43,7 +43,7 @@ function LoginPage() {
     <div className={styles.loginContainer}>
       <div className={styles.loginRight}>
         <h2 style={{ textAlign: "center" }}>SIGN IN</h2>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit(onSubmit)}>
           <FormField>
             <label>Email or Username</label>
             <input
@@ -60,12 +60,21 @@ function LoginPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+            
             />
           </FormField>
           <div className={styles.loginButton}>
-          <Button type='submit' color={"linkedin"}>LOGIN</Button>
-          <LoginGithub />
-        </div>
+            <Button 
+            type="submit" 
+            color={"linkedin"}
+            disabled={
+              !username 
+              || !password
+            } >
+              LOGIN
+            </Button>
+            <LoginGithub />
+          </div>
         </Form>
         <div className={styles.notRegis}>
           <p className={styles.notRegisP}>Not registered yet?</p>
@@ -73,7 +82,7 @@ function LoginPage() {
             <a>Sign Up</a>
           </Link>
         </div>
-        {loginError && <p style={{color: 'red'}}>{loginError}</p>}
+        {loginError && <p style={{ color: "red" }}>{loginError}</p>}
       </div>
       <div className={styles.loginLeft}>
         <img src="/static/worker.png" alt="worker" />

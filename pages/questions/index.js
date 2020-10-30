@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import QuestionsPage from '../containers/QuestionsPage';
-import styles from '../styles/Home.module.css'
+import React from 'react';
+import QuestionsPage from '../../containers/QuestionsPage';
+import styles from '../../styles/Home.module.css'
 import axios from 'axios';
 
 function questions({questions}){
     return (
       <div className={styles.container} >
-        <QuestionsPage questions={questions}/>
+        <QuestionsPage questions={questions} />
       </div>
     );
 }

@@ -86,6 +86,9 @@
 
 .questionDescript{
   margin-top: 10px !important;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
 }
 
 .questionMore{

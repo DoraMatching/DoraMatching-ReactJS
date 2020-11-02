@@ -16,4 +16,5 @@ questions.getInitialProps = async () => {
   return {questions: data.items}
 }
 
+
 export default questions;

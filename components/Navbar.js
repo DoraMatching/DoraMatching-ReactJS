@@ -74,7 +74,7 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <Link href="/">
+            <Link href="/classes">
               <a className="navLinks">Classes</a>
             </Link>
           </li>

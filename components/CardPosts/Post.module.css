@@ -21,7 +21,6 @@
 .postAva{
   display: inline-block;
   position: relative;
-  width: 10%;
   margin-bottom: auto;
 }
 
@@ -35,7 +34,6 @@
 .postThumbImage{
   margin: 0;
   display: block;
-  overflow: hidden;
 }
 
 .postTitle{

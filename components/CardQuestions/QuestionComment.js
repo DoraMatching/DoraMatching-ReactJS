@@ -2,10 +2,9 @@ import React from "react";
 import styles from "./Question.module.css";
 import moment from "moment";
 
-function QuestionDetail({ question }) {
-  console.log("L4", question);
+function QuestionComment() {
   return (
-    <div className={styles.questionCardDetail}>
+    <div className={styles.questionCardComment}>
       <div className={styles.questionCardLeftDetail}>
         <button className={styles.questionCardDetailButton}>
           <span>25</span>
@@ -13,28 +12,23 @@ function QuestionDetail({ question }) {
         </button>
       </div>
       <div className={styles.questionCardRight}>
-        <div className={styles.questionButtonDetail}>
-          {question.tags.map((tag, index) => {
-            return <button key={index}> {tag.name} </button>;
-          })}
-        </div>
-        <p>{question.content}</p>
+        <p>aaaa</p>
         <div className={styles.questionAvaDetail}>
           <div className={styles.questionAva}>
             <figure className={styles.questionThumbImage}>
               <img
-                src={question.author.avatarUrl}
+                src=""
                 alt="iconQuestion"
                 style={{ width: "40px", borderRadius: "50%" }}
               />
             </figure>
           </div>
           <span className={styles.questionAuthorDetail}>
-            <span>{question.author.name}</span>{" "}
-            <p>asked {moment(question.createdAt).format("LLL")}</p>
+            <span>aaaa</span>
+            <p>asked</p> {/*{moment(question.createdAt).format("LLL")} */}
           </span>
           <div className={styles.questionButtonShareDetail}>
-            <i className='far fa-share'></i>
+            <i className="far fa-share"></i>
             <span>Share</span>
           </div>
         </div>
@@ -43,4 +37,4 @@ function QuestionDetail({ question }) {
   );
 }
 
-export default QuestionDetail;
+export default QuestionComment;

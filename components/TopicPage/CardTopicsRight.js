@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function CardClassesLeft() {
+export default function CardTopicsRight() {
   return (
     <div>
-      Left
+      Calendar
     </div>
   )
 }

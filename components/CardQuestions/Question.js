@@ -5,7 +5,6 @@ import Link from 'next/link';
 
 function Question({ question }) {
   const {id} = question;
-  console.log('L8', id);
   return (
     <div className={styles.questionCard}>
       <div className={styles.questionHeader}>

@@ -1,21 +1,21 @@
 import React, { Component } from 'react'
-import CardClassesLeft from '../components/ClassesPage/CardClassesLeft';
-import CardClassesRight from '../components/ClassesPage/CardClassesRight';
+import CardTopicsLeft from '../components/TopicPage/CardTopicsLeft';
+import CardTopicsRight from '../components/TopicPage/CardTopicsRight';
 import styles from '../styles/Home.module.css'
 
-class ClassesPage extends Component {
+class TopicsPage extends Component {
   render() {
     return (
       <div className={styles.classesPage}>
         <div style={{ width: "70%" }}>
-          <CardClassesLeft />
+          <CardTopicsLeft />
         </div>
         <div style={{ width: "20%", marginLeft: "20px" }}>
-          <CardClassesRight />
+          <CardTopicsRight />
         </div>
       </div>
     );
   }
 }
 
-export default ClassesPage;
+export default TopicsPage;

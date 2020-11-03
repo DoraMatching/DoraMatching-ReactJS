@@ -27,16 +27,19 @@ class Home extends Component {
     };
 
     return (
-      <div style={{ width: "100%" }} className={`${styles.container} ${styles.homeGrid}`}>
-          <div style={{ width: "100%", paddingLeft: "20px", gridColumn: "1/3" }}>
-            {renderComponents()}
-          </div>
-          <div style={{ width: "100%", paddingRight: "20px" }}>
-            <Class />
-            <Class />
-            <Class />
-            <Class />
-          </div>
+      <div
+        style={{ width: "100%" }}
+        className={`${styles.container} ${styles.homeGrid}`}
+      >
+        <div style={{ width: "100%", paddingLeft: "20px", gridColumn: "1/3" }}>
+          {renderComponents()}
+        </div>
+        <div style={{ width: "100%", paddingRight: "20px", marginTop: "20px" }}>
+          <Class />
+          <Class />
+          <Class />
+          <Class />
+        </div>
       </div>
     );
   }

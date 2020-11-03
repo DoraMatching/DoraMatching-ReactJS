@@ -1,13 +1,13 @@
 import React from 'react'
-import ClassesPage from '../containers/ClassesPage'
+import TopicsPage from '../containers/TopicsPage';
 import styles from '../styles/Home.module.css'
 
-function classes() {
+function topics() {
   return (
     <div className={styles.container}>
-      <ClassesPage />
+      <TopicsPage />
     </div>
   )
 }
 
-export default classes;
+export default topics;

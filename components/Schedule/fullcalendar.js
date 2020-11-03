@@ -1,6 +1,6 @@
+import React from "react";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-import React from "react";
 
 let CalendarComponent;
 

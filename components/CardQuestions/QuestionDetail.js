@@ -3,7 +3,6 @@ import styles from "./Question.module.css";
 import moment from "moment";
 
 function QuestionDetail({ question }) {
-  console.log("L4", question);
   return (
     <div className={styles.questionCardDetail}>
       <div className={styles.questionCardLeftDetail}>

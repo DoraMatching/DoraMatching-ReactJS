@@ -40,6 +40,12 @@
 
 .cardAllTopics {
   display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 1em;
+}
+
+.cardAllClass{
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1em;
 }

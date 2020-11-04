@@ -4,7 +4,7 @@ import FullCalendar from '../Schedule/fullcalendar'
 export default function CardTopicsRight() {
   return (
     <div>
-      <FullCalendar />
+      aaa
     </div>
   )
 }

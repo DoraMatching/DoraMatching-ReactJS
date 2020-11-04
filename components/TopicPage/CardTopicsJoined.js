@@ -27,13 +27,13 @@ export default function CardTopicsJoined() {
           </p>
         </div>
         <div className={styles.cardTopicsJoinedDetail}>
-          <i class="far fa-user-graduate"></i>
+          <i className="far fa-user-graduate"></i>
           <p>
             <span>Trainee joined:</span> 40
           </p>
         </div>
         <div className={styles.cardTopicsJoinedDetail}>
-          <i class="far fa-clock"></i>
+          <i className="far fa-clock"></i>
           <p>
             <span>Time start:</span> 20:00
           </p>

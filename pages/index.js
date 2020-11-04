@@ -1,9 +1,9 @@
+import React, { Component } from "react";
 import Class from "../components/CardClasses/Class";
 import Post from "../components/CardPosts/Post";
 import Question from "../components/CardQuestions/Question";
 import TopTrainer from "../components/TopTrainers/TopTrainer";
 import styles from "../styles/Home.module.css";
-import React, { Component } from "react";
 import axios from "axios";
 
 class Home extends Component {

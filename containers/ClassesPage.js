@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import CardTopicsLeft from '../components/TopicPage/CardTopicsLeft';
+import CardClassesLeft from '../components/TopicPage/CardClassesLeft';
 import CardTopicsRight from '../components/TopicPage/CardTopicsRight';
 import styles from '../styles/Home.module.css';
 
-class TopicsPage extends Component {
+class ClassesPage extends Component {
   render() {
     return (
       <div className={styles.classesPage}>
         <div style={{ width: "60%" }}>
-          <CardTopicsLeft />
+          <CardClassesLeft />
         </div>
         <div style={{ width: "30%", marginLeft: "20px" }}>
           <CardTopicsRight />
@@ -18,4 +18,4 @@ class TopicsPage extends Component {
   }
 }
 
-export default TopicsPage;
+export default ClassesPage;

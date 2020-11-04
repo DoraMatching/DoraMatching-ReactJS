@@ -1,7 +1,7 @@
 /*PEN STYLES*/
 
 $color_white: #fff;
-$color_prime: #5ad67d;
+$color_prime: #228099;
 $color_grey: #e2e2e2;
 $color_grey_dark: #a2a2a2;
 
@@ -9,7 +9,7 @@ $color_grey_dark: #a2a2a2;
   display: flex;
   flex-direction: column;
   margin: 1rem auto;
-  box-shadow: 0 3px 7px -1px rgba(#000, .1);
+  box-shadow: 0 3px 7px -1px rgba(#000, 0.1);
   margin-bottom: 1.6%;
   background: $color_white;
   line-height: 1.4;
@@ -17,8 +17,8 @@ $color_grey_dark: #a2a2a2;
   border-radius: 5px;
   overflow: hidden;
   z-index: 0;
-  .topicPhoto{
-    background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg)
+  .topicPhoto {
+    background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg);
   }
   a {
     color: inherit;
@@ -44,44 +44,7 @@ $color_grey_dark: #a2a2a2;
     left: 0;
     background-size: cover;
     background-position: center;
-    transition: transform .2s;
-  }
-  .topicDetails,
-  .topicDetails ul {
-    margin: auto;
-    padding: 0;
-    list-style: none;
-  }
-
-  .topicDetails {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: -100%;
-    margin: auto;
-    transition: left .2s;
-    background: rgba(#000, .6);
-    color: $color_white;
-    padding: 10px;
-    width: 100%;
-    font-size: .9rem;
-    a {
-      text-decoration: dotted underline
-    }
-    ul li {
-      display: inline-block;
-    }
-    .topicAuthor:before {
-      font-family: FontAwesome;
-      margin-right: 10px;
-      content: "\f007";
-    }
-
-    .topicDate:before {
-      font-family: FontAwesome;
-      margin-right: 10px;
-      content: "\f133";
-    }
+    transition: transform 0.2s;
   }
   .topicDescription {
     padding: 1rem;
@@ -116,7 +79,7 @@ $color_grey_dark: #a2a2a2;
           margin-left: -10px;
           opacity: 0;
           vertical-align: middle;
-          transition: margin .3s, opacity .3s;
+          transition: margin 0.3s, opacity 0.3s;
         }
 
         &:hover:after {
@@ -148,7 +111,6 @@ $color_grey_dark: #a2a2a2;
     }
   }
 
-
   @media (min-width: 640px) {
     flex-direction: row;
     max-width: 700px;
@@ -176,11 +138,8 @@ $color_grey_dark: #a2a2a2;
         &:before {
           left: inherit;
           right: -10px;
-          transform: skew(3deg)
+          transform: skew(3deg);
         }
-      }
-      .topicDetails {
-        padding-left: 25px;
       }
     }
   }

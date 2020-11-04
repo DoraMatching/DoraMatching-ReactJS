@@ -1,10 +1,11 @@
 import React from 'react'
-import FullCalendar from '../Schedule/fullcalendar'
+import Schedule from '../Schedule/Schedule'
+
 
 export default function CardTopicsRight() {
   return (
     <div>
-      aaa
+      <Schedule />
     </div>
   )
 }

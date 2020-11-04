@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Button, Dropdown, Form, Modal } from "semantic-ui-react";
 import styles from "./CardTopicsPage.module.css";
 
@@ -14,7 +14,7 @@ const options = [
 ]
 
 function CreateClass(props) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   return (
     <Modal
       onClose={() => setOpen(false)}
@@ -76,7 +76,7 @@ function CreateClass(props) {
         <Button color="youtube" content="Cancel" icon="close"  onClick={() => setOpen(false)} />
         <Button
           content="Submit"
-          labelPosition="center"
+          labelPosition="right"
           icon="checkmark"
           onClick={() => setOpen(false)}
           positive

@@ -4,7 +4,8 @@ import QuestionComment from "../CardQuestions/QuestionComment";
 import QuestionDetail from "../CardQuestions/QuestionDetail";
 import styles from "./CardQuestionPage.module.css";
 
-function CardQuestionCenterDetail({ question }) {
+function CardQuestionCenterDetail({ question, comments }) {
+  console.log('L8', comments);
   return (
     <div className={styles.cardQuestionCenter}>
       <div className={styles.cardQuestionCenterHeader}>
@@ -20,9 +21,12 @@ function CardQuestionCenterDetail({ question }) {
       </div>
       <QuestionDetail question={question} />
       <div className={styles.cardQuestionCenterDetailAnswer}>
-        <p>5 Answers</p>
+        <p>{comments.length} Answers</p>
       </div>
-      <QuestionComment />
+      {comments.map((comment, id) => {
+          return <QuestionComment comment={comment} key={id} />;
+        })}
+      
     </div>
   );
 }

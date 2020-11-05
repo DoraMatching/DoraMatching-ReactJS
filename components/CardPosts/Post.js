@@ -42,7 +42,7 @@ const Post = ({ post }) => {
         <img
           src={post.featuredImage}
           alt="imageBlog"
-          style={{ width: "100%", height: '200px' }}
+          style={{ width: "100%" }}
         />
       </div>
       <div className="postContent">

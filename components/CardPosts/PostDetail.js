@@ -15,7 +15,9 @@ const PostDetail = ({ post }) => {
       </div>
       <div className={styles.postDetailBody}>
         <div className={styles.postDetailTime}>
-          {moment(post.createdAt).format("LLL")}
+          <p className={styles.postDetailTime1}>{moment(post.createdAt).format("MMM")}</p>
+          <p className={styles.postDetailTime2}>{moment(post.createdAt).format("D")}</p>
+          <p className={styles.postDetailTime3}>{moment(post.createdAt).format("YYYY")}</p>
         </div>
         <div className={styles.postDetailContent}>
           <h3 className={styles.postTitleContent}>{post.title}</h3>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import CardBlogLeftDetail from '../components/BlogsPage/CardBlogLeftDetail';
-import CardBlogRight from '../components/BlogsPage/CardBlogRight';
+import CardBlogRightDetail from '../components/BlogsPage/CardBlogRightDetail';
 import styles from '../styles/Home.module.css'
 
 
@@ -12,7 +12,7 @@ class BlogsPageDetail extends Component {
           <CardBlogLeftDetail {...this.props} />
         </div>
         <div style={{ width: "20%", marginLeft: "20px" }}>
-          <CardBlogRight />
+          <CardBlogRightDetail {...this.props} />
         </div>
       </div>
     );

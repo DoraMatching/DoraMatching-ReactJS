@@ -115,3 +115,33 @@
 .postDetailContentAuthor p {
   margin-right: 3rem;
 }
+
+.postDetailTime{
+  width: 8%;
+  text-align: right;
+  margin-right: 20px;
+}
+
+.postDetailTime p{
+  margin: 0;
+}
+
+.postDetailTime1 {
+  color: #404040;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+}
+
+.postDetailTime2 {
+  color: #828282;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.postDetailTime3 {
+  color: #686868;
+  font-size: 1.2rem;
+}

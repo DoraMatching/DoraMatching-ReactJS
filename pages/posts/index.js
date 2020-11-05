@@ -1,6 +1,6 @@
 import React from 'react'
-import BlogsPage from '../containers/BlogsPage';
-import styles from "../styles/Home.module.css";
+import BlogsPage from '../../containers/BlogsPage'
+import styles from "../../styles/Home.module.css";
 import axios from 'axios';
 
 function blogs({posts}) {

@@ -1,5 +1,5 @@
 import React from "react";
-import QuestionsPageDetail from "../../../containers/QuestionPageDetail";
+import QuestionsPageDetail from "../../../containers/QuestionsPageDetail";
 import styles from "../../../styles/Home.module.css";
 import axios from "axios";
 
@@ -12,7 +12,7 @@ function question({ question, tagQuestions, comments }) {
 }
 
 question.getInitialProps = async ({ query: { id } }) => {
-  const [question, tagQuestions, comments] = await Promise.all([
+  const [question, tagQuestions] = await Promise.all([
     axios.get(`https://api.dev.doramatching.tk/question/${id}`),
     axios.get("https://api.dev.doramatching.tk/tag-question"),
   ]);

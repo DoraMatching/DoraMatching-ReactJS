@@ -84,7 +84,7 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <Link href="/blogs">
+            <Link href="/posts">
               <a className="navLinks">Blogs</a>
             </Link>
           </li>

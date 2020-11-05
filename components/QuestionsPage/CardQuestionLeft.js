@@ -3,9 +3,14 @@ import Link from "next/link";
 import styles from "./CardQuestionPage.module.css";
 import CardTagQuestion from "../CardQuestions/CardTagQuestion";
 import { Button, Form, Modal } from "semantic-ui-react";
+import moment from 'moment';
+
 
 function CardQuestionLeft({ tagQuestions }) {
   const [open, setOpen] = useState(false);
+
+  const now = moment({}).format("LLL")
+
   return (
     <div className={styles.cardQuestionLeft}>
       <Modal
@@ -17,6 +22,14 @@ function CardQuestionLeft({ tagQuestions }) {
         }
       >
         <Modal.Header>Post Your Question</Modal.Header>
+        <Modal.Content>
+          <Form>
+            <Form.Field>
+              <label>Create At</label>
+              <input value={now} disabled={true} />
+            </Form.Field>
+          </Form>
+        </Modal.Content>
         <Modal.Content>
           <Form>
             <Form.Field>
@@ -35,10 +48,7 @@ function CardQuestionLeft({ tagQuestions }) {
         </Modal.Content>
         <Modal.Content>
           <Form>
-            <Form.Field>
-              <label>Question Body</label>
-              <input placeholder="content" control='textarea' rows='3' />
-            </Form.Field>
+            <Form.TextArea label='Content' Body />
           </Form>
         </Modal.Content>
         <Modal.Actions>

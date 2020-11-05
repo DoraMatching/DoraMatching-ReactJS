@@ -5,6 +5,7 @@ import Question from "../components/CardQuestions/Question";
 import TopTrainer from "../components/TopTrainers/TopTrainer";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
+import Schedule from "../components/Schedule/Schedule";
 
 class Home extends Component {
   constructor(props) {
@@ -35,10 +36,13 @@ class Home extends Component {
           {renderComponents()}
         </div>
         <div style={{ width: "100%", paddingRight: "20px", marginTop: "20px" }}>
-          <Class />
-          <Class />
-          <Class />
-          <Class />
+          <Schedule />
+          <div style={{marginTop: '20px'}}>
+            <Class />
+            <Class />
+            <Class />
+            <Class />
+          </div>
         </div>
       </div>
     );

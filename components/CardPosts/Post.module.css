@@ -23,6 +23,7 @@
   position: relative;
   margin-bottom: auto;
   width: 8%;
+  margin-right: 5px;
 }
 
 .postThumb{
@@ -43,10 +44,12 @@
 
 .postTitleContent{
   margin: 0;
+  text-transform: uppercase;
 }
 
 .postAuthor{
   display: flex;
+  margin-top: 2px;
 }
 
 .postAuthor > span{
@@ -98,4 +101,17 @@
 
 .postMeta{
   margin-top: 20px;
+}
+
+/* POST DETAIL */
+.postDetailBody{
+  display: flex;
+}
+
+.postDetailContentAuthor{
+  display: flex;
+}
+
+.postDetailContentAuthor p {
+  margin-right: 3rem;
 }

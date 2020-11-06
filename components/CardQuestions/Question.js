@@ -65,7 +65,7 @@ function Question({ question }) {
             className={`${styles.questionMetaCommon} ${styles.questionMetaComment}`}
           >
             <i className="far fa-comment"></i>
-            <span>2 comments</span>
+            <span>{question.comments.length} comments</span>
           </button>
           <button
             className={`${styles.questionMetaCommon} ${styles.questionMetaShare}`}

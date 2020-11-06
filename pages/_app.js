@@ -7,12 +7,18 @@ import '@fullcalendar/timegrid/main.css' // @fullcalendar/timegrid is a direct i
 import Layout from "../components/Layout";
 import "../styles/globals.css";
 import "semantic-ui-css/semantic.min.css";
+import { AuthProvider, ProtectRoute } from "../contexts/auth";
+
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    // <AuthProvider>
+      // * <ProtectRoute> *
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      /* </ProtectRoute> */
+    // </AuthProvider>
   );
 }
 

@@ -1,5 +1,4 @@
-.cardTrainersLeftDetail:hover .topTrainerCardContainer{
-  filter:blur(1.5px);
+.cardTrainersLeftDetail, .topTrainerCardContainer{
   opacity:5.5;
   /* transform: scale(.98); */
   box-shadow:none;
@@ -9,7 +8,7 @@
   animation-duration: 0.25s;
 }
 
-.cardTrainersLeftDetail:hover .topTrainerCardContainer:hover{
+.cardTrainersLeftDetail:hover, .topTrainerCardContainer:hover{
 	transform:scale(1.2);
 	transition: .3s ease-out;
   filter:blur(0px);

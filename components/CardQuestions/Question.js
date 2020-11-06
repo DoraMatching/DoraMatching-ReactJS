@@ -1,7 +1,10 @@
 import React from 'react';
 import styles from './Question.module.css';
+import moment from 'moment';
+import Link from 'next/link';
 
 function Question({ question }) {
+  const {id} = question;
   return (
     <div className={styles.questionCard}>
       <div className={styles.questionHeader}>
@@ -15,9 +18,14 @@ function Question({ question }) {
           </figure>
         </div>
         <div className={styles.questionTitle}>
-          <h3 className={styles.questionTitleContent}>{question.title}</h3>
+          <h3 className={styles.questionTitleContent}>
+            <Link href={`/questions/${id}`}>
+              <a>{question.title}</a>
+            </Link>
+          </h3>
           <span className={styles.questionAuthor}>
-            <span>{question.author.name}</span> <p>{question.createdAt}</p>
+            <span>{question.author.name}</span>{" "}
+            <p>asked {moment(question.createdAt).format("LLL")}</p>
           </span>
         </div>
         <div className={styles.questionThumb}>
@@ -41,7 +49,9 @@ function Question({ question }) {
         <p className={styles.questionDescript}>{question.content}</p>
         <div className={styles.questionMore}>
           <button className={styles.buttonPrimary}>
-            <i className="fa fa-chevron-right"></i> Read more
+            <Link href={`/questions/${id}`}>
+              <a><i className="fa fa-chevron-right"></i> Read more</a>
+            </Link>
           </button>
         </div>
         <div className={styles.questionMeta}>
@@ -55,7 +65,7 @@ function Question({ question }) {
             className={`${styles.questionMetaCommon} ${styles.questionMetaComment}`}
           >
             <i className="far fa-comment"></i>
-            <span>25 comments</span>
+            <span>{question.comments.length} comments</span>
           </button>
           <button
             className={`${styles.questionMetaCommon} ${styles.questionMetaShare}`}

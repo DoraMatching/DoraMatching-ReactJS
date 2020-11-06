@@ -6,11 +6,20 @@
   display: flex;
   flex-direction: column;
   height: auto;
-  margin: 20px 0px;
+  margin: 0 0 20px 0;
   min-width: 0;
   padding: 10px 20px;
   position: relative;
   width: 100%;
+  top: 0
+}
+
+.classCard:hover {
+  transition: all 0.2s ease-out;
+  box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+  top: -4px;
+  border: 2px solid #228099;
+  background-color: white;
 }
 .classHeader{
   display: flex;

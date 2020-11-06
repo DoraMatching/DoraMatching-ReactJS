@@ -51,20 +51,20 @@ const Post = ({ post }) => {
           <button className={styles.buttonPrimary}>
             <Link href="/">
               <a>
-                <i className="fa fa-chevron-right"></i> Read more
+                <i className="fa fa-chevron-right"></i> <Link href={`/posts/${id}`}><a >Read more</a></Link>
               </a>
             </Link>
           </button>
           <div className={styles.faTag}>
             <i className="fa fa-tag"></i>
             <span>
-              <Link href="/">
-                {post.tags
-                  .map((tag) => {
-                    return tag.name;
-                  })
-                  .join(", ")}
-              </Link>
+              {post.tags.map((tag) => {
+                return (
+                  <Link href="/">
+                    <a> {tag.name}</a>
+                  </Link>
+                );
+              })}
             </span>
           </div>
         </div>

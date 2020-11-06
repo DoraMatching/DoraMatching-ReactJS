@@ -47,6 +47,7 @@
 
 .questionAuthor {
   display: flex;
+  margin-top: 2px;
 }
 
 .questionAuthor > span {
@@ -63,11 +64,11 @@
   display: flex;
 }
 .questionButton .dum {
-  width: 10%;
+  width: 8%;
 }
 .questionButton > button {
   border: none;
-  background-color: #999999;
+  background-color: #b7b7b7;
   border-radius: 6px;
   color: #ffffff;
   margin-right: 5px;
@@ -245,7 +246,7 @@
   display: flex;
   float: right;
   height: auto;
-  margin: 20px 0px;
+  margin: 10px 0 0 0px;
   padding: 20px;
   position: relative;
   width: 85%;

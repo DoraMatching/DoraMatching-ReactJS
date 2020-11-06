@@ -10,7 +10,7 @@ export default class QuestionsPageDetail extends Component {
     return (
       <div className={styles.questionsPage}>
         <div style={{ width: "15%" }}>
-          <CardQuestionLeft />
+          <CardQuestionLeft {...this.props}  />
         </div>
         <div style={{ width: "60%" }}>
           <CardQuestionCenterDetail {...this.props} />

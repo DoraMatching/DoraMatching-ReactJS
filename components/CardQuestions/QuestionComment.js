@@ -2,22 +2,22 @@ import React from "react";
 import styles from "./Question.module.css";
 import moment from "moment";
 
-function QuestionComment() {
+function QuestionComment({ comment }) {
   return (
     <div className={styles.questionCardComment}>
       <div className={styles.questionCardLeftDetail}>
         <button className={styles.questionCardDetailButton}>
-          <span>25</span>
+          <span>5</span>
           <i className="far fa-thumbs-up"> </i>
         </button>
       </div>
       <div className={styles.questionCardRight}>
-        <p>aaaa</p>
+        <p>{comment.content}</p>
         <div className={styles.questionAvaDetail}>
           <div className={styles.questionAva}>
             <figure className={styles.questionThumbImage}>
               <img
-                src=""
+                src={comment.author.avatarUrl}
                 alt="iconQuestion"
                 style={{ width: "40px", borderRadius: "50%" }}
               />
@@ -25,7 +25,7 @@ function QuestionComment() {
           </div>
           <span className={styles.questionAuthorDetail}>
             <span>aaaa</span>
-            <p>asked</p> {/*{moment(question.createdAt).format("LLL")} */}
+            <p>answered {moment(comment.createdAt).format("LLL")}</p> 
           </span>
           <div className={styles.questionButtonShareDetail}>
             <i className="far fa-share"></i>

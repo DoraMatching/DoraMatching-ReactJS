@@ -5,7 +5,6 @@ import Link from 'next/link';
 
 function Question({ question }) {
   const {id} = question;
-  console.log('L8', id);
   return (
     <div className={styles.questionCard}>
       <div className={styles.questionHeader}>
@@ -66,7 +65,7 @@ function Question({ question }) {
             className={`${styles.questionMetaCommon} ${styles.questionMetaComment}`}
           >
             <i className="far fa-comment"></i>
-            <span>25 comments</span>
+            <span>{question.comments.length} comments</span>
           </button>
           <button
             className={`${styles.questionMetaCommon} ${styles.questionMetaShare}`}

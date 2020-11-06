@@ -1,16 +1,16 @@
-import React, { Component } from 'react'
-import CardQuestionCenter from '../components/QuestionsPage/CardQuestionCenter';
-import CardQuestionLeft from '../components/QuestionsPage/CardQuestionLeft';
-import CardQuestionRight from '../components/QuestionsPage/CardQuestionRight';
-import styles from '../styles/Home.module.css'
+import React, { Component } from "react";
+import CardQuestionCenter from "../components/QuestionsPage/CardQuestionCenter";
+import CardQuestionLeft from "../components/QuestionsPage/CardQuestionLeft";
+import CardQuestionRight from "../components/QuestionsPage/CardQuestionRight";
+import styles from "../styles/Home.module.css";
+import TagQuestionsPage from "./TagQuestionPage";
 
-
-export default class QuestionsPage extends Component {
+class QuestionsPage extends Component {
   render() {
     return (
       <div className={styles.questionsPage}>
         <div style={{ width: "15%" }}>
-          <CardQuestionLeft />
+          <CardQuestionLeft {...this.props} />
         </div>
         <div style={{ width: "60%" }}>
           <CardQuestionCenter {...this.props} />
@@ -22,3 +22,5 @@ export default class QuestionsPage extends Component {
     );
   }
 }
+
+export default QuestionsPage;

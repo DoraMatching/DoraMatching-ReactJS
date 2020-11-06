@@ -22,6 +22,8 @@
   display: inline-block;
   position: relative;
   margin-bottom: auto;
+  width: 8%;
+  margin-right: 5px;
 }
 
 .postThumb{
@@ -42,10 +44,12 @@
 
 .postTitleContent{
   margin: 0;
+  text-transform: uppercase;
 }
 
 .postAuthor{
   display: flex;
+  margin-top: 2px;
 }
 
 .postAuthor > span{
@@ -59,6 +63,7 @@
 
 .postImage > img{
   margin-top: 10px;
+  margin-bottom: 20px;
   border-radius: 5px;
 }
 
@@ -96,38 +101,52 @@
 }
 
 .postMeta{
-  display: flex;
-  justify-content: space-between;
   margin-top: 20px;
 }
 
-.postMetaCommon{
-  background-color: transparent;
-  border: none;
-  box-shadow: none;
-  color: #606770;
-  cursor: pointer;
+/* POST DETAIL */
+.postDetailBody{
+  display: flex;
+}
+
+.postDetailContent {
+  width: 100%;
+}
+
+.postDetailContentAuthor{
+  display: flex;
+}
+
+.postDetailContentAuthor p {
+  margin-right: 3rem;
+}
+
+.postDetailTime{
+  width: 8%;
+  text-align: right;
+  margin-right: 20px;
+}
+
+.postDetailTime p{
+  margin: 0;
+}
+
+.postDetailTime1 {
+  color: #404040;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+}
+
+.postDetailTime2 {
+  color: #828282;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.postDetailTime3 {
+  color: #686868;
   font-size: 1.2rem;
-  outline: none;
-  padding: 8px 0;
-  transition: 0.4s;
-}
-.postMetaCommon:hover{
-  background: #f7f7f7;
-  border: none;
-  border-radius: 10px;
-}
-
-.postMetaCommon span{
-  margin-left: 5px;
-}
-
-.postMetaLike{
-  width: 30%;
-}
-.postMetaComment{
-  width: 30%;
-}
-.postMetaShare {
-  width: 30%;
 }

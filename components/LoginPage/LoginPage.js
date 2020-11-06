@@ -30,7 +30,6 @@ function LoginPage() {
       },
     })
       .then((data) => {
-        console.log("L36", data);
           cookie.set("token", data.token); //{expires: 2}
           router.push("/");
       })

@@ -20,11 +20,17 @@ function CardTrainersRight({ users }) {
           </button>
         }
       >
-        <Carousel breakPoints={breakPoints} showArrows={true} pagination={true}>
-          {users.map((user, id) => {
-            return <CardTrainerPage user={user} key={id} />;
-          })}
-        </Carousel>
+        <Modal.Content>
+          <Carousel
+            breakPoints={breakPoints}
+            showArrows={true}
+            pagination={true}
+          >
+            {users.map((user, id) => {
+              return <CardTrainerPage user={user} key={id} />;
+            })}
+          </Carousel>
+        </Modal.Content>
       </Modal>
       <button className={styles.cardTrainerPageButton} color="teal">
         Become a Trainer

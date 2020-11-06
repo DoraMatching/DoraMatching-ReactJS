@@ -88,6 +88,11 @@
 
 .cardQuestionCenterHeader h3 {
   margin: 0;
+  line-height: 1;
+}
+
+.cardQuestionCenterHeader span{
+  margin-left: 3px;
 }
 
 .cardQuestionCenterDetailAnswer{

@@ -4,9 +4,11 @@ import Head from "next/head";
 import { Button } from "./Button";
 import { Search } from "semantic-ui-react";
 import cookie from 'js-cookie';
+import { useAuth } from "../contexts/auth";
 
 function Navbar() {
   const [clicked, setClicked] = useState(false);
+  const {user, loading} = useAuth();
 
   const handleClick = () => {
     setClicked(!clicked);

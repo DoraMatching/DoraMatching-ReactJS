@@ -15,25 +15,35 @@ const PostDetail = ({ post }) => {
       </div>
       <div className={styles.postDetailBody}>
         <div className={styles.postDetailTime}>
-          <p className={styles.postDetailTime1}>{moment(post.createdAt).format("MMM")}</p>
-          <p className={styles.postDetailTime2}>{moment(post.createdAt).format("D")}</p>
-          <p className={styles.postDetailTime3}>{moment(post.createdAt).format("YYYY")}</p>
+          <p className={styles.postDetailTime1}>
+            {moment(post.createdAt).format("MMM")}
+          </p>
+          <p className={styles.postDetailTime2}>
+            {moment(post.createdAt).format("D")}
+          </p>
+          <p className={styles.postDetailTime3}>
+            {moment(post.createdAt).format("YYYY")}
+          </p>
         </div>
         <div className={styles.postDetailContent}>
-          <h3 className={styles.postTitleContent}>{post.title}</h3>
+          <h3>{post.title}</h3>
           <div className={styles.postDetailContentAuthor}>
             <p>Posted By {post.author.name} </p>
             <p>Comments {post.comments.length} </p>
             <p>
               Tags
-              <Link href="/">
-                {post.tags
-                  .map((tag) => {
-                    return tag.name;
-                  })
-                  .join(", ")}
-              </Link>
+                  {post.tags.map((tag) => {
+                    return (
+                      <Link href="/">
+                        <a> {tag.name }</a>
+                      </Link>
+                    );
+                  })}
+
             </p>
+          </div>
+          <div style={{ fontStyle: "italic", marginBottom: "20px" }}>
+            {post.subTitle}
           </div>
           <div>{post.content}</div>
           <div className={styles.postMeta}>

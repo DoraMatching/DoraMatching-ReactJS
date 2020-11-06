@@ -13,12 +13,12 @@
   width: 100%;
 }
 
-.postHeader{
+.postHeader {
   align-items: center;
   display: flex;
 }
 
-.postAva{
+.postAva {
   display: inline-block;
   position: relative;
   margin-bottom: auto;
@@ -26,58 +26,61 @@
   margin-right: 5px;
 }
 
-.postThumb{
+.postThumb {
   display: inline-block;
   position: relative;
   margin-inline-start: auto;
   margin-bottom: auto;
 }
 
-.postThumbImage{
+.postThumbImage {
   margin: 0;
   display: block;
 }
 
-.postTitle{
+.postTitle {
   width: 80%;
 }
 
-.postTitleContent{
+.postTitleContent {
   margin: 0;
   text-transform: uppercase;
 }
 
-.postAuthor{
+.postAuthor {
   display: flex;
   margin-top: 2px;
 }
 
-.postAuthor > span{
+.postAuthor > span {
   color: #228099;
 }
 
-.postAuthor > p{
+.postAuthor > p {
   color: #999999;
   margin-left: 5px;
 }
 
-.postImage > img{
+.postImage > img {
   margin-top: 10px;
   margin-bottom: 20px;
   border-radius: 5px;
 }
 
-.postDescript{
+.postDescript {
   margin-top: 10px !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.postMore{
+.postMore {
   display: flex;
   justify-content: space-between;
 }
 
 .buttonPrimary {
-  background-color:transparent;
+  background-color: transparent;
   border: none;
   box-shadow: none;
   color: #228099;
@@ -89,23 +92,23 @@
   color: #7bdaff;
   cursor: pointer;
   outline: none;
-  transition:.25s;
+  transition: 0.25s;
 }
 .buttonPrimary:focus {
   cursor: pointer;
   outline: none;
 }
 
-.faTag > span{
+.faTag > span {
   margin-left: 5px;
 }
 
-.postMeta{
+.postMeta {
   margin-top: 20px;
 }
 
 /* POST DETAIL */
-.postDetailBody{
+.postDetailBody {
   display: flex;
 }
 
@@ -113,7 +116,7 @@
   width: 100%;
 }
 
-.postDetailContentAuthor{
+.postDetailContentAuthor {
   display: flex;
 }
 
@@ -121,13 +124,13 @@
   margin-right: 3rem;
 }
 
-.postDetailTime{
+.postDetailTime {
   width: 8%;
   text-align: right;
   margin-right: 20px;
 }
 
-.postDetailTime p{
+.postDetailTime p {
   margin: 0;
 }
 

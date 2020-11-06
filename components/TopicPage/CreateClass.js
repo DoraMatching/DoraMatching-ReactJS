@@ -52,7 +52,7 @@ function CreateClass(props) {
         <Form>
           <Form.Field>
             <label>Topic</label>
-            <Dropdown placeholder='Choose Topic' fluid multiple selection options={options} />
+            <Dropdown placeholder='Choose Topic' fluid selection options={options} />
           </Form.Field>
         </Form>
       </Modal.Content>

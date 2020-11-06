@@ -1,8 +1,10 @@
 import React from "react";
 import styles from "./Post.module.css";
 import Link from "next/link";
+import moment from "moment";
 
 const Post = ({ post }) => {
+  const {id} = post;
   return (
     <div className={styles.postCard}>
       <div className={styles.postHeader}>
@@ -16,9 +18,14 @@ const Post = ({ post }) => {
           </figure>
         </div>
         <div className={styles.postTitle}>
-          <h3 className={styles.postTitleContent}>{post.title}</h3>
+          <h3 className={styles.postTitleContent}>
+            <Link href={`/posts/${id}`}>
+              <a>{post.title}</a>
+            </Link>
+          </h3>
           <span className={styles.postAuthor}>
-            <span>{post.author.name}</span> <p>published {post.createdAt}</p>
+            <span>{post.author.name}</span>{" "}
+            <p>published {moment(post.createdAt).format("LLL")}</p>
           </span>
         </div>
         <div className={styles.postThumb}>
@@ -42,38 +49,48 @@ const Post = ({ post }) => {
         <p className={styles.postDescript}>{post.subTitle}</p>
         <div className={styles.postMore}>
           <button className={styles.buttonPrimary}>
-            <i className="fa fa-chevron-right"></i> Read more
+            <Link href="/">
+              <a>
+                <i className="fa fa-chevron-right"></i> <Link href={`/posts/${id}`}><a >Read more</a></Link>
+              </a>
+            </Link>
           </button>
           <div className={styles.faTag}>
             <i className="fa fa-tag"></i>
             <span>
-              <Link href="/">
-                {post.tags
-                  .map((tag) => {
-                    return tag.name;
-                  })
-                  .join(", ")}
-              </Link>
+              {post.tags.map((tag) => {
+                return (
+                  <Link href="/">
+                    <a> {tag.name}</a>
+                  </Link>
+                );
+              })}
             </span>
           </div>
         </div>
         <div className={styles.postMeta}>
-          <button className={`${styles.postMetaCommon} ${styles.postMetaLike}`}>
-            <i className="far fa-thumbs-up"> </i>
-            <span>25 likes</span>
-          </button>
-          <button
-            className={`${styles.postMetaCommon} ${styles.postMetaComment}`}
-          >
-            <i className="far fa-comment"></i>
-            <span>25 comments</span>
-          </button>
-          <button
-            className={`${styles.postMetaCommon} ${styles.postMetaShare}`}
-          >
-            <i className="far fa-share"></i>
-            <span>25 shares</span>
-          </button>
+          <div className="extra content">
+            <div
+              className="ui right labeled button"
+              data-variation="tiny"
+              tabIndex="0"
+            >
+              <div className="ui gray icon tiny button">
+                <i className="thumbs outline up large icon"></i>
+              </div>
+              <a className="ui basic gray left pointing label">20 likes</a>
+            </div>
+            <div
+              className="ui left labeled right floated button"
+              data-variation="tiny"
+              tabIndex="0"
+            >
+              <a className="ui basic red right pointing label">2 shares</a>
+              <div className="ui red icon tiny button">
+                <i className="external share large icon"></i>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

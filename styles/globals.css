@@ -1,11 +1,21 @@
-@import '~@fullcalendar/daygrid/main.css';
 html,
-body, h1, h2, h3, h4, h5, p {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+button,
+span,
+ul,
+li {
   padding: 0;
   margin: 0;
-  font-family: 'Roboto', sans-serif !important;
+  font-family: "Roboto", sans-serif !important;
 }
-*{
+
+* {
   box-sizing: border-box;
 }
 /* NAVBAR */
@@ -19,16 +29,16 @@ body, h1, h2, h3, h4, h5, p {
   height: 60px;
   justify-content: space-around;
   position: fixed;
-  top:0;
+  top: 0;
   width: 100%;
-  z-index:100;
+  z-index: 100;
 }
-.navbarLogo{
+.navbarLogo {
   justify-self: start;
   margin-left: 20px;
   cursor: pointer;
 }
-.navMenu{
+.navMenu {
   display: grid;
   grid-template-columns: repeat(6, auto);
   grid-gap: 10px;
@@ -37,6 +47,9 @@ body, h1, h2, h3, h4, h5, p {
   width: 50vw;
   justify-content: end;
   margin-right: 2rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 15px;
 }
 
 .navLinks {
@@ -45,13 +58,17 @@ body, h1, h2, h3, h4, h5, p {
   padding: 0.5rem 1rem;
 }
 
-.navLinks:hover{
-  background: rgb(255,242,187);
-  background: linear-gradient(90deg, rgba(255,242,187,1) 0%, rgba(255,251,228,1) 100%);
+.navLinks:hover {
+  background: rgb(255, 242, 187);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 242, 187, 1) 0%,
+    rgba(255, 251, 228, 1) 100%
+  );
   color: #000000;
   border-radius: 10px;
 }
-.fa-bars{
+.fa-bars {
   color: #ffffff;
   font-size: 2rem;
   margin-right: 20px;
@@ -61,18 +78,18 @@ body, h1, h2, h3, h4, h5, p {
   display: none;
 }
 
-.menuIcon{
+.menuIcon {
   display: none;
 }
 
-.searchBar{
+.searchBar {
   width: 300px;
 }
-.searchBar .input{
+.searchBar .input {
   width: 100%;
 }
 
-@media screen and (max-width: 960px){
+@media screen and (max-width: 960px) {
   .NavbarItems {
     height: 80px;
     position: relative;
@@ -81,18 +98,18 @@ body, h1, h2, h3, h4, h5, p {
     margin: 0;
     padding: 0;
   }
-  .navMenu{
+  .navMenu {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 500px;
+    height: fit-content;
     position: absolute;
     top: 80px;
     left: -100%;
     opacity: 1;
     transition: all 0.5s ease;
   }
-  .navMenu.active{
+  .navMenu.active {
     background: #3288f8;
     left: 0;
     opacity: 1;
@@ -100,34 +117,34 @@ body, h1, h2, h3, h4, h5, p {
     z-index: 1;
     color: #000000;
   }
-  .navLinks{
+  .navLinks {
     text-align: center;
     padding: 2rem;
     width: 100%;
     display: table;
   }
-  .navLinks:hover{
+  .navLinks:hover {
     background-color: #7577fa;
     border-radius: 0;
   }
-  .navbarLogo{
+  .navbarLogo {
     position: absolute;
     top: 0;
     left: 0;
     transform: translate(25%, 50%);
   }
-  .menuIcon{
+  .menuIcon {
     display: block;
     position: absolute;
     right: 0;
     cursor: pointer;
   }
-  .fa-times{
+  .fa-times {
     color: #ffffff;
     font-size: 2rem;
     margin-right: 20px;
   }
-  .navLinksMobile{
+  .navLinksMobile {
     display: block;
     text-align: center;
     padding: 1.5rem;
@@ -139,26 +156,25 @@ body, h1, h2, h3, h4, h5, p {
     color: #ffffff;
     font-size: 1.5rem;
   }
-  .navLinksMobile:hover{
+  .navLinksMobile:hover {
     background: #ffffff;
     color: #6568f4;
     transition: 250ms;
   }
-  .NavbarItems Button{
+  .NavbarItems Button {
     display: none;
   }
-  .searchBar{
+  .searchBar {
     width: 200px;
   }
 }
 
-
 /* BUTTON */
-:root{
+:root {
   --primary: #3acbf7;
 }
 
-.btn{
+.btn {
   padding: 8px 20px;
   border-radius: 5px;
   outline: none;
@@ -166,7 +182,7 @@ body, h1, h2, h3, h4, h5, p {
   cursor: pointer;
 }
 
-.btn:hover{
+.btn:hover {
   padding: 8px 20px;
   transition: all 0.3s ease-out;
   background: var(--primary);
@@ -174,11 +190,11 @@ body, h1, h2, h3, h4, h5, p {
   transition: 250ms;
 }
 
-.btn--primary{
+.btn--primary {
   background-color: #ffffff;
 }
 
-.btn--outline{
+.btn--outline {
   background-color: transparent;
   color: #ffffff;
   padding: 8px 20px;
@@ -187,16 +203,16 @@ body, h1, h2, h3, h4, h5, p {
   transition: all 0.3s ease-out;
 }
 
-.btn--medium{
+.btn--medium {
   padding: 8px 20px;
   border-radius: 5px;
   font-size: 18px;
   color: #228099;
 }
 
-.btn--large{
+.btn--large {
   padding: 12px 26px;
   border-radius: 5px;
   font-size: 20px;
-  color: #ffffff;  
+  color: #ffffff;
 }

@@ -1,18 +1,38 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React, { useState } from "react";
+import Link from "next/link";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import { Button } from "./Button";
-import { Search } from 'semantic-ui-react';
-
+import { Search } from "semantic-ui-react";
+import cookie from 'js-cookie';
+import { useAuth } from "../contexts/auth";
 
 function Navbar() {
   const [clicked, setClicked] = useState(false);
-  const router = useRouter();
+  const {user, loading} = useAuth();
 
   const handleClick = () => {
     setClicked(!clicked);
-  }
+  };
+
+  const loginRegLink = (
+    <Button>
+      <Link href="/sign-in">
+        <a>Login</a>
+      </Link>
+    </Button>
+  );
+  const userLink = (
+    <>
+      <Link href='/'><a>aaa</a></Link>
+      <Button onClick={() => {
+        cookie.remove('token')
+      }}>
+        <Link href="/sign-in" >
+          <a>Log out</a>
+        </Link>
+      </Button>
+    </>
+  );
 
   return (
     <>
@@ -56,22 +76,27 @@ function Navbar() {
             </Link>
           </li>
           <li>
+            <Link href="/topics">
+              <a className="navLinks">Topics</a>
+            </Link>
+          </li>
+          <li>
             <Link href="/questions">
               <a className="navLinks">Questions</a>
             </Link>
           </li>
           <li>
-            <Link href="/blogs">
+            <Link href="/posts">
               <a className="navLinks">Blogs</a>
             </Link>
           </li>
           <li>
-            <Link href="/">
+            <Link href="/sign-in">
               <a className="navLinksMobile">Login</a>
             </Link>
           </li>
         </ul>
-        <Button>Login</Button>
+        {loginRegLink}
       </nav>
     </>
   );

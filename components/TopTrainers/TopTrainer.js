@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import styles from "./TopTrainer.module.css";
 import Carousel from "react-elastic-carousel";
+import CardTrainer from "../CardTrainer/CardTrainer";
 
-function TopTrainer() {
-  // console.log(users);
+function TopTrainer({users}) {
     const breakPoints = [
       { width: 200, itemsToShow: 1 },
       { width: 240, itemsToShow: 2 },
@@ -18,28 +18,9 @@ function TopTrainer() {
           enableAutoPlay={true}
           pagination={true}
         >
-          <div className={styles.topTrainerCardContainer}>
-            <img
-              className={styles.round}
-              src="https://cdn1.iconfinder.com/data/icons/avatar-97/32/avatar-02-512.png"
-              alt="user"
-              width="90px"
-            />
-            <h3>Quan</h3>
-            <div className={styles.topTrainerButton}>
-              <button className={styles.primary}>
-                Follow
-              </button>
-            </div>
-            <div className={styles.topTrainerSkills}>
-              <h4>Top Skills</h4>
-              <ul>
-                <li>JavaScript</li>
-                <li>React Native</li>
-                <li>NodeJS</li>
-              </ul>
-            </div>
-          </div>
+          {users.map((user, id) => {
+            return <CardTrainer user={user} key={id} />
+          })}
         </Carousel>
       </div>
     );

@@ -5,10 +5,10 @@ export default class CardBlogRight extends Component {
   render() {
     return (
       <div className={styles.cardBlogRight}>
-      <div>
+        <div>
           <button className={styles.tagBlog}>tags</button>
+        </div>
       </div>
-      </div >
-    )
+    );
   }
 }

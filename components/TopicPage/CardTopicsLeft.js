@@ -8,7 +8,7 @@ import CreateClass from './CreateClass'
 export default function CardTopicsLeft() {
   return (
     <div className={styles.cardTopicsLeft}>
-      <h3>Topics Management</h3>
+      <h3>Classes Management</h3>
       <div>
         <CardTopicsJoined />
       </div>

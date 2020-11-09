@@ -1,11 +1,11 @@
 import React from "react";
-import styles from "./Question.module.css";
+import styles from "./Post.module.css";
 import moment from "moment";
-import { Button, Comment, Form, Header } from "semantic-ui-react";
+import {Comment } from "semantic-ui-react";
 
-function QuestionComment({ comment }) {
+function PostComment({ comment }) {
   return (
-    <div className={styles.questionCardComment}>
+    <div className={styles.postCardComment}>
       <Comment.Group>
         <Comment>
           <Comment.Avatar src={comment.author.avatarUrl} />
@@ -25,4 +25,4 @@ function QuestionComment({ comment }) {
   );
 }
 
-export default QuestionComment;
+export default PostComment;

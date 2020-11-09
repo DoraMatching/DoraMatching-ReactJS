@@ -2,18 +2,18 @@ import React from "react";
 import Link from "next/link";
 import styles from "./Topic.module.scss";
 
-function Topic(props) {
+function Topic({ topic }) {
+  console.log('L6', topic);
   return (
     <div className={styles.topicCard}>
       <div className={styles.topicMeta}>
-        <div className={styles.topicPhoto}></div>
+        <div className={styles.topicPhoto}><img src={topic.featuredImage} alt="topicPhoto" width='100%' height='100%' /></div>
       </div>
       <div className={styles.topicDescription}>
-        <h1>Learning to Code</h1>
-        <h2>Opening a door to the future</h2>
+        <h1>{topic.name}</h1>
+        <h2>{topic.author.user.name}</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum
-          dolorum architecto obcaecati enim dicta praesentium, quam nobis
+        {topic.description}
         </p>
         <p className={styles.topicReadmore}>
           <Link href='/classes'><a>See all</a></Link>

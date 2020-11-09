@@ -5,7 +5,8 @@ import CardTopicsJoined from './CardTopicsJoined'
 import styles from './CardTopicsPage.module.css'
 import CreateClass from './CreateClass'
 
-export default function CardTopicsLeft() {
+export default function CardTopicsLeft({topics}) {
+  console.log('L9', topics);
   return (
     <div className={styles.cardTopicsLeft}>
       <h3>Classes Management</h3>
@@ -15,9 +16,9 @@ export default function CardTopicsLeft() {
       <CreateClass />
       <h3>All Topics</h3>
       <div className={styles.cardAllTopics}>
-        <Topic />
-        <Topic />
-        <Topic />
+        {topics.map((topic, id) => {
+          return <Topic topic={topic} key={id} />
+        })}
       </div>
     </div>
   );

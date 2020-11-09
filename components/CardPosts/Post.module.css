@@ -153,3 +153,16 @@
   color: #686868;
   font-size: 1.2rem;
 }
+
+
+/* POST COMMENT */
+.postCardComment{
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: none;
+  height: auto;
+  margin: 10px 0 0 0px;
+  padding: 10px;
+  position: relative;
+  width: 100%;
+}

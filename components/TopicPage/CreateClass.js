@@ -30,7 +30,7 @@ function CreateClass(props) {
         <Form>
           <Form.Group widths="equal">
             <Form.Field>
-              <label>Title Class</label>
+              <label>Title</label>
               <input placeholder="Name" />
             </Form.Field>
             <Form.Field>
@@ -38,6 +38,7 @@ function CreateClass(props) {
               <Dropdown
                 placeholder="Choose Topic"
                 fluid
+                search
                 selection
                 options={options}
               />
@@ -53,7 +54,7 @@ function CreateClass(props) {
               <input placeholder="description class" />
             </Form.Field>
             <Form.Field>
-              <label>Feature Image</label>
+              <label>Image</label>
               <input placeholder="feature image" />
             </Form.Field>
           </Form.Group>

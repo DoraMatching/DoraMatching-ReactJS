@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React, { Component } from "react";
+import { Button, Form, Header } from "semantic-ui-react";
 import QuestionComment from "../CardQuestions/QuestionComment";
 import QuestionDetail from "../CardQuestions/QuestionDetail";
 import styles from "./CardQuestionPage.module.css";
@@ -19,13 +20,16 @@ function CardQuestionCenterDetail({ question, comments }) {
         <h3>{question.title} </h3>
       </div>
       <QuestionDetail question={question} />
-      <div className={styles.cardQuestionCenterDetailAnswer}>
-        <p>{comments.length} Answers</p>
-      </div>
+      <Header as="h3" dividing>
+        {comments.length} Answers
+      </Header>
       {comments.map((comment, id) => {
-          return <QuestionComment comment={comment} key={id} />;
-        })}
-      
+        return <QuestionComment comment={comment} key={id} />;
+      })}
+      <Form reply>
+        <Form.TextArea />
+        <Button content="Add Reply" labelPosition="left" icon="edit" primary />
+      </Form>
     </div>
   );
 }

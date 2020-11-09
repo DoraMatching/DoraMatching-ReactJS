@@ -3,18 +3,21 @@ import styles from "./CardBlogPage.module.css";
 
 export default function CardBlogRightDetail({post}) {
     return (
-      <div className={styles.cardBlogRight}>
-        <div className={styles.cardBlogRightDetailCover}>
-          <div className={styles.cardBlogRightDetailAuthor}>
-            <div className={styles.cardBlogRightDetailAvatar}>
-              <img src={post.author.avatarUrl} alt=""/>
-            </div>
-            <h4>{post.author.name}</h4>
+      <div className={styles.cardBlogRightDetail}>
+        <div className={styles.ourTeam}>
+          <div className={styles.picture}>
+            <img className="img-fluid" src={post.author.avatarUrl} />
+          </div>
+          <div className={styles.teamContent}>
+            <h3 className={styles.name}>{post.author.name}</h3>
+            <h4 className={styles.title}>Web Developer</h4>
+          </div>
+          <ul className={styles.social}>
+            <button className={styles.button}>View Profile </button>
+          </ul>
+          <div class={styles.countBlog}>
             <p>4 blogs</p>
           </div>
-        </div>
-        <div>
-          <button className={styles.tagBlog}>tags</button>
         </div>
       </div>
     );

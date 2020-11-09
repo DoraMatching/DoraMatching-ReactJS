@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styles from "./CardBlogPage.module.css";
 
 export default function CardBlogRightDetail({post}) {
@@ -10,7 +10,7 @@ export default function CardBlogRightDetail({post}) {
               <img src={post.author.avatarUrl} alt=""/>
             </div>
             <h4>{post.author.name}</h4>
-            <p>Hi! I`m an authtor of this blog. Read our post - be in trend!</p>
+            <p>4 blogs</p>
           </div>
         </div>
         <div>

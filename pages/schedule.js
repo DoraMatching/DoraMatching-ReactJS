@@ -5,8 +5,7 @@ import styles from "../styles/Home.module.css";
 function topics() {
   return (
     <div className={styles.container}>
-      aaa
-      {/* <Schedule /> */}
+      <Schedule />
     </div>
   );
 }

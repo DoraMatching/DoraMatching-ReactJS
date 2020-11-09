@@ -21,19 +21,11 @@ function CardQuestionLeft({ tagQuestions }) {
           <button className={styles.askQuestion}>+ Ask a question</button>
         }
       >
-        <Modal.Header>Post Your Question</Modal.Header>
+        <Modal.Header>Create Question</Modal.Header>
         <Modal.Content>
           <Form>
             <Form.Field>
-              <label>Create At</label>
-              <input value={now} disabled={true} />
-            </Form.Field>
-          </Form>
-        </Modal.Content>
-        <Modal.Content>
-          <Form>
-            <Form.Field>
-              <label>Question Title</label>
+              <label>Title</label>
               <input placeholder="Title" />
             </Form.Field>
           </Form>
@@ -41,19 +33,25 @@ function CardQuestionLeft({ tagQuestions }) {
         <Modal.Content>
           <Form>
             <Form.Field>
-              <label>Question Tags</label>
+              <label>Tags</label>
               <input placeholder="tags" />
             </Form.Field>
           </Form>
         </Modal.Content>
         <Modal.Content>
           <Form>
-            <Form.TextArea label='Content' Body />
+            <Form.TextArea label="Content" Body />
           </Form>
         </Modal.Content>
         <Modal.Actions>
           <Button
-            content="Publish your question"
+            color="youtube"
+            content="Cancel"
+            icon="close"
+            onClick={() => setOpen(false)}
+          />
+          <Button
+            content="Publish"
             labelPosition="left"
             icon="checkmark"
             onClick={() => setOpen(false)}

@@ -53,10 +53,10 @@ const PostDetail = ({ post }) => {
                 data-variation="tiny"
                 tabIndex="0"
               >
-                <div className="ui red icon tiny button">
+                <div className="ui gray icon tiny button">
                   <i className="thumbs outline up large icon"></i>
                 </div>
-                <a className="ui basic red left pointing label">20 likes</a>
+                <a className="ui basic gray left pointing label">20 likes</a>
               </div>
               <div
                 className="ui left labeled right floated button"

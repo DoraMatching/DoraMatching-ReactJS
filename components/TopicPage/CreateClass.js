@@ -17,6 +17,7 @@ function CreateClass(props) {
   const [open, setOpen] = useState(false);
   return (
     <Modal
+      size='small'
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
@@ -24,56 +25,61 @@ function CreateClass(props) {
         <button className={styles.cardTopicsLeftButton}>Create Class</button>
       }
     >
+      <Modal.Header>Create Class</Modal.Header>
       <Modal.Content>
         <Form>
-          <Form.Field>
-            <label>Title Class</label>
-            <input placeholder="Name" />
-          </Form.Field>
+          <Form.Group widths="equal">
+            <Form.Field>
+              <label>Title Class</label>
+              <input placeholder="Name" />
+            </Form.Field>
+            <Form.Field>
+              <label>Topic</label>
+              <Dropdown
+                placeholder="Choose Topic"
+                fluid
+                selection
+                options={options}
+              />
+            </Form.Field>
+          </Form.Group>
         </Form>
       </Modal.Content>
       <Modal.Content>
         <Form>
-          <Form.Field>
-            <label>Description</label>
-            <input placeholder="description class" />
-          </Form.Field>
+          <Form.Group widths="equal">
+            <Form.Field>
+              <label>Description</label>
+              <input placeholder="description class" />
+            </Form.Field>
+            <Form.Field>
+              <label>Feature Image</label>
+              <input placeholder="feature image" />
+            </Form.Field>
+          </Form.Group>
         </Form>
       </Modal.Content>
       <Modal.Content>
         <Form>
-          <Form.Field>
-            <label>Feature Image</label>
-            <input placeholder="feature image" />
-          </Form.Field>
-        </Form>
-      </Modal.Content>
-      <Modal.Content>
-        <Form>
-          <Form.Field>
-            <label>Topic</label>
-            <Dropdown placeholder='Choose Topic' fluid selection options={options} />
-          </Form.Field>
-        </Form>
-      </Modal.Content>
-      <Modal.Content>
-        <Form>
-          <Form.Field>
-            <label>Time Start</label>
-            <input type="date" />
-          </Form.Field>
-        </Form>
-      </Modal.Content>
-      <Modal.Content>
-        <Form>
-          <Form.Field>
-            <label>Time End</label>
-            <input type="date" />
-          </Form.Field>
+          <Form.Group widths="equal">
+            <Form.Field>
+              <label>Time Start</label>
+              <input type="date" />
+            </Form.Field>
+            <Form.Field>
+              <label>Time End</label>
+              <input type="date" />
+            </Form.Field>
+          </Form.Group>
         </Form>
       </Modal.Content>
       <Modal.Actions>
-        <Button color="youtube" content="Cancel" icon="close"  onClick={() => setOpen(false)} />
+        <Button
+          color="youtube"
+          content="Cancel"
+          icon="close"
+          onClick={() => setOpen(false)}
+        />
         <Button
           content="Submit"
           labelPosition="right"

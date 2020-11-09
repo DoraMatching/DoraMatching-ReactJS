@@ -11,7 +11,7 @@ function CardBlogLeftDetail({post}) {
           <Link href="/posts">
             <a>
               <i className="fas fa-angle-double-left"></i>
-              <span>All Post</span>
+              <span>All Blogs</span>
             </a>
           </Link>
         </p>

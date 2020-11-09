@@ -24,6 +24,7 @@
 
 .cardBlogLeftHeader span{
   margin-left: 3px;
+  font-size: 1.2rem;
 }
 
 .cardBlogRightDetailCover{
@@ -42,7 +43,7 @@
 
 .cardBlogRightDetailAvatar{
   margin: 0px auto 15px;
-  width: 150px;
+  width: 100px;
 }
 
 .cardBlogRightDetailAvatar img {

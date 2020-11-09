@@ -5,7 +5,6 @@ import QuestionDetail from "../CardQuestions/QuestionDetail";
 import styles from "./CardQuestionPage.module.css";
 
 function CardQuestionCenterDetail({ question, comments }) {
-  console.log('L8', comments);
   return (
     <div className={styles.cardQuestionCenter}>
       <div className={styles.cardQuestionCenterHeader}>

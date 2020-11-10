@@ -1,4 +1,5 @@
 import React from 'react';
+import { Popup } from 'semantic-ui-react';
 import Class from '../CardClasses/Class';
 import styles from './CardProfile.module.scss';
 
@@ -6,6 +7,13 @@ function CardProfileLeft(props) {
   return (
     <div>
       <div className={styles.cardProfileLeftWrapper}>
+        <div class={styles.topIcons}>
+          <Popup
+            trigger={<i class="fas fa-cogs"></i>}
+            content="Setting profile"
+            basic
+          />
+        </div>
         <div className={styles.profile}>
           <img
             src="https://images.unsplash.com/photo-1484186139897-d5fc6b908812?ixlib=rb-0.3.5&s=9358d797b2e1370884aa51b0ab94f706&auto=format&fit=crop&w=200&q=80%20500w"
@@ -34,7 +42,9 @@ function CardProfileLeft(props) {
         </div>
       </div>
 
-      <div className={styles.cardProfileLeftUnder}><Class /></div>
+      <div className={styles.cardProfileLeftUnder}>
+        <Class />
+      </div>
     </div>
   );
 }

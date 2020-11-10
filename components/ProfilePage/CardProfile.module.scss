@@ -16,6 +16,18 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
 	border-radius: 10px;
 	padding: 20px 20px 20px 20px;
 	box-shadow: 0 8px 40px rgba(#000000, .2);
+
+	.topIcons{
+		i {
+			color: #080911;
+			&:nth-of-type(1) {
+				float: right;
+			}
+		}
+		&:hover{
+			cursor: pointer;
+		}
+	}
 	.profile {
 		margin-top: 2.2em;
 		position: relative;

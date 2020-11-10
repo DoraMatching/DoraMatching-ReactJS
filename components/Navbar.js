@@ -5,8 +5,9 @@ import { Button } from "./Button";
 import { Search } from "semantic-ui-react";
 import cookie from 'js-cookie';
 import { useAuth } from "../contexts/auth";
+import ActiveLink from "./ActiveLink";
 
-function Navbar() {
+const Navbar = () => {
   const [clicked, setClicked] = useState(false);
   const {user, loading} = useAuth();
 
@@ -45,6 +46,15 @@ function Navbar() {
         />
       </Head>
       <nav className="NavbarItems">
+        <style jsx>{`
+          .navLinks {
+            text-decoration: none;
+          }
+          .active:after {
+            content: "";
+            background: #ff0000
+          }
+        `}</style>
         <Link href="/">
           <img
             className="navbarLogo"
@@ -66,14 +76,14 @@ function Navbar() {
         </div>
         <ul className={clicked ? "navMenu active" : "navMenu"}>
           <li>
-            <Link href="/">
+            <ActiveLink activeClassName="active" href="/">
               <a className="navLinks">Home</a>
-            </Link>
+            </ActiveLink>
           </li>
           <li>
-            <Link href="/trainers">
+            <ActiveLink activeClassName="active" href="/trainers">
               <a className="navLinks">Trainers</a>
-            </Link>
+            </ActiveLink>
           </li>
           <li>
             <Link href="/topics">

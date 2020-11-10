@@ -15,7 +15,7 @@ export default function CardBlogRightDetail({post}) {
           <ul className={styles.social}>
             <button className={styles.button}>View Profile </button>
           </ul>
-          <div class={styles.countBlog}>
+          <div className={styles.countBlog}>
             <p>4 blogs</p>
           </div>
         </div>

@@ -1,19 +1,67 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Head from "next/head";
+import { useRouter } from 'next/router'
 import { Button } from "./Button";
-import { Search } from "semantic-ui-react";
-import cookie from 'js-cookie';
+import { Dropdown, Image, Search } from "semantic-ui-react";
 import { useAuth } from "../contexts/auth";
-import ActiveLink from "./ActiveLink";
 
-const Navbar = () => {
+function Navbar(){
+  const router = useRouter();
+  const { user, loading, logout } = useAuth();
+  console.log('L13', user);
+
+  let loggedIn = false;
+
+  if (user && user.token) {
+    loggedIn = true;
+  }
+
+  const trigger = (
+    <span>
+      <Image avatar src='/static/worker.png' />
+    </span>
+  )
+
+  const handleItemClick = (value) => {
+    console.log(value);
+    switch(value) {
+      case 'user':
+        router.push('/profile')
+        break;
+      case 'settings':
+        router.push('/topics')
+        break;
+      case 'sign-out':
+        logout()
+        break;
+      default:
+        break;
+    }
+  }
+  
+  const options = [
+    {
+      key: "users",
+      text: (
+        <span>
+          Signed in as <strong>{'user.name' || ''}</strong>
+        </span>
+      ),
+      disabled: true,
+      value: 'users'
+    },
+    { key: "user", text: "My profile", icon: "user", value: 'user'  },
+    { key: "settings", text: "Settings", icon: "settings", value: 'settings'  },
+    { key: "sign-out", text: "Sign Out", icon: "sign out", value: 'sign-out'},
+  ];
+
   const [clicked, setClicked] = useState(false);
-  const {user, loading} = useAuth();
 
   const handleClick = () => {
     setClicked(!clicked);
   };
+
 
   const loginRegLink = (
     <Button>
@@ -24,14 +72,14 @@ const Navbar = () => {
   );
   const userLink = (
     <>
-      <Link href='/'><a>aaa</a></Link>
-      <Button onClick={() => {
-        cookie.remove('token')
-      }}>
-        <Link href="/sign-in" >
-          <a>Log out</a>
-        </Link>
-      </Button>
+      <Dropdown trigger={trigger} icon={null}  pointing='top right'>
+        <Dropdown.Menu>
+          {options.map(e => {
+            return <Dropdown.Item key={e.key} content={e.text} icon={e.icon} onClick={() => handleItemClick(e.value)} disabled={e.disabled || false}/>
+          })}
+        </Dropdown.Menu>
+        </Dropdown>
+
     </>
   );
 
@@ -46,15 +94,6 @@ const Navbar = () => {
         />
       </Head>
       <nav className="NavbarItems">
-        <style jsx>{`
-          .navLinks {
-            text-decoration: none;
-          }
-          .active:after {
-            content: "";
-            background: #ff0000
-          }
-        `}</style>
         <Link href="/">
           <img
             className="navbarLogo"
@@ -75,15 +114,15 @@ const Navbar = () => {
           />
         </div>
         <ul className={clicked ? "navMenu active" : "navMenu"}>
-          <li>
-            <ActiveLink activeClassName="active" href="/">
+          <li >
+            <Link href="/">
               <a className="navLinks">Home</a>
-            </ActiveLink>
+            </Link>
           </li>
           <li>
-            <ActiveLink activeClassName="active" href="/trainers">
+            <Link href="/trainers">
               <a className="navLinks">Trainers</a>
-            </ActiveLink>
+            </Link>
           </li>
           <li>
             <Link href="/topics">
@@ -106,7 +145,7 @@ const Navbar = () => {
             </Link>
           </li>
         </ul>
-        {loginRegLink}
+        {user ? userLink : loginRegLink}
       </nav>
     </>
   );

@@ -1,12 +1,15 @@
-import React, { useState } from "react";
-import { Button, Header, Form, Modal } from "semantic-ui-react";
+import React, { useState, useEffect } from "react";
+import { Button, Form, Modal } from "semantic-ui-react";
 import styles from "./CardQuestionPage.module.css";
+import {useRouter} from 'next/router';
+import axios from 'axios';
 
 function CreateQuestion(props) {
   const [open, setOpen] = useState(false);
+  const [form, setForm] = useState({title: '', content: ''});
   return (
     <Modal
-      size='small'
+      size="small"
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
@@ -31,7 +34,10 @@ function CreateQuestion(props) {
       </Modal.Content>
       <Modal.Content>
         <Form>
-          <Form.TextArea label="Content" Body />
+          <Form.Field>
+            <label>Content</label>
+            <input />
+          </Form.Field>
         </Form>
       </Modal.Content>
       <Modal.Actions>

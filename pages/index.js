@@ -45,6 +45,7 @@ function Home({home}) {
 Home.getInitialProps = async () => {
   const { data } = await axios.get("https://api.dev.doramatching.tk/home");
   return { home: data.items };
+
 };
 
 export default Home;

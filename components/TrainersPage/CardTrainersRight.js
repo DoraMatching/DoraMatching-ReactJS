@@ -41,7 +41,7 @@ function CardTrainersRight({ users }) {
         </p>
         <img src="/static/ct-1.jpg" alt="ct1" width="100%" />
         <button className={styles.cardTrainerPageButtonChoose} color="teal">
-          Become a Trainer
+          Choose A Class
         </button>
       </div>
     </div>

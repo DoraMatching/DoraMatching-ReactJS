@@ -13,13 +13,13 @@ import { AuthProvider, ProtectRoute } from "../contexts/auth";
 
 function MyApp({ Component, pageProps }) {
   return (
-    // <AuthProvider>
-      // * <ProtectRoute> *
+    <AuthProvider>
+      {/* <ProtectRoute> */}
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      /* </ProtectRoute> */
-    // </AuthProvider>
+      {/* </ProtectRoute> */}
+    </AuthProvider>
   );
 }
 

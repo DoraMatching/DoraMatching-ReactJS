@@ -2,6 +2,8 @@ import React, { createContext, useState, useContext, useEffect } from 'react'
 import cookie from 'js-cookie'
 
 import api from '../pages/api/api'
+import { useRouter } from 'next/router';
+import { Loader } from 'semantic-ui-react';
 
 const AuthContext = createContext({});
 
@@ -16,7 +18,7 @@ export const AuthProvider = ({ children }) => {
             if (token) {
                 console.log("Got a token in the cookies, let's see if it is valid")
                 api.defaults.headers.Authorization = `Bearer ${token}`
-                const { data: user } = await api.get('user/viewer')
+                const { data: user } = await api.get('/viewer')
                 if (user) setUser(user);
             }
             setLoading(false)
@@ -25,23 +27,27 @@ export const AuthProvider = ({ children }) => {
     }, [])
 
     const login = async (username, password) => {
-        const { data: token } = await api.post('login', { username, password })
+        // const { data: token } = await api.post('/login', { username, password })
+        const { data } = await api.post('/login', { username, password })
+        const {token, ...temp} = data;
         if (token) {
             console.log("Got token")
             cookie.set('token', token, { expires: 60 })
             api.defaults.headers.Authorization = `Bearer ${token.token}`
-            const { data: user } = await api.get('user')
+            // const { data: user } = await api.get('/users')
+            const user = {token, ...temp}
             setUser(user)
             console.log("Got user", user)
         }
     }
     const signUp = async (username, password) => {
-        const { data: token } = await api.post('login', { email, username, password })
+        const { data: token } = await api.post('/register', { email, username, password })
         if (token) {
             console.log("Got token")
             cookie.set('token', token, { expires: 60 })
             api.defaults.headers.Authorization = `Bearer ${token.token}`
-            const { data: user } = await api.get('user/viewer')
+            // const { data: user } = await api.get('/users')
+            const user = {token, ...temp}
             setUser(user)
             console.log("Got user signup", user)
         }
@@ -62,12 +68,21 @@ export const AuthProvider = ({ children }) => {
 export const useAuth = () => useContext(AuthContext);
 
 // export const ProtectRoute = ({ children }) => {
+//     const router = useRouter()
+//     console.log('L72', router);
+//     // if (typeof window === 'undefined') {
+//     //   global.window = {};
+//     // }
 //   const { isAuthenticated, isLoading } = useAuth();
 //   if (
 //     isLoading ||
-//     (!isAuthenticated && window.location.pathname !== "/sign-in")
+//     (!isAuthenticated && history.basePath !== "/sign-in")
 //   ) {
-//     return <div>Loading</div>
+//     return (
+//       <div>
+//         <Loader active inline="centered" />
+//       </div>
+//     );
 //   }
 //   return children;
 // };

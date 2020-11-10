@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
         const {token, ...temp} = data;
         if (token) {
             console.log("Got token")
-            cookie.set('token', token, { expires: 60 })
+            cookie.set('token', token, { expires: 3000 })
             api.defaults.headers.Authorization = `Bearer ${token.token}`
             // const { data: user } = await api.get('/users')
             const user = {token, ...temp}
@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
         const { data: token } = await api.post('/register', { email, username, password })
         if (token) {
             console.log("Got token")
-            cookie.set('token', token, { expires: 60 })
+            cookie.set('token', token, { expires: 3000 })
             api.defaults.headers.Authorization = `Bearer ${token.token}`
             // const { data: user } = await api.get('/users')
             const user = {token, ...temp}

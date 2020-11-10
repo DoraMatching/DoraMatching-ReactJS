@@ -1,6 +1,6 @@
 import React from 'react';
-import ProfilePage from '../containers/ProfilePage';
-import styles from '../styles/Home.module.css'
+import ProfilePage from '../../containers/ProfilePage';
+import styles from '../../styles/Home.module.css'
 
 function profile(props) {
   return (
@@ -9,5 +9,7 @@ function profile(props) {
     </div>
   );
 }
+
+
 
 export default profile;

@@ -9,13 +9,9 @@ import { useAuth } from "../contexts/auth";
 function Navbar(){
   const router = useRouter();
   const { user, loading, logout } = useAuth();
-  console.log('L13', user);
-
-  let loggedIn = false;
-
-  if (user && user.token) {
-    loggedIn = true;
-  }
+  // const {token} = user;
+  // console.log('L13', token);
+  console.log('L14', user);
 
   const trigger = (
     <span>
@@ -27,7 +23,7 @@ function Navbar(){
     console.log(value);
     switch(value) {
       case 'user':
-        router.push('/profile')
+        router.push(`/user`)
         break;
       case 'settings':
         router.push('/topics')
@@ -45,7 +41,7 @@ function Navbar(){
       key: "users",
       text: (
         <span>
-          Signed in as <strong>{'user.name' || ''}</strong>
+          Signed in as <strong>{user ? user.name : ''}</strong>
         </span>
       ),
       disabled: true,

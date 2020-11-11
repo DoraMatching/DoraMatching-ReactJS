@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import { Popup } from 'semantic-ui-react';
 import Class from '../CardClasses/Class';
@@ -7,19 +8,28 @@ function CardProfileLeft(props) {
   return (
     <div>
       <div className={styles.cardProfileLeftWrapper}>
-        <div class={styles.topIcons}>
-          <Popup
-            trigger={<i class="fas fa-cogs"></i>}
-            content="Setting profile"
-            basic
-          />
-        </div>
+        <Link href="/profile/settings">
+          <a>
+            <div class={styles.topIcons}>
+              <Popup
+                trigger={<i class="fas fa-cogs"></i>}
+                content="Setting profile"
+                basic
+              />
+            </div>
+          </a>
+        </Link>
+
         <div className={styles.profile}>
           <img
             src="https://images.unsplash.com/photo-1484186139897-d5fc6b908812?ixlib=rb-0.3.5&s=9358d797b2e1370884aa51b0ab94f706&auto=format&fit=crop&w=200&q=80%20500w"
             className={styles.thumbnail}
           />
-          <h3 className={styles.name}>Beverly Little</h3>
+          <h3 className={styles.name}>
+            <Link href="/profile">
+              <a>Beverly Little</a>
+            </Link>{" "}
+          </h3>
           <p className={styles.title}>Javascript Developer</p>
           <p className={styles.description}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque

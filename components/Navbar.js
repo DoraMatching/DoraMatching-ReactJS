@@ -9,9 +9,9 @@ import { useAuth } from "../contexts/auth";
 function Navbar(){
   const router = useRouter();
   const { user, loading, logout } = useAuth();
+  
   // const {token} = user;
-  // console.log('L13', token);
-  console.log('L14', user);
+  console.log('L15', user);
 
   const trigger = (
     <span>
@@ -23,7 +23,7 @@ function Navbar(){
     console.log(value);
     switch(value) {
       case 'user':
-        router.push(`/user`)
+        router.push(`/profile`)
         break;
       case 'settings':
         router.push('/topics')

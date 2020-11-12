@@ -20,6 +20,10 @@
   width: 100%;
 }
 
+.tagBlog:hover{
+  cursor: pointer;
+  background: #1c84a1;
+}
 /* CARD BLOG PAGE RIGHT DETAIL */
 
 .cardBlogRightDetail{

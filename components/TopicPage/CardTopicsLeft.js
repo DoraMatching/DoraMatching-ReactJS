@@ -6,7 +6,6 @@ import styles from './CardTopicsPage.module.css'
 import CreateClass from './CreateClass'
 
 export default function CardTopicsLeft({topics}) {
-  console.log('L9', topics);
   return (
     <div className={styles.cardTopicsLeft}>
       <h3>Classes Management</h3>

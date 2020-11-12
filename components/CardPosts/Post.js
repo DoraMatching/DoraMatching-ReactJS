@@ -49,18 +49,18 @@ const Post = ({ post }) => {
         <p className={styles.postDescript}>{post.subTitle}</p>
         <div className={styles.postMore}>
           <button className={styles.buttonPrimary}>
-            <Link href="/">
+            <Link href={`/posts/${id}`}>
               <a>
-                <i className="fa fa-chevron-right"></i> <Link href={`/posts/${id}`}><a >Read more</a></Link>
+                <i className="fa fa-chevron-right"></i> Read more
               </a>
             </Link>
           </button>
           <div className={styles.faTag}>
             <i className="fa fa-tag"></i>
             <span>
-              {post.tags.map((tag) => {
+              {post.tags.map((tag, id) => {
                 return (
-                  <Link href="/">
+                  <Link href="/" key={id}>
                     <a> {tag.name}</a>
                   </Link>
                 );

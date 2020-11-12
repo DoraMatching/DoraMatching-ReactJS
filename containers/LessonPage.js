@@ -11,7 +11,7 @@ class LessonPage extends Component {
           <CardLessonLeft />
         </div>
         <div style={{ width: "30%", marginLeft: "20px" }}>
-          aaa
+          <CardLessonRight />
         </div>
       </div>
     );

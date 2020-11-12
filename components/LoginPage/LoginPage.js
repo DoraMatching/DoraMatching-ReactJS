@@ -27,23 +27,6 @@ function LoginPage() {
       console.error(e);
       router.push('/sign-in')
     }
-    // axios("https://api.dev.doramatching.tk/login", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   data: {
-    //     username,
-    //     password,
-    //   },
-    // })
-    //   .then((data) => {
-    //       cookie.set("token", data.token); //{expires: 2}
-    //       
-    //   })
-    //   .catch((error) => {
-    //     console.log(error.data);
-    //   });
   }
 
   return (

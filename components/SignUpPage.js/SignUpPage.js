@@ -30,10 +30,8 @@ function SignUpPage() {
       },
     })
       .then((data) => {
-        console.log("L28", data);
         cookie.set("token", data.token); //{expires: 2}
         router.push("/");
-        console.log('L37', router);
       })
       .catch((error) => {
         console.log(error.data);

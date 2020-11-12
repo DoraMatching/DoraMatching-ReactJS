@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import styles from "./CardBlogPage.module.css";
+import CreateBlog from './CreateBlog';
 
 export default class CardBlogRight extends Component {
   render() {
     return (
       <div className={styles.cardBlogRight}>
         <div>
-          <button className={styles.tagBlog}>tags</button>
+          <CreateBlog />
         </div>
       </div>
     );

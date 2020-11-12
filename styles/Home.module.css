@@ -20,7 +20,7 @@
 
 /* QUESTION PAGE */
 
-.questionsPage, .blogsPage, .trainerPage, .classesPage, .profilePage{
+.questionsPage, .blogsPage, .trainerPage, .classesPage, .profilePage, .lessonPage{
   margin-top: 20px;
   max-width: 1200px;
   display: flex;

@@ -5,13 +5,12 @@ import { useRouter } from 'next/router'
 import { Button } from "./Button";
 import { Dropdown, Image, Search } from "semantic-ui-react";
 import { useAuth } from "../contexts/auth";
+import Cookies from 'js-cookie'
 
 function Navbar(){
   const router = useRouter();
   const { user, loading, logout } = useAuth();
-  
-  // const {token} = user;
-  console.log('L15', user);
+  console.log('L12', user);
 
   const trigger = (
     <span>
@@ -20,7 +19,6 @@ function Navbar(){
   )
 
   const handleItemClick = (value) => {
-    console.log(value);
     switch(value) {
       case 'user':
         router.push(`/profile`)

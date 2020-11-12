@@ -28,13 +28,13 @@ const PostDetail = ({ post }) => {
         <div className={styles.postDetailContent}>
           <h3>{post.title}</h3>
           <div className={styles.postDetailContentAuthor}>
-            <p>Posted By {post.author.name} </p>
-            <p>Comments {post.comments.length} </p>
+            <p>Posted By: {post.author.name} </p>
+            <p>Comment: {post.comments.length} </p>
             <p>
-              Tags
-                  {post.tags.map((tag) => {
+              Tags:
+                  {post.tags.map((tag, id) => {
                     return (
-                      <Link href="/">
+                      <Link href="/" key={id}>
                         <a> {tag.name }</a>
                       </Link>
                     );

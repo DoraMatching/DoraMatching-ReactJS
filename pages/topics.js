@@ -13,7 +13,6 @@ function topics({topics}) {
 
 topics.getInitialProps = async () => {
   const {data} = await axios.get('https://api.dev.doramatching.tk/topics');
-  console.log('L16', data);
   return { topics: data.items};
 }
 

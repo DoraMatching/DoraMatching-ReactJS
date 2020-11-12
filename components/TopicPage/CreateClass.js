@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { Button, Dropdown, Form, Modal } from "semantic-ui-react";
-import styles from "./CardTopicsPage.module.css";
+import styles from "./CardTopicsPage.module.scss";
 
 const options = [
   { key: 'react', text: 'React', value: 'react' },

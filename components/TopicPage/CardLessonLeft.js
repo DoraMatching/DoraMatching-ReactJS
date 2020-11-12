@@ -1,6 +1,7 @@
 import React from "react";
 import { Tab } from "semantic-ui-react";
-import styles from "./CardTopicsPage.module.css";
+import styles from "./CardTopicsPage.module.scss";
+import Link from 'next/link'
 
 const panes = [
   {
@@ -12,7 +13,14 @@ const panes = [
 export default function CardLessonLeft() {
   return (
     <div className={styles.cardTopicsLeft}>
-      <h3>All Classes</h3>
+      <h3>
+        <Link href="/classes">
+          <a>
+            <i className="fas fa-angle-double-left"></i>
+            <span>All Classes</span>
+          </a>
+        </Link>{" "}
+      </h3>
       <div className={styles.cardAllLesson}>
         <h1 className="course-title">
           English for Science, Techs &amp; Engineering
@@ -43,7 +51,7 @@ export default function CardLessonLeft() {
           <span class="course-category">
             <i class="cat-icon flaticon-folder"></i>
             <span class="cat_data">
-              <span class="meta_title">Category</span>
+              <span class="meta_title">Topic</span>
               <span class="meta_data">
                 <span class="cat-links">
                   <a

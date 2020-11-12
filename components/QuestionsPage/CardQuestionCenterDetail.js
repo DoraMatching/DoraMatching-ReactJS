@@ -6,21 +6,14 @@ import { useAuth } from "../../contexts/auth";
 import QuestionComment from "../CardQuestions/QuestionComment";
 import QuestionDetail from "../CardQuestions/QuestionDetail";
 import styles from "./CardQuestionPage.module.css";
-import axios from 'axios'
 import Client from "../../services/Client";
 
-let firstTime = true;
 
 function CardQuestionCenterDetail({ question, comments }) {
   const {user} = useAuth()
   const [content, setContent] = useState("");
   const router = useRouter()
   const { id } = question;
-  // let [question, setQuestion] = [propQuestion, null]
-  // if(firstTime) {
-  //   [question, setQuestion] = useState(propQuestion);
-  //   firstTime = false;
-  // }
 
   const onsubmit = (e, v) => {
     if(!user) router.push(`/sign-in?forward=${encodeURIComponent(router.asPath)}`);

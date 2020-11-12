@@ -1,7 +1,7 @@
 import React from "react";
 import Class from "../CardClasses/Class";
 import CardTopicsJoined from "./CardTopicsJoined";
-import styles from "./CardTopicsPage.module.css";
+import styles from "./CardTopicsPage.module.scss";
 import CreateClass from "./CreateClass";
 
 export default function CardClassesLeft() {

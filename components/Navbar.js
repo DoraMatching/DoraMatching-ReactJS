@@ -1,53 +1,57 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Head from "next/head";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 import { Button } from "./Button";
 import { Dropdown, Image, Search } from "semantic-ui-react";
 import { useAuth } from "../contexts/auth";
-import Cookies from 'js-cookie'
+import Cookies from "js-cookie";
 
-function Navbar(){
+function Navbar() {
   const router = useRouter();
   const { user, loading, logout } = useAuth();
-  console.log('L12', user);
-
+  console.log("L12", user);
+  
   const trigger = (
     <span>
-      <Image avatar src='/static/worker.png' />
+      <Image avatar src={"/static/worker.png"} />
     </span>
-  )
+  );
+  
+  useEffect(() => {
+    console.log("L22", user);
+  }, [user]);
 
   const handleItemClick = (value) => {
-    switch(value) {
-      case 'user':
-        router.push(`/profile/${user.id}`)
+    switch (value) {
+      case "user":
+        router.push(`/profile/${user.id}`);
         break;
-      case 'settings':
-        router.push(`/profile/${user.id}/settings`)
+      case "settings":
+        router.push(`/profile/${user.id}/settings`);
         break;
-      case 'sign-out':
-        logout()
+      case "sign-out":
+        logout();
         break;
       default:
         break;
     }
-  }
-  
+  };
+
   const options = [
     {
       key: "users",
       text: (
         <span>
-          Signed in as <strong>{user ? user.name : ''}</strong>
+          Signed in as <strong>{user ? user.name : ""}</strong>
         </span>
       ),
       disabled: true,
-      value: 'users'
+      value: "users",
     },
-    { key: "user", text: "My profile", icon: "user", value: 'user'  },
-    { key: "settings", text: "Settings", icon: "settings", value: 'settings'  },
-    { key: "sign-out", text: "Sign Out", icon: "sign out", value: 'sign-out'},
+    { key: "user", text: "My profile", icon: "user", value: "user" },
+    { key: "settings", text: "Settings", icon: "settings", value: "settings" },
+    { key: "sign-out", text: "Sign Out", icon: "sign out", value: "sign-out" },
   ];
 
   const [clicked, setClicked] = useState(false);
@@ -55,7 +59,6 @@ function Navbar(){
   const handleClick = () => {
     setClicked(!clicked);
   };
-
 
   const loginRegLink = (
     <Button>
@@ -66,14 +69,21 @@ function Navbar(){
   );
   const userLink = (
     <>
-      <Dropdown trigger={trigger} icon={null}  pointing='top right'>
+      <Dropdown trigger={trigger} icon={null} pointing="top right">
         <Dropdown.Menu>
-          {options.map(e => {
-            return <Dropdown.Item key={e.key} content={e.text} icon={e.icon} onClick={() => handleItemClick(e.value)} disabled={e.disabled || false}/>
+          {options.map((e) => {
+            return (
+              <Dropdown.Item
+                key={e.key}
+                content={e.text}
+                icon={e.icon}
+                onClick={() => handleItemClick(e.value)}
+                disabled={e.disabled || false}
+              />
+            );
           })}
         </Dropdown.Menu>
-        </Dropdown>
-
+      </Dropdown>
     </>
   );
 
@@ -108,7 +118,7 @@ function Navbar(){
           />
         </div>
         <ul className={clicked ? "navMenu active" : "navMenu"}>
-          <li >
+          <li>
             <Link href="/">
               <a className="navLinks">Home</a>
             </Link>

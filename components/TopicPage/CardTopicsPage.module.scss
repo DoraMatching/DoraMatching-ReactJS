@@ -97,6 +97,8 @@
       display: flex;
       margin-bottom: 0;
       padding-right: 30px;
+      border-right: 2px solid #bbbbbb;
+      height: fit-content;
       img {
         width: 45px;
         height: 45px;
@@ -119,6 +121,7 @@
       display: flex;
       position: relative;
       margin-bottom: 15px;
+      padding-left: 30px;
       i {
         margin-top: 10px;
         margin-right: 20px;
@@ -140,11 +143,11 @@
       }
     }
   }
-  .courseThumbnail{
+  .courseThumbnail {
     width: 100%;
     margin-bottom: 20px;
     border-radius: 10px;
-    i{
+    i {
       border-radius: 10px;
     }
   }

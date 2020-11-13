@@ -40,7 +40,6 @@ const panes = [
               hidden
               // onChange={this.fileChange}
             />
-            <Button type="submit">Upload</Button>
           </Form.Field>
           <Button color="linkedin" type="submit">
             Submit

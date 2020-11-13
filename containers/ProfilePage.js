@@ -9,10 +9,10 @@ export default class ProfilePage extends Component {
       <div>
         <div className={styles.profilePage}>
         <div style={{ width: "25%" }}>
-          <CardProfileLeft />
+          <CardProfileLeft {...this.props} />
         </div>
         <div style={{ width: "70%", marginLeft: "20px" }}>
-          <CardProfileRight />
+          <CardProfileRight {...this.props} />
         </div>
       </div>
       </div>

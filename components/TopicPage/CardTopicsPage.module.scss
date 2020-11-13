@@ -83,6 +83,73 @@
 
 /* CARD LESSON LEFT */
 
+.cardAllLesson {
+  .courseTitle {
+    margin-bottom: 34px;
+    font-size: 2rem;
+    line-height: 1.5;
+  }
+  .courseMeta {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    .courseAuthor {
+      display: flex;
+      margin-bottom: 0;
+      padding-right: 30px;
+      img {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .authorData {
+        display: flex;
+        flex-direction: column;
+        .metaTitle {
+          margin-bottom: 3px;
+          font-size: 15px;
+          font-weight: 700;
+          text-transform: uppercase;
+          color: #ff6d34;
+        }
+      }
+    }
+    .courseCategory {
+      display: flex;
+      position: relative;
+      margin-bottom: 15px;
+      i {
+        margin-top: 10px;
+        margin-right: 20px;
+        font-size: 16px;
+        line-height: 1.5;
+        font-weight: 400;
+        color: #cfcfcf;
+      }
+      .catData {
+        display: flex;
+        flex-direction: column;
+      }
+      .metaTitle {
+        margin-bottom: 3px;
+        font-size: 15px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #ff6d34;
+      }
+    }
+  }
+  .courseThumbnail{
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    i{
+      border-radius: 10px;
+    }
+  }
+}
+
 /* CARD LESSON RIGHT */
 
 .wglCourseEssentials {

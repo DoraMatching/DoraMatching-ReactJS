@@ -21,10 +21,10 @@ function Navbar(){
   const handleItemClick = (value) => {
     switch(value) {
       case 'user':
-        router.push(`/profile`)
+        router.push(`/profile/${user.id}`)
         break;
       case 'settings':
-        router.push('/topics')
+        router.push(`/profile/${user.id}/settings`)
         break;
       case 'sign-out':
         logout()

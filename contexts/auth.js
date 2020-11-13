@@ -8,7 +8,7 @@ import { Loader } from "semantic-ui-react";
 const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({username: ''});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -29,17 +29,21 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (username, password) => {
     // const { data: token } = await api.post('/login', { username, password })
-    const { data } = await api.post("/login", { username, password });
-    const { token, ...temp } = data;
-    console.log("L33", token);
-    if (token) {
-      console.log("Got token");
-      Cookies.set("token", token, { expires: 3000 });
-      api.defaults.headers.Authorization = `Bearer ${token.token}`;
-      const user = { token, ...temp };
-      localStorage.setItem("user", JSON.stringify(temp));
-      setUser(user);
-      console.log("Got user", user);
+    try {
+      const { data } = await api.post("/login", { username, password });
+      const { token, ...temp } = data;
+      console.log("L33", token);
+      if (token) {
+        console.log("Got token");
+        Cookies.set("token", token, { expires: 3000 });
+        api.defaults.headers.Authorization = `Bearer ${token.token}`;
+        const user = { token, ...temp };
+        localStorage.setItem("user", JSON.stringify(temp));
+        setUser(user);
+        console.log("Got user", user);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
   const signUp = async (email, username, password) => {
@@ -54,6 +58,7 @@ export const AuthProvider = ({ children }) => {
       api.defaults.headers.Authorization = `Bearer ${token.token}`;
       // const { data: user } = await api.get('/users')
       const user = { token, ...temp };
+      localStorage.setItem("user", JSON.stringify(temp));
       setUser(user);
       console.log("Got user signup", user);
     }
@@ -64,7 +69,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("user");
     setUser(null);
     delete api.defaults.headers.Authorization;
-    window.location.pathname = "/sign-in";
+    // window.location.pathname = "/sign-in";
   };
   return (
     <AuthContext.Provider

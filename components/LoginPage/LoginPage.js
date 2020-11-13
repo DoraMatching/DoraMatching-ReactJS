@@ -22,7 +22,7 @@ function LoginPage() {
   async function onSubmit(e) {
     try {
        await login(username, password);
-       router.push(router.query['forward']);
+       router.push(router.query['forward'] || '/');
     }catch(e) {
       console.error(e);
       router.push('/sign-in')

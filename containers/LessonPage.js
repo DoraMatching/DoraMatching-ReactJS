@@ -10,7 +10,7 @@ class LessonPage extends Component {
         <div style={{ width: "60%" }}>
           <CardLessonLeft />
         </div>
-        <div style={{ width: "30%", marginLeft: "20px" }}>
+        <div style={{ width: "25%", marginLeft: "20px" }}>
           <CardLessonRight />
         </div>
       </div>

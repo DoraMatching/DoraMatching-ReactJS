@@ -2,11 +2,28 @@ import React, { useState, useEffect } from "react";
 import { Button, Form, Modal } from "semantic-ui-react";
 import styles from "./CardQuestionPage.module.css";
 import {useRouter} from 'next/router';
-import axios from 'axios';
+import { useAuth } from "../../contexts/auth";
+import Client from "../../services/Client";
 
-function CreateQuestion(props) {
+function CreateQuestion({questions}) {
+  const router = useRouter()
+  const {user} = useAuth()
   const [open, setOpen] = useState(false);
-  const [form, setForm] = useState({title: '', content: ''});
+  const [content, setContent] = useState('');
+  const [title, setTitle] = useState('')
+
+  const onsubmit = () => {
+    if(!user) router.push(`/sign-in?forward=${encodeURIComponent(router.asPath)}`);
+    else {
+      Client('question', 'POST', {title, content}).then(({data}) => {
+        console.log(data)
+        setTitle('')
+        setContent('')
+        router.push('/questions')
+      });
+    }
+  }
+
   return (
     <Modal
       size="small"
@@ -20,23 +37,22 @@ function CreateQuestion(props) {
         <Form>
           <Form.Field>
             <label>Title</label>
-            <input placeholder="Title" />
+            <input
+              placeholder="Title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
           </Form.Field>
-        </Form>
-      </Modal.Content>
-      <Modal.Content>
-        <Form>
           <Form.Field>
             <label>Tags</label>
             <input placeholder="tags" />
           </Form.Field>
-        </Form>
-      </Modal.Content>
-      <Modal.Content>
-        <Form>
           <Form.Field>
             <label>Content</label>
-            <input />
+            <Form.TextArea
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+            />
           </Form.Field>
         </Form>
       </Modal.Content>
@@ -51,7 +67,7 @@ function CreateQuestion(props) {
           content="Publish"
           labelPosition="left"
           icon="checkmark"
-          onClick={() => setOpen(false)}
+          onClick={(e) =>  {onsubmit(e), setOpen(false)}}
           positive
         />
       </Modal.Actions>

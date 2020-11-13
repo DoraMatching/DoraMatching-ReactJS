@@ -1,7 +1,7 @@
-import React from 'react';
-import styles from './Question.module.css';
-import moment from 'moment';
-import Link from 'next/link';
+import React from "react";
+import styles from "./Question.module.css";
+import moment from "moment";
+import Link from "next/link";
 
 function Question({ question }) {
   const {id} = question;
@@ -24,7 +24,11 @@ function Question({ question }) {
             </Link>
           </h3>
           <span className={styles.questionAuthor}>
-            <span>{question.author.name}</span>{" "}
+            <span>
+              <Link href={`/profile/${question.author.id}`}>
+                <a>{question.author.name}</a>
+              </Link>
+            </span>
             <p>asked {moment(question.createdAt).format("LLL")}</p>
           </span>
         </div>
@@ -50,7 +54,9 @@ function Question({ question }) {
         <div className={styles.questionMore}>
           <button className={styles.buttonPrimary}>
             <Link href={`/questions/${id}`}>
-              <a><i className="fa fa-chevron-right"></i> Read more</a>
+              <a>
+                <i className="fa fa-chevron-right"></i> Read more
+              </a>
             </Link>
           </button>
         </div>
@@ -65,7 +71,10 @@ function Question({ question }) {
             className={`${styles.questionMetaCommon} ${styles.questionMetaComment}`}
           >
             <i className="far fa-comment"></i>
-            <span>{question.comments.length} comment{question.comments.length > 1 ? "s" : ""}</span>
+            <span>
+              {question.comments.length} comment
+              {question.comments.length > 1 ? "s" : ""}
+            </span>
           </button>
           <button
             className={`${styles.questionMetaCommon} ${styles.questionMetaShare}`}
@@ -78,6 +87,5 @@ function Question({ question }) {
     </div>
   );
 }
-
 
 export default Question;

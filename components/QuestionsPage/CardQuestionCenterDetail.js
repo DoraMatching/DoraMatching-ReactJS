@@ -21,7 +21,7 @@ function CardQuestionCenterDetail({ question, comments }) {
       Client(`question/${id}/comment`, 'POST', {content}).then(({data}) => {
         console.log(data)
         router.push(`${id}`)
-        
+        setContent('')
       });
     }
   }

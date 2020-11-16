@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "debug": "node-debug yarn dev"
   },
   "dependencies": {
     "@babel/preset-react": "^7.12.1",
@@ -22,10 +23,12 @@
     "@zeit/next-sass": "^1.0.1",
     "axios": "^0.20.0",
     "babel-plugin-transform-require-ignore": "^0.1.1",
+    "draft-js": "^0.11.7",
     "file-loader": "^6.2.0",
     "firebase": "^7.24.0",
     "jquery": "^3.5.1",
     "js-cookie": "^2.2.1",
+    "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.20",
     "moment": "^2.29.1",
     "next": "9.5.3",
@@ -35,14 +38,18 @@
     "react-elastic-carousel": "^0.9.0",
     "react-hook-form": "^6.9.6",
     "react-loading-skeleton": "^2.1.1",
+    "react-markdown": "^5.0.2",
+    "react-markdown-editor-lite": "^1.2.2",
     "sass": "^1.28.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.0",
     "styled-components": "^5.2.0",
     "swr": "^0.3.8",
-    "url-loader": "^4.1.1"
+    "url-loader": "^4.1.1",
+    "window": "^4.2.7"
   },
   "devDependencies": {
-    "css-loader": "^5.0.0"
+    "css-loader": "^5.0.0",
+    "debugging-aid": "^0.5.3"
   }
 }

@@ -1,41 +1,32 @@
-import React, {useState } from "react";
-import { useRouter } from 'next/router';
+import React, { useState } from "react";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { Button, Form, FormField } from "semantic-ui-react";
 import styles from "./LoginPage.module.css";
 import Link from "next/link";
 import axios from "axios";
-import cookie from 'js-cookie';
+import cookie from "js-cookie";
 import LoginGithub from "./LoginGithub";
+import { useAuth } from "../../contexts/auth";
 
 function LoginPage() {
   const router = useRouter();
 
-  const [loginError, setLoginError ] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const { register, handleSubmit, errors } = useForm();
+  const { login, logout } = useAuth();
 
-  function onSubmit(e){
-
-    axios("https://api.dev.doramatching.tk/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: {
-        username,
-        password,
-      },
-    })
-      .then((data) => {
-          cookie.set("token", data.token); //{expires: 2}
-          router.push("/");
-      })
-      .catch((error) => {
-        console.log(error.data);
-      });
+  async function onSubmit(e) {
+    try {
+       await login(username, password);
+       router.push(router.query['forward'] || '/');
+    }catch(e) {
+      console.error(e);
+      router.push('/sign-in')
+    }
   }
 
   return (
@@ -59,17 +50,14 @@ function LoginPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-            
             />
           </FormField>
           <div className={styles.loginButton}>
-            <Button 
-            type="submit" 
-            color={"linkedin"}
-            disabled={
-              !username 
-              || !password
-            } >
+            <Button
+              type="submit"
+              color={"linkedin"}
+              disabled={!username || !password}
+            >
               LOGIN
             </Button>
             <LoginGithub />

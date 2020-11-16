@@ -4,21 +4,26 @@ import '@fullcalendar/common/main.css' // @fullcalendar/react imports @fullcalen
 import '@fullcalendar/daygrid/main.css' // @fullcalendar/timegrid imports @fullcalendar/daygrid
 import '@fullcalendar/timegrid/main.css' // @fullcalendar/timegrid is a direct import
 
+import 'react-markdown-editor-lite/lib/index.css';
+
+import 'draft-js/dist/Draft.css';
+
 import Layout from "../components/Layout";
 import "../styles/globals.css";
 import "semantic-ui-css/semantic.min.css";
+
 import { AuthProvider, ProtectRoute } from "../contexts/auth";
 
 
 function MyApp({ Component, pageProps }) {
   return (
-    // <AuthProvider>
-      // * <ProtectRoute> *
+    <AuthProvider>
+      {/* <ProtectRoute> */}
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      /* </ProtectRoute> */
-    // </AuthProvider>
+      {/* </ProtectRoute> */}
+    </AuthProvider>
   );
 }
 

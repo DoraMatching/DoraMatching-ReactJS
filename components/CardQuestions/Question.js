@@ -1,10 +1,15 @@
-import React from 'react';
-import styles from './Question.module.css';
-import moment from 'moment';
-import Link from 'next/link';
+import React from "react";
+import styles from "./Question.module.css";
+import moment from "moment";
+import Link from "next/link";
+import { Button, Grid, Icon, Popup } from "semantic-ui-react";
+import { useAuth } from "../../contexts/auth";
+import EditQuestion from "../QuestionsPage/EditQuestions";
 
 function Question({ question }) {
-  const {id} = question;
+  const { user } = useAuth();
+
+  const { id } = question;
   return (
     <div className={styles.questionCard}>
       <div className={styles.questionHeader}>
@@ -24,7 +29,11 @@ function Question({ question }) {
             </Link>
           </h3>
           <span className={styles.questionAuthor}>
-            <span>{question.author.name}</span>{" "}
+            <span>
+              <Link href={`/profile/${question.author.id}`}>
+                <a>{question.author.name}</a>
+              </Link>
+            </span>
             <p>asked {moment(question.createdAt).format("LLL")}</p>
           </span>
         </div>
@@ -36,6 +45,30 @@ function Question({ question }) {
               style={{ width: "30px" }}
             />
           </figure>
+          {user && user.id && question.author.id === user.id ? (
+            <Popup
+              position="bottom center"
+              wide
+              trigger={<i className="fas fa-ellipsis-h"></i>}
+              on="click"
+            >
+              <Grid columns="equal">
+                <Grid.Column>
+                  <EditQuestion />
+                </Grid.Column>
+                <Grid.Column>
+                  <Button color="red" animated="vertical">
+                    <Button.Content visible>Delete</Button.Content>
+                    <Button.Content hidden>
+                      <Icon name="delete" />
+                    </Button.Content>
+                  </Button>
+                </Grid.Column>
+              </Grid>
+            </Popup>
+          ) : (
+            ""
+          )}
         </div>
       </div>
       <div className={styles.questionButton}>
@@ -50,7 +83,9 @@ function Question({ question }) {
         <div className={styles.questionMore}>
           <button className={styles.buttonPrimary}>
             <Link href={`/questions/${id}`}>
-              <a><i className="fa fa-chevron-right"></i> Read more</a>
+              <a>
+                <i className="fa fa-chevron-right"></i> Read more
+              </a>
             </Link>
           </button>
         </div>
@@ -65,7 +100,10 @@ function Question({ question }) {
             className={`${styles.questionMetaCommon} ${styles.questionMetaComment}`}
           >
             <i className="far fa-comment"></i>
-            <span>{question.comments.length} comments</span>
+            <span>
+              {question.comments.length} comment
+              {question.comments.length > 1 ? "s" : ""}
+            </span>
           </button>
           <button
             className={`${styles.questionMetaCommon} ${styles.questionMetaShare}`}
@@ -78,6 +116,5 @@ function Question({ question }) {
     </div>
   );
 }
-
 
 export default Question;

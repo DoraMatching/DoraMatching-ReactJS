@@ -8,7 +8,7 @@ class TopicsPage extends Component {
     return (
       <div className={styles.classesPage}>
         <div style={{ width: "60%" }}>
-          <CardTopicsLeft />
+          <CardTopicsLeft {...this.props} />
         </div>
         <div style={{ width: "30%", marginLeft: "20px" }}>
           <CardTopicsRight />

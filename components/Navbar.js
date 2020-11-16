@@ -1,14 +1,63 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { Button } from "./Button";
-import { Search } from "semantic-ui-react";
-import cookie from 'js-cookie';
+import { Dropdown, Image, Search } from "semantic-ui-react";
 import { useAuth } from "../contexts/auth";
+import Cookies from "js-cookie";
 
 function Navbar() {
+  const router = useRouter();
+  let user = {
+    id: '',
+    name: '',
+    email: '',
+    username: '',
+    avatarUrl: ''
+  }
+  const { user: _user, loading, logout } = useAuth();
+  user = _user;
+  
+  const trigger = (
+    <span>
+      <Image avatar src={"/static/worker.png"} />
+    </span>
+  );
+
+  const handleItemClick = (value) => {
+    switch (value) {
+      case "user":
+        router.push(`/profile/${user.id}`);
+        break;
+      case "settings":
+        router.push(`/profile/${user.id}/settings`);
+        break;
+      case "sign-out":
+        logout();
+        break;
+      default:
+        break;
+    }
+  };
+
+  const options = [
+    {
+      key: "users",
+      text: (
+        <span>
+          Signed in as <strong>{user ? user.name : ""}</strong>
+        </span>
+      ),
+      disabled: true,
+      value: "users",
+    },
+    { key: "user", text: "My profile", icon: "user", value: "user" },
+    { key: "settings", text: "Settings", icon: "settings", value: "settings" },
+    { key: "sign-out", text: "Sign Out", icon: "sign out", value: "sign-out" },
+  ];
+
   const [clicked, setClicked] = useState(false);
-  const {user, loading} = useAuth();
 
   const handleClick = () => {
     setClicked(!clicked);
@@ -23,14 +72,21 @@ function Navbar() {
   );
   const userLink = (
     <>
-      <Link href='/'><a>aaa</a></Link>
-      <Button onClick={() => {
-        cookie.remove('token')
-      }}>
-        <Link href="/sign-in" >
-          <a>Log out</a>
-        </Link>
-      </Button>
+      <Dropdown trigger={trigger} icon={null} pointing="top right">
+        <Dropdown.Menu>
+          {options.map((e) => {
+            return (
+              <Dropdown.Item
+                key={e.key}
+                content={e.text}
+                icon={e.icon}
+                onClick={() => handleItemClick(e.value)}
+                disabled={e.disabled || false}
+              />
+            );
+          })}
+        </Dropdown.Menu>
+      </Dropdown>
     </>
   );
 
@@ -96,7 +152,7 @@ function Navbar() {
             </Link>
           </li>
         </ul>
-        {loginRegLink}
+        {user ? userLink : loginRegLink}
       </nav>
     </>
   );

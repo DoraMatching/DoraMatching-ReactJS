@@ -9,14 +9,14 @@ import Schedule from "../components/Schedule/Schedule";
 
 function Home({home}) {
   const renderComponents = () => {
-    return home.map((item) => {
+    return home.map((item, id) => {
       switch (item.type) {
         case "post":
-          return <Post post={item} key={item.id} />;
+          return <Post post={item} key={id} />;
         case "question":
-          return <Question question={item} key={item.id} />;
+          return <Question question={item} key={id} />;
         case "user-list":
-          return <TopTrainer users={item.userList} key={item.userList.id} />;
+          return <TopTrainer users={item.userList} key={id} />;
       }
     });
   };
@@ -45,6 +45,7 @@ function Home({home}) {
 Home.getInitialProps = async () => {
   const { data } = await axios.get("https://api.dev.doramatching.tk/home");
   return { home: data.items };
+
 };
 
 export default Home;

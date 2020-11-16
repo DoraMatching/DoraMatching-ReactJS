@@ -12,8 +12,8 @@ function trainers({users}) {
 }
 
 trainers.getInitialProps = async () => {
-  const {data} = await axios.get('https://api.dev.doramatching.tk/users');
-  return { users: data.items };
+  const {data} = await axios.get('https://api.dev.doramatching.tk/trainers');
+  return { users: data.items.map(e => e.user) };
 }
 
 export default trainers;

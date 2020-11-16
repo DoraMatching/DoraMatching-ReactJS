@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./CardTopicsPage.module.css";
+import styles from "./CardTopicsPage.module.scss";
 
 export default function CardTopicsJoined() {
   return (

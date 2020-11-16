@@ -2,22 +2,24 @@ import Link from 'next/link'
 import React from 'react'
 import Topic from '../CardTopics/Topic'
 import CardTopicsJoined from './CardTopicsJoined'
-import styles from './CardTopicsPage.module.css'
+import styles from './CardTopicsPage.module.scss'
 import CreateClass from './CreateClass'
+import CreateTopic from './CreateTopic'
 
-export default function CardTopicsLeft() {
+export default function CardTopicsLeft({topics}) {
   return (
     <div className={styles.cardTopicsLeft}>
-      <h3>Topics Management</h3>
+      <h3>Classes Management</h3>
       <div>
         <CardTopicsJoined />
       </div>
+      <CreateTopic />
       <CreateClass />
       <h3>All Topics</h3>
       <div className={styles.cardAllTopics}>
-        <Topic />
-        <Topic />
-        <Topic />
+        {topics.map((topic, id) => {
+          return <Topic topic={topic} key={id} />
+        })}
       </div>
     </div>
   );

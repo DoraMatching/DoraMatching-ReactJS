@@ -31,6 +31,11 @@
   position: relative;
   margin-inline-start: auto;
   margin-bottom: auto;
+  text-align: center;
+}
+
+.postThumb i:hover{
+  cursor: pointer;
 }
 
 .postThumbImage {

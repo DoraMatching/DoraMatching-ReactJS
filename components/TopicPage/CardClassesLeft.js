@@ -3,6 +3,7 @@ import Class from "../CardClasses/Class";
 import CardTopicsJoined from "./CardTopicsJoined";
 import styles from "./CardTopicsPage.module.scss";
 import CreateClass from "./CreateClass";
+import CreateTopic from "./CreateTopic";
 
 export default function CardClassesLeft() {
   return (
@@ -11,6 +12,7 @@ export default function CardClassesLeft() {
       <div>
         <CardTopicsJoined />
       </div>
+      <CreateTopic />
       <CreateClass />
       <h3>All Classes</h3>
       <div className={styles.cardAllClass}>

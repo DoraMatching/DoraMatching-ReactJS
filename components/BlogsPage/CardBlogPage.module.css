@@ -1,14 +1,14 @@
-.cardBlogsLeft{
+.cardBlogsLeft {
   width: 100%;
 }
 
-.cardBlogLeftMap{
+.cardBlogLeftMap {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1em;
 }
 
-.tagBlog{
+.tagBlog {
   background: #228099;
   border-radius: 10px;
   border: none;
@@ -20,13 +20,13 @@
   width: 100%;
 }
 
-.tagBlog:hover{
+.tagBlog:hover {
   cursor: pointer;
   background: #1c84a1;
 }
 /* CARD BLOG PAGE RIGHT DETAIL */
 
-.cardBlogRightDetail{
+.cardBlogRightDetail {
   margin-top: 40px;
 }
 
@@ -124,11 +124,11 @@
   transition: all 0.3s ease 0s;
 }
 
-.ourTeam .button{
+.ourTeam .button {
   background: none;
   border-radius: 8px;
   border: none;
-  color: white;
+  color: white !important;
   font-size: 0.9rem;
   padding: 8px;
   text-decoration: none;
@@ -137,15 +137,23 @@
 
 .ourTeam .social .button:hover {
   cursor: pointer;
-  color: #228099;
+  color: #228099 !important;
   background-color: #f7f5ec;
 }
 
-.teamContent h3 h4{
+.teamContent h3 h4 {
   margin: 0;
 }
 
-.countBlog{
+.countBlog {
   margin-top: 10px;
   font-weight: 600;
+}
+
+.ourTeam .button a{
+  color: #ffffff;
+}
+
+.ourTeam .button a:hover{
+  color: #228099;
 }

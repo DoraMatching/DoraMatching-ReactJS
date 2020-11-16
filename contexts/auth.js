@@ -28,11 +28,9 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (username, password) => {
-    // const { data: token } = await api.post('/login', { username, password })
     try {
       const { data } = await api.post("/login", { username, password });
       const { token, ...temp } = data;
-      console.log("L33", token);
       if (token) {
         console.log("Got token");
         Cookies.set("token", token, { expires: 3000 });
@@ -47,16 +45,16 @@ export const AuthProvider = ({ children }) => {
     }
   };
   const signUp = async (email, username, password) => {
-    const { data: token } = await api.post("/register", {
+    const { data } = await api.post("/register", {
       email,
       username,
       password,
     });
+    const { token, ...temp } = data;
     if (token) {
       console.log("Got token");
       Cookies.set("token", token, { expires: 3000 });
       api.defaults.headers.Authorization = `Bearer ${token.token}`;
-      // const { data: user } = await api.get('/users')
       const user = { token, ...temp };
       localStorage.setItem("user", JSON.stringify(temp));
       setUser(user);
@@ -69,7 +67,6 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("user");
     setUser(null);
     delete api.defaults.headers.Authorization;
-    // window.location.pathname = "/sign-in";
   };
   return (
     <AuthContext.Provider

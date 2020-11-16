@@ -74,11 +74,23 @@
   float: right;
   font-weight: 600;
   padding: 12px 20px;
+  &:hover{
+    cursor: pointer;
+    background: #f8293a;
+  }
 }
 
-.cardTopicsLeftButton:hover {
-  cursor: pointer;
-  background: #f8293a;
+.cardCreateTopicsLeftButton{
+  background: #228099;
+  border-radius: 30px;
+  border: none;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 12px 20px;
+  &:hover{
+    cursor: pointer;
+    background: #177f9c;
+  }
 }
 
 /* CARD LESSON LEFT */

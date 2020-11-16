@@ -20,8 +20,8 @@ function CardBlogLeftDetail({post, comments}) {
     if(!user) router.push(`/sign-in?forward=${encodeURIComponent(router.asPath)}`)
     else{
       Client(`post/${id}/comment`, 'POST', {content}).then(({data}) => {
-        console.log(data);
         router.push(`${id}`)
+        setContent('')
       });
     }
   }

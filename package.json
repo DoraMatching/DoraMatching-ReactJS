@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "debug": "node-debug yarn dev"
   },
   "dependencies": {
     "@babel/preset-react": "^7.12.1",
@@ -48,6 +49,7 @@
     "window": "^4.2.7"
   },
   "devDependencies": {
-    "css-loader": "^5.0.0"
+    "css-loader": "^5.0.0",
+    "debugging-aid": "^0.5.3"
   }
 }

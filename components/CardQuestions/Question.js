@@ -3,8 +3,12 @@ import styles from "./Question.module.css";
 import moment from "moment";
 import Link from "next/link";
 import { Button, Grid, Icon, Popup } from "semantic-ui-react";
+import { useAuth } from "../../contexts/auth";
+import EditQuestion from "../QuestionsPage/EditQuestions";
 
 function Question({ question }) {
+  const { user } = useAuth();
+
   const { id } = question;
   return (
     <div className={styles.questionCard}>
@@ -41,31 +45,30 @@ function Question({ question }) {
               style={{ width: "30px" }}
             />
           </figure>
-          <Popup
-            position="bottom center"
-            wide
-            trigger={<i className="fas fa-ellipsis-h"></i>}
-            on="click"
-          >
-            <Grid columns="equal">
-              <Grid.Column>
-                <Button color="grey" animated="vertical">
-                  <Button.Content visible>Edit</Button.Content>
-                  <Button.Content hidden>
-                    <Icon name="edit" />
-                  </Button.Content>
-                </Button>
-              </Grid.Column>
-              <Grid.Column>
-                <Button color="red" animated="vertical">
-                  <Button.Content visible>Delete</Button.Content>
-                  <Button.Content hidden>
-                    <Icon name="delete" />
-                  </Button.Content>
-                </Button>
-              </Grid.Column>
-            </Grid>
-          </Popup>
+          {user && user.id && question.author.id === user.id ? (
+            <Popup
+              position="bottom center"
+              wide
+              trigger={<i className="fas fa-ellipsis-h"></i>}
+              on="click"
+            >
+              <Grid columns="equal">
+                <Grid.Column>
+                  <EditQuestion />
+                </Grid.Column>
+                <Grid.Column>
+                  <Button color="red" animated="vertical">
+                    <Button.Content visible>Delete</Button.Content>
+                    <Button.Content hidden>
+                      <Icon name="delete" />
+                    </Button.Content>
+                  </Button>
+                </Grid.Column>
+              </Grid>
+            </Popup>
+          ) : (
+            ""
+          )}
         </div>
       </div>
       <div className={styles.questionButton}>

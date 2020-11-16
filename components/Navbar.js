@@ -5,8 +5,6 @@ import { useRouter } from "next/router";
 import { Button } from "./Button";
 import { Dropdown, Image, Search } from "semantic-ui-react";
 import { useAuth } from "../contexts/auth";
-import Cookies from "js-cookie";
-
 function Navbar() {
   const router = useRouter();
   let user = {

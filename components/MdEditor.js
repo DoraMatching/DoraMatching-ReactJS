@@ -1,22 +1,18 @@
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 import ReactMarkdown from "react-markdown";
-import React from 'react'
+import React from "react";
 
-const MdEditor = dynamic(() => import('react-markdown-editor-lite'), {
-  ssr: false
+const Editor = dynamic(() => import("react-markdown-editor-lite"), {
+  ssr: false,
 });
 
-export default function() {
-  // const handleEditorChange = ({ html, text }) => {
-  //   const newValue = text.replace(/\d/g, "");
-  //   console.log(newValue);
-  //   setValue(newValue);
-  // };
-
+export default function ({ onChange, value }) {
   return (
-    <MdEditor
-      style={{ height: "300px" }}
-      renderHTML={text => <ReactMarkdown source={text} />}
+    <Editor
+      value={value}
+      style={{ height: "250px" }}
+      onChange={onChange}
+      renderHTML={(text) => <ReactMarkdown source={text} />}
     />
-  )
+  );
 }

@@ -3,8 +3,10 @@ import styles from "./Post.module.css";
 import Link from "next/link";
 import { Button, Grid, Icon, Popup } from "semantic-ui-react";
 import moment from "moment";
+import { useAuth } from "../../contexts/auth";
 
 const Post = ({ post }) => {
+  const { user } = useAuth();
   const { id } = post;
   return (
     <div className={styles.postCard}>
@@ -30,7 +32,7 @@ const Post = ({ post }) => {
                 <a>{post.author.name}</a>
               </Link>
             </span>{" "}
-            <p>published {moment(post.createdAt).format("LLL")}</p>
+            <p>published {moment(post.createdAt).format("ll")}</p>
           </span>
         </div>
         <div className={styles.postThumb}>
@@ -41,31 +43,35 @@ const Post = ({ post }) => {
               style={{ width: "30px" }}
             />
           </figure>
-          <Popup
-            position="bottom center"
-            wide
-            trigger={<i className="fas fa-ellipsis-h"></i>}
-            on="click"
-          >
-            <Grid columns="equal">
-              <Grid.Column>
-                <Button color="grey" animated="vertical">
-                  <Button.Content visible>Edit</Button.Content>
-                  <Button.Content hidden>
-                    <Icon name="edit" />
-                  </Button.Content>
-                </Button>
-              </Grid.Column>
-              <Grid.Column>
-                <Button color="red" animated="vertical">
-                  <Button.Content visible>Delete</Button.Content>
-                  <Button.Content hidden>
-                    <Icon name="delete" />
-                  </Button.Content>
-                </Button>
-              </Grid.Column>
-            </Grid>
-          </Popup>
+          {user && user.id && post.author.id === user.id ? (
+            <Popup
+              position="bottom center"
+              wide
+              trigger={<i className="fas fa-ellipsis-h"></i>}
+              on="click"
+            >
+              <Grid columns="equal">
+                <Grid.Column>
+                  <Button color="grey" animated="vertical">
+                    <Button.Content visible>Edit</Button.Content>
+                    <Button.Content hidden>
+                      <Icon name="edit" />
+                    </Button.Content>
+                  </Button>
+                </Grid.Column>
+                <Grid.Column>
+                  <Button color="red" animated="vertical">
+                    <Button.Content visible>Delete</Button.Content>
+                    <Button.Content hidden>
+                      <Icon name="delete" />
+                    </Button.Content>
+                  </Button>
+                </Grid.Column>
+              </Grid>
+            </Popup>
+          ) : (
+            ""
+          )}
         </div>
       </div>
       <div className={styles.postImage}>

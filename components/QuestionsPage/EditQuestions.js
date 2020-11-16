@@ -1,31 +1,34 @@
 import React, { useState, useEffect } from "react";
-import { Button, Form, Modal } from "semantic-ui-react";
+import { Button, Form, Icon, Modal } from "semantic-ui-react";
 import styles from "./CardQuestionPage.module.css";
 import { useRouter } from "next/router";
 import { useAuth } from "../../contexts/auth";
 import Client from "../../services/Client";
+import EditButton from "../CardQuestions/EditButton";
 
-function CreateQuestion({ questions }) {
+function EditQuestion({ questions }) {
   const router = useRouter();
   const { user } = useAuth();
   const [open, setOpen] = useState(false);
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState();
   const [title, setTitle] = useState("");
   const [tags, setTag] = useState([]);
 
-  const Create = () => {
+  const Update = () => {
     if (!user)
       router.push(`/sign-in?forward=${encodeURIComponent(router.asPath)}`);
     else {
-      Client("question", "POST", { title, content, tags: [name] }).then(
-        ({ data }) => {
-          console.log("L21", data);
-          setTitle("");
-          setContent("");
-          setTag([{ name: "" }]);
-          router.push("/questions");
-        }
-      );
+      Client(`question/${questions.id}`, "PUT", {
+        title,
+        content,
+        tags: [name],
+      }).then(({ data }) => {
+        console.log("L21", data);
+        setTitle("");
+        setContent("");
+        setTag([{ name: "" }]);
+        router.push("/questions");
+      });
     }
   };
   return (
@@ -34,9 +37,16 @@ function CreateQuestion({ questions }) {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<button className={styles.askQuestion}>+ Create Question</button>}
+      trigger={
+        <Button color="grey" animated="vertical">
+          <Button.Content visible>Edit</Button.Content>
+          <Button.Content hidden>
+            <Icon name="edit" />
+          </Button.Content>
+        </Button>
+      }
     >
-      <Modal.Header>Create Question</Modal.Header>
+      <Modal.Header>Update Question</Modal.Header>
       <Modal.Content>
         <Form>
           <Form.Field>
@@ -72,11 +82,11 @@ function CreateQuestion({ questions }) {
           onClick={() => setOpen(false)}
         />
         <Button
-          content="Publish"
+          content="Update"
           labelPosition="left"
           icon="checkmark"
           onClick={(e) => {
-            Create(e), setOpen(false);
+            Update(e), setOpen(false);
           }}
           positive
         />
@@ -85,4 +95,4 @@ function CreateQuestion({ questions }) {
   );
 }
 
-export default CreateQuestion;
+export default EditQuestion;

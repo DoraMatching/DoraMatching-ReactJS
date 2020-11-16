@@ -1,16 +1,17 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { Tab, Button, Image, List } from "semantic-ui-react";
+import { Tab, Button, Image, List, ListContent } from "semantic-ui-react";
 import { useAuth } from "../../contexts/auth";
 import Client from "../../services/Client";
 import Class from "../CardClasses/Class";
 import Schedule from "../Schedule/Schedule";
 import styles from "./CardProfile.module.scss";
 
-const CardProfileRight = ({ userAcc: { id } }) => {
+const CardProfileRight = ({ userAcc }) => {
   const { user } = useAuth();
+  const allowEdit = user && user.id ===userAcc.id;
   const renderPanes = async () => {
-    const { data: currentUser } = await Client(`user/${id}`, "GET", {});
+    const { data: currentUser } = await Client(`user/${userAcc.id}`, "GET", {});
     return [
       {
         menuItem: "Blogs",
@@ -27,14 +28,20 @@ const CardProfileRight = ({ userAcc: { id } }) => {
                       fontFamily: "sans-serif, Roboto",
                     }}
                   >
-                    <List.Content floated="right">
-                      <Button>Edit</Button>
-                      <Button color="red">Delete</Button>
-                    </List.Content>
+                    {allowEdit ? (
+                      <List.Content floated="right">
+                        <Button>Edit</Button>
+                        <Button color="red">Delete</Button>
+                      </List.Content>
+                    ) : (
+                      ""
+                    )}
+
                     <List.Header>
                       <Link href={`/posts/${post.id}`}>
                         <a>{post.title}</a>
                       </Link>
+                      <List.Description className={styles.ListDescription}>{post.subTitle}</List.Description>
                     </List.Header>
                   </List.Item>
                 );
@@ -59,16 +66,20 @@ const CardProfileRight = ({ userAcc: { id } }) => {
                       fontFamily: "sans-serif, Roboto",
                     }}
                   >
-                    <List.Content floated="right">
-                      <Button>Edit</Button>
-                      <Button color="red">Delete</Button>
-                    </List.Content>
+                    {allowEdit ? (
+                      <List.Content floated="right">
+                        <Button>Edit</Button>
+                        <Button color="red">Delete</Button>
+                      </List.Content>
+                    ) : (
+                      ""
+                    )}
+
                     <List.Header>
                       <Link href={`/questions/${question.id}`}>
                         <a>{question.title}</a>
                       </Link>
                     </List.Header>
-                    <List.Content>{question.content}</List.Content>
                   </List.Item>
                 );
               })}
@@ -99,7 +110,7 @@ const CardProfileRight = ({ userAcc: { id } }) => {
 
   useEffect(() => {
     renderPanes().then((components) => setPanes(components));
-  }, []);
+  }, [allowEdit]);
 
   return <Tab menu={{ secondary: true }} panes={panes} />;
 };

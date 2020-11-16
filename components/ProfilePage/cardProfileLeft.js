@@ -6,11 +6,11 @@ import Class from "../CardClasses/Class";
 import styles from "./CardProfile.module.scss";
 
 function CardProfileLeft({ userAcc }) {
-  const { user, loading, logout } = useAuth();
+  const { user } = useAuth();
   return (
     <div>
       <div className={styles.cardProfileLeftWrapper}>
-        {(true || user.id === userAcc.id) ? <div className={styles.topIcons}>
+        {(user && user.id && user.id === userAcc.id) ? <div className={styles.topIcons}>
           <Link href={`/profile/${userAcc.id}/settings`}>
             <a>
               <Popup

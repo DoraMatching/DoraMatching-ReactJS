@@ -9,7 +9,15 @@ import Cookies from "js-cookie";
 
 function Navbar() {
   const router = useRouter();
-  const { user, loading, logout } = useAuth();
+  let user = {
+    id: '',
+    name: '',
+    email: '',
+    username: '',
+    avatarUrl: ''
+  }
+  const { user: _user, loading, logout } = useAuth();
+  user = _user;
   
   const trigger = (
     <span>

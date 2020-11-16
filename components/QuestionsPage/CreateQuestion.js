@@ -1,29 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form, Modal } from "semantic-ui-react";
 import styles from "./CardQuestionPage.module.css";
-import {useRouter} from 'next/router';
+import { useRouter } from "next/router";
 import { useAuth } from "../../contexts/auth";
 import Client from "../../services/Client";
 
-function CreateQuestion({questions}) {
-  const router = useRouter()
-  const {user} = useAuth()
+function CreateQuestion({ questions }) {
+  const router = useRouter();
+  const { user } = useAuth();
   const [open, setOpen] = useState(false);
-  const [content, setContent] = useState('');
-  const [title, setTitle] = useState('')
+  const [content, setContent] = useState("");
+  const [title, setTitle] = useState("");
+  const [tags, setTag] = useState([]);
 
-  const onsubmit = () => {
-    if(!user) router.push(`/sign-in?forward=${encodeURIComponent(router.asPath)}`);
+  const Create = () => {
+    if (!user)
+      router.push(`/sign-in?forward=${encodeURIComponent(router.asPath)}`);
     else {
-      Client('question', 'POST', {title, content}).then(({data}) => {
-        console.log(data)
-        setTitle('')
-        setContent('')
-        router.push('/questions')
-      });
+      Client("question", "POST", { title, content, tags: [name] }).then(
+        ({ data }) => {
+          console.log("L21", data);
+          setTitle("");
+          setContent("");
+          setTag([{ name: "" }]);
+          router.push("/questions");
+        }
+      );
     }
-  }
-
+  };
   return (
     <Modal
       size="small"
@@ -45,7 +49,11 @@ function CreateQuestion({questions}) {
           </Form.Field>
           <Form.Field>
             <label>Tags</label>
-            <input placeholder="tags" />
+            <input
+              placeholder="tags"
+              value={tags}
+              onChange={(e) => setTag(e.target.value)}
+            />
           </Form.Field>
           <Form.Field>
             <label>Content</label>
@@ -67,7 +75,9 @@ function CreateQuestion({questions}) {
           content="Publish"
           labelPosition="left"
           icon="checkmark"
-          onClick={(e) =>  {onsubmit(e), setOpen(false)}}
+          onClick={(e) => {
+            Create(e), setOpen(false);
+          }}
           positive
         />
       </Modal.Actions>

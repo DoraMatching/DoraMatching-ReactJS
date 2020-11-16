@@ -29,6 +29,11 @@
   position: relative;
   margin-inline-start: auto;
   margin-bottom: auto;
+  text-align: center;
+}
+
+.questionThumb i:hover{
+  cursor: pointer;
 }
 
 .questionThumbImage {

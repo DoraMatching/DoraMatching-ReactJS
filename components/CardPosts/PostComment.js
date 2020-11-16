@@ -15,9 +15,6 @@ function PostComment({ comment }) {
               <div>{moment(comment.createdAt).format("LLL")}</div>
             </Comment.Metadata>
             <Comment.Text>{comment.content}</Comment.Text>
-            <Comment.Actions>
-              <Comment.Action>Reply</Comment.Action>
-            </Comment.Actions>
           </Comment.Content>
         </Comment>
       </Comment.Group>

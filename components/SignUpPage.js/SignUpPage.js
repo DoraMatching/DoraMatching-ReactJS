@@ -8,6 +8,7 @@ import LoginGithub from "../LoginPage/LoginGithub";
 import axios from "axios";
 import { useRouter } from "next/router";
 import cookie from 'js-cookie';
+import { useAuth } from "../../contexts/auth";
 
 function SignUpPage() {
   const router = useRouter();
@@ -15,27 +16,18 @@ function SignUpPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const { signUp, logout } = useAuth();
+
   const { register, handleSubmit, errors } = useForm();
 
-  function onSubmit() {
-    axios("https://api.dev.doramatching.tk/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: {
-        email,
-        username,
-        password,
-      },
-    })
-      .then((data) => {
-        cookie.set("token", data.token); //{expires: 2}
-        router.push("/");
-      })
-      .catch((error) => {
-        console.log(error.data);
-      });
+  async function onSubmit(e) {
+    try {
+       await signUp(email, username, password);
+       router.push(router.query['forward'] || '/');
+    }catch(e) {
+      console.error(e);
+      router.push('/sign-up')
+    }
   }
 
   return (

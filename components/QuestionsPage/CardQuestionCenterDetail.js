@@ -7,6 +7,7 @@ import QuestionComment from "../CardQuestions/QuestionComment";
 import QuestionDetail from "../CardQuestions/QuestionDetail";
 import styles from "./CardQuestionPage.module.css";
 import Client from "../../services/Client";
+import MdEditor from "../MdEditor";
 
 
 function CardQuestionCenterDetail({ question, comments }) {
@@ -19,12 +20,17 @@ function CardQuestionCenterDetail({ question, comments }) {
     if(!user) router.push(`/sign-in?forward=${encodeURIComponent(router.asPath)}`);
     else {
       Client(`question/${id}/comment`, 'POST', {content}).then(({data}) => {
-        console.log(data)
         router.push(`${id}`)
         setContent('')
       });
     }
   }
+
+  const handleEditorChange = ({ html, text }) => {
+    const newValue = text.replace(/\d/g, "");
+    console.log(newValue);
+    setContent(newValue);
+  };
 
   return (
     <div className={styles.cardQuestionCenter}>
@@ -47,9 +53,10 @@ function CardQuestionCenterDetail({ question, comments }) {
         return <QuestionComment comment={comment} key={id} />;
       })}
       <Form reply onSubmit={onsubmit}>
-        <Form.TextArea
+        <MdEditor
           value={content}
-          onChange={(e) => setContent(e.target.value)}
+          // onChange={(e) => setContent(e.target.value)}
+          onChange={handleEditorChange}
         />
         <Button content="Add Reply" labelPosition="left" icon="edit" primary />
       </Form>

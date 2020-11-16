@@ -10,17 +10,12 @@ import Cookies from "js-cookie";
 function Navbar() {
   const router = useRouter();
   const { user, loading, logout } = useAuth();
-  console.log("L12", user);
   
   const trigger = (
     <span>
       <Image avatar src={"/static/worker.png"} />
     </span>
   );
-  
-  useEffect(() => {
-    console.log("L22", user);
-  }, [user]);
 
   const handleItemClick = (value) => {
     switch (value) {

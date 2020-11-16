@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 import styles from "./CardBlogPage.module.css";
 
@@ -13,7 +14,7 @@ export default function CardBlogRightDetail({post}) {
             <h4 className={styles.title}>Web Developer</h4>
           </div>
           <ul className={styles.social}>
-            <button className={styles.button}>View Profile </button>
+            <button className={styles.button}><Link href={`/profile/${post.author.id}`}><a>View Profile</a></Link> </button>
           </ul>
           <div className={styles.countBlog}>
             <p>4 blogs</p>

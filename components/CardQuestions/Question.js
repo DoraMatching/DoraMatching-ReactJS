@@ -4,7 +4,6 @@ import moment from "moment";
 import Link from "next/link";
 import { Button, Grid, Icon, Popup } from "semantic-ui-react";
 import { useAuth } from "../../contexts/auth";
-import EditQuestion from "../QuestionsPage/EditQuestions";
 
 function Question({ question }) {
   const { user } = useAuth();
@@ -54,7 +53,16 @@ function Question({ question }) {
             >
               <Grid columns="equal">
                 <Grid.Column>
-                  <EditQuestion />
+                  <Link href={`/questions/${id}/edit`}>
+                    <a>
+                      <Button color="grey" animated="vertical">
+                        <Button.Content visible>Edit</Button.Content>
+                        <Button.Content hidden>
+                          <Icon name="edit" />
+                        </Button.Content>
+                      </Button>
+                    </a>
+                  </Link>
                 </Grid.Column>
                 <Grid.Column>
                   <Button color="red" animated="vertical">

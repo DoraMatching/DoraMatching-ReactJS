@@ -4,6 +4,7 @@ import styles from "./CardQuestionPage.module.css";
 import { useRouter } from "next/router";
 import { useAuth } from "../../contexts/auth";
 import Client from "../../services/Client";
+import MdEditor from "../MdEditor";
 
 function CreateQuestion({ questions }) {
   const router = useRouter();
@@ -28,13 +29,19 @@ function CreateQuestion({ questions }) {
       );
     }
   };
+  const handleEditorChange = ({ html, text }) => {
+    const newValue = text.replace(/\d/g, "");
+    setContent(newValue);
+  };
   return (
     <Modal
       size="small"
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<button className={styles.askQuestion}>+ Create Question</button>}
+      trigger={
+        <button className={styles.askQuestion}>+ Create Question</button>
+      }
     >
       <Modal.Header>Create Question</Modal.Header>
       <Modal.Content>
@@ -57,10 +64,7 @@ function CreateQuestion({ questions }) {
           </Form.Field>
           <Form.Field>
             <label>Content</label>
-            <Form.TextArea
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-            />
+            <MdEditor value={content} onChange={handleEditorChange} />
           </Form.Field>
         </Form>
       </Modal.Content>

@@ -8,28 +8,31 @@ const CardProfileSetting = ({ userAcc }) => {
   const { user } = useAuth();
   const allowEdit = user && user.id === userAcc.id;
 
+  const [name, setName] = useState(userAcc.name)
   const [username, setUsername] = useState(userAcc.username)
+  const [email, setEmail] = useState(userAcc.email)
 
-  const renderPanes = () => {
-    const Update = async () => {
-      if (!user)
-        router.push(`/sign-in?forward=${encodeURIComponent(router.asPath)}`);
-      else {
-        await Client(`user/${userAcc.id}`, "PATCH", {
-          username,
-          email,
-          avatarUrl,
-          password,
-          oldPassword,
-        }).then(({ data }) => {
-          console.log("L21", data);
-          setTitle("");
-          setContent("");
-          setTags([""]);
-          router.push("/questions");
-        });
-      }
-    };
+  const Update =  () => {
+    if (!user)
+      router.push(`/sign-in?forward=${encodeURIComponent(router.asPath)}`);
+    else {
+      Client(`user/${userAcc.id}`, "PATCH", {
+        username,
+        email,
+        avatarUrl,
+        password,
+        oldPassword,
+      }).then(({ data }) => {
+        console.log("L21", data);
+        setTitle("");
+        setContent("");
+        setTags([""]);
+        router.push("/questions");
+      });
+    }
+  };
+
+  const renderPanes = async () => {
     return [
       {
         menuItem: "Change Profile",
@@ -39,19 +42,17 @@ const CardProfileSetting = ({ userAcc }) => {
               <Form.Group widths={2}>
                 <Form.Input
                   label="Email"
-                  placeholder="email"
-                  value="abc"
+                  value={email}
                   disabled
                 />
                 <Form.Input
                   label="Username"
-                  placeholder="username"
                   value={username}
                   disabled
                 />
               </Form.Group>
               <Form.Group widths={2}>
-                <Form.Input label="Name" placeholder="name" />
+                <Form.Input label="Name" placeholder="name" value={name} />
                 <Form.Input label="Phone number" placeholder="phone" />
               </Form.Group>
               <Form.Field>

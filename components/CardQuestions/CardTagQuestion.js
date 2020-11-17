@@ -5,7 +5,7 @@ function CardTagQuestion({ tagQuestion }) {
   return (
     <li>
       <button>
-        <Link href="/">
+        <Link href={`/questions/tag-question/${tagQuestion.id}`}>
           <a>{tagQuestion.name}</a>
         </Link>
       </button>

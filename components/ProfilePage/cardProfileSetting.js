@@ -24,8 +24,8 @@ const panes = [
             />
           </Form.Group>
           <Form.Group widths={2}>
-            <Form.Input label="Name" placeholder="name" required />
-            <Form.Input label="Phone number" placeholder="phone" required />
+            <Form.Input label="Name" placeholder="name" />
+            <Form.Input label="Phone number" placeholder="phone" />
           </Form.Group>
           <Form.Field>
             <Button

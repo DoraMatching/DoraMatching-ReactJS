@@ -9,7 +9,8 @@ import styles from "./CardProfile.module.scss";
 
 const CardProfileRight = ({ userAcc }) => {
   const { user } = useAuth();
-  const allowEdit = user && user.id ===userAcc.id;
+  const allowEdit = user && user.id === userAcc.id;
+
   const renderPanes = async () => {
     const { data: currentUser } = await Client(`user/${userAcc.id}`, "GET", {});
     return [
@@ -41,7 +42,9 @@ const CardProfileRight = ({ userAcc }) => {
                       <Link href={`/posts/${post.id}`}>
                         <a>{post.title}</a>
                       </Link>
-                      <List.Description className={styles.ListDescription}>{post.subTitle}</List.Description>
+                      <List.Description className={styles.ListDescription}>
+                        {post.subTitle}
+                      </List.Description>
                     </List.Header>
                   </List.Item>
                 );
@@ -50,7 +53,6 @@ const CardProfileRight = ({ userAcc }) => {
           </Tab.Pane>
         ),
       },
-
       {
         menuItem: "Questions",
         render: () => (

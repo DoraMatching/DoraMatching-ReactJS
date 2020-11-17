@@ -12,7 +12,7 @@ export default class ProfileSettingPage extends Component {
           <CardProfileLeft {...this.props} />
         </div>
         <div style={{ width: "70%", marginLeft: "20px" }}>
-          <CardProfileSetting />
+          <CardProfileSetting {...this.props} />
         </div>
       </div>
       </div>

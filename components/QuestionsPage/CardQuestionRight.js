@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React, { Component } from 'react';
-import styles from './CardQuestionPage.module.css'
+import styles from './CardQuestionPage.module.scss'
 
 class CardQuestionRight extends Component {
   render() {

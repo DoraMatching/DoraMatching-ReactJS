@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import styles from "./CardQuestionPage.module.css";
+import styles from "./CardQuestionPage.module.scss";
 import CardTagQuestion from "../CardQuestions/CardTagQuestion";
 import CreateQuestion from "./CreateQuestion";
 
@@ -14,7 +14,7 @@ function CardQuestionLeft({ tagQuestions }) {
         <span>Tag</span>
       </div>
       <div className={styles.cardQuestionTagDetail}>
-        {tagQuestions.map((tagQuestion, id) => {
+        {tagQuestions.slice(0,10).map((tagQuestion, id) => {
           return <CardTagQuestion tagQuestion={tagQuestion} key={id} />;
         })}
       </div>

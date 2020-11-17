@@ -5,7 +5,7 @@ import { Button, Form, Header } from "semantic-ui-react";
 import { useAuth } from "../../contexts/auth";
 import QuestionComment from "../CardQuestions/QuestionComment";
 import QuestionDetail from "../CardQuestions/QuestionDetail";
-import styles from "./CardQuestionPage.module.css";
+import styles from "./CardQuestionPage.module.scss";
 import Client from "../../services/Client";
 import MdEditor from "../MdEditor";
 

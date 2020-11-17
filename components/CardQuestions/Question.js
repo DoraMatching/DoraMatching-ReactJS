@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Question.module.css";
 import moment from "moment";
 import Link from "next/link";
-import { Button, Dropdown, Grid, Icon, Popup } from "semantic-ui-react";
+import { Button, Dropdown, Icon } from "semantic-ui-react";
 import { useAuth } from "../../contexts/auth";
 import DeleteQuestion from "../QuestionsPage/DeleteQuestion";
 

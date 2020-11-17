@@ -5,8 +5,8 @@
   box-shadow: 0px 1px 15px 0px rgba(51, 51, 51, 0.2);
   display: flex;
   flex-direction: column;
-  height: fit-content;
-  margin: 20px 0 0 0;
+  height: auto;
+  margin: 10px 0 10px 0;
   min-width: 0;
   padding: 20px;
   position: relative;
@@ -50,6 +50,10 @@
 .postTitleContent {
   margin: 0;
   text-transform: uppercase;
+  white-space: nowrap; 
+  width: 100%; 
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .postAuthor {
@@ -70,6 +74,10 @@
   margin-top: 10px;
   margin-bottom: 20px;
   border-radius: 5px;
+}
+
+.postContent{
+  height: 100%;
 }
 
 .postDescript {

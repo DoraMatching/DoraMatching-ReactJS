@@ -12,9 +12,7 @@ function CreateBlog(props) {
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [subTitle, setSubTitle] = useState("");
-  const [featuredImage, setFeaturedImage] = useState(
-    "https://thietbiketnoi.com/wp-content/uploads/2020/01/tong-hop-hinh-nen-background-vector-designer-dep-do-phan-giai-fhd-2k-4k-moi-nhat-2.jpg"
-  );
+  const [featuredImage, setFeaturedImage] = useState("");
   const [content, setContent] = useState("");
   const [tags, setTags] = useState([]);
   const [itemTags, setItemTags] = useState([]);
@@ -44,9 +42,7 @@ function CreateBlog(props) {
         console.log("L32", data);
         setTitle("");
         setSubTitle("");
-        setFeaturedImage(
-          "https://thietbiketnoi.com/wp-content/uploads/2020/01/tong-hop-hinh-nen-background-vector-designer-dep-do-phan-giai-fhd-2k-4k-moi-nhat-2.jpg"
-        );
+        setFeaturedImage("");
         setContent("");
         setTags([]);
         router.push("/posts");
@@ -100,6 +96,7 @@ function CreateBlog(props) {
           <Form.Field>
             <label>Upload Image</label>
             <Form.Input
+              placeholder="Image"
               value={featuredImage}
               onChange={(e) => setFeaturedImage(e.target.value)}
             />

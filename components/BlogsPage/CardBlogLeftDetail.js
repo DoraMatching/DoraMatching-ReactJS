@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React, { Component, useState } from 'react'
 import PostDetail from '../CardPosts/PostDetail';
 import PostComment from '../CardPosts/PostComment';
-import styles from "./CardBlogPage.module.css";
+import styles from "./CardBlogPage.module.scss";
 import { Button, Form, Header } from 'semantic-ui-react';
 import { useAuth } from '../../contexts/auth';
 import { useForm } from 'react-hook-form';

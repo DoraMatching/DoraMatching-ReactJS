@@ -23,8 +23,6 @@ function CreateQuestion({ questions }) {
         name: item
       }}))
   }, [tags]); 
- 
-  console.log("L28", itemTags);
 
   const Create = () => {
     if (!user)
@@ -102,11 +100,6 @@ function CreateQuestion({ questions }) {
                 placeholder="Press enter to add tags"
               />
             </div>
-            {/* <input
-              placeholder="tags"
-              value={tags}
-              onChange={(e) => setTag(e.target.value)}
-            /> */}
           </Form.Field>
           <Form.Field>
             <label>Content</label>

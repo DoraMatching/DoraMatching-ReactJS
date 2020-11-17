@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Post from '../CardPosts/Post';
-import styles from "./CardBlogPage.module.css";
+import styles from "./CardBlogPage.module.scss";
 
 function CardBlogLeft({posts}) {
     return (

@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useAuth } from "../../contexts/auth";
 import MdEditor from "../MdEditor";
 import Client from "../../services/Client";
+import _ from "lodash";
 
 function CreateBlog(props) {
   const router = useRouter();
@@ -53,6 +54,10 @@ function CreateBlog(props) {
   const handleEditorChange = ({ html, text }) => {
     const newValue = text.replace(/\d/g, "");
     setContent(newValue);
+    if (newValue !== "")
+      Client("tag-predict", "POST", { predict: newValue }).then(({ data }) => {
+        setTags(_.uniq([...tags, ...data.results]));
+      });
   };
 
   const removeTags = (indexToRemove) => {
@@ -77,7 +82,7 @@ function CreateBlog(props) {
       <Modal.Header>Create Blog</Modal.Header>
       <Modal.Content>
         <Form>
-          <Form.Field>
+          <Form.Field required>
             <label>Title</label>
             <input
               placeholder="Title"
@@ -85,7 +90,7 @@ function CreateBlog(props) {
               onChange={(e) => setTitle(e.target.value)}
             />
           </Form.Field>
-          <Form.Field>
+          <Form.Field required>
             <label>Sub Title</label>
             <input
               placeholder="Subtitle"
@@ -93,7 +98,7 @@ function CreateBlog(props) {
               onChange={(e) => setSubTitle(e.target.value)}
             />
           </Form.Field>
-          <Form.Field>
+          <Form.Field required>
             <label>Upload Image</label>
             <Form.Input
               placeholder="Image"
@@ -113,7 +118,7 @@ function CreateBlog(props) {
               onChange={this.fileChange}
             /> */}
           </Form.Field>
-          <Form.Field>
+          <Form.Field required>
             <label>Tags</label>
             <div className={styles.tagsInput}>
               <ul className={styles.tags}>
@@ -138,7 +143,7 @@ function CreateBlog(props) {
               />
             </div>
           </Form.Field>
-          <Form.Field>
+          <Form.Field required>
             <label>Content</label>
             <MdEditor value={content} onChange={handleEditorChange} />
           </Form.Field>

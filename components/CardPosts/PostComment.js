@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Post.module.css";
+import styles from "./Post.module.scss";
 import moment from "moment";
 import {Comment } from "semantic-ui-react";
 

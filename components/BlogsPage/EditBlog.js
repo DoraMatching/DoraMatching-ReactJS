@@ -38,7 +38,6 @@ function EditBlog({ post }) {
         isDraft: true,
         tags: itemTags,
       }).then(({ data }) => {
-        console.log("L21", data);
         setTitle("");
         setContent("");
         setTags([""]);

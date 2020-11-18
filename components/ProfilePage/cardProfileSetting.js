@@ -23,7 +23,6 @@ const CardProfileSetting = ({ userAcc }) => {
         password,
         oldPassword,
       }).then(({ data }) => {
-        console.log("L21", data);
         setTitle("");
         setContent("");
         setTags([""]);

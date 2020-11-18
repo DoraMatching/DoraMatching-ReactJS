@@ -2,23 +2,22 @@ import React from "react";
 import styles from "../../../../styles/Home.module.css";
 import axios from "axios";
 import TagQuestionDetailPage from "../../../../containers/TagQuestionDetailPage";
-
-function tagQuestion({ question, tagQuestions }) {
+function tagQuestion({ tagQuestions, tagItem }) {
   return (
     <div className={styles.container}>
-      <TagQuestionDetailPage question={question} tagQuestions={tagQuestions}/>
+      <TagQuestionDetailPage tagQuestions={tagQuestions} tagItem={tagItem} />
     </div>
   );
 }
 
 tagQuestion.getInitialProps = async ({ query: { id } }) => {
-  const [question, tagQuestions] = await Promise.all([
-    axios.get(`https://api.dev.doramatching.tk/question/${id}`),
+  const [tagQuestions] = await Promise.all([
     axios.get("https://api.dev.doramatching.tk/tag-question"),
   ]);
+  console.log('L18', tagQuestions);
   return {
-    question: question.data,
     tagQuestions: tagQuestions.data.items,
+    tagItem : tagQuestions.data.items.filter(item => item.id === id)
   };
 };
 

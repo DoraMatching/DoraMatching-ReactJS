@@ -5,8 +5,7 @@ import { useRouter } from "next/router";
 import { useAuth } from "../../contexts/auth";
 import Client from "../../services/Client";
 import MdEditor from "../MdEditor";
-
-
+import _ from 'lodash';
 
 function CreateQuestion({ questions }) {
   const router = useRouter();
@@ -17,18 +16,23 @@ function CreateQuestion({ questions }) {
   const [tags, setTags] = useState([]);
   const [itemTags, setItemTags] = useState([]);
 
+  console.log("L21", content);
+  console.log("L22", tags);
   useEffect(() => {
-    setItemTags(tags.map((item) => {
-      return {
-        name: item
-      }}))
-  }, [tags]); 
+    setItemTags(
+      tags.map((item) => {
+        return {
+          name: item,
+        };
+      })
+    );
+  }, [tags]);
 
   const Create = () => {
     if (!user)
       router.push(`/sign-in?forward=${encodeURIComponent(router.asPath)}`);
     else {
-      Client("question", "POST", { title, content, tags:itemTags }).then(
+      Client("question", "POST", { title, content, tags: itemTags }).then(
         ({ data }) => {
           setTitle("");
           setContent("");
@@ -42,6 +46,10 @@ function CreateQuestion({ questions }) {
   const handleEditorChange = ({ html, text }) => {
     const newValue = text.replace(/\d/g, "");
     setContent(newValue);
+    if (newValue !== "")
+      Client("tag-predict", "POST", { predict: newValue }).then(({ data }) => {
+        setTags(_.uniq([...tags, ...data.results]));
+      });
   };
 
   const removeTags = (indexToRemove) => {

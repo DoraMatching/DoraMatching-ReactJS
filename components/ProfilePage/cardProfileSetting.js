@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form, Input, Tab } from "semantic-ui-react";
+import { Button, Form, Tab } from "semantic-ui-react";
 import { useAuth } from "../../contexts/auth";
 
 const fileInputRef = React.createRef();
@@ -82,15 +82,15 @@ const CardProfileSetting = ({ userAcc }) => {
             <Form>
               <Form.Field required>
                 <label>Old Password</label>
-                <Input placeholder="old pass" required />
+                <Form.Input placeholder="old pass" required />
               </Form.Field>
               <Form.Field required>
                 <label>New Password</label>
-                <Input placeholder="new pass" required />
+                <Form.Input placeholder="new pass" required />
               </Form.Field>
               <Form.Field required>
                 <label>Repeat New Password</label>
-                <Input placeholder="repeat new pass" required />
+                <Form.Input placeholder="repeat new pass" required />
               </Form.Field>
               <Button color="linkedin" type="submit">
                 Confirm

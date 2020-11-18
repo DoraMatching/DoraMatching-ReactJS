@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useAuth } from "../../contexts/auth";
 import Client from "../../services/Client";
 import MdEditor from "../MdEditor";
-import _ from 'lodash';
+import _ from "lodash";
 
 function CreateQuestion({ questions }) {
   const router = useRouter();
@@ -75,7 +75,7 @@ function CreateQuestion({ questions }) {
       <Modal.Header>Create Question</Modal.Header>
       <Modal.Content>
         <Form>
-          <Form.Field>
+          <Form.Field required>
             <label>Title</label>
             <input
               placeholder="Title"
@@ -83,7 +83,7 @@ function CreateQuestion({ questions }) {
               onChange={(e) => setTitle(e.target.value)}
             />
           </Form.Field>
-          <Form.Field>
+          <Form.Field required>
             <label>Tags</label>
             <div className={styles.tagsInput}>
               <ul className={styles.tags}>
@@ -108,7 +108,7 @@ function CreateQuestion({ questions }) {
               />
             </div>
           </Form.Field>
-          <Form.Field>
+          <Form.Field required>
             <label>Content</label>
             <MdEditor value={content} onChange={handleEditorChange} />
           </Form.Field>

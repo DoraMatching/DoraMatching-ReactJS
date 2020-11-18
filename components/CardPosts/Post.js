@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Post.module.css";
+import styles from "./Post.module.scss";
 import Link from "next/link";
 import { Button, Dropdown, Icon } from "semantic-ui-react";
 import moment from "moment";
@@ -32,7 +32,7 @@ const Post = ({ post }) => {
               <Link href={`/profile/${post.author.id}`}>
                 <a>{post.author.name}</a>
               </Link>
-            </span>{" "}
+            </span>
             <p>published {moment(post.createdAt).format("ll")}</p>
           </span>
         </div>

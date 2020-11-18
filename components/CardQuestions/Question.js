@@ -82,7 +82,13 @@ function Question({ question }) {
 
         {question.tags &&
           question.tags.map((tag, index) => {
-            return <button key={index}> {tag.name} </button>;
+            return (
+              <button key={index} className={styles.buttonLink}>
+                <Link href={`/questions/tag-question/${tag.id}`}>
+                  <a>{tag.name}</a>
+                </Link>
+              </button>
+            );
           })}
       </div>
 

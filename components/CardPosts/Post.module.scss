@@ -112,8 +112,25 @@
   outline: none;
 }
 
-.faTag > span {
-  margin-left: 5px;
+.faTag i{
+  margin-right: 5px;
+}
+
+.faTagButton {
+  border: none;
+  background-color: #F6F6F6;
+  border-radius: 6px;
+  margin-right: 5px;
+  padding: 5px 10px;
+}
+
+.faTagButton a{
+  color: #645F6D !important;
+}
+
+.faTagButton:hover {
+  background-color: #bbbbbb;
+  transition: 0.4s;
 }
 
 .postMeta {

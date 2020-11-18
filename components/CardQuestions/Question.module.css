@@ -73,7 +73,7 @@
 }
 .questionButton > button {
   border: none;
-  background-color: #b7b7b7;
+  background-color: #f6f6f6;
   border-radius: 6px;
   color: #ffffff;
   margin-right: 5px;
@@ -207,13 +207,21 @@
 .questionButtonDetail .dum {
   width: 10%;
 }
-.questionButtonDetail > button {
+.buttonLink {
   border: none;
-  background-color: #b7b7b7;
+  background-color: #F6F6F6;
   border-radius: 6px;
-  color: #ffffff;
   margin-right: 5px;
-  padding: 3px 10px;
+  padding: 5px 12px;
+}
+
+.buttonLink a{
+  color: #645F6D !important;
+}
+
+.buttonLink:hover {
+  background-color: #bbbbbb;
+  transition: 0.4s;
 }
 
 .questionAvaDetail{
@@ -263,4 +271,15 @@
   padding: 10px;
   position: relative;
   width: 100%;
+}
+
+/* CARD TAG QUESTION */
+
+.tagQuestionTag a{
+  color: #3aa6ff !important;
+}
+
+.tagQuestionTag:hover{
+  background-color: #bbbbbb;
+  transition: 0.4s;
 }

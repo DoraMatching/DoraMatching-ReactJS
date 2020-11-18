@@ -46,30 +46,30 @@ const Post = ({ post }) => {
           </figure>
           {user && user.id && post.author.id === user.id ? (
             <>
-            <Dropdown
-              pointing="top right"
-              icon={null}
-              trigger={<i className="fas fa-ellipsis-h"></i>}
-            >
-              <Dropdown.Menu>
-                <Dropdown.Item>
-                  <Link href={`/posts/${id}/edit`}>
-                    <a>
-                      <Button fluid color="grey" animated="vertical">
-                        <Button.Content visible>Edit</Button.Content>
-                        <Button.Content hidden>
-                          <Icon name="edit" />
-                        </Button.Content>
-                      </Button>
-                    </a>
-                  </Link>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <DeleteBlog post={post} />
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </>
+              <Dropdown
+                pointing="top right"
+                icon={null}
+                trigger={<i className="fas fa-ellipsis-h"></i>}
+              >
+                <Dropdown.Menu>
+                  <Dropdown.Item>
+                    <Link href={`/posts/${id}/edit`}>
+                      <a>
+                        <Button fluid color="grey" animated="vertical">
+                          <Button.Content visible>Edit</Button.Content>
+                          <Button.Content hidden>
+                            <Icon name="edit" />
+                          </Button.Content>
+                        </Button>
+                      </a>
+                    </Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <DeleteBlog post={post} />
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </>
           ) : (
             ""
           )}
@@ -94,15 +94,15 @@ const Post = ({ post }) => {
           </button>
           <div className={styles.faTag}>
             <i className="fa fa-tag"></i>
-            <span>
-              {post.tags.map((tag, id) => {
-                return (
+            {post.tags.map((tag, id) => {
+              return (
+                <button className={styles.faTagButton}>
                   <Link href="/" key={id}>
-                    <a > {tag.name}</a>
+                    <a> {tag.name}</a>
                   </Link>
-                );
-              })}
-            </span>
+                </button>
+              );
+            })}
           </div>
         </div>
         <div className={styles.postMeta}>

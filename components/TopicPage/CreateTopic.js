@@ -1,20 +1,28 @@
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { Button, Dropdown, Form, Modal } from "semantic-ui-react";
+import Client from "../../services/Client";
 import styles from "./CardTopicsPage.module.scss";
 
-const options = [
-  { key: "react", text: "React", value: "react" },
-  { key: "css", text: "CSS", value: "css" },
-  { key: "design", text: "Graphic Design", value: "design" },
-  { key: "html", text: "HTML", value: "html" },
-  { key: "ia", text: "Information Architecture", value: "ia" },
-  { key: "javascript", text: "Javascript", value: "javascript" },
-  { key: "python", text: "Python", value: "python" },
-  { key: "rails", text: "Rails", value: "rails" },
-];
-
 function CreateTopic(props) {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [featuredImage, setFeaturedImage] = useState("");
+
+  const Create = () => {
+    Client("topic", "POST", {
+      name,
+      description,
+      featuredImage,
+    }).then(({ data }) => {
+      setName("");
+      setDescription("");
+      setFeaturedImage("");
+      router.push("/topics");
+    });
+  };
   return (
     <Modal
       size="small"
@@ -32,15 +40,27 @@ function CreateTopic(props) {
         <Form>
           <Form.Field>
             <label>Title</label>
-            <input placeholder="Name" />
+            <input
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
           </Form.Field>
           <Form.Field>
             <label>Description</label>
-            <input placeholder="description class" />
+            <input
+              placeholder="description class"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
           </Form.Field>
           <Form.Field>
             <label>Image</label>
-            <input placeholder="feature image" />
+            <input
+              placeholder="feature image"
+              value={featuredImage}
+              onChange={(e) => setFeaturedImage(e.target.value)}
+            />
           </Form.Field>
         </Form>
       </Modal.Content>
@@ -55,7 +75,9 @@ function CreateTopic(props) {
           content="Submit"
           labelPosition="right"
           icon="checkmark"
-          onClick={() => setOpen(false)}
+          onClick={(e) => {
+            Create(e), setOpen(false);
+          }}
           positive
         />
       </Modal.Actions>

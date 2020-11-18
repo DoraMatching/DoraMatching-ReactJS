@@ -12,8 +12,12 @@ function topics({topics}) {
 }
 
 topics.getInitialProps = async () => {
-  const {data} = await axios.get('https://api.dev.doramatching.tk/topics');
-  return { topics: data.items};
-}
+  const [topics, users] = await Promise.all([
+    axios.get("https://api.dev.doramatching.tk/topics"),
+  ]);
+  return {
+    topics: topics.data.items,
+  };
+};
 
 export default topics;

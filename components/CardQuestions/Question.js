@@ -7,6 +7,7 @@ import { useAuth } from "../../contexts/auth";
 import DeleteQuestion from "../QuestionsPage/DeleteQuestion";
 
 function Question({ question }) {
+  console.log("l11", question);
   const { user } = useAuth();
 
   const { id } = question;
@@ -78,9 +79,11 @@ function Question({ question }) {
       </div>
       <div className={styles.questionButton}>
         <div className={styles.dum}></div>
-        {question.tags.map((tag, index) => {
-          return <button key={index}> {tag.name} </button>;
-        })}
+
+        {question.tags &&
+          question.tags.map((tag, index) => {
+            return <button key={index}> {tag.name} </button>;
+          })}
       </div>
 
       <div className="classContent">
@@ -94,29 +97,32 @@ function Question({ question }) {
             </Link>
           </button>
         </div>
-        <div className={styles.questionMeta}>
-          <button
-            className={`${styles.questionMetaCommon} ${styles.questionMetaLike}`}
-          >
-            <i className="far fa-thumbs-up"> </i>
-            <span>25 likes</span>
-          </button>
-          <button
-            className={`${styles.questionMetaCommon} ${styles.questionMetaComment}`}
-          >
-            <i className="far fa-comment"></i>
-            <span>
-              {question.comments.length} comment
-              {question.comments.length > 1 ? "s" : ""}
-            </span>
-          </button>
-          <button
-            className={`${styles.questionMetaCommon} ${styles.questionMetaShare}`}
-          >
-            <i className="far fa-share"></i>
-            <span>25 shares</span>
-          </button>
-        </div>
+
+        {question.comments && (
+          <div className={styles.questionMeta}>
+            <button
+              className={`${styles.questionMetaCommon} ${styles.questionMetaLike}`}
+            >
+              <i className="far fa-thumbs-up"> </i>
+              <span>25 likes</span>
+            </button>
+            <button
+              className={`${styles.questionMetaCommon} ${styles.questionMetaComment}`}
+            >
+              <i className="far fa-comment"></i>
+              <span>
+                {question.comments.length} comment
+                {question.comments.length > 1 ? "s" : ""}
+              </span>
+            </button>
+            <button
+              className={`${styles.questionMetaCommon} ${styles.questionMetaShare}`}
+            >
+              <i className="far fa-share"></i>
+              <span>25 shares</span>
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

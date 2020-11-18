@@ -30,7 +30,6 @@ function CreateQuestion({ questions }) {
     else {
       Client("question", "POST", { title, content, tags:itemTags }).then(
         ({ data }) => {
-          console.log("L21", data);
           setTitle("");
           setContent("");
           setTags([]);

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react';
-import TagQuestionsPage from '../../containers/TagQuestionPage';
-import styles from '../../styles/Home.module.css'
+import TagQuestionsPage from '../../../containers/TagQuestionPage';
+import styles from '../../../styles/Home.module.css'
 
 function tagQuestions({tagQuestions}) {
   return (

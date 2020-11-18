@@ -2,6 +2,8 @@ import Link from "next/link";
 import React from "react";
 
 function CardTagQuestion({ tagQuestion }) {
+  const {id} = tagQuestion
+  console.log('L6', id);
   return (
     <li>
       <button>

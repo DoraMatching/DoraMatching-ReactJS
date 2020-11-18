@@ -3,10 +3,10 @@ import styles from "../../../../styles/Home.module.css";
 import axios from "axios";
 import TagQuestionDetailPage from "../../../../containers/TagQuestionDetailPage";
 
-function tagQuestion({ question, tagQuestions, comments }) {
+function tagQuestion({ question, tagQuestions }) {
   return (
     <div className={styles.container}>
-      <TagQuestionDetailPage question={question} tagQuestions={tagQuestions} comments={comments} />
+      <TagQuestionDetailPage question={question} tagQuestions={tagQuestions}/>
     </div>
   );
 }
@@ -19,7 +19,6 @@ tagQuestion.getInitialProps = async ({ query: { id } }) => {
   return {
     question: question.data,
     tagQuestions: tagQuestions.data.items,
-    comments: question.data.comments
   };
 };
 

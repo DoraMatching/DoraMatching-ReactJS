@@ -73,7 +73,7 @@
 }
 .questionButton > button {
   border: none;
-  background-color: #f6f6f6;
+  background-color: #eeeeee;
   border-radius: 6px;
   color: #ffffff;
   margin-right: 5px;
@@ -209,7 +209,7 @@
 }
 .buttonLink {
   border: none;
-  background-color: #F6F6F6;
+  background-color: #eeeeee;
   border-radius: 6px;
   margin-right: 5px;
   padding: 5px 12px;

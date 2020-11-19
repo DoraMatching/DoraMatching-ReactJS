@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { Button, Form, FormField } from "semantic-ui-react";
+import { Button, Form, FormField, Message } from "semantic-ui-react";
 import styles from "./LoginPage.module.css";
 import Link from "next/link";
 import axios from "axios";
@@ -15,17 +15,20 @@ function LoginPage() {
   const [loginError, setLoginError] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
 
   const { register, handleSubmit, errors } = useForm();
   const { login, logout } = useAuth();
 
   async function onSubmit(e) {
     try {
-       await login(username, password);
-       router.push(router.query['forward'] || '/');
-    }catch(e) {
+      await login(username, password);
+      router.push(router.query["forward"] || "/");
+    } catch (e) {
+      setError(true)
+      console.log("in catch");
       console.error(e);
-      router.push('/sign-in')
+      router.push("/sign-in");
     }
   }
 
@@ -33,7 +36,7 @@ function LoginPage() {
     <div className={styles.loginContainer}>
       <div className={styles.loginRight}>
         <h2 style={{ textAlign: "center" }}>SIGN IN</h2>
-        <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form error={error} onSubmit={handleSubmit(onSubmit)}>
           <FormField>
             <label>Email or Username</label>
             <input
@@ -52,6 +55,7 @@ function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </FormField>
+          {error && <Message negative error content="Invalid username or password" />}
           <div className={styles.loginButton}>
             <Button
               type="submit"

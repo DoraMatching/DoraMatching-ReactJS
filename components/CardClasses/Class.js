@@ -24,7 +24,7 @@ class Class extends Component {
             <i className="fas fa-graduation-cap"></i>
             <p>30 trainees</p>
           </div>
-          <i className="fas fa-heart"></i>
+          <i className="far fa-heart"></i>
           <button>Join now</button>
         </div>
       </div>

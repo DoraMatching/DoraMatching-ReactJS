@@ -8,6 +8,7 @@ import { Loader } from "semantic-ui-react";
 const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
+  const router = useRouter()
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -33,8 +34,8 @@ export const AuthProvider = ({ children }) => {
         .post("/login", { username, password })
         .then((res) => res)
         .catch((err) => err.response.data);
-        console.log("res", res);
-        if (res.status !== 201) throw res.message;
+      console.log("res", res);
+      if (res.status !== 201) throw res.message;
       const { token, ...temp } = res.data;
       if (token) {
         console.log("Got token");
@@ -51,12 +52,17 @@ export const AuthProvider = ({ children }) => {
     }
   };
   const signUp = async (email, username, password) => {
-    const { data } = await api.post("/register", {
-      email,
-      username,
-      password,
-    });
-    const { token, ...temp } = data;
+    const res = await api
+      .post("/register", {
+        email,
+        username,
+        password,
+      })
+      .then((res) => res)
+      .catch((err) => err.response.data);
+    console.log("res", res);
+    if (res.status !== 201) throw res.message;
+    const { token, ...temp } = res.data;
     if (token) {
       console.log("Got token");
       Cookies.set("token", token, { expires: 3000 });
@@ -73,6 +79,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("user");
     setUser(null);
     delete api.defaults.headers.Authorization;
+    router.push("/");
   };
   return (
     <AuthContext.Provider

@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../../../styles/Home.module.css";
 import axios from "axios";
 import BlogsEditPage from "../../../containers/BlogsEditPage";
+import Client from "../../../services/Client";
 
 function editBlog({ post, tagPosts }) {
   return (
@@ -13,8 +14,8 @@ function editBlog({ post, tagPosts }) {
 
 editBlog.getInitialProps = async ({ query: { id } }) => {
   const [post, tagPosts] = await Promise.all([
-    axios.get(`https://api.dev.doramatching.tk/post/${id}`),
-    axios.get("https://api.dev.doramatching.tk/tag-post"),
+    Client(`post/${id}`),
+    Client("tag-post"),
   ]);
   return {
     post: post.data,

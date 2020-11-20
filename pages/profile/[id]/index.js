@@ -1,10 +1,9 @@
-import axios from 'axios';
-import React from 'react';
-import ProfilePage from '../../../containers/ProfilePage';
-import styles from '../../../styles/Home.module.css'
+import React from "react";
+import ProfilePage from "../../../containers/ProfilePage";
+import Client from "../../../services/Client";
+import styles from "../../../styles/Home.module.css";
 
-function profile({userAcc}) {
-  
+function profile({ userAcc }) {
   return (
     <div className={styles.loginContainer}>
       <ProfilePage userAcc={userAcc} />
@@ -13,14 +12,10 @@ function profile({userAcc}) {
 }
 
 profile.getInitialProps = async ({ query: { id } }) => {
-  const [userAcc] = await Promise.all([
-    axios.get(`https://api.dev.doramatching.tk/user/${id}`)
-  ]);
+  const { data } = await Client(`user/${id}`);
   return {
-    userAcc: userAcc.data,
+    userAcc: data,
   };
 };
-
-
 
 export default profile;

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import TagQuestionsPage from '../../../containers/TagQuestionPage';
+import Client from '../../../services/Client';
 import styles from '../../../styles/Home.module.css'
 
 function tagQuestions({tagQuestions}) {
@@ -12,7 +13,7 @@ function tagQuestions({tagQuestions}) {
 }
 
 tagQuestions.getInitialProps = async () => {
-  const {data} = await axios.get('https://api.dev.doramatching.tk/tag-question')
+  const {data} = await Client('tag-question')
   return { tagQuestions: data.items };
 }
 

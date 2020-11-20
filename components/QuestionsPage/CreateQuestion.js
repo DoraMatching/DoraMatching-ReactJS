@@ -112,25 +112,23 @@ function CreateQuestion({ questions }) {
             <label>Content</label>
             <MdEditor value={content} onChange={handleEditorChange} />
           </Form.Field>
+          <Button
+            color="youtube"
+            content="Cancel"
+            icon="close"
+            onClick={() => setOpen(false)}
+          />
+          <Button
+            content="Publish"
+            labelPosition="left"
+            icon="checkmark"
+            onClick={(e) => {
+              Create(e), setOpen(false);
+            }}
+            positive
+          />
         </Form>
       </Modal.Content>
-      <Modal.Actions>
-        <Button
-          color="youtube"
-          content="Cancel"
-          icon="close"
-          onClick={() => setOpen(false)}
-        />
-        <Button
-          content="Publish"
-          labelPosition="left"
-          icon="checkmark"
-          onClick={(e) => {
-            Create(e), setOpen(false);
-          }}
-          positive
-        />
-      </Modal.Actions>
     </Modal>
   );
 }

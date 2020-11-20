@@ -1,26 +1,24 @@
-import React, { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Form, FormField, Message } from "semantic-ui-react";
-import styles from "./LoginPage.module.css";
-import Link from "next/link";
-import axios from "axios";
-import cookie from "js-cookie";
-import LoginGithub from "./LoginGithub";
 import { useAuth } from "../../contexts/auth";
+import LoginGithub from "./LoginGithub";
+import styles from "./LoginPage.module.css";
 
 function LoginPage() {
   const router = useRouter();
 
-  const [loginError, setLoginError] = useState("");
+  const [loginError] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
 
-  const { register, handleSubmit, errors } = useForm();
-  const { login, logout } = useAuth();
+  const { handleSubmit } = useForm();
+  const { login } = useAuth();
 
-  async function onSubmit(e) {
+  async function onSubmit() {
     try {
       await login(username, password);
       router.push(router.query["forward"] || "/");
@@ -60,7 +58,6 @@ function LoginPage() {
             <Button
               type="submit"
               color={"linkedin"}
-              disabled={!username || !password}
             >
               LOGIN
             </Button>

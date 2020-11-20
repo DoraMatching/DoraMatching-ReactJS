@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react'
 import TopicsPage from '../containers/TopicsPage';
+import Client from '../services/Client';
 import styles from '../styles/Home.module.css'
 
 function topics({topics}) {
@@ -12,8 +13,8 @@ function topics({topics}) {
 }
 
 topics.getInitialProps = async () => {
-  const [topics, users] = await Promise.all([
-    axios.get("https://api.dev.doramatching.tk/topics"),
+  const [topics] = await Promise.all([
+    Client("topics"),
   ]);
   return {
     topics: topics.data.items,

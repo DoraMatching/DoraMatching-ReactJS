@@ -1,6 +1,6 @@
-import axios from 'axios';
 import React from 'react';
 import ProfileSettingPage from '../../../containers/ProfileSettingPage';
+import Client from '../../../services/Client';
 import styles from '../../../styles/Home.module.css'
 
 function settings({userAcc}) {
@@ -11,11 +11,9 @@ function settings({userAcc}) {
   );
 }
 settings.getInitialProps = async ({ query: { id } }) => {
-  const [userAcc] = await Promise.all([
-    axios.get(`https://api.dev.doramatching.tk/user/${id}`)
-  ]);
+  const {data} = await Client(`user/${id}`)
   return {
-    userAcc: userAcc.data,
+    userAcc: data,
   };
 };
 

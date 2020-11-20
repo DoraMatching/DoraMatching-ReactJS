@@ -1,7 +1,8 @@
-import React from 'react';
-import BlogsPageDetail from '../../../containers/BlogsPageDetail';
+import React from "react";
+import BlogsPageDetail from "../../../containers/BlogsPageDetail";
 import styles from "../../../styles/Home.module.css";
-import axios from 'axios';
+import axios from "axios";
+import Client from "../../../services/Client";
 
 function blog({ post, tagPosts, comments }) {
   return (
@@ -13,13 +14,13 @@ function blog({ post, tagPosts, comments }) {
 
 blog.getInitialProps = async ({ query: { id } }) => {
   const [post, tagPosts] = await Promise.all([
-    axios.get(`https://api.dev.doramatching.tk/post/${id}`),
-    axios.get("https://api.dev.doramatching.tk/tag-post"),
+    Client(`post/${id}`),
+    Client("tag-post"),
   ]);
   return {
     post: post.data,
     tagPosts: tagPosts.data.items,
-    comments: post.data.comments
+    comments: post.data.comments,
   };
 };
 

@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../../../styles/Home.module.css";
 import axios from "axios";
 import QuestionsEditPage from "../../../containers/QuestionEditPage";
+import Client from "../../../services/Client";
 
 function editQuestion({ question, tagQuestions }) {
   return (
@@ -13,8 +14,8 @@ function editQuestion({ question, tagQuestions }) {
 
 editQuestion.getInitialProps = async ({ query: { id } }) => {
   const [question, tagQuestions] = await Promise.all([
-    axios.get(`https://api.dev.doramatching.tk/question/${id}`),
-    axios.get("https://api.dev.doramatching.tk/tag-question"),
+    Client(`question/${id}`),
+    Client("tag-question"),
   ]);
   return {
     question: question.data,

@@ -6,6 +6,7 @@ import TopTrainer from "../components/TopTrainers/TopTrainer";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
 import Schedule from "../components/Schedule/Schedule";
+import Client from "../services/Client";
 
 function Home({home}) {
   const renderComponents = () => {
@@ -43,7 +44,7 @@ function Home({home}) {
 }
 
 Home.getInitialProps = async () => {
-  const { data } = await axios.get("https://api.dev.doramatching.tk/home");
+  const { data } = await Client("home");
   return { home: data.items };
 
 };

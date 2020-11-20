@@ -15,7 +15,7 @@ const CardProfileRight = ({ userAcc }) => {
     const { data: currentUser } = await Client(`user/${userAcc.id}`, "GET", {});
     return [
       {
-        menuItem: "Blogs",
+        menuItem: { key: 'blogs', icon: 'blogger', content: 'Blogs' },
         render: () => (
           <Tab.Pane attached={false}>
             <List divided verticalAlign="middle">
@@ -54,7 +54,7 @@ const CardProfileRight = ({ userAcc }) => {
         ),
       },
       {
-        menuItem: "Questions",
+        menuItem: { key: 'question', icon: 'question circle', content: 'Questions' },
         render: () => (
           <Tab.Pane attached={false}>
             <List divided verticalAlign="middle">
@@ -90,7 +90,7 @@ const CardProfileRight = ({ userAcc }) => {
         ),
       },
       {
-        menuItem: "Classes",
+        menuItem: { key: 'classes', icon: 'student', content: 'Classes' },
         render: () => (
           <Tab.Pane attached={false}>
             <Class />
@@ -98,7 +98,7 @@ const CardProfileRight = ({ userAcc }) => {
         ),
       },
       {
-        menuItem: "Schedule",
+        menuItem: { key: 'schedule', icon: 'calendar outline', content: 'Schedule' },
         render: () => (
           <Tab.Pane attached={false}>
             <Schedule />

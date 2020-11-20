@@ -50,10 +50,6 @@
 .postTitleContent {
   margin: 0;
   text-transform: uppercase;
-  white-space: nowrap;
-  width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .postAuthor {
@@ -82,9 +78,9 @@
 
 .postDescript {
   margin-top: 10px !important;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  // overflow: hidden;
+  // text-overflow: ellipsis;
+  // white-space: nowrap;
 }
 
 .postMore {
@@ -243,7 +239,7 @@
         min-width: 90px;
         border-radius: 0 10px 0 90%;
         padding: 10px 0 25px;
-        background-color: #00bda6;
+        background-color: #f6bd60;
         .month {
           font-size: 16px;
           line-height: 1.5;

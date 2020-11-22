@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import { Icon } from "semantic-ui-react";
 import styles from "./Class.module.scss";
 function Classe({ classe }) {
-  console.log("L6", classe);
   return (
     <div className={styles.classCard}>
       <div className={styles.courseContentWrapper}>

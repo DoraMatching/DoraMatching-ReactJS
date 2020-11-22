@@ -23,7 +23,7 @@ export default function CardClassesLeftOfTopic({classes}) {
       ) : (
         ""
       )}
-      <h3 style={{margin:  '20px 0px'}}>Topic: {classes[0].topic.name} </h3>
+      <h3 style={{margin:  '20px 0px'}}>Topic: </h3>
       <div className={styles.cardAllClass}>
         {classes.map((classe, id) => {
           return <Classe classe={classe} key={id} />

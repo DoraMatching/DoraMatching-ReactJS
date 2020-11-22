@@ -12,8 +12,8 @@ function classes({classes}) {
   )
 }
 
-classes.getInitialProps = async () => {
-  const {data} = await Client("classes")
+classes.getInitialProps = async ({ query: { id } }) => {
+  const {data} = await Client(`topic/${id}/classes`)
   return {classes: data.items} 
 }
 

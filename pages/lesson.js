@@ -3,7 +3,7 @@ import LessonPage from '../containers/LessonPage';
 
 import styles from '../styles/Home.module.css'
 
-function topics() {
+function lessons() {
   return (
     <div className={styles.container}>
       <LessonPage />
@@ -11,4 +11,4 @@ function topics() {
   )
 }
 
-export default topics;
+export default lessons;

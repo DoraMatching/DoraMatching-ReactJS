@@ -20,7 +20,7 @@ function Topic({ topic }) {
         <h1>{topic.name}</h1>
         <h2>{topic.author.user.name}</h2>
         <p>{topic.description}</p>
-        <Link href={`/topics/${topic.id}/classe`}>
+        <Link href={`/topics/${topic.id}/classes`}>
           <Button className={styles.topicReadmore}>
             <a>See all</a>
           </Button>

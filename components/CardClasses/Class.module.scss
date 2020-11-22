@@ -6,20 +6,8 @@
   position: relative;
   width: 100%;
   .courseContent:hover{
-    background: #ffffff;
     border-bottom-left-radius: 9px;
     border-bottom-right-radius: 9px;  
-  }
-  .courseContent:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: -1;
-    height: calc(100% - 20px);
-    background: transparent;
-    transition: 0.4s;
   }
   .courseContentWrapper {
     margin-top: 10px;
@@ -103,6 +91,9 @@
       .courseInstructor {
         a {
           color: #efefef;
+          &:hover{
+            color: #d4d4d4;
+          }
         }
       }
     }
@@ -112,6 +103,9 @@
       font-weight: 700;
       color: #ffffff;
       transition: 0.3s;
+      &:hover{
+        color: #228099;
+      }
     }
 
     .courseDivider {
@@ -146,6 +140,20 @@
       &:hover {
         cursor: pointer;
       }
+    }
+  }
+  .courseContent::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: calc(100% - 20px);
+    background: transparent;
+    transition: 0.4s;
+    &:hover{
+      background: #ffffff;
     }
   }
 }

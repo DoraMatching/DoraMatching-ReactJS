@@ -13,7 +13,7 @@ function CardTrainersRight({ users }) {
     Client("trainer/register", "POST", { trainerProfile })
       .then(({ data }) => {
         setTrainerProfile("");
-        router.push("/trainer");
+        router.push("/trainers");
       })
       .catch((error) => {
         console.log(error);
@@ -40,17 +40,17 @@ function CardTrainersRight({ users }) {
               <label>Link Your CV</label>
               <input
                 required
-                value=""
-                // onChange={(e) => setTitle(e.target.value)}
+                value={trainerProfile}
+                onChange={(e) => setTrainerProfile(e.target.value)}
               />
             </Form.Field>
             <Button
               content="Confirm"
               labelPosition="left"
               icon="checkmark"
-              // onClick={(e) => {
-              //   Create(e), setOpen(false);
-              // }}
+              onClick={(e) => {
+                Confirm(e), setOpen(false);
+              }}
               positive
             />
           </Form>

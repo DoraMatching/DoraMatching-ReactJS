@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Class from "../components/CardClasses/Class";
+import Classe from "../components/CardClasses/Class";
 import Post from "../components/CardPosts/Post";
 import Question from "../components/CardQuestions/Question";
 import TopTrainer from "../components/TopTrainers/TopTrainer";
@@ -33,10 +33,7 @@ function Home({home}) {
       <div style={{ width: "100%", paddingRight: "20px", marginTop: "20px" }}>
         <Schedule />
         <div style={{ marginTop: "20px" }}>
-          <Class />
-          <Class />
-          <Class />
-          <Class />
+          <Classe />
         </div>
       </div>
     </div>

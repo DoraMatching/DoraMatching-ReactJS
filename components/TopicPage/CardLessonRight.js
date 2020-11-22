@@ -35,7 +35,7 @@ function CardLessonRight(props) {
           className={styles.buttonPurchaseCourse}
           title="Buy this course"
         >
-          Join Class
+          Join Now
         </button>
       </div>
     </div>

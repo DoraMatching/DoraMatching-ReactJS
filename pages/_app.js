@@ -1,18 +1,20 @@
-import React from "react";
-
-import '@fullcalendar/common/main.css' // @fullcalendar/react imports @fullcalendar/common
-import '@fullcalendar/daygrid/main.css' // @fullcalendar/timegrid imports @fullcalendar/daygrid
-import '@fullcalendar/timegrid/main.css' // @fullcalendar/timegrid is a direct import
-
-import 'react-markdown-editor-lite/lib/index.css';
-
+import '@fullcalendar/common/main.css'; // @fullcalendar/react imports @fullcalendar/common
+import '@fullcalendar/daygrid/main.css'; // @fullcalendar/timegrid imports @fullcalendar/daygrid
+import '@fullcalendar/timegrid/main.css'; // @fullcalendar/timegrid is a direct import
 import 'draft-js/dist/Draft.css';
-
-import Layout from "../components/Layout";
-import "../styles/globals.css";
+import React from "react";
+import "react-datepicker/dist/react-datepicker.css";
+import 'react-markdown-editor-lite/lib/index.css';
 import "semantic-ui-css/semantic.min.css";
+import Layout from "../components/Layout";
+import { AuthProvider } from "../contexts/auth";
+import "../styles/globals.css";
 
-import { AuthProvider, ProtectRoute } from "../contexts/auth";
+
+
+
+
+
 
 
 function MyApp({ Component, pageProps }) {

@@ -1,23 +1,67 @@
-import React, {useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Dropdown, Form, Modal } from "semantic-ui-react";
+import Client from "../../services/Client";
+import DatePickerPage from "../DatePicker";
 import styles from "./CardTopicsPage.module.scss";
 
-const options = [
-  { key: 'react', text: 'React', value: 'react' },
-  { key: 'css', text: 'CSS', value: 'css' },
-  { key: 'design', text: 'Graphic Design', value: 'design' },
-  { key: 'html', text: 'HTML', value: 'html' },
-  { key: 'ia', text: 'Information Architecture', value: 'ia' },
-  { key: 'javascript', text: 'Javascript', value: 'javascript' },
-  { key: 'python', text: 'Python', value: 'python' },
-  { key: 'rails', text: 'Rails', value: 'rails' },
-]
+const options = [];
 
 function CreateClass(props) {
   const [open, setOpen] = useState(false);
+
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [featuredImage, setFeaturedImage] = useState("");
+  const [duration, setDuration] = useState(0);
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
+
+  const [options, setOptions] = useState([]);
+
+  const GetTopic = async () => {
+    let { data } = await Client("topics", "GET");
+    data = data.items;
+    console.log("L22", data);
+    return data.map((e) => {
+      return {
+        key: e.id,
+        text: e.name,
+        value: e.name,
+      };
+    });
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setOptions(await GetTopic());
+    };
+    fetchData();
+  }, []);
+
+  const Create = () => {
+    if (!user)
+      router.push(`/sign-in?forward=${encodeURIComponent(router.asPath)}`);
+    else {
+      Client("classe", "POST", {
+        name,
+        description,
+        featuredImage,
+        duration,
+        startTime,
+        endTime,
+      }).then(({ data }) => {
+        setName("");
+        setDescription("");
+        setFeaturedImage("");
+        setDuration(0);
+        router.push("/classes");
+      });
+    }
+  };
+
   return (
     <Modal
-      size='small'
+      size="small"
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
@@ -28,11 +72,11 @@ function CreateClass(props) {
       <Modal.Header>Create Class</Modal.Header>
       <Modal.Content>
         <Form>
+          <Form.Field>
+            <label>Title</label>
+            <input placeholder="Name" value={name} onChange={e => setName(e.target.value)} />
+          </Form.Field>
           <Form.Group widths="equal">
-            <Form.Field>
-              <label>Title</label>
-              <input placeholder="Name" />
-            </Form.Field>
             <Form.Field>
               <label>Topic</label>
               <Dropdown
@@ -41,6 +85,16 @@ function CreateClass(props) {
                 search
                 selection
                 options={options}
+                onChange={e => setOptions(e.target.value)}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Sessions</label>
+              <input
+                placeholder="number of sessions"
+                value={duration}
+                type="number"
+                onChange={e => setDuration(e.target.value)}
               />
             </Form.Field>
           </Form.Group>
@@ -51,11 +105,11 @@ function CreateClass(props) {
           <Form.Group widths="equal">
             <Form.Field>
               <label>Description</label>
-              <input placeholder="description class" />
+              <input placeholder="description class" value={description} onChange={e => setDescription(e.target.value)} />
             </Form.Field>
             <Form.Field>
               <label>Image</label>
-              <input placeholder="feature image" />
+              <input placeholder="feature image" value={featuredImage} onChange={e => setFeaturedImage(e.target.value)} />
             </Form.Field>
           </Form.Group>
         </Form>
@@ -65,11 +119,11 @@ function CreateClass(props) {
           <Form.Group widths="equal">
             <Form.Field>
               <label>Time Start</label>
-              <input type="date" />
+              <DatePickerPage />
             </Form.Field>
             <Form.Field>
               <label>Time End</label>
-              <input type="date" />
+              <DatePickerPage />
             </Form.Field>
           </Form.Group>
         </Form>

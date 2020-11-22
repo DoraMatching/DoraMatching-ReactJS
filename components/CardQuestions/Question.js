@@ -7,7 +7,6 @@ import { useAuth } from "../../contexts/auth";
 import DeleteQuestion from "../QuestionsPage/DeleteQuestion";
 
 function Question({ question }) {
-  console.log("l11", question);
   const { user } = useAuth();
 
   const { id } = question;

@@ -16,17 +16,17 @@ export default function CardClassesLeft({classes}) {
         <CardTopicsJoined />
       </div>
       {user && user.roles.indexOf("TRAINER") !== -1 ? (
-        <>
+        <div style={{margin: '20px 0'}}>
           <CreateTopic />
           <CreateClass />
-        </>
+        </div>
       ) : (
         ""
       )}
-      <h3>All Classes</h3>
+      <h3 style={{margin:  '20px 0px'}}>All Classes</h3>
       <div className={styles.cardAllClass}>
         {classes.map((classe, id) => {
-          return <Classe classes={classe} key={id} />
+          return <Classe classe={classe} key={id} />
         })}
       </div>
     </div>

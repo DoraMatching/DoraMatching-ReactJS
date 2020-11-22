@@ -1,12 +1,14 @@
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { Button, Dropdown, Form, Modal } from "semantic-ui-react";
+import { useAuth } from "../../contexts/auth";
 import Client from "../../services/Client";
 import DatePickerPage from "../DatePicker";
 import styles from "./CardTopicsPage.module.scss";
 
-const options = [];
-
 function CreateClass(props) {
+  const router = useRouter();
+  const { user } = useAuth();
   const [open, setOpen] = useState(false);
 
   const [name, setName] = useState("");
@@ -17,6 +19,7 @@ function CreateClass(props) {
   const [endTime, setEndTime] = useState("");
 
   const [options, setOptions] = useState([]);
+  const [topic, setTopic] = useState("");
 
   const GetTopic = async () => {
     let { data } = await Client("topics", "GET");
@@ -26,7 +29,7 @@ function CreateClass(props) {
       return {
         key: e.id,
         text: e.name,
-        value: e.name,
+        value: e.id
       };
     });
   };
@@ -44,17 +47,25 @@ function CreateClass(props) {
     else {
       Client("classe", "POST", {
         name,
+        topic: {
+          id: topic
+        },
         description,
         featuredImage,
-        duration,
-        startTime,
-        endTime,
+        duration: Number(duration),
+        startTime: new Date(startTime).toISOString(),
+        endTime: new Date(endTime).toISOString(),
       }).then(({ data }) => {
+        console.log("kakaa", data);
         setName("");
         setDescription("");
         setFeaturedImage("");
         setDuration(0);
-        router.push("/classes");
+        setStartTime("");
+        setEndTime("");
+        router.push("/topics");
+      }).catch((error) => {
+        console.log('ERR', error);
       });
     }
   };
@@ -74,7 +85,11 @@ function CreateClass(props) {
         <Form>
           <Form.Field>
             <label>Title</label>
-            <input placeholder="Name" value={name} onChange={e => setName(e.target.value)} />
+            <input
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
           </Form.Field>
           <Form.Group widths="equal">
             <Form.Field>
@@ -85,7 +100,7 @@ function CreateClass(props) {
                 search
                 selection
                 options={options}
-                onChange={e => setOptions(e.target.value)}
+                onChange={(e, {value}) => {console.log(value);setTopic(value)}}
               />
             </Form.Field>
             <Form.Field>
@@ -94,55 +109,63 @@ function CreateClass(props) {
                 placeholder="number of sessions"
                 value={duration}
                 type="number"
-                onChange={e => setDuration(e.target.value)}
+                onChange={(e) => setDuration(e.target.value)}
               />
             </Form.Field>
           </Form.Group>
-        </Form>
-      </Modal.Content>
-      <Modal.Content>
-        <Form>
           <Form.Group widths="equal">
             <Form.Field>
               <label>Description</label>
-              <input placeholder="description class" value={description} onChange={e => setDescription(e.target.value)} />
+              <input
+                placeholder="description class"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
             </Form.Field>
             <Form.Field>
               <label>Image</label>
-              <input placeholder="feature image" value={featuredImage} onChange={e => setFeaturedImage(e.target.value)} />
+              <input
+                placeholder="feature image"
+                value={featuredImage}
+                onChange={(e) => setFeaturedImage(e.target.value)}
+              />
             </Form.Field>
           </Form.Group>
-        </Form>
-      </Modal.Content>
-      <Modal.Content>
-        <Form>
           <Form.Group widths="equal">
             <Form.Field>
               <label>Time Start</label>
-              <DatePickerPage />
+              <DatePickerPage
+                value={startTime}
+                onChange={(date) => setStartTime(date)}
+              />
             </Form.Field>
             <Form.Field>
               <label>Time End</label>
-              <DatePickerPage />
+              <DatePickerPage
+                value={endTime}
+                onChange={(date) => setEndTime(date)}
+              />
             </Form.Field>
           </Form.Group>
+          <Modal.Actions>
+            <Button
+              color="youtube"
+              content="Cancel"
+              icon="close"
+              onClick={() => setOpen(false)}
+            />
+            <Button
+              content="Submit"
+              labelPosition="right"
+              icon="checkmark"
+              onClick={(e) => {
+                Create(e), setOpen(false);
+              }}
+              positive
+            />
+          </Modal.Actions>
         </Form>
       </Modal.Content>
-      <Modal.Actions>
-        <Button
-          color="youtube"
-          content="Cancel"
-          icon="close"
-          onClick={() => setOpen(false)}
-        />
-        <Button
-          content="Submit"
-          labelPosition="right"
-          icon="checkmark"
-          onClick={() => setOpen(false)}
-          positive
-        />
-      </Modal.Actions>
     </Modal>
   );
 }

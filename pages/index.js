@@ -8,7 +8,7 @@ import axios from "axios";
 import Schedule from "../components/Schedule/Schedule";
 import Client from "../services/Client";
 
-function Home({home}) {
+function Home({home, classes}) {
   const renderComponents = () => {
     return home.map((item, id) => {
       switch (item.type) {
@@ -33,7 +33,9 @@ function Home({home}) {
       <div style={{ width: "100%", paddingRight: "20px", marginTop: "20px" }}>
         <Schedule />
         <div style={{ marginTop: "20px" }}>
-          <Classe />
+          {classes.map((classe, id) => {
+            return <Classe classe={classe} key={id} />
+          })}
         </div>
       </div>
     </div>
@@ -41,8 +43,14 @@ function Home({home}) {
 }
 
 Home.getInitialProps = async () => {
-  const { data } = await Client("home");
-  return { home: data.items };
+  const [home, classes] = await Promise.all([
+    Client("home"),
+    Client(`classes?page=1&limit=5&order=DESC`)
+  ]);
+  return {
+    home: home.data.items,
+    classes: classes.data.items,
+  };
 
 };
 

@@ -1,15 +1,14 @@
-import Link from "next/link";
 import React from "react";
 import { useAuth } from "../../contexts/auth";
-import Topic from "../CardTopics/Topic";
+import Classe from "../CardClasses/Class";
 import CardTopicsJoined from "./CardTopicsJoined";
 import styles from "./CardTopicsPage.module.scss";
 import CreateClass from "./CreateClass";
 import CreateTopic from "./CreateTopic";
 
-export default function CardTopicsLeft({ topics }) {
+export default function CardClassesLeftOfTopic({classes}) {
   const { user } = useAuth();
-  console.log('L12', user);
+
   return (
     <div className={styles.cardTopicsLeft}>
       <h3>Classes Management</h3>
@@ -24,11 +23,10 @@ export default function CardTopicsLeft({ topics }) {
       ) : (
         ""
       )}
-
-      <h3 style={{margin:  '20px 0px'}}>All Topics</h3>
-      <div className={styles.cardAllTopics}>
-        {topics.map((topic, id) => {
-          return <Topic topic={topic} key={id} />;
+      <h3 style={{margin:  '20px 0px'}}>Topic: {classes[0].topic.name} </h3>
+      <div className={styles.cardAllClass}>
+        {classes.map((classe, id) => {
+          return <Classe classe={classe} key={id} />
         })}
       </div>
     </div>

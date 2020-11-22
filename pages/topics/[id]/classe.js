@@ -1,11 +1,13 @@
 import React from 'react'
-import styles from '../styles/Home.module.css'
-import ClassesPage from '../containers/ClassesPage'
-import Client from '../services/Client'
+import ClassesOfTopicPage from '../../../containers/ClassesofTopicPage';
+import Client from '../../../services/Client';
+
+import styles from '../../../styles/Home.module.css'
+
 function classes({classes}) {
   return (
     <div className={styles.container}>
-      <ClassesPage classes={classes} />
+      <ClassesOfTopicPage classes={classes} />
     </div>
   )
 }

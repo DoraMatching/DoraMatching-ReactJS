@@ -44,7 +44,7 @@ function Navbar() {
       key: "users",
       text: (
         <span>
-          Signed in as <strong>{user ? user.name : ""}</strong>
+          Signed in as <strong>{user ? user.username : ""}</strong>
         </span>
       ),
       disabled: true,
@@ -132,6 +132,11 @@ function Navbar() {
           <li className={router.pathname == "/topics" ? "actived" : ""}>
             <Link href="/topics">
               <a className="navLinks">Topics</a>
+            </Link>
+          </li>
+          <li className={router.pathname == "/classes" ? "actived" : ""}>
+            <Link href="/classes">
+              <a className="navLinks">Classes</a>
             </Link>
           </li>
           <li className={router.pathname == "/questions" ? "actived" : ""}>

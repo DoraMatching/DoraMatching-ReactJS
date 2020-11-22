@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React from 'react'
-import TopicsPage from '../containers/TopicsPage';
-import Client from '../services/Client';
-import styles from '../styles/Home.module.css'
+import TopicsPage from '../../containers/TopicsPage';
+import Client from '../../services/Client';
+import styles from '../../styles/Home.module.css'
 
 function topics({topics}) {
   return (

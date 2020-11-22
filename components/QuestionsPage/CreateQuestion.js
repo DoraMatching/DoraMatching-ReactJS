@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { Button, Dropdown, Form, Modal } from "semantic-ui-react";
-import styles from "./CardQuestionPage.module.scss";
+import _ from "lodash";
 import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import { Button, Form, Modal } from "semantic-ui-react";
 import { useAuth } from "../../contexts/auth";
 import Client from "../../services/Client";
 import MdEditor from "../MdEditor";
-import _ from "lodash";
+import styles from "./CardQuestionPage.module.scss";
 
 function CreateQuestion({ questions }) {
   const router = useRouter();
@@ -16,8 +16,6 @@ function CreateQuestion({ questions }) {
   const [tags, setTags] = useState([]);
   const [itemTags, setItemTags] = useState([]);
 
-  console.log("L21", content);
-  console.log("L22", tags);
   useEffect(() => {
     setItemTags(
       tags.map((item) => {
@@ -112,21 +110,23 @@ function CreateQuestion({ questions }) {
             <label>Content</label>
             <MdEditor value={content} onChange={handleEditorChange} />
           </Form.Field>
-          <Button
-            color="youtube"
-            content="Cancel"
-            icon="close"
-            onClick={() => setOpen(false)}
-          />
-          <Button
-            content="Publish"
-            labelPosition="left"
-            icon="checkmark"
-            onClick={(e) => {
-              Create(e), setOpen(false);
-            }}
-            positive
-          />
+          <Modal.Actions>
+            <Button
+              color="youtube"
+              content="Cancel"
+              icon="close"
+              onClick={() => setOpen(false)}
+            />
+            <Button
+              content="Publish"
+              labelPosition="left"
+              icon="checkmark"
+              onClick={(e) => {
+                Create(e), setOpen(false);
+              }}
+              positive
+            />
+          </Modal.Actions>
         </Form>
       </Modal.Content>
     </Modal>

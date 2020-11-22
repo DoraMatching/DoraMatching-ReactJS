@@ -1,14 +1,20 @@
 import React from 'react'
 import ClassesPage from '../containers/ClassesPage';
+import Client from '../services/Client';
 
 import styles from '../styles/Home.module.css'
 
-function topics() {
+function classes({classes}) {
   return (
     <div className={styles.container}>
-      <ClassesPage />
+      <ClassesPage classes={classes} />
     </div>
   )
 }
 
-export default topics;
+classes.getInitialProps = async () => {
+  const {data} = await Client("classes")
+  return {classes: data.items} 
+}
+
+export default classes;

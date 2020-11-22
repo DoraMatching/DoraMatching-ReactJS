@@ -3,7 +3,10 @@ import axios from "axios";
 import config from "./Config";
 import headerHelper from "./HeaderHelper";
 
+
+
 const Client = (endpoint, method = 'GET', body) => {
+    console.log("aksa", body);
     return axios({
         method,
         url: `${config.API_URL}/${endpoint}`,

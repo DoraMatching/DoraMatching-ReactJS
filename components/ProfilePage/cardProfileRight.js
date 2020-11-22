@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import { Tab, Button, Image, List, ListContent } from "semantic-ui-react";
 import { useAuth } from "../../contexts/auth";
 import Client from "../../services/Client";
-import Class from "../CardClasses/Class";
+import Classe from "../CardClasses/Class";
 import Schedule from "../Schedule/Schedule";
 import styles from "./CardProfile.module.scss";
 
-const CardProfileRight = ({ userAcc }) => {
+const CardProfileRight = ({ userAcc, classes }) => {
   const { user } = useAuth();
   const allowEdit = user && user.id === userAcc.id;
 
@@ -93,7 +93,9 @@ const CardProfileRight = ({ userAcc }) => {
         menuItem: { key: 'classes', icon: 'student', content: 'Classes' },
         render: () => (
           <Tab.Pane attached={false}>
-            <Class />
+            {classes.map((classe, id) => {
+              return <Classe classe={classe} key={id} />
+            })}
           </Tab.Pane>
         ),
       },

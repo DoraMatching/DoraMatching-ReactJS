@@ -7,12 +7,13 @@ import CreateClass from "./CreateClass";
 import CreateTopic from "./CreateTopic";
 
 export default function CardClassesLeftOfTopic({classes}) {
+  console.log('L10', classes);
   const { user } = useAuth();
 
   return (
     <div className={styles.cardTopicsLeft}>
       <h3>Classes Management</h3>
-      <div>
+      <div className={styles.cardTopicsLeftJoined}>
         <CardTopicsJoined />
       </div>
       {user && user.roles.indexOf("TRAINER") !== -1 ? (
@@ -23,7 +24,7 @@ export default function CardClassesLeftOfTopic({classes}) {
       ) : (
         ""
       )}
-      <h3 style={{margin:  '20px 0px'}}>Topic: </h3>
+      <h3 style={{margin:  '20px 0px'}}>Topic: {classes[0].topic.name} </h3>
       <div className={styles.cardAllClass}>
         {classes.map((classe, id) => {
           return <Classe classe={classe} key={id} />

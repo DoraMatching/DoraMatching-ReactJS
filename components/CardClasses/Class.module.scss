@@ -24,8 +24,7 @@
       height: 100%;
       img {
         border-radius: 10px;
-        height: auto;
-        height: inherit;
+        height: 100%;
         max-width: 100%;
         object-fit: cover;
         user-select: none;
@@ -84,16 +83,17 @@
           height: 40px;
           margin-bottom: 6px;
           border: 2px solid #ffffff;
+          background: #ffffff;
           border-radius: 50%;
           max-width: 100%;
-          height: auto;
         }
       }
       .courseInstructor {
+        margin: 10px 0;
         a {
-          color: #efefef;
+          color: #707070;
           &:hover {
-            color: #d4d4d4;
+            color: #505050;
           }
         }
       }
@@ -102,10 +102,10 @@
     .courseTitle {
       margin-bottom: 20px;
       font-weight: 700;
-      color: #ffffff;
+      color: #228099;
       transition: 0.3s;
       &:hover {
-        color: #228099;
+        color: #ff6d34;
       }
     }
 
@@ -151,10 +151,12 @@
     right: 0;
     z-index: -1;
     height: calc(100% - 20px);
-    background: transparent;
+    background: #ffffee;
     transition: 0.4s;
-    &:hover {
-      background: #ffffff;
-    }
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+  }
+  .courseStudents{
+    color: #000000;
   }
 }

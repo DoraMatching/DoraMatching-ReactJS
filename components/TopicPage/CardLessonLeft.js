@@ -1,55 +1,62 @@
 import moment from "moment";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { Tab } from "semantic-ui-react";
+import { Icon, Tab } from "semantic-ui-react";
 import styles from "./CardTopicsPage.module.scss";
 
-export default function CardLessonLeft({classe, lessons}) {
+export default function CardLessonLeft({ classe, lessons }) {
   const [panes, setPanes] = useState([]);
-  const renderPanes = async () =>{
+  const [values, setValues] = useState([]);
+
+  const renderPanes = async () => {
     return [
       {
         menuItem: "Lessons",
-        render: () => <Tab.Pane attached={false}>
-          {lessons.map((lesson, id) => {
-            return <div key={id} className={styles.MangeLesson}>
-              <p>{lesson.name}</p>
-              <p>{lesson.duration} minutes</p>
-              <p>{moment(lesson.startTime).format("lll")}</p>
-              </div>
-          })}
-        </Tab.Pane>,
+        render: () => (
+          <Tab.Pane attached={false}>
+            {lessons.map((lesson, id) => {
+              return (
+                <div key={id} className={styles.MangeLesson}>
+                  <p>{lesson.name}</p>
+                  <p>{lesson.duration} minutes</p>
+                  <p>{moment(lesson.startTime).format("lll")}</p>
+                </div>
+              );
+            })}
+          </Tab.Pane>
+        ),
       },
       {
         menuItem: "Members",
-        render: () => <Tab.Pane attached={false}>
-          
-          {classe.members.map((member, id) => {
-            return <div key={id}>
-              <img src={member.user.avatarUrl} alt="avtMember"/>
-            </div>
-          })}
-        </Tab.Pane>,
+        render: () => (
+          <Tab.Pane attached={false}>
+            {classe.members.map((member, id) => {
+              return (
+                <div key={id}>
+                  <img src={member.user.avatarUrl} alt="avtMember" />
+                </div>
+              );
+            })}
+          </Tab.Pane>
+        ),
       },
     ];
-  } 
+  };
   useEffect(() => {
-    renderPanes().then((components) => setPanes(components))
-  },[])
+    renderPanes().then((components) => setPanes(components));
+  }, []);
   return (
     <div className={styles.cardTopicsLeft}>
       <h3>
         <Link href="/classes">
           <a>
-            <i className="fas fa-angle-double-left"></i>
-            <span>All Classes</span>
+            <Icon name="angle left" />
+            <span>Back to Classes</span>
           </a>
         </Link>
       </h3>
       <div className={styles.cardAllLesson}>
-        <h1 className={styles.courseTitle}>
-          {classe.name}
-        </h1>
+        <h1 className={styles.courseTitle}>{classe.name}</h1>
         <div className={styles.courseMeta}>
           <span className={styles.courseAuthor}>
             <img
@@ -62,9 +69,7 @@ export default function CardLessonLeft({classe, lessons}) {
             <span className={styles.authorData}>
               <span className={styles.metaTitle}>Teacher</span>
               <span className="meta_data">
-                <a href="/">
-                  {classe.trainer.user.name}
-                </a>
+                <a href="/">{classe.trainer.user.name}</a>
               </span>
             </span>
           </span>
@@ -73,9 +78,7 @@ export default function CardLessonLeft({classe, lessons}) {
             <span className={styles.catData}>
               <span className={styles.metaTitle}>Topic</span>
               <span className="meta_data">
-                <span className="cat-links">
-                    {classe.topic.name}
-                </span>
+                <span className="cat-links">{classe.topic.name}</span>
               </span>
             </span>
           </span>

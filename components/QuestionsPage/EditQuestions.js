@@ -4,6 +4,7 @@ import styles from "./CardQuestionPage.module.scss";
 import { useRouter } from "next/router";
 import { useAuth } from "../../contexts/auth";
 import Client from "../../services/Client";
+import MdEditor from "../MdEditor";
 
 function EditQuestion({ question }) {
   console.log("L9", question);
@@ -33,13 +34,23 @@ function EditQuestion({ question }) {
         content,
         tags: itemTags,
       }).then(({ data }) => {
-        console.log("L21", data);
         setTitle("");
         setContent("");
         setTags([""]);
         router.push("/questions");
       });
     }
+  };
+
+  const handleEditorChange = ({ html, text }) => {
+    
+    const newValue = text.replace(/\d/g, "");
+    setContent(newValue);
+    Client('tag-predict', "POST", {predict: newValue}).then(
+      ({data}) => {
+        setTags([...tags, ...data.results])
+      }
+    );
   };
 
   const removeTags = (indexToRemove) => {
@@ -83,10 +94,7 @@ function EditQuestion({ question }) {
       </Form.Field>
       <Form.Field>
         <label>Content</label>
-        <Form.TextArea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
+        <MdEditor value={content} onChange={handleEditorChange} />
       </Form.Field>
       <Button
         color="youtube"

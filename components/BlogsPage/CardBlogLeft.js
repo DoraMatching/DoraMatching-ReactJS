@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Post from '../CardPosts/Post';
-import styles from "./CardBlogPage.module.css";
+import PostPage from '../CardPosts/PostPage';
+import styles from "./CardBlogPage.module.scss";
 
 function CardBlogLeft({posts}) {
     return (
@@ -8,7 +8,7 @@ function CardBlogLeft({posts}) {
         <h3>All Blogs</h3>
         <div className={styles.cardBlogLeftMap}>
             {posts.map((post, id) => {
-              return <Post post={post} key={id} />;
+              return <PostPage post={post} key={id} />;
             })}
         </div>
       </div>

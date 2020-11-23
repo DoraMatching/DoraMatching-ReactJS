@@ -1,25 +1,33 @@
 import React from "react";
-import Class from "../CardClasses/Class";
+import { useAuth } from "../../contexts/auth";
+import Classe from "../CardClasses/Class";
 import CardTopicsJoined from "./CardTopicsJoined";
 import styles from "./CardTopicsPage.module.scss";
 import CreateClass from "./CreateClass";
 import CreateTopic from "./CreateTopic";
 
-export default function CardClassesLeft() {
+export default function CardClassesLeft({classes}) {
+  const { user } = useAuth();
+
   return (
     <div className={styles.cardTopicsLeft}>
-      <h3>Topics Management</h3>
-      <div>
+      <h3>Classes Management</h3>
+      <div className={styles.cardTopicsLeftJoined}>
         <CardTopicsJoined />
       </div>
-      <CreateTopic />
-      <CreateClass />
-      <h3>All Classes</h3>
+      {user && user.roles.indexOf("TRAINER") !== -1 ? (
+        <div style={{margin: '20px 0'}}>
+          <CreateTopic />
+          <CreateClass />
+        </div>
+      ) : (
+        ""
+      )}
+      <h3 style={{margin:  '20px 0px'}}>All Classes</h3>
       <div className={styles.cardAllClass}>
-        <Class />
-        <Class />
-        <Class />
-        <Class />
+        {classes.map((classe, id) => {
+          return <Classe classe={classe} key={id} />
+        })}
       </div>
     </div>
   );

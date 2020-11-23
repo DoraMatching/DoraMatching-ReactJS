@@ -3,18 +3,19 @@ import React, { useEffect, useState } from "react";
 import { Tab, Button, Image, List, ListContent } from "semantic-ui-react";
 import { useAuth } from "../../contexts/auth";
 import Client from "../../services/Client";
-import Class from "../CardClasses/Class";
+import Classe from "../CardClasses/Class";
 import Schedule from "../Schedule/Schedule";
 import styles from "./CardProfile.module.scss";
 
-const CardProfileRight = ({ userAcc }) => {
+const CardProfileRight = ({ userAcc, classes }) => {
   const { user } = useAuth();
-  const allowEdit = user && user.id ===userAcc.id;
+  const allowEdit = user && user.id === userAcc.id;
+
   const renderPanes = async () => {
     const { data: currentUser } = await Client(`user/${userAcc.id}`, "GET", {});
     return [
       {
-        menuItem: "Blogs",
+        menuItem: { key: 'blogs', icon: 'blogger', content: 'Blogs' },
         render: () => (
           <Tab.Pane attached={false}>
             <List divided verticalAlign="middle">
@@ -41,7 +42,9 @@ const CardProfileRight = ({ userAcc }) => {
                       <Link href={`/posts/${post.id}`}>
                         <a>{post.title}</a>
                       </Link>
-                      <List.Description className={styles.ListDescription}>{post.subTitle}</List.Description>
+                      <List.Description className={styles.ListDescription}>
+                        {post.subTitle}
+                      </List.Description>
                     </List.Header>
                   </List.Item>
                 );
@@ -50,9 +53,8 @@ const CardProfileRight = ({ userAcc }) => {
           </Tab.Pane>
         ),
       },
-
       {
-        menuItem: "Questions",
+        menuItem: { key: 'question', icon: 'question circle', content: 'Questions' },
         render: () => (
           <Tab.Pane attached={false}>
             <List divided verticalAlign="middle">
@@ -88,15 +90,17 @@ const CardProfileRight = ({ userAcc }) => {
         ),
       },
       {
-        menuItem: "Classes",
+        menuItem: { key: 'classes', icon: 'student', content: 'Classes' },
         render: () => (
           <Tab.Pane attached={false}>
-            <Class />
+            {classes.map((classe, id) => {
+              return <Classe classe={classe} key={id} />
+            })}
           </Tab.Pane>
         ),
       },
       {
-        menuItem: "Schedule",
+        menuItem: { key: 'schedule', icon: 'calendar outline', content: 'Schedule' },
         render: () => (
           <Tab.Pane attached={false}>
             <Schedule />

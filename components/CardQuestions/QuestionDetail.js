@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Question.module.css";
 import moment from "moment";
+import Link from "next/link";
 
 function QuestionDetail({ question }) {
   return (
@@ -14,7 +15,13 @@ function QuestionDetail({ question }) {
       <div className={styles.questionCardRight}>
         <div className={styles.questionButtonDetail}>
           {question.tags.map((tag, index) => {
-            return <button key={index}> {tag.name} </button>;
+            return (
+              <button key={index} className={styles.buttonLink}>
+                <Link href={`/questions/tag-question/${tag.id}`}>
+                  <a>{tag.name}</a>
+                </Link>
+              </button>
+            );
           })}
         </div>
         <p>{question.content}</p>
@@ -33,7 +40,7 @@ function QuestionDetail({ question }) {
             <p>asked {moment(question.createdAt).format("LLL")}</p>
           </span>
           <div className={styles.questionButtonShareDetail}>
-            <i className='far fa-share'></i>
+            <i className="far fa-share"></i>
             <span>Share</span>
           </div>
         </div>

@@ -1,9 +1,10 @@
 import React from "react";
-import styles from "./Post.module.css";
+import styles from "./Post.module.scss";
 import Link from "next/link";
-import { Button, Grid, Icon, Popup } from "semantic-ui-react";
+import { Button, Dropdown, Icon } from "semantic-ui-react";
 import moment from "moment";
 import { useAuth } from "../../contexts/auth";
+import DeleteBlog from "../BlogsPage/DeleteBlog";
 
 const Post = ({ post }) => {
   const { user } = useAuth();
@@ -31,7 +32,7 @@ const Post = ({ post }) => {
               <Link href={`/profile/${post.author.id}`}>
                 <a>{post.author.name}</a>
               </Link>
-            </span>{" "}
+            </span>
             <p>published {moment(post.createdAt).format("ll")}</p>
           </span>
         </div>
@@ -44,31 +45,31 @@ const Post = ({ post }) => {
             />
           </figure>
           {user && user.id && post.author.id === user.id ? (
-            <Popup
-              position="bottom center"
-              wide
-              trigger={<i className="fas fa-ellipsis-h"></i>}
-              on="click"
-            >
-              <Grid columns="equal">
-                <Grid.Column>
-                  <Button color="grey" animated="vertical">
-                    <Button.Content visible>Edit</Button.Content>
-                    <Button.Content hidden>
-                      <Icon name="edit" />
-                    </Button.Content>
-                  </Button>
-                </Grid.Column>
-                <Grid.Column>
-                  <Button color="red" animated="vertical">
-                    <Button.Content visible>Delete</Button.Content>
-                    <Button.Content hidden>
-                      <Icon name="delete" />
-                    </Button.Content>
-                  </Button>
-                </Grid.Column>
-              </Grid>
-            </Popup>
+            <>
+              <Dropdown
+                pointing="top right"
+                icon={null}
+                trigger={<i className="fas fa-ellipsis-h"></i>}
+              >
+                <Dropdown.Menu>
+                  <Dropdown.Item>
+                    <Link href={`/posts/${id}/edit`}>
+                      <a>
+                        <Button fluid color="grey" animated="vertical">
+                          <Button.Content visible>Edit</Button.Content>
+                          <Button.Content hidden>
+                            <Icon name="edit" />
+                          </Button.Content>
+                        </Button>
+                      </a>
+                    </Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <DeleteBlog post={post} />
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </>
           ) : (
             ""
           )}
@@ -81,7 +82,7 @@ const Post = ({ post }) => {
           style={{ width: "100%" }}
         />
       </div>
-      <div className="postContent">
+      <div className={styles.postContent}>
         <p className={styles.postDescript}>{post.subTitle}</p>
         <div className={styles.postMore}>
           <button className={styles.buttonPrimary}>
@@ -93,15 +94,15 @@ const Post = ({ post }) => {
           </button>
           <div className={styles.faTag}>
             <i className="fa fa-tag"></i>
-            <span>
-              {post.tags.map((tag, id) => {
-                return (
+            {post.tags.map((tag, id) => {
+              return (
+                <button className={styles.faTagButton}>
                   <Link href="/" key={id}>
                     <a> {tag.name}</a>
                   </Link>
-                );
-              })}
-            </span>
+                </button>
+              );
+            })}
           </div>
         </div>
         <div className={styles.postMeta}>

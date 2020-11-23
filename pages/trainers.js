@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react'
 import TrainerPage from '../containers/TrainerPage';
+import Client from '../services/Client';
 import styles from '../styles/Home.module.css'
 
 function trainers({users}) {
@@ -12,7 +13,7 @@ function trainers({users}) {
 }
 
 trainers.getInitialProps = async () => {
-  const {data} = await axios.get('https://api.dev.doramatching.tk/trainers');
+  const {data} = await Client('trainers');
   return { users: data.items.map(e => e.user) };
 }
 

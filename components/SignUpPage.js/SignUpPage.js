@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import _ from "lodash/fp";
-import { Button, Checkbox, Form, FormField } from "semantic-ui-react";
+import { Button, Checkbox, Form, FormField, Message } from "semantic-ui-react";
 import Link from "next/link";
 import styles from "./SignUpPage.module.css";
 import LoginGithub from "../LoginPage/LoginGithub";
@@ -15,6 +15,7 @@ function SignUpPage() {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(false);
 
   const { signUp, logout } = useAuth();
 
@@ -25,6 +26,7 @@ function SignUpPage() {
        await signUp(email, username, password);
        router.push(router.query['forward'] || '/');
     }catch(e) {
+      setError(true)
       console.error(e);
       router.push('/sign-up')
     }
@@ -37,7 +39,7 @@ function SignUpPage() {
       </div>
       <div className={styles.loginRight}>
         <h2 style={{ textAlign: "center" }}>REGISTER</h2>
-        <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form error={true} onSubmit={handleSubmit(onSubmit)}>
           <FormField>
             <label>Email</label>
             <input
@@ -58,6 +60,9 @@ function SignUpPage() {
               onChange={(e) => setUsername(e.target.value)}
               name="username"
               type="text"
+              ref={register({
+                required: true
+              })}
             />
           </FormField>
           <FormField>
@@ -89,11 +94,12 @@ function SignUpPage() {
           <FormField>
             <Checkbox label="Confirm Password" />
           </FormField>
+          {error && <Message negative error content='Email or username already exists' />}
           <div className={styles.loginButton}>
             <Button
               type="submit"
               color={"linkedin"}
-              disabled={!email || !username || !password}
+              // disabled={!email || !username || !password}
             >
               SIGN UP
             </Button>

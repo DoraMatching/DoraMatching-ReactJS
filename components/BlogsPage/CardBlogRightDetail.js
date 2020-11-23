@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react'
-import styles from "./CardBlogPage.module.css";
+import styles from "./CardBlogPage.module.scss";
 
 export default function CardBlogRightDetail({post}) {
     return (

@@ -1,14 +1,12 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
 import _ from "lodash/fp";
-import { Button, Checkbox, Form, FormField, Message } from "semantic-ui-react";
 import Link from "next/link";
-import styles from "./SignUpPage.module.css";
-import LoginGithub from "../LoginPage/LoginGithub";
-import axios from "axios";
 import { useRouter } from "next/router";
-import cookie from 'js-cookie';
+import React, { useRef, useState } from "react";
+import { useForm } from "react-hook-form";
+import { Button, Form, FormField, Message } from "semantic-ui-react";
 import { useAuth } from "../../contexts/auth";
+import LoginGithub from "../LoginPage/LoginGithub";
+import styles from "./SignUpPage.module.css";
 
 function SignUpPage() {
   const router = useRouter();
@@ -19,7 +17,8 @@ function SignUpPage() {
 
   const { signUp, logout } = useAuth();
 
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors, getValues  } = useForm();
+
 
   async function onSubmit(e) {
     try {
@@ -65,10 +64,10 @@ function SignUpPage() {
               })}
             />
           </FormField>
-          <FormField>
+          {/* <FormField>
             <label>Phone number</label>
             <input name="phonenumber" type="text" />
-          </FormField>
+          </FormField> */}
           <FormField>
             <label>Password</label>
             <input
@@ -92,14 +91,23 @@ function SignUpPage() {
             )}
           </FormField>
           <FormField>
-            <Checkbox label="Confirm Password" />
+            <label>Confirm Password</label>
+            <input
+              onChange={(e) => setPassword(e.target.value)}
+              name="password"
+              type="password"
+              ref={register({
+                validate: {
+                  passwordEqual: value => (value === getValues().password) || 'Password does not match'
+                }
+              })}
+            />
           </FormField>
           {error && <Message negative error content='Email or username already exists' />}
           <div className={styles.loginButton}>
             <Button
               type="submit"
               color={"linkedin"}
-              // disabled={!email || !username || !password}
             >
               SIGN UP
             </Button>

@@ -96,7 +96,7 @@ const Post = ({ post }) => {
             <i className="fa fa-tag"></i>
             {post.tags.map((tag, id) => {
               return (
-                <button className={styles.faTagButton}>
+                <button className={styles.faTagButton} key={id}>
                   <Link href="/" key={id}>
                     <a> {tag.name}</a>
                   </Link>

@@ -22,7 +22,14 @@ export default function CardLessonLeft({classe, lessons}) {
       },
       {
         menuItem: "Members",
-        render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane>,
+        render: () => <Tab.Pane attached={false}>
+          
+          {classe.members.map((member, id) => {
+            return <div key={id}>
+              <img src={member.user.avatarUrl} alt="avtMember"/>
+            </div>
+          })}
+        </Tab.Pane>,
       },
     ];
   } 

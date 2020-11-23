@@ -11,7 +11,7 @@ class LessonPage extends Component {
           <CardLessonLeft {...this.props} />
         </div>
         <div style={{ width: "25%", marginLeft: "20px" }}>
-          <CardLessonRight />
+          <CardLessonRight {...this.props} />
         </div>
       </div>
     );

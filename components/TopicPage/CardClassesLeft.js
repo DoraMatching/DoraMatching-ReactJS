@@ -12,7 +12,7 @@ export default function CardClassesLeft({classes}) {
   return (
     <div className={styles.cardTopicsLeft}>
       <h3>Classes Management</h3>
-      <div>
+      <div className={styles.cardTopicsLeftJoined}>
         <CardTopicsJoined />
       </div>
       {user && user.roles.indexOf("TRAINER") !== -1 ? (

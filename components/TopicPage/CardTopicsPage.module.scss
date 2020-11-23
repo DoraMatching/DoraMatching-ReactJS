@@ -66,6 +66,10 @@
 
 /* BUTTON */
 
+.cardTopicsLeftJoined{
+  margin-top: 20px;
+}
+
 .cardTopicsLeftButton {
   background: #e63946;
   border-radius: 30px;
@@ -74,20 +78,20 @@
   float: right;
   font-weight: 600;
   padding: 12px 20px;
-  &:hover{
+  &:hover {
     cursor: pointer;
     background: #f8293a;
   }
 }
 
-.cardCreateTopicsLeftButton{
+.cardCreateTopicsLeftButton {
   background: #228099;
   border-radius: 30px;
   border: none;
   color: #ffffff;
   font-weight: 600;
   padding: 12px 20px;
-  &:hover{
+  &:hover {
     cursor: pointer;
     background: #177f9c;
   }

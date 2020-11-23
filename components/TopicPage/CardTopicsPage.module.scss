@@ -66,7 +66,7 @@
 
 /* BUTTON */
 
-.cardTopicsLeftJoined{
+.cardTopicsLeftJoined {
   margin-top: 20px;
 }
 
@@ -100,8 +100,12 @@
 /* CARD LESSON LEFT */
 
 .cardAllLesson {
+  .MangeLesson{
+    display: flex;
+    justify-content: space-between;;
+  }
   .courseTitle {
-    margin-bottom: 34px;
+    margin-bottom: 20px;
     font-size: 2rem;
     line-height: 1.5;
   }
@@ -163,8 +167,12 @@
     width: 100%;
     margin-bottom: 20px;
     border-radius: 10px;
-    i {
+    height: 350px;
+    img {
+      width: 100%;
       border-radius: 10px;
+      height: 100%;
+      object-fit: cover;
     }
   }
 }
@@ -230,3 +238,5 @@
     border-bottom-right-radius: 10px;
   }
 }
+
+

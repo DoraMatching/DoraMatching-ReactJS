@@ -16,7 +16,7 @@ function Classe({ classe }) {
         </span>
         <div className={styles.courseContent}>
           <div className={styles.courseInfo}>
-            <Link href="/">
+            <Link href={`/profile/${classe.trainer.id}`}>
               <a>
                 <img
                   alt="Admin bar avatar"
@@ -26,11 +26,11 @@ function Classe({ classe }) {
             </Link>
 
             <span className={styles.courseInstructor}>
-              <Link href="/">
+              <Link href={`/profile/${classe.trainer.user.id}`}>
                 <a>{classe.trainer.user.name}</a>
               </Link>
             </span>
-            <Link href="/lesson">
+            <Link href={`/classes/${classe.id}`}>
               <a>
                 <h3 className={styles.courseTitle}>{classe.name}</h3>
               </a>

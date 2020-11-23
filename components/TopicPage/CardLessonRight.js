@@ -20,9 +20,9 @@ function CardLessonRight(props) {
           <span className="label">Duration:</span>
           <span className="value">10 days</span>
         </li>
-        <li className="lectures">
+        <li className="Sessions">
           <i className="fa fa-file"></i>
-          <span className="label">Lectures:</span>
+          <span className="label">Sessions:</span>
           <span className="value">6</span>
         </li>
         <li className="certificate">

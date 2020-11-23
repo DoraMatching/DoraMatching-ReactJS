@@ -50,19 +50,23 @@ body {
   width: 100%;
   z-index: 100;
 }
+
+.NavbarItems li {
+  margin: 0 1.2rem;
+}
+.actived {
+  border-bottom: 2px solid #fffea5;
+}
 .navbarLogo {
   justify-self: start;
-  margin-left: 20px;
   cursor: pointer;
 }
 .navMenu {
-  display: grid;
-  grid-template-columns: repeat(6, auto);
-  grid-gap: 10px;
+  display: flex;
+  /* grid-template-columns: repeat(6, auto);
+  grid-gap: 10px; */
   list-style: none;
   text-align: center;
-  width: 50vw;
-  justify-content: end;
   margin-right: 2rem;
   text-transform: uppercase;
   font-weight: 600;
@@ -72,18 +76,11 @@ body {
 .navLinks {
   color: #ffffff;
   text-decoration: none;
-  padding: 0.5rem 1rem;
 }
 
 .navLinks:hover {
-  background: rgb(255, 242, 187);
-  background: linear-gradient(
-    90deg,
-    rgba(255, 242, 187, 1) 0%,
-    rgba(255, 251, 228, 1) 100%
-  );
-  color: #000000;
-  border-radius: 10px;
+  transition: 0.4s;
+  color: #fff0e9;
 }
 .fa-bars {
   color: #ffffff;
@@ -110,6 +107,7 @@ body {
   .NavbarItems {
     height: 80px;
     position: relative;
+    justify-content: center;
   }
   .NavbarItems ul {
     margin: 0;
@@ -146,9 +144,8 @@ body {
   }
   .navbarLogo {
     position: absolute;
-    top: 0;
     left: 0;
-    transform: translate(25%, 50%);
+    margin-left: 10px;
   }
   .menuIcon {
     display: block;
@@ -179,6 +176,9 @@ body {
     transition: 250ms;
   }
   .NavbarItems Button {
+    display: none;
+  }
+  .Dropdown {
     display: none;
   }
   .searchBar {

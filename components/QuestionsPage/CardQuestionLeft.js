@@ -19,7 +19,7 @@ function CardQuestionLeft({ tagQuestions }) {
         })}
       </div>
       <p>
-        <Link href="/tag-question"> See more tags </Link>
+        <Link href="/questions/tag-question"> See more tags </Link>
       </p>
     </div>
   );

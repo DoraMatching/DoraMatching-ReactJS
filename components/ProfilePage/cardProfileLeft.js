@@ -44,7 +44,7 @@ function CardProfileLeft({ userAcc }) {
             <p>Blogs</p>
           </div>
           <div className={styles.icon}>
-            <h4>12</h4>
+            <h4>0</h4>
             <p>Classes</p>
           </div>
           <div className={styles.icon}>
@@ -54,9 +54,9 @@ function CardProfileLeft({ userAcc }) {
         </div>
       </div>
 
-      <div className={styles.cardProfileLeftUnder}>
-        <Class />
-      </div>
+      {/* <div className={styles.cardProfileLeftUnder}>
+        Topic
+      </div> */}
     </div>
   );
 }

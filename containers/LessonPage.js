@@ -8,7 +8,7 @@ class LessonPage extends Component {
     return (
       <div className={styles.lessonPage}>
         <div style={{ width: "60%" }}>
-          <CardLessonLeft />
+          <CardLessonLeft {...this.props} />
         </div>
         <div style={{ width: "25%", marginLeft: "20px" }}>
           <CardLessonRight />

@@ -8,18 +8,18 @@ import { useAuth } from "../contexts/auth";
 function Navbar() {
   const router = useRouter();
   let user = {
-    id: '',
-    name: '',
-    email: '',
-    username: '',
-    avatarUrl: ''
-  }
+    id: "",
+    name: "",
+    email: "",
+    username: "",
+    avatarUrl: "",
+  };
   const { user: _user, loading, logout } = useAuth();
   user = _user;
-  
+
   const trigger = (
     <span>
-      <Image avatar src={"/static/worker.png"} />
+      <Image avatar src={_user && _user.avatarUrl} />
     </span>
   );
 
@@ -44,7 +44,7 @@ function Navbar() {
       key: "users",
       text: (
         <span>
-          Signed in as <strong>{user ? user.name : ""}</strong>
+          Signed in as <strong>{user ? user.username : ""}</strong>
         </span>
       ),
       disabled: true,
@@ -69,7 +69,7 @@ function Navbar() {
     </Button>
   );
   const userLink = (
-    <>
+    <div className='Dropdown'>
       <Dropdown trigger={trigger} icon={null} pointing="top right">
         <Dropdown.Menu>
           {options.map((e) => {
@@ -85,7 +85,7 @@ function Navbar() {
           })}
         </Dropdown.Menu>
       </Dropdown>
-    </>
+    </div>
   );
 
   return (
@@ -104,8 +104,8 @@ function Navbar() {
             className="navbarLogo"
             src="/static/logo.png"
             alt="logo"
-            width="40px"
-            height="40px"
+            width="60px"
+            height="auto"
           />
         </Link>
         <div className="menuIcon" onClick={handleClick}>
@@ -119,36 +119,53 @@ function Navbar() {
           />
         </div>
         <ul className={clicked ? "navMenu active" : "navMenu"}>
-          <li>
+          <li className={router.pathname == "/" ? "actived" : ""}>
             <Link href="/">
               <a className="navLinks">Home</a>
             </Link>
           </li>
-          <li>
+          <li className={router.pathname == "/trainers" ? "actived" : ""}>
             <Link href="/trainers">
               <a className="navLinks">Trainers</a>
             </Link>
           </li>
-          <li>
+          <li className={router.pathname == "/topics" ? "actived" : ""}>
             <Link href="/topics">
               <a className="navLinks">Topics</a>
             </Link>
           </li>
-          <li>
+          <li className={router.pathname == "/classes" ? "actived" : ""}>
+            <Link href="/classes">
+              <a className="navLinks">Classes</a>
+            </Link>
+          </li>
+          <li className={router.pathname == "/questions" ? "actived" : ""}>
             <Link href="/questions">
               <a className="navLinks">Questions</a>
             </Link>
           </li>
-          <li>
+          <li className={router.pathname == "/posts" ? "actived" : ""}>
             <Link href="/posts">
               <a className="navLinks">Blogs</a>
             </Link>
           </li>
-          <li>
-            <Link href="/sign-in">
-              <a className="navLinksMobile">Login</a>
-            </Link>
-          </li>
+          {user ? (
+            <>
+              <li>
+                <Link href={`/profile/${user.id}`}>
+                  <a className="navLinksMobile">{user ? user.name : ""}</a>
+                </Link>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link href="/sign-in">
+                  <a className="navLinksMobile">Login</a>
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
         {user ? userLink : loginRegLink}
       </nav>

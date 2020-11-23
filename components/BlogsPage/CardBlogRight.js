@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styles from "./CardBlogPage.module.css";
+import styles from "./CardBlogPage.module.scss";
 import CreateBlog from './CreateBlog';
 
 export default class CardBlogRight extends Component {

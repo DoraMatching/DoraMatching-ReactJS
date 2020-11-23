@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { Button, Dropdown, Form, Modal } from "semantic-ui-react";
-import styles from "./CardQuestionPage.module.scss";
+import _ from "lodash";
 import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import { Button, Form, Modal } from "semantic-ui-react";
 import { useAuth } from "../../contexts/auth";
 import Client from "../../services/Client";
 import MdEditor from "../MdEditor";
-
-
+import styles from "./CardQuestionPage.module.scss";
 
 function CreateQuestion({ questions }) {
   const router = useRouter();
@@ -18,21 +17,21 @@ function CreateQuestion({ questions }) {
   const [itemTags, setItemTags] = useState([]);
 
   useEffect(() => {
-    setItemTags(tags.map((item) => {
-      return {
-        name: item
-      }}))
-  }, [tags]); 
- 
-  console.log("L28", itemTags);
+    setItemTags(
+      tags.map((item) => {
+        return {
+          name: item,
+        };
+      })
+    );
+  }, [tags]);
 
   const Create = () => {
     if (!user)
       router.push(`/sign-in?forward=${encodeURIComponent(router.asPath)}`);
     else {
-      Client("question", "POST", { title, content, tags:itemTags }).then(
+      Client("question", "POST", { title, content, tags: itemTags }).then(
         ({ data }) => {
-          console.log("L21", data);
           setTitle("");
           setContent("");
           setTags([]);
@@ -45,6 +44,10 @@ function CreateQuestion({ questions }) {
   const handleEditorChange = ({ html, text }) => {
     const newValue = text.replace(/\d/g, "");
     setContent(newValue);
+    if (newValue !== "")
+      Client("tag-predict", "POST", { predict: newValue }).then(({ data }) => {
+        setTags(_.uniq([...tags, ...data.results]));
+      });
   };
 
   const removeTags = (indexToRemove) => {
@@ -70,7 +73,7 @@ function CreateQuestion({ questions }) {
       <Modal.Header>Create Question</Modal.Header>
       <Modal.Content>
         <Form>
-          <Form.Field>
+          <Form.Field required>
             <label>Title</label>
             <input
               placeholder="Title"
@@ -78,7 +81,7 @@ function CreateQuestion({ questions }) {
               onChange={(e) => setTitle(e.target.value)}
             />
           </Form.Field>
-          <Form.Field>
+          <Form.Field required>
             <label>Tags</label>
             <div className={styles.tagsInput}>
               <ul className={styles.tags}>
@@ -102,35 +105,30 @@ function CreateQuestion({ questions }) {
                 placeholder="Press enter to add tags"
               />
             </div>
-            {/* <input
-              placeholder="tags"
-              value={tags}
-              onChange={(e) => setTag(e.target.value)}
-            /> */}
           </Form.Field>
-          <Form.Field>
+          <Form.Field required>
             <label>Content</label>
             <MdEditor value={content} onChange={handleEditorChange} />
           </Form.Field>
         </Form>
+        <Modal.Actions>
+            <Button
+              color="youtube"
+              content="Cancel"
+              icon="close"
+              onClick={() => setOpen(false)}
+            />
+            <Button
+              content="Publish"
+              labelPosition="left"
+              icon="checkmark"
+              onClick={(e) => {
+                Create(e), setOpen(false);
+              }}
+              positive
+            />
+          </Modal.Actions>
       </Modal.Content>
-      <Modal.Actions>
-        <Button
-          color="youtube"
-          content="Cancel"
-          icon="close"
-          onClick={() => setOpen(false)}
-        />
-        <Button
-          content="Publish"
-          labelPosition="left"
-          icon="checkmark"
-          onClick={(e) => {
-            Create(e), setOpen(false);
-          }}
-          positive
-        />
-      </Modal.Actions>
     </Modal>
   );
 }

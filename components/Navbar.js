@@ -18,7 +18,7 @@ function Navbar() {
   user = _user;
 
   const trigger = (
-    <span>
+    <span style={{border: '2px solid #ffffff', borderRadius: '50%'}}>
       <Image avatar src={_user && _user.avatarUrl} />
     </span>
   );

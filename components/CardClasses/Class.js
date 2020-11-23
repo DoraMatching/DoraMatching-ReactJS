@@ -25,11 +25,11 @@ function Classe({ classe }) {
               </a>
             </Link>
 
-            <span className={styles.courseInstructor}>
+            <div className={styles.courseInstructor}>
               <Link href={`/profile/${classe.trainer.user.id}`}>
                 <a>{classe.trainer.user.name}</a>
               </Link>
-            </span>
+            </div>
             <Link href={`/classes/${classe.id}`}>
               <a>
                 <h3 className={styles.courseTitle}>{classe.name}</h3>
@@ -39,7 +39,7 @@ function Classe({ classe }) {
           <div className={styles.courseDivider}></div>
           <div className={styles.courseMeta}>
             <span className={styles.courseStudents} title="students enrolled">
-              <Icon name="users" /> 60
+              <Icon name="user" /> {classe.members.length}
             </span>
             <div className={styles.lpCourseButtons}>
               <button>Free</button>

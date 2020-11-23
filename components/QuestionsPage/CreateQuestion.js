@@ -110,7 +110,8 @@ function CreateQuestion({ questions }) {
             <label>Content</label>
             <MdEditor value={content} onChange={handleEditorChange} />
           </Form.Field>
-          <Modal.Actions>
+        </Form>
+        <Modal.Actions>
             <Button
               color="youtube"
               content="Cancel"
@@ -127,7 +128,6 @@ function CreateQuestion({ questions }) {
               positive
             />
           </Modal.Actions>
-        </Form>
       </Modal.Content>
     </Modal>
   );

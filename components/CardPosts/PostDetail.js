@@ -1,7 +1,8 @@
-import React from "react";
-import styles from "./Post.module.scss";
-import Link from "next/link";
 import moment from "moment";
+import Link from "next/link";
+import React from "react";
+import ReactMarkdown from "react-markdown";
+import styles from "./Post.module.scss";
 
 const PostDetail = ({ post }) => {
   return (
@@ -32,20 +33,19 @@ const PostDetail = ({ post }) => {
             <p>Comment: {post.comments.length} </p>
             <p>
               Tags:
-                  {post.tags.map((tag, id) => {
-                    return (
-                      <Link href="/" key={id}>
-                        <a> {tag.name }</a>
-                      </Link>
-                    );
-                  })}
-
+              {post.tags.map((tag, id) => {
+                return (
+                  <Link href="/" key={id}>
+                    <a> {tag.name}</a>
+                  </Link>
+                );
+              })}
             </p>
           </div>
           <div style={{ fontStyle: "italic", marginBottom: "20px" }}>
             {post.subTitle}
           </div>
-          <div>{post.content}</div>
+          <ReactMarkdown>{post.content}</ReactMarkdown>
           <div className={styles.postMeta}>
             <div className="extra content">
               <div

@@ -10,7 +10,7 @@ function Classe({ classe }) {
           <img src={classe.featuredImage} alt="Class" />
         </div>
         <span className={styles.catLinks}>
-          <Link href="/">
+          <Link href={`/topics/${classe.topic.id}/classes`}>
             <a>{classe.topic.name}</a>
           </Link>
         </span>

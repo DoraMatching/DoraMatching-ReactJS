@@ -17,7 +17,7 @@ function SignUpPage() {
 
   const { signUp, logout } = useAuth();
 
-  const { register, handleSubmit, errors, getValues  } = useForm();
+  const { register, handleSubmit, errors, watch  } = useForm();
 
 
   async function onSubmit(e) {
@@ -94,11 +94,12 @@ function SignUpPage() {
             <label>Confirm Password</label>
             <input
               onChange={(e) => setPassword(e.target.value)}
-              name="password"
+              name="confirmPass"
               type="password"
               ref={register({
-                validate: {
-                  passwordEqual: value => (value === getValues().password) || 'Password does not match'
+                required: true,
+                validate: (value) => {
+                  return value === watch('password') || 'Password does not match'
                 }
               })}
             />

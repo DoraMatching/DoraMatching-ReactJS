@@ -24,7 +24,6 @@ function CreateClass(props) {
   const GetTopic = async () => {
     let { data } = await Client("topics", "GET");
     data = data.items;
-    console.log("L22", data);
     return data.map((e) => {
       return {
         key: e.id,
@@ -56,7 +55,6 @@ function CreateClass(props) {
         startTime: new Date(startTime).toISOString(),
         endTime: new Date(endTime).toISOString(),
       }).then(({ data }) => {
-        console.log("kakaa", data);
         setName("");
         setDescription("");
         setFeaturedImage("");
@@ -100,7 +98,7 @@ function CreateClass(props) {
                 search
                 selection
                 options={options}
-                onChange={(e, {value}) => {console.log(value);setTopic(value)}}
+                onChange={(e, {value}) => {setTopic(value)}}
               />
             </Form.Field>
             <Form.Field>
@@ -147,7 +145,7 @@ function CreateClass(props) {
               />
             </Form.Field>
           </Form.Group>
-          <Modal.Actions>
+          <div style={{ marginTop: "20px" }}>
             <Button
               color="youtube"
               content="Cancel"
@@ -163,7 +161,7 @@ function CreateClass(props) {
               }}
               positive
             />
-          </Modal.Actions>
+          </div>
         </Form>
       </Modal.Content>
     </Modal>

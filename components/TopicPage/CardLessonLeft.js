@@ -1,12 +1,58 @@
 import moment from "moment";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { Accordion, Icon, Image, Label, List, Tab } from "semantic-ui-react";
+import {
+  Accordion,
+  Button,
+  Form,
+  Icon,
+  Image,
+  Label,
+  List,
+  Tab,
+} from "semantic-ui-react";
+import { useAuth } from "../../contexts/auth";
+import Client from "../../services/Client";
+import DatePickerPage from "../DatePicker";
 import styles from "./CardTopicsPage.module.scss";
 
 export default function CardLessonLeft({ classe, lessons }) {
+  const router = useRouter();
+  const { user } = useAuth();
   const [panes, setPanes] = useState([]);
   const [activeIndex, setActiveIndex] = useState([]);
+  const [name, setName] = useState("");
+  const [duration, setDuration] = useState(0);
+  const [startTime, setStartTime] = useState("");
+
+  const Create = () => {
+    if (!user)
+      router.push(`/sign-in?forward=${encodeURIComponent(router.asPath)}`);
+    else {
+      Client(`classe/${classe.id}/lesson`, "POST", {
+        name,
+        duration: Number(duration),
+        startTime: new Date(startTime).toISOString(),
+      })
+        .then(({ data }) => {
+          setName("");
+          setDuration(0);
+          setStartTime("");
+          router.push(`/classes/${classe.id}`);
+        })
+        .catch((error) => {
+          console.log("ERR", error);
+        });
+    }
+  };
+
+  const Reset = () => {
+    setName("");
+    setDuration(0);
+    setStartTime("");
+    router.push(`/classes/${classe.id}`);
+  };
 
   const handleClick = (e, titleProps) => {
     const { index } = titleProps;
@@ -39,12 +85,20 @@ export default function CardLessonLeft({ classe, lessons }) {
                       onClick={handleClick}
                     >
                       <Icon name="dropdown" />
-                      <span style={{textTransform: 'uppercase', color: '#58606E'}}>{lesson.name}</span>
+                      <span
+                        style={{ textTransform: "uppercase", color: "#58606E" }}
+                      >
+                        {lesson.name}
+                      </span>
                     </Accordion.Title>
                     <Accordion.Content active={activeIndex.includes(id)}>
-                      <p><span style={{fontWeight: 'bold'}}>Time</span>: {lesson.duration} minutes</p>
                       <p>
-                      <span style={{fontWeight: 'bold'}}>Time start</span>: {moment(lesson.startTime).format("lll")}
+                        <span style={{ fontWeight: "bold" }}>Time</span>:{" "}
+                        {lesson.duration} minutes
+                      </p>
+                      <p>
+                        <span style={{ fontWeight: "bold" }}>Time start</span>:{" "}
+                        {moment(lesson.startTime).format("lll")}
                       </p>
                     </Accordion.Content>
                   </div>
@@ -138,6 +192,59 @@ export default function CardLessonLeft({ classe, lessons }) {
             panes={panes}
           />
         </div>
+        {user && user.id === classe.trainer.user.id ? (
+          <Form>
+            <Form.Field required>
+              <label>Lesson Name</label>
+              <input
+                required
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </Form.Field>
+            <Form.Group widths="equal">
+              <Form.Field required>
+                <label>Duration</label>
+                <input
+                  required
+                  type="number"
+                  placeholder="duration class"
+                  value={duration}
+                  onChange={(e) => setDuration(e.target.value)}
+                />
+              </Form.Field>
+              <Form.Field required>
+                <label >Time Start</label>
+                <DatePickerPage
+                  value={startTime}
+                  onChange={(date) => setStartTime(date)}
+                />
+              </Form.Field>
+            </Form.Group>
+            <div style={{ margin: "20px 0" }}>
+              <Button
+                color="youtube"
+                content="Reset"
+                icon="close"
+                onClick={(e) => {
+                  Reset(e);
+                }}
+              />
+              <Button
+                content="Submit"
+                labelPosition="right"
+                icon="checkmark"
+                onClick={(e) => {
+                  Create(e);
+                }}
+                positive
+              />
+            </div>
+          </Form>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

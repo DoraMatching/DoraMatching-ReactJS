@@ -15,7 +15,6 @@ tagQuestion.getInitialProps = async ({ query: { id } }) => {
   const [tagQuestions] = await Promise.all([
     Client("tag-question"),
   ]);
-  console.log('L18', tagQuestions);
   return {
     tagQuestions: tagQuestions.data.items,
     tagItem : tagQuestions.data.items.filter(item => item.id === id)

@@ -9,7 +9,6 @@ const fileInputRef = React.createRef();
 
 const CardProfileSetting = ({ userAcc }) => {
   const router = useRouter();
-  // console.log("L8", userAcc);
   const { user } = useAuth();
   const { handleSubmit } = useForm();
 
@@ -20,10 +19,7 @@ const CardProfileSetting = ({ userAcc }) => {
   const [avatarUrl, setAvatarUrl] = useState(userAcc.avatarUrl);
   const [password, setPassword] = useState();
   const [oldPassword, setOldPassword] = useState();
-  // console.log(email);
-
-  // console.log("L16", name);
-
+  
   useEffect(() => {
     if (user) setEmail(user.email);
   }, [user]);

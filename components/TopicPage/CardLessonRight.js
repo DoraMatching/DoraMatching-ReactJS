@@ -6,7 +6,6 @@ import Client from "../../services/Client";
 import styles from "./CardTopicsPage.module.scss";
 
 function CardLessonRight({ classe, lessons }) {
-  console.log("L8", classe, lessons);
   const { user } = useAuth();
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -16,7 +15,6 @@ function CardLessonRight({ classe, lessons }) {
       router.push(`/sign-in?forward=${encodeURIComponent(router.asPath)}`);
     else {
       Client(`classe/${classe.id}/register`, "GET").then(({ data }) => {
-        console.log("L16", data);
         router.push(`${classe.id}`);
       });
     }
@@ -61,7 +59,6 @@ function CardLessonRight({ classe, lessons }) {
         </li>
       </ul>
       <div className={styles.lpCourseButtons}>
-        {console.log("L53", user)}
         {user &&
         classe.members.map((item) => item.user.id).indexOf(user.id) === -1 ? (
           <Modal

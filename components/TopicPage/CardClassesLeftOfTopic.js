@@ -7,7 +7,6 @@ import CreateClass from "./CreateClass";
 import CreateTopic from "./CreateTopic";
 
 export default function CardClassesLeftOfTopic({classes}) {
-  console.log('L10', classes);
   const { user } = useAuth();
 
   return (

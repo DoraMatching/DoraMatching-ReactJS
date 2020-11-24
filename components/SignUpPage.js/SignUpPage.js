@@ -10,24 +10,23 @@ import styles from "./SignUpPage.module.css";
 
 function SignUpPage() {
   const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
 
   const { signUp, logout } = useAuth();
 
-  const { register, handleSubmit, errors, watch  } = useForm();
-
+  const { register, handleSubmit, errors, watch } = useForm();
 
   async function onSubmit(e) {
     try {
-       await signUp(email, username, password);
-       router.push(router.query['forward'] || '/');
-    }catch(e) {
-      setError(true)
+      await signUp(email, username, password);
+      router.push(router.query["forward"] || "/");
+    } catch (e) {
+      setError(true);
       console.error(e);
-      router.push('/sign-up')
+      router.push("/sign-up");
     }
   }
 
@@ -60,7 +59,7 @@ function SignUpPage() {
               name="username"
               type="text"
               ref={register({
-                required: true
+                required: true,
               })}
             />
           </FormField>
@@ -87,7 +86,10 @@ function SignUpPage() {
               <p>Password (8 characters minimum)</p>
             )}
             {_.get("password.type", errors) === "pattern" && (
-              <p>Password must container following "A lowercase/uppercase - a special character - a number" </p>
+              <p>
+                Password must container following "A lowercase/uppercase - a
+                special character - a number"{" "}
+              </p>
             )}
           </FormField>
           <FormField>
@@ -99,17 +101,20 @@ function SignUpPage() {
               ref={register({
                 required: true,
                 validate: (value) => {
-                  return value === watch('password') || 'Password does not match'
-                }
+                  return value === watch("password") || "Password does not match"
+                },
               })}
             />
           </FormField>
-          {error && <Message negative error content='Email or username already exists' />}
+          {error && (
+            <Message
+              negative
+              error
+              content="Email or username already exists"
+            />
+          )}
           <div className={styles.loginButton}>
-            <Button
-              type="submit"
-              color={"linkedin"}
-            >
+            <Button type="submit" color={"linkedin"}>
               SIGN UP
             </Button>
             <LoginGithub />

@@ -7,7 +7,6 @@ import Client from "../../services/Client";
 import MdEditor from "../MdEditor";
 
 function EditQuestion({ question }) {
-  console.log("L9", question);
   const router = useRouter();
   const { user } = useAuth();
   const [content, setContent] = useState(question.content);

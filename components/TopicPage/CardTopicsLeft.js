@@ -9,7 +9,6 @@ import CreateTopic from "./CreateTopic";
 
 export default function CardTopicsLeft({ topics }) {
   const { user } = useAuth();
-  console.log('L12', user);
   return (
     <div className={styles.cardTopicsLeft}>
       <h3>Classes Management</h3>

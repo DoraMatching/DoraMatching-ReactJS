@@ -1,11 +1,14 @@
 import _ from "lodash";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Button, Form, Modal } from "semantic-ui-react";
 import { useAuth } from "../../contexts/auth";
 import Client from "../../services/Client";
 import MdEditor from "../MdEditor";
 import styles from "./CardQuestionPage.module.scss";
+import debounce from "lodash.debounce";
+
+const sendQuery = (query) => console.log(`Querying for ${query}`);
 
 function CreateQuestion({ questions }) {
   const router = useRouter();
@@ -16,6 +19,10 @@ function CreateQuestion({ questions }) {
   const [tags, setTags] = useState([]);
   const [itemTags, setItemTags] = useState([]);
 
+  const updateQuery = () => sendQuery(content);
+
+  const delayedQuery = useCallback(debounce(updateQuery, 2000), [content]);
+
   useEffect(() => {
     setItemTags(
       tags.map((item) => {
@@ -24,7 +31,20 @@ function CreateQuestion({ questions }) {
         };
       })
     );
-  }, [tags]);
+    delayedQuery();
+    return delayedQuery.cancel;
+  }, [tags, content, delayedQuery]);
+
+  const handleEditorChange = ({ html, text }) => {
+    const newValue = text.replace(/\d/g, "");
+    console.log("L52", newValue);
+    setContent(newValue);
+
+    if (newValue !== "")
+      Client("tag-predict", "POST", { predict: newValue }).then(({ data }) => {
+        setTags(_.uniq([...tags, ...data.results]));
+      });
+  };
 
   const Create = () => {
     if (!user)
@@ -41,13 +61,11 @@ function CreateQuestion({ questions }) {
     }
   };
 
-  const handleEditorChange = ({ html, text }) => {
-    const newValue = text.replace(/\d/g, "");
-    setContent(newValue);
-    if (newValue !== "")
-      Client("tag-predict", "POST", { predict: newValue }).then(({ data }) => {
-        setTags(_.uniq([...tags, ...data.results]));
-      });
+  const Cancel = () => {
+    setTitle("");
+    setContent("");
+    setTags([]);
+    router.push("/questions");
   };
 
   const removeTags = (indexToRemove) => {
@@ -111,23 +129,25 @@ function CreateQuestion({ questions }) {
             <MdEditor value={content} onChange={handleEditorChange} />
           </Form.Field>
         </Form>
-        <Modal.Actions>
-            <Button
-              color="youtube"
-              content="Cancel"
-              icon="close"
-              onClick={() => setOpen(false)}
-            />
-            <Button
-              content="Publish"
-              labelPosition="left"
-              icon="checkmark"
-              onClick={(e) => {
-                Create(e), setOpen(false);
-              }}
-              positive
-            />
-          </Modal.Actions>
+        <div style={{ marginTop: "20px" }}>
+          <Button
+            color="youtube"
+            content="Cancel"
+            icon="close"
+            onClick={(e) => {
+              Cancel(e), setOpen(false);
+            }}
+          />
+          <Button
+            content="Publish"
+            labelPosition="left"
+            icon="checkmark"
+            onClick={(e) => {
+              Create(e), setOpen(false);
+            }}
+            positive
+          />
+        </div>
       </Modal.Content>
     </Modal>
   );

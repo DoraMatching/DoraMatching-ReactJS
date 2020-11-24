@@ -29,10 +29,18 @@ const PostDetail = ({ post }) => {
         <div className={styles.postDetailContent}>
           <h3>{post.title}</h3>
           <div className={styles.postDetailContentAuthor}>
-            <p>Posted By: {post.author.name} </p>
-            <p>Comment: {post.comments.length} </p>
             <p>
-              Tags:
+              <span style={{ fontWeight: "bold" }}>Posted By: </span>
+              <Link href={`/profile/${post.author.id}`}>
+                <a>{post.author.name}</a>
+              </Link>{" "}
+            </p>
+            <p>
+              <span style={{ fontWeight: "bold" }}>Comment: </span>
+              {post.comments.length}{" "}
+            </p>
+            <p>
+              <span style={{ fontWeight: "bold" }}>Tags: </span>
               {post.tags.map((tag, id) => {
                 return (
                   <Link href="/" key={id}>
@@ -43,10 +51,10 @@ const PostDetail = ({ post }) => {
             </p>
           </div>
           <div style={{ fontStyle: "italic", marginBottom: "20px" }}>
-            {post.subTitle}
+            <ReactMarkdown>{post.subTitle}</ReactMarkdown>
           </div>
           <ReactMarkdown>{post.content}</ReactMarkdown>
-          <div className={styles.postMeta}>
+          {/* <div className={styles.postMeta}>
             <div className="extra content">
               <div
                 className="ui right labeled button"
@@ -65,11 +73,11 @@ const PostDetail = ({ post }) => {
               >
                 <a className="ui basic red right pointing label">2 shares</a>
                 <div className="ui red icon tiny button">
-                  <i className="external share large icon"></i>
+                  <i className="external fa-comments-o large icon"></i>
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

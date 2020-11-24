@@ -34,14 +34,12 @@ function CardBlogLeftDetail({ post, comments }) {
   return (
     <div className={styles.cardBlogsLeftDetail}>
       <div className={styles.cardBlogLeftHeader}>
-        <p>
-          <Link href="/posts">
-            <a>
-              <i className="fas fa-angle-double-left"></i>
-              <span>All Blogs</span>
-            </a>
-          </Link>
-        </p>
+        <Link href="/posts">
+          <a>
+            <i className="fas fa-angle-double-left"></i>
+            <span> All Blogs</span>
+          </a>
+        </Link>
       </div>
       <PostDetail post={post} />
       <Header as="h3" dividing>

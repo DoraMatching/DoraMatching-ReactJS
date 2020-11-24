@@ -45,6 +45,13 @@ function EditBlog({ post }) {
       });
     }
   };
+  const Cancel = () => {
+    if (!user)
+      router.push(`/sign-in?forward=${encodeURIComponent(router.asPath)}`);
+    else {
+      router.push("/posts");
+    }
+  };
 
   const handleEditorChange = ({ html, text }) => {
     const newValue = text.replace(/\d/g, "");
@@ -127,7 +134,14 @@ function EditBlog({ post }) {
         <label>Content</label>
         <MdEditor value={content} onChange={handleEditorChange} />
       </Form.Field>
-      <Button color="youtube" content="Cancel" icon="close" />
+      <Button
+        color="youtube"
+        content="Cancel"
+        icon="close"
+        onClick={(e) => {
+          Cancel(e);
+        }}
+      />
       <Button
         content="Update"
         labelPosition="left"

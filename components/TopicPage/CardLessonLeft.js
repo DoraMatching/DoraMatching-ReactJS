@@ -1,12 +1,27 @@
 import moment from "moment";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { Icon, Tab } from "semantic-ui-react";
+import { Accordion, Icon, Image, Label, List, Tab } from "semantic-ui-react";
 import styles from "./CardTopicsPage.module.scss";
 
 export default function CardLessonLeft({ classe, lessons }) {
   const [panes, setPanes] = useState([]);
-  const [values, setValues] = useState([]);
+  const [activeIndex, setActiveIndex] = useState([]);
+
+  const handleClick = (e, titleProps) => {
+    const { index } = titleProps;
+    const newIndex = activeIndex;
+
+    const currentIndexPosition = activeIndex.indexOf(index);
+    if (currentIndexPosition > -1) {
+      newIndex.splice(currentIndexPosition, 1);
+    } else {
+      newIndex.push(index);
+    }
+    // const newIndex = activeIndex === index ? -1 : index
+
+    setActiveIndex({ activeIndex: newIndex });
+  };
 
   const renderPanes = async () => {
     return [
@@ -14,15 +29,28 @@ export default function CardLessonLeft({ classe, lessons }) {
         menuItem: "Lessons",
         render: () => (
           <Tab.Pane attached={false}>
-            {lessons.map((lesson, id) => {
-              return (
-                <div key={id} className={styles.MangeLesson}>
-                  <p>{lesson.name}</p>
-                  <p>{lesson.duration} minutes</p>
-                  <p>{moment(lesson.startTime).format("lll")}</p>
-                </div>
-              );
-            })}
+            <Accordion fluid styled>
+              {lessons.map((lesson, id) => {
+                return (
+                  <div key={id}>
+                    <Accordion.Title
+                      active={activeIndex.includes(id)}
+                      index={id}
+                      onClick={handleClick}
+                    >
+                      <Icon name="dropdown" />
+                      <span style={{textTransform: 'uppercase', color: '#58606E'}}>{lesson.name}</span>
+                    </Accordion.Title>
+                    <Accordion.Content active={activeIndex.includes(id)}>
+                      <p><span style={{fontWeight: 'bold'}}>Time</span>: {lesson.duration} minutes</p>
+                      <p>
+                      <span style={{fontWeight: 'bold'}}>Time start</span>: {moment(lesson.startTime).format("lll")}
+                      </p>
+                    </Accordion.Content>
+                  </div>
+                );
+              })}
+            </Accordion>
           </Tab.Pane>
         ),
       },
@@ -30,13 +58,26 @@ export default function CardLessonLeft({ classe, lessons }) {
         menuItem: "Members",
         render: () => (
           <Tab.Pane attached={false}>
-            {classe.members.map((member, id) => {
-              return (
-                <div key={id}>
-                  <img src={member.user.avatarUrl} alt="avtMember" />
-                </div>
-              );
-            })}
+            <List divided selection>
+              {classe.members.map((member, id) => {
+                return (
+                  <List.Item key={id}>
+                    <Label horizontal>
+                      <Image
+                        src={member.user.avatarUrl}
+                        avatar
+                        alt="avtMember"
+                      />
+                    </Label>
+                    <Link href={`/profile/${member.user.id}`}>
+                      <a>
+                        <span>{member.user.name}</span>
+                      </a>
+                    </Link>
+                  </List.Item>
+                );
+              })}
+            </List>
           </Tab.Pane>
         ),
       },
@@ -67,7 +108,7 @@ export default function CardLessonLeft({ classe, lessons }) {
               width="96"
             />
             <span className={styles.authorData}>
-              <span className={styles.metaTitle}>Teacher</span>
+              <span className={styles.metaTitle}>Trainer</span>
               <span className="meta_data">
                 <a href="/">{classe.trainer.user.name}</a>
               </span>
@@ -77,9 +118,13 @@ export default function CardLessonLeft({ classe, lessons }) {
             <i className="far fa-folder"></i>
             <span className={styles.catData}>
               <span className={styles.metaTitle}>Topic</span>
-              <span className="meta_data">
-                <span className="cat-links">{classe.topic.name}</span>
-              </span>
+              <Link href={`/topics/${classe.topic.id}/classes`}>
+                <a>
+                  <span className="meta_data">
+                    <span className="cat-links">{classe.topic.name}</span>
+                  </span>
+                </a>
+              </Link>
             </span>
           </span>
         </div>
@@ -87,7 +132,11 @@ export default function CardLessonLeft({ classe, lessons }) {
           <img src={classe.featuredImage} alt="lessonThumbnail" />
         </div>
         <div>
-          <Tab menu={{ secondary: true }} panes={panes} />
+          <Tab
+            className={styles.CardLessonLeftTab}
+            menu={{ secondary: true }}
+            panes={panes}
+          />
         </div>
       </div>
     </div>

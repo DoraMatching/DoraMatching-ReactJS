@@ -18,8 +18,8 @@ function Navbar() {
   user = _user;
 
   const trigger = (
-    <span style={{border: '2px solid #ffffff', borderRadius: '50%'}}>
-      <Image avatar src={_user && _user.avatarUrl} />
+    <span >
+      <Image className='ImageNavbar' avatar src={_user && _user.avatarUrl} />
     </span>
   );
 
@@ -70,7 +70,7 @@ function Navbar() {
   );
   const userLink = (
     <div className='Dropdown'>
-      <Dropdown trigger={trigger} icon={null} pointing="top right">
+      <Dropdown style={{borderRadius: '50%', background: '#f8f8f8'}} trigger={trigger} icon={null} pointing="top right">
         <Dropdown.Menu>
           {options.map((e) => {
             return (

@@ -66,10 +66,18 @@
   margin-left: 5px;
 }
 
+.postImage {
+  height: 400px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
 .postImage > img {
   margin-top: 10px;
   margin-bottom: 20px;
   border-radius: 5px;
+  height: inherit;
+  object-fit: cover;
 }
 
 .postContent {
@@ -108,7 +116,7 @@
   outline: none;
 }
 
-.faTag i{
+.faTag i {
   margin-right: 5px;
 }
 
@@ -120,8 +128,8 @@
   padding: 5px 10px;
 }
 
-.faTagButton a{
-  color: #645F6D !important;
+.faTagButton a {
+  color: #645f6d !important;
 }
 
 .faTagButton:hover {
@@ -252,7 +260,7 @@
         }
       }
     }
-    .blogPostTitle{
+    .blogPostTitle {
       margin: 10px 0;
     }
   }

@@ -1,4 +1,5 @@
 import _ from "lodash";
+import debounce from "lodash.debounce";
 import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
 import { Button, Form, Modal } from "semantic-ui-react";
@@ -6,9 +7,6 @@ import { useAuth } from "../../contexts/auth";
 import Client from "../../services/Client";
 import MdEditor from "../MdEditor";
 import styles from "./CardQuestionPage.module.scss";
-import debounce from "lodash.debounce";
-
-const sendQuery = (query) => console.log(`Querying for ${query}`);
 
 function CreateQuestion({ questions }) {
   const router = useRouter();
@@ -19,9 +17,14 @@ function CreateQuestion({ questions }) {
   const [tags, setTags] = useState([]);
   const [itemTags, setItemTags] = useState([]);
 
-  const updateQuery = () => sendQuery(content);
+  const requestTagAPI = () => {
+    if (content)
+      Client("tag-predict", "POST", { predict: content }).then(({ data }) => {
+        setTags(_.uniq([...tags, ...data.results]));
+      });
+  };
 
-  const delayedQuery = useCallback(debounce(updateQuery, 2000), [content]);
+  const delayedQuery = useCallback(debounce(requestTagAPI, 1000), [content]);
 
   useEffect(() => {
     setItemTags(
@@ -40,10 +43,7 @@ function CreateQuestion({ questions }) {
     console.log("L52", newValue);
     setContent(newValue);
 
-    if (newValue !== "")
-      Client("tag-predict", "POST", { predict: newValue }).then(({ data }) => {
-        setTags(_.uniq([...tags, ...data.results]));
-      });
+    // if (newValue !== "")
   };
 
   const Create = () => {

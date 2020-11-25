@@ -42,10 +42,10 @@ function QuestionDetail({ question }) {
             <span>{question.author.name}</span>{" "}
             <p>asked {moment(question.createdAt).format("LLL")}</p>
           </span>
-          <div className={styles.questionButtonShareDetail}>
+          {/* <div className={styles.questionButtonShareDetail}>
             <i className="far fa-share"></i>
             <span>Share</span>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

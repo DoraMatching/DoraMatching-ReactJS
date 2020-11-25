@@ -109,7 +109,7 @@ function Question({ question }) {
               className={`${styles.questionMetaCommon} ${styles.questionMetaLike}`}
             >
               <i className="far fa-thumbs-up"> </i>
-              <span>25 likes</span>
+              <span>0 likes</span>
             </button>
             <button
               className={`${styles.questionMetaCommon} ${styles.questionMetaComment}`}
@@ -120,12 +120,12 @@ function Question({ question }) {
                 {question.comments.length > 1 ? "s" : ""}
               </span>
             </button>
-            <button
+            {/* <button
               className={`${styles.questionMetaCommon} ${styles.questionMetaShare}`}
             >
               <i className="far fa-share"></i>
-              <span>25 shares</span>
-            </button>
+              <span>0 shares</span>
+            </button> */}
           </div>
         )}
       </div>

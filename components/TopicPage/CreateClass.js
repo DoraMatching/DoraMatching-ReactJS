@@ -102,7 +102,7 @@ function CreateClass(props) {
               />
             </Form.Field>
             <Form.Field>
-              <label>Sessions</label>
+              <label>Duration (days)</label>
               <input
                 placeholder="number of sessions"
                 value={duration}

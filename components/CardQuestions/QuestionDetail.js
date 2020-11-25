@@ -11,7 +11,7 @@ function QuestionDetail({ question }) {
     <div className={styles.questionCardDetail}>
       <div className={styles.questionCardLeftDetail}>
         <button className={styles.questionCardDetailButton}>
-          <span>25</span>
+          <span>0</span>
           <i className="far fa-thumbs-up"> </i>
         </button>
       </div>

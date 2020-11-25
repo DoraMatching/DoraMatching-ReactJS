@@ -205,7 +205,7 @@ export default function CardLessonLeft({ classe, lessons }) {
             </Form.Field>
             <Form.Group widths="equal">
               <Form.Field required>
-                <label>Duration</label>
+                <label>Duration (minutes)</label>
                 <input
                   required
                   type="number"

@@ -24,7 +24,7 @@ class CardQuestionRight extends Component {
             </button>
           </li>
         </div>
-        <p className={styles.hotQues}>Hot Question</p>
+        <p className={styles.hotQues}>Hot Questions</p>
         <p className={styles.hotQuesDetail}>Creating multiline strings in JavaScript?</p>
         <p className={styles.hotQuesDetail}>Creating multiline strings in JavaScript?</p>
         <p className={styles.hotQuesDetail}>Creating multiline strings in JavaScript?</p>

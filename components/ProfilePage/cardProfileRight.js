@@ -8,14 +8,17 @@ import Schedule from "../Schedule/Schedule";
 import styles from "./CardProfile.module.scss";
 
 const CardProfileRight = ({ userAcc, classes }) => {
+  console.log("L11", classes);
+  console.log("L12", userAcc);
   const { user } = useAuth();
   const allowEdit = user && user.id === userAcc.id;
+  const allowShowClass = (classe) => user && user.id === classe.trainer.user.id;
 
   const renderPanes = async () => {
     const { data: currentUser } = await Client(`user/${userAcc.id}`, "GET", {});
     return [
       {
-        menuItem: { key: 'blogs', icon: 'blogger', content: 'Blogs' },
+        menuItem: { key: "blogs", icon: "blogger", content: "Blogs" },
         render: () => (
           <Tab.Pane attached={false}>
             <List divided verticalAlign="middle">
@@ -31,7 +34,11 @@ const CardProfileRight = ({ userAcc, classes }) => {
                   >
                     {allowEdit ? (
                       <List.Content floated="right">
-                        <Button>Edit</Button>
+                        <Button>
+                          <Link href={`/posts/${post.id}/edit`}>
+                            <a>Edit</a>
+                          </Link>
+                        </Button>
                         <Button color="red">Delete</Button>
                       </List.Content>
                     ) : (
@@ -54,7 +61,11 @@ const CardProfileRight = ({ userAcc, classes }) => {
         ),
       },
       {
-        menuItem: { key: 'question', icon: 'question circle', content: 'Questions' },
+        menuItem: {
+          key: "question",
+          icon: "question circle",
+          content: "Questions",
+        },
         render: () => (
           <Tab.Pane attached={false}>
             <List divided verticalAlign="middle">
@@ -70,7 +81,11 @@ const CardProfileRight = ({ userAcc, classes }) => {
                   >
                     {allowEdit ? (
                       <List.Content floated="right">
-                        <Button>Edit</Button>
+                        <Button>
+                          <Link href={`/questions/${question.id}/edit`}>
+                            <a>Edit</a>
+                          </Link>
+                        </Button>
                         <Button color="red">Delete</Button>
                       </List.Content>
                     ) : (
@@ -90,17 +105,22 @@ const CardProfileRight = ({ userAcc, classes }) => {
         ),
       },
       {
-        menuItem: { key: 'classes', icon: 'student', content: 'Classes' },
+        menuItem: { key: "classes", icon: "student", content: "Classes" },
         render: () => (
           <Tab.Pane attached={false}>
             {classes.map((classe, id) => {
-              return <Classe classe={classe} key={id} />
+              if (allowShowClass(classe))
+                return <Classe classe={classe} key={id} />;
             })}
           </Tab.Pane>
         ),
       },
       {
-        menuItem: { key: 'schedule', icon: 'calendar outline', content: 'Schedule' },
+        menuItem: {
+          key: "schedule",
+          icon: "calendar outline",
+          content: "Schedule",
+        },
         render: () => (
           <Tab.Pane attached={false}>
             <Schedule />

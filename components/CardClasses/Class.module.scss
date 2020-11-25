@@ -145,16 +145,17 @@
   }
   .courseContent::after {
     content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: -1;
-    height: calc(100% - 20px);
-    background: #ffffee;
-    transition: 0.4s;
+    background: #fffff8;
     border-bottom-left-radius: 9px;
     border-bottom-right-radius: 9px;
+    bottom: 0;
+    height: calc(100% - 20px);
+    left: 0;
+    opacity: 92%;
+    position: absolute;
+    right: 0;
+    transition: 0.4s;
+    z-index: -1;
   }
   .courseStudents{
     color: #000000;

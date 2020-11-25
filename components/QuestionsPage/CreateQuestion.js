@@ -42,8 +42,6 @@ function CreateQuestion({ questions }) {
     const newValue = text.replace(/\d/g, "");
     console.log("L52", newValue);
     setContent(newValue);
-
-    // if (newValue !== "")
   };
 
   const Create = () => {

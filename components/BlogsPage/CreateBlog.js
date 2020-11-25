@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { Button, Form, Modal } from "semantic-ui-react";
-import styles from "./CardBlogPage.module.scss";
-import { useRouter } from "next/router";
-import { useAuth } from "../../contexts/auth";
-import MdEditor from "../MdEditor";
-import Client from "../../services/Client";
 import _ from "lodash";
+import debounce from "lodash.debounce";
+import { useRouter } from "next/router";
+import React, { useCallback, useEffect, useState } from "react";
+import { Button, Form, Modal } from "semantic-ui-react";
+import { useAuth } from "../../contexts/auth";
+import Client from "../../services/Client";
+import MdEditor from "../MdEditor";
+import styles from "./CardBlogPage.module.scss";
 
 function CreateBlog(props) {
   const router = useRouter();
@@ -18,6 +19,15 @@ function CreateBlog(props) {
   const [tags, setTags] = useState([]);
   const [itemTags, setItemTags] = useState([]);
 
+  const requestTagAPI = () => {
+    if (content)
+      Client("tag-predict", "POST", { predict: content }).then(({ data }) => {
+        setTags(_.uniq([...tags, ...data.results]));
+      });
+  };
+
+  const delayedQuery = useCallback(debounce(requestTagAPI, 1000), [content]);
+
   useEffect(() => {
     setItemTags(
       tags.map((item) => {
@@ -26,7 +36,9 @@ function CreateBlog(props) {
         };
       })
     );
-  }, [tags]);
+    delayedQuery();
+    return delayedQuery.cancel;
+  }, [tags, content, delayedQuery]);
 
   const Create = () => {
     if (!user)
@@ -54,10 +66,6 @@ function CreateBlog(props) {
   const handleEditorChange = ({ html, text }) => {
     const newValue = text.replace(/\d/g, "");
     setContent(newValue);
-    if (newValue !== "")
-      Client("tag-predict", "POST", { predict: newValue }).then(({ data }) => {
-        setTags(_.uniq([...tags, ...data.results]));
-      });
   };
 
   const removeTags = (indexToRemove) => {

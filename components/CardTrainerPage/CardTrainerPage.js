@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./CardTrainerPage.module.css";
 
 function CardTrainerPage({ user }) {
+  console.log('L666666', user);
   return (
     <div className={styles.topTrainerCardContainer}>
       <img

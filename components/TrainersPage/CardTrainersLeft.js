@@ -8,12 +8,12 @@ function CardTrainersLeft({ users }) {
   const breakPoints = [{ width: 200, itemsToShow: 3 }];
   return (
     <>
-      <h3 className={styles.cardTrainersLefHeader}>Top Trainer</h3>
+      {/* <h3 className={styles.cardTrainersLefHeader}>Top Trainer</h3>
       <Carousel breakPoints={breakPoints} showArrows={false} pagination={true}>
         {users.map((user, id) => {
           return <CardTrainer user={user} key={id} />;
         })}
-      </Carousel>
+      </Carousel> */}
       <h3 className={styles.cardTrainersLefHeader}>All Trainers</h3>
       <div className={styles.cardTrainersLeftDetail}>
         {users.map((user, id) => {

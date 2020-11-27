@@ -1,26 +1,37 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Popup } from "semantic-ui-react";
 import { useAuth } from "../../contexts/auth";
-import Class from "../CardClasses/Class";
 import styles from "./CardProfile.module.scss";
 
 function CardProfileLeft({ userAcc }) {
+  console.log("L8", userAcc);
+  const [email, setEmail] = useState(userAcc.email || "");
+  const [phoneNumber, setPhoneNumber] = useState(userAcc.phoneNumber || "");
   const { user } = useAuth();
+  useEffect(() => {
+    if (user) setEmail(user.email);
+    if (user) setPhoneNumber(user.phoneNumber);
+  }, [user, phoneNumber]);
+
   return (
     <div>
       <div className={styles.cardProfileLeftWrapper}>
-        {(user && user.id && user.id === userAcc.id) ? <div className={styles.topIcons}>
-          <Link href={`/profile/${userAcc.id}/settings`}>
-            <a>
-              <Popup
-                trigger={<i className="fas fa-cogs"></i>}
-                content="Setting profile"
-                basic
-              />
-            </a>
-          </Link>
-        </div> : ''}
+        {user && user.id && user.id === userAcc.id ? (
+          <div className={styles.topIcons}>
+            <Link href={`/profile/${userAcc.id}/settings`}>
+              <a>
+                <Popup
+                  trigger={<i className="fas fa-cogs"></i>}
+                  content="Setting profile"
+                  basic
+                />
+              </a>
+            </Link>
+          </div>
+        ) : (
+          ""
+        )}
         <div className={styles.profile}>
           <img
             src={userAcc.avatarUrl}
@@ -32,11 +43,8 @@ function CardProfileLeft({ userAcc }) {
               <a>{userAcc.name}</a>
             </Link>
           </h3>
-          <p className={styles.title}>Javascript Developer</p>
-          <p className={styles.description}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-            aliquam aliquid porro!
-          </p>
+          <p className={styles.title}> {email} </p>
+          <p className={styles.description}>{phoneNumber}</p>
         </div>
         <div className={styles.socialIcons}>
           <div className={styles.icon}>

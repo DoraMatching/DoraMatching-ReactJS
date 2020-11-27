@@ -10,25 +10,29 @@ const fileInputRef = React.createRef();
 const CardProfileSetting = ({ userAcc }) => {
   const router = useRouter();
   const { user } = useAuth();
+  console.log("L13", user);
   const { handleSubmit } = useForm();
 
   const allowEdit = user && user.id === userAcc.id;
+  const [email, setEmail] = useState(userAcc.email || "");
   const [name, setName] = useState(userAcc.name);
   const [username, setUsername] = useState(userAcc.username);
-  const [email, setEmail] = useState(userAcc.email || "");
+  const [phoneNumber, setPhoneNumber] = useState(userAcc.phoneNumber || "");
   const [avatarUrl, setAvatarUrl] = useState(userAcc.avatarUrl);
   const [password, setPassword] = useState();
   const [oldPassword, setOldPassword] = useState();
-  
+
   useEffect(() => {
     if (user) setEmail(user.email);
-  }, [user]);
+    if (user) setPhoneNumber(user.phoneNumber);
+  }, [user, phoneNumber]);
 
   const Update = () => {
     let updateUser = {
+      email,
       username,
       name,
-      email,
+      phoneNumber,
       avatarUrl,
     };
     if (password) updateUser.password = password;
@@ -72,7 +76,12 @@ const CardProfileSetting = ({ userAcc }) => {
                       onChange={handleInputChange}
                     />
                   </Form.Field>
-                  <Form.Input label="Phone number" placeholder="phone" />
+                  <Form.Input
+                    label="Phone number"
+                    value={phoneNumber}
+                    placeholder="phone"
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                  />
                 </Form.Group>
                 <Form.Field>
                   <Button
@@ -88,10 +97,7 @@ const CardProfileSetting = ({ userAcc }) => {
                     // onChange={this.fileChange}
                   />
                 </Form.Field>
-                <Button
-                  color="linkedin"
-                  type="submit"
-                >
+                <Button color="linkedin" type="submit">
                   Submit
                 </Button>
               </Form>

@@ -25,7 +25,7 @@ const CardProfileSetting = ({ userAcc }) => {
   useEffect(() => {
     if (user) setEmail(user.email);
     if (user) setPhoneNumber(user.phoneNumber);
-  }, [user, phoneNumber]);
+  }, [user]);
 
   const Update = () => {
     let updateUser = {
@@ -36,7 +36,7 @@ const CardProfileSetting = ({ userAcc }) => {
       avatarUrl,
     };
     if (password) updateUser.password = password;
-    Client(`user/${userAcc.id}`, "PATCH", updateUser)
+    Client(`user/${userAcc.id}`, "PATCH", updateUser) 
       .then(({ data }) => {
         router.push(`/profile/${userAcc.id}`);
       })

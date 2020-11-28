@@ -48,6 +48,30 @@ function Classe({ classe }) {
         </div>
       </div>
     </div>
+    // <div
+    //   className={styles.classCard}
+    //   style={{
+    //     backgroundImage:
+    //       `url(${classe.featuredImage})`,
+    //   }}
+    // >
+    //   <div style={{width: '100%'}}>
+    //     <h1>
+    //       <Link href={`/classes/${classe.id}`}>
+    //         <a>
+    //           <h3 className={styles.courseTitle}>{classe.name}</h3>
+    //         </a>
+    //       </Link>
+    //     </h1>
+    //     <p>
+    //     {classe.description}
+    //     </p>
+    //     <div className={styles.classDate}>6 Oct 2017</div>
+    //     <div className={styles.classTags}>
+    //       <div className={styles.classTag}>HTML</div>
+    //     </div>
+    //   </div>
+    // </div>
   );
 }
 

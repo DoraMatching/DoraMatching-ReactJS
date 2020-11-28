@@ -12,7 +12,10 @@ const CardProfileRight = ({ userAcc, classes }) => {
   console.log("L12", userAcc);
   const { user } = useAuth();
   const allowEdit = user && user.id === userAcc.id;
-  const allowShowClass = (classe) => user && user.id === classe.trainer.user.id;
+  const allowShowClass = (classe) => {
+    console.log("allowShowClass", user.id, classe.trainer.user.id);
+    return userAcc && userAcc.id === classe.trainer.user.id;
+  };
 
   const renderPanes = async () => {
     const { data: currentUser } = await Client(`user/${userAcc.id}`, "GET", {});
@@ -42,7 +45,9 @@ const CardProfileRight = ({ userAcc, classes }) => {
                         <Button color="red">Delete</Button>
                       </List.Content>
                     ) : (
-                      ""
+                      <List.Item>
+                        <List.Content>aaaa</List.Content>
+                      </List.Item>
                     )}
 
                     <List.Header>
@@ -109,8 +114,11 @@ const CardProfileRight = ({ userAcc, classes }) => {
         render: () => (
           <Tab.Pane attached={false}>
             {classes.map((classe, id) => {
-              if (allowShowClass(classe))
+              console.log("l113", classe);
+              console.log("l114", allowShowClass(classe));
+              if (allowShowClass(classe)) {
                 return <Classe classe={classe} key={id} />;
+              } else return <></>;
             })}
           </Tab.Pane>
         ),

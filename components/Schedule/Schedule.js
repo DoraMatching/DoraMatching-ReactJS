@@ -82,13 +82,9 @@ class Schedule extends Component {
         return dat;
       })
       .catch((error) => {
-        // console.log('L24', error.response.data);
         return error.response.data;
       });
     console.log("l49", res);
-    // const handleDateClick = (arg) => { // bind with an arrow function
-    //   alert(arg.dateStr)
-    // }
     res.then((result) => this.setState({ eventCalendar: result }));
 
     console.log("L63", start, end);
@@ -98,7 +94,7 @@ class Schedule extends Component {
     console.log("l64", this.state.eventCalendar);
     console.log("l65", this.state);
     return (
-      <>
+      <div className={styles.fullCalendar}>
         <FullCalendar
           plugins={[
             interactionPlugin,
@@ -114,7 +110,7 @@ class Schedule extends Component {
           footerToolbar={{
             left: "prev,next today",
             center: "",
-            right: "dayGridMonth,timeGridWeek,listDay,listWeek",
+            right: "dayGridMonth,timeGridWeek",
           }}
           views={{
             listDay: { buttonText: "list day" },
@@ -127,7 +123,7 @@ class Schedule extends Component {
           editable={true}
           events={this.state.eventCalendar}
           ref={this.calendar}
-          aspectRatio={0.9}
+          aspectRatio={0.95}
           // dateClick={handleDateClick}
         />
         <Modal open={this.state.modalOpen} onClose={this.handleClose} closeIcon size="tiny">
@@ -138,10 +134,10 @@ class Schedule extends Component {
                 <label>Title</label>
                 <input value={this.state.titleDetail} disabled />
               </Form.Field>
-              <Form.Field>
+              {/* <Form.Field>
                 <label>Duration</label>
                 <input value={this.state.durationDetail} disabled />
-              </Form.Field>
+              </Form.Field> */}
               <Form.Field>
                 <label>Start At</label>
                 <input value={moment(this.state.startDetail).format("LLL")} disabled />
@@ -149,7 +145,7 @@ class Schedule extends Component {
             </Form>
           </Modal.Content>
         </Modal>
-      </>
+      </div>
     );
   }
 }

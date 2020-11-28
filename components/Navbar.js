@@ -3,8 +3,9 @@ import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { Button } from "./Button";
-import { Dropdown, Image, Search } from "semantic-ui-react";
+import { Dropdown, Image } from "semantic-ui-react";
 import { useAuth } from "../contexts/auth";
+import SearchBar from "./SearchBar";
 function Navbar() {
   const router = useRouter();
   let user = {
@@ -112,11 +113,7 @@ function Navbar() {
           <i className={clicked ? "fas fa-times" : "fas fa-bars"}></i>
         </div>
         <div className="navSearch">
-          <Search
-            placeholder="Search trainer, question, blog"
-            size="mini"
-            className="searchBar"
-          />
+          <SearchBar />
         </div>
         <ul className={clicked ? "navMenu active" : "navMenu"}>
           <li className={router.pathname == "/" ? "actived" : ""}>

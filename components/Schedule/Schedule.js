@@ -11,9 +11,10 @@ import styles from "./Schedule.module.css";
 import { Form, Modal } from "semantic-ui-react";
 import moment from "moment";
 
-function DemoSchedule() {
-  const { user } = useAuth();
-  if (!user) return <></>;
+function DemoSchedule({user}) {
+  console.log('L15', user);
+  // const { user } = useAuth();
+  // if (!user) return <></>;
   return <Schedule user={user} />;
 }
 
@@ -56,7 +57,6 @@ class Schedule extends Component {
     this.setState({ titleDetail: infor.event.title });
     this.setState({ durationDetail: infor.event.duration });
     this.setState({ startDetail: infor.event.start });
-    console.log("L59", infor);
   }
 
   componentDidMount() {
@@ -69,7 +69,6 @@ class Schedule extends Component {
           `trainer/${res.data.id}/lessons?startTime=${start}&endTime=${end}`,
           "GET"
         ).then((res2) => {
-          console.log("l14", res2);
           return res2.data.map((item) => {
             return {
               title: item.name,
@@ -78,21 +77,16 @@ class Schedule extends Component {
             };
           });
         });
-        console.log("l45", dat);
         return dat;
       })
       .catch((error) => {
         return error.response.data;
       });
-    console.log("l49", res);
     res.then((result) => this.setState({ eventCalendar: result }));
 
-    console.log("L63", start, end);
   }
 
   render() {
-    console.log("l64", this.state.eventCalendar);
-    console.log("l65", this.state);
     return (
       <div className={styles.fullCalendar}>
         <FullCalendar

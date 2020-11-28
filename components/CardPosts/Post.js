@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Post.module.scss";
 import Link from "next/link";
 import { Button, Dropdown, Icon } from "semantic-ui-react";

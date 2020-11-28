@@ -68,10 +68,11 @@ export default function CardLessonLeft({ classe, lessons }) {
     }
     // const newIndex = activeIndex === index ? -1 : index
 
-    setActiveIndex({ activeIndex: newIndex });
+    setActiveIndex({ activeIndex: [newIndex] });
   };
 
   const renderPanes = async () => {
+    console.log(activeIndex)
     return [
       {
         menuItem: "Lessons",
@@ -88,18 +89,18 @@ export default function CardLessonLeft({ classe, lessons }) {
                     >
                       <Icon name="dropdown" />
                       <span
-                        style={{ textTransform: "uppercase", color: "#58606E" }}
+                        style={{ textTransform: "uppercase", color: "#228099" }}
                       >
                         {lesson.name}
                       </span>
                     </Accordion.Title>
                     <Accordion.Content active={activeIndex.includes(id)}>
                       <p>
-                        <span style={{ fontWeight: "bold" }}>Time</span>:{" "}
+                        <span style={{ fontWeight: "bold", color: '#FF6D34' }}>Duration</span>:{" "}
                         {lesson.duration} minutes
                       </p>
                       <p>
-                        <span style={{ fontWeight: "bold" }}>Time start</span>:{" "}
+                        <span style={{ fontWeight: "bold", color: '#FF6D34' }}>Time start</span>:{" "}
                         {moment(lesson.startTime).format("lll")}
                       </p>
                     </Accordion.Content>

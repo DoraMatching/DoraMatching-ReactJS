@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import styles from './CardTrainer.module.css'
 function CardTrainer({user}) {
@@ -9,7 +10,7 @@ function CardTrainer({user}) {
         alt="user"
         width="90px"
       />
-      <h3>{user.name}</h3>
+      <h3><Link href={`/profile/${user.id}`}><a>{user.name}</a></Link></h3>
       <div className={styles.topTrainerButton}>
         <button className={styles.primary}>Follow</button>
       </div>

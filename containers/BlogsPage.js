@@ -8,10 +8,10 @@ class BlogsPage extends Component {
   render() {
     return (
       <div className={styles.blogsPage}>
-        <div style={{ width: "70%" }}>
+        <div style={{ width: "65%" }}>
           <CardBlogLeft {...this.props} />
         </div>
-        <div style={{ width: "20%", marginLeft: "20px" }}>
+        <div style={{ width: "35%", marginLeft: "20px" }}>
           <CardBlogRight />
         </div>
       </div>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { Button, Form, Modal } from "semantic-ui-react";
@@ -63,7 +64,9 @@ function CardTrainersRight({ users }) {
         </p>
         <img src="/static/ct-1.jpg" alt="ct1" width="100%" />
         <button className={styles.cardTrainerPageButtonChoose} color="teal">
-          Choose A Class
+          <Link href="/classes">
+            <a>Choose A Class</a>
+          </Link>
         </button>
       </div>
     </div>

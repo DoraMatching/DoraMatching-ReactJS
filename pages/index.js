@@ -1,12 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import Classe from "../components/CardClasses/Class";
 import Post from "../components/CardPosts/Post";
 import Question from "../components/CardQuestions/Question";
-import TopTrainer from "../components/TopTrainers/TopTrainer";
-import styles from "../styles/Home.module.css";
 import Schedule from "../components/Schedule/Schedule";
-import Client from "../services/Client";
 import { useAuth } from "../contexts/auth";
+import Client from "../services/Client";
+import styles from "../styles/Home.module.css";
 
 function Home({home, classes}) {
   const {user} = useAuth();

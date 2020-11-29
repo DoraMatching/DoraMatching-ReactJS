@@ -6,9 +6,7 @@ export default class CardBlogRight extends Component {
   render() {
     return (
       <div className={styles.cardBlogRight}>
-        <div>
-          <CreateBlog />
-        </div>
+          <h3>Related Blogs</h3>
       </div>
     );
   }

@@ -27,9 +27,9 @@ function SearchBar() {
   const searchResultsMapped = () => {
     return results.map((result, id) => {
       switch (result.type) {
-        case "posts":
+        case "post":
           return <Post post={result} key={id} />;
-        case "questions":
+        case "question":
           return <Question question={result} key={id} />;
       }
     });

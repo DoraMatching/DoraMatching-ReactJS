@@ -94,15 +94,16 @@ const Post = ({ post }) => {
           </button>
           <div className={styles.faTag}>
             <i className="fa fa-tag"></i>
-            {post.tags.map((tag, id) => {
-              return (
-                <button className={styles.faTagButton} key={id}>
-                  <Link href="/" key={id}>
-                    <a> {tag.name}</a>
-                  </Link>
-                </button>
-              );
-            })}
+            {post.tags &&
+              post.tags.map((tag, idex) => {
+                return (
+                  <button className={styles.faTagButton} key={idex}>
+                    <Link href={`/posts/tag-post/${tag.id}`}>
+                      <a>{tag.name}</a>
+                    </Link>
+                  </button>
+                );
+              })}
           </div>
         </div>
         <div className={styles.postMeta}>

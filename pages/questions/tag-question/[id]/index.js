@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../../../../styles/Home.module.css";
-import axios from "axios";
 import TagQuestionDetailPage from "../../../../containers/TagQuestionDetailPage";
 import Client from "../../../../services/Client";
 function tagQuestion({ tagQuestions, tagItem }) {

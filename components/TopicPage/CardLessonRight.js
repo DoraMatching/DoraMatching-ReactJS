@@ -41,7 +41,9 @@ function CardLessonRight({ classe, lessons }) {
       <ul>
         <li className={styles.students} title="21 students enrolled">
           <i className="fa fa-user"></i>
-          <span className="value">{classe.members.length} Students Enrolled</span>
+          <span className="value">
+            {classe.members.length} Students Enrolled
+          </span>
         </li>
         <li className="duration">
           <i className="fa fa-clock"></i>
@@ -60,7 +62,7 @@ function CardLessonRight({ classe, lessons }) {
       </ul>
       <div className={styles.lpCourseButtons}>
         {user &&
-        classe.members.map((item) => item.user.id).indexOf(user.id) === -1 ? (
+        classe.members.map((item) => item.user.id).indexOf(user.id) !== -1 ? (
           <Modal
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
@@ -70,11 +72,13 @@ function CardLessonRight({ classe, lessons }) {
               <button
                 className={styles.buttonPurchaseCourse}
                 title="Buy this course"
-              >JOIN NOW</button>
+              >
+                LEAVE THE CLASS
+              </button>
             }
           >
             <Modal.Content>
-              <p>Are you sure you want to join the class?</p>
+              <p>Are you sure you want to leave the class?</p>
             </Modal.Content>
             <Modal.Actions>
               <Button color="red" inverted onClick={() => setOpen(false)}>
@@ -84,7 +88,7 @@ function CardLessonRight({ classe, lessons }) {
                 color="blue"
                 inverted
                 onClick={(e) => {
-                  Joined(e), setOpen(false);
+                  Leaved(e), setOpen(false);
                 }}
               >
                 <Icon name="checkmark" /> Yes
@@ -101,11 +105,13 @@ function CardLessonRight({ classe, lessons }) {
               <button
                 className={styles.buttonPurchaseCourse}
                 title="Buy this course"
-              >LEAVE THE CLASS</button>
+              >
+                JOIN NOW
+              </button>
             }
           >
             <Modal.Content>
-              <p>Are you sure you want to leave the class?</p>
+              <p>Are you sure you want to join the class?</p>
             </Modal.Content>
             <Modal.Actions>
               <Button color="red" inverted onClick={() => setOpen(false)}>
@@ -115,7 +121,7 @@ function CardLessonRight({ classe, lessons }) {
                 color="blue"
                 inverted
                 onClick={(e) => {
-                  Leaved(e), setOpen(false);
+                  Joined(e), setOpen(false);
                 }}
               >
                 <Icon name="checkmark" /> Yes

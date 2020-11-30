@@ -4,7 +4,6 @@ import Link from "next/link";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import styles from "./Question.module.css";
-import gfm from 'remark-gfm'
 
 function QuestionDetail({ question }) {
   return (
@@ -27,7 +26,7 @@ function QuestionDetail({ question }) {
             );
           })}
         </div>
-        <ReactMarkdown plugins={[gfm]}>{question.content}</ReactMarkdown>
+        <ReactMarkdown >{question.content}</ReactMarkdown>
         <div className={styles.questionAvaDetail}>
           <div className={styles.questionAva}>
             <figure className={styles.questionThumbImage}>

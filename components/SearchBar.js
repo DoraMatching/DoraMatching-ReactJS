@@ -1,51 +1,54 @@
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { Input } from "semantic-ui-react";
+import { Form, FormInput } from "semantic-ui-react";
 import Client from "../services/Client";
 import Post from "./CardPosts/Post";
-import styles from "../styles/Home.module.css";
 
 function SearchBar() {
+  const router = useRouter()
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState({});
+
+  const searchApi = async () => {
+    const { data } = await Client(
+      `search?key=${encodeURIComponent(query)}&scope=${encodeURIComponent(
+        `["POST", "QUESTION"]`)}`,
+      "GET"
+    );
+    setResults(data);
+    router.push(`/search?key=${encodeURIComponent(query)}`)
+    setQuery('')
+  };
 
   useEffect(() => {
-    const searchApi = async () => {
-      const { data } = await Client(
-        `search?key=${encodeURIComponent(query)}&scope=${encodeURIComponent(
-          `["POST", "QUESTION"]`
-        )}`,
-        "GET"
-      );
-      setResults(data);
-    };
-    searchApi();
-    console.log("L7", query);
+    if (!query) return;
   }, [query]);
 
-  console.log(results);
+  console.log("l24", results);
 
-  const searchResultsMapped = () => {
-    return results.map((result, id) => {
-      switch (result.type) {
-        case "post":
-          return <Post post={result} key={id} />;
-        case "question":
-          return <Question question={result} key={id} />;
-      }
-    });
+  const handleChange = (e) => {
+    setQuery(e.target.value);
   };
 
   return (
     <div>
-      <Input
-        style={{ width: "350px" }}
-        size="small"
-        icon="search"
-        placeholder="Search trainers, questions, blogs"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-      {searchResultsMapped}
+      <Form size="small" onSubmit={searchApi}>
+        <Form.Group style={{ margin: "0px" }}>
+          <div style={{ width: "250px", position: "relative" }}>
+            <FormInput
+              placeholder="Search trainers, questions, blogs"
+              value={query}
+              onChange={handleChange}
+            />
+          </div>
+          <div style={{ margin: "0px", position: "absolute", right: "0" }}>
+            <Form.Button
+              style={{ margin: "0px", background: "none" }}
+              icon="search"
+            />
+          </div>
+        </Form.Group>
+      </Form>
     </div>
   );
 }

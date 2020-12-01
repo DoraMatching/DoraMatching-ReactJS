@@ -278,3 +278,23 @@
     }
   }
 }
+
+// POST RELATED
+
+.recentPostsContent{
+  display: flex;
+  margin-top: 20px;
+  .recentPostsImageWrapper{
+    margin-right: 10px;
+    img{
+      max-width: 60px;
+      border-radius: 10px;
+    }
+  }
+  .metaWrapper{
+    color: #828282;
+    font-weight: 600;
+    font-size: 12px;
+  }
+}
+

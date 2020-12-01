@@ -26,6 +26,12 @@ function CreateQuestion({ questions }) {
 
   const delayedQuery = useCallback(debounce(requestTagAPI, 1000), [content]);
 
+  const handleEditorChange = ({ html, text }) => {
+    const newValue = text.replace(/\d/g, "");
+    console.log("L52", newValue);
+    setContent(newValue);
+  };
+
   useEffect(() => {
     setItemTags(
       tags.map((item) => {
@@ -34,15 +40,12 @@ function CreateQuestion({ questions }) {
         };
       })
     );
+  }, [tags]);
+  useEffect(() => {
     delayedQuery();
     return delayedQuery.cancel;
-  }, [tags, content, delayedQuery]);
+  }, [content]);
 
-  const handleEditorChange = ({ html, text }) => {
-    const newValue = text.replace(/\d/g, "");
-    console.log("L52", newValue);
-    setContent(newValue);
-  };
 
   const Create = () => {
     if (!user)

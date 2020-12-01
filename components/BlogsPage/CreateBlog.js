@@ -20,14 +20,14 @@ function CreateBlog(props) {
   const [itemTags, setItemTags] = useState([]);
 
   const requestTagAPI = () => {
+    console.log("l23", "Quy");
     if (content)
       Client("tag-predict", "POST", { predict: content }).then(({ data }) => {
         setTags(_.uniq([...tags, ...data.results]));
       });
   };
 
-  const delayedQuery = useCallback(debounce(requestTagAPI, 1000), [content]);
-
+  const delayedQuery = useCallback(debounce(requestTagAPI, 2000), [content]);
   useEffect(() => {
     setItemTags(
       tags.map((item) => {
@@ -36,9 +36,16 @@ function CreateBlog(props) {
         };
       })
     );
+  }, [tags]);
+  useEffect(() => {
     delayedQuery();
     return delayedQuery.cancel;
-  }, [tags, content, delayedQuery]);
+  }, [content]);
+
+  const handleEditorChange = ({ html, text }) => {
+    const newValue = text.replace(/\d/g, "");
+    setContent(newValue);
+  };
 
   const Create = () => {
     if (!user)
@@ -63,11 +70,6 @@ function CreateBlog(props) {
     }
   };
 
-  const handleEditorChange = ({ html, text }) => {
-    const newValue = text.replace(/\d/g, "");
-    setContent(newValue);
-  };
-
   const removeTags = (indexToRemove) => {
     setTags([...tags.filter((_, index) => index !== indexToRemove)]);
   };
@@ -77,8 +79,8 @@ function CreateBlog(props) {
       event.target.value = "";
     }
   };
-
-  const fileInputRef = React.createRef();
+  console.log("l81", tags);
+  //const fileInputRef = React.createRef();
   return (
     <Modal
       size="small"
@@ -107,7 +109,7 @@ function CreateBlog(props) {
             />
           </Form.Field>
           <Form.Field required>
-            <label>Upload Image</label>
+            <label>Feature Image</label>
             <Form.Input
               placeholder="Image"
               value={featuredImage}
@@ -156,24 +158,24 @@ function CreateBlog(props) {
             <MdEditor value={content} onChange={handleEditorChange} />
           </Form.Field>
         </Form>
+        <div style={{ marginTop: "20px" }}>
+          <Button
+            color="youtube"
+            content="Cancel"
+            icon="close"
+            onClick={() => setOpen(false)}
+          />
+          <Button
+            content="Publish"
+            labelPosition="left"
+            icon="checkmark"
+            onClick={(e) => {
+              Create(e), setOpen(false);
+            }}
+            positive
+          />
+        </div>
       </Modal.Content>
-      <Modal.Actions>
-        <Button
-          color="youtube"
-          content="Cancel"
-          icon="close"
-          onClick={() => setOpen(false)}
-        />
-        <Button
-          content="Publish"
-          labelPosition="left"
-          icon="checkmark"
-          onClick={(e) => {
-            Create(e), setOpen(false);
-          }}
-          positive
-        />
-      </Modal.Actions>
     </Modal>
   );
 }

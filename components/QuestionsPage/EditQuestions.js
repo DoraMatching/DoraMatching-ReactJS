@@ -33,9 +33,11 @@ function EditQuestion({ question }) {
         };
       })
     );
+  }, [tags]);
+  useEffect(() => {
     delayedQuery();
     return delayedQuery.cancel;
-  }, [tags, content, delayedQuery]);
+  }, [content]);
 
   const handleEditorChange = ({ html, text }) => {
     const newValue = text.replace(/\d/g, "");

@@ -35,11 +35,14 @@ function EditBlog({ post }) {
         };
       })
     );
+  }, [tags]);
+  useEffect(() => {
     delayedQuery();
     return delayedQuery.cancel;
-  }, [tags, content, delayedQuery]);
+  }, [content]);
 
   const Update = () => {
+    console.log("l43", tags);
     if (!user)
       router.push(`/sign-in?forward=${encodeURIComponent(router.asPath)}`);
     else {

@@ -15,7 +15,7 @@ export default class QuestionsEditPage extends Component {
         <div style={{ width: "60%" }}>
           <EditQuestion {...this.props} />
         </div>
-        <div style={{ width: "15%" }}>
+        <div style={{ width: "20%" }}>
           <CardQuestionRight />
         </div>
       </div>

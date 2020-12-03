@@ -3,6 +3,7 @@ import React from 'react'
 import styles from "./CardBlogPage.module.scss";
 
 export default function CardBlogRightDetail({post}) {
+  console.log('l6', post);
     return (
       <div className={styles.cardBlogRightDetail}>
         <div className={styles.ourTeam}>
@@ -15,9 +16,6 @@ export default function CardBlogRightDetail({post}) {
           <ul className={styles.social}>
             <button className={styles.button}><Link href={`/profile/${post.author.id}`}><a>View Profile</a></Link> </button>
           </ul>
-          <div className={styles.countBlog}>
-            <p>{post.comments.length} blogs</p>
-          </div>
         </div>
       </div>
     );

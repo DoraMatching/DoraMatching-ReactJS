@@ -14,29 +14,24 @@ function PostRelated(props) {
   const getDataFromAPI = async () => {
     const response = await Client(`recommender/for?userId=${userID}`, "GET")
       .then((res) => {
-        return res.data.map((item) =>
+        return res.data.filter((item) => item.itemType === "post").map((item) =>
           Client(`post/${item.itemId}`, "GET")
             .then((res) => res.data)
             .catch((err) => {})
         );
-        //console.log("l15", arr);
       })
       .catch((err) => err);
-    console.log("l27", response);
     const data = await Promise.all(
       response.map(async (item) => {
         return await item.then((result) => result);
       })
     );
-    console.log("l31", data);
     //return data;
     setData(data);
   };
-  // console.log("l34", data);
   useEffect(() => {
     getDataFromAPI();
   }, []);
-  console.log("l39", data);
   return (
     <>
       {data && data.map((dat, id) => (
@@ -46,11 +41,11 @@ function PostRelated(props) {
           </div>
           <div className={styles.recentPostsContentWrapper}>
             <div className={styles.postTitle}>
-              <h3>
-                <Link href="/">
+              <h4>
+                <Link href={`/posts/${dat.id}`}>
                   <a> {dat.title} </a>
                 </Link>
-              </h3>
+              </h4>
             </div>
             <div className={styles.metaWrapper}>
               <span>{moment(dat.createAt).format("lll")}</span>

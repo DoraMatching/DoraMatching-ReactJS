@@ -15,7 +15,7 @@ class QuestionsPage extends Component {
         <div style={{ width: "60%" }}>
           <CardQuestionCenter {...this.props} />
         </div>
-        <div style={{ width: "15%" }}>
+        <div style={{ width: "20%" }}>
           <CardQuestionRight />
         </div>
       </div>

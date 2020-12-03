@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import React from 'react';
-import styles from './CardTrainer.module.css'
-function CardTrainer({user}) {
+import Link from "next/link";
+import React from "react";
+import styles from "./CardTrainer.module.css";
+function CardTrainer({ user }) {
   return (
     <div className={styles.topTrainerCardContainer}>
       <img
@@ -10,16 +10,18 @@ function CardTrainer({user}) {
         alt="user"
         width="90px"
       />
-      <h3><Link href={`/profile/${user.id}`}><a>{user.name}</a></Link></h3>
+      <h3>
+        <Link href={`/profile/${user.id}`}>
+          <a>{user.name}</a>
+        </Link>
+      </h3>
       <div className={styles.topTrainerButton}>
         <button className={styles.primary}>Follow</button>
       </div>
       <div className={styles.topTrainerSkills}>
-        <h4>Top Skills</h4>
+        <h4>Information</h4>
         <ul>
-          <li>JavaScript</li>
-          <li>React Native</li>
-          <li>NodeJS</li>
+          <li>{user.email}</li>
         </ul>
       </div>
     </div>

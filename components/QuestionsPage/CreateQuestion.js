@@ -28,7 +28,6 @@ function CreateQuestion({ questions }) {
 
   const handleEditorChange = ({ html, text }) => {
     const newValue = text.replace(/\d/g, "");
-    console.log("L52", newValue);
     setContent(newValue);
   };
 

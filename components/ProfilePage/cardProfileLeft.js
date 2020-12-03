@@ -5,7 +5,6 @@ import { useAuth } from "../../contexts/auth";
 import styles from "./CardProfile.module.scss";
 
 function CardProfileLeft({ userAcc }) {
-  console.log("L8", userAcc);
   const [email, setEmail] = useState(userAcc.email || "");
   const [phoneNumber, setPhoneNumber] = useState(userAcc.phoneNumber || "");
   const { user } = useAuth();

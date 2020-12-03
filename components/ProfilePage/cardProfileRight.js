@@ -8,8 +8,6 @@ import Schedule from "../Schedule/Schedule";
 import styles from "./CardProfile.module.scss";
 
 const CardProfileRight = ({ userAcc, classes }) => {
-  console.log("L11", classes);
-  console.log("L12", userAcc);
   const { user } = useAuth();
   const allowEdit = user && user.id === userAcc.id;
   const allowShowClass = (classe) => {

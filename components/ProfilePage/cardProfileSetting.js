@@ -8,6 +8,7 @@ import Client from "../../services/Client";
 const fileInputRef = React.createRef();
 
 const CardProfileSetting = ({ userAcc }) => {
+  console.log('L11', userAcc);
   const router = useRouter();
   const { user } = useAuth();
   console.log("L13", user);
@@ -35,9 +36,11 @@ const CardProfileSetting = ({ userAcc }) => {
       phoneNumber,
       avatarUrl,
     };
+    console.log("l39", updateUser);
     if (password) updateUser.password = password;
     Client(`user/${userAcc.id}`, "PATCH", updateUser) 
       .then(({ data }) => {
+        console.log("l43", data);
         router.push(`/profile/${userAcc.id}`);
       })
       .catch((error) => {
@@ -79,24 +82,23 @@ const CardProfileSetting = ({ userAcc }) => {
                   <Form.Input
                     label="Phone number"
                     value={phoneNumber}
-                    placeholder="phone"
-                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    type="text"
+                    name="phone number"
+                    onChange={async (e) => setPhoneNumber(e.target.value)}
                   />
                 </Form.Group>
+                <Form.Group widths={2}>
                 <Form.Field>
-                  <Button
-                    content="Choose Image"
-                    labelPosition="left"
-                    icon="image"
-                    onClick={() => fileInputRef.current.click()}
-                  />
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    hidden
-                    // onChange={this.fileChange}
-                  />
+                <label>Avatar</label>
+                    <Form.Input
+                      required
+                      value={avatarUrl}
+                      type="text"
+                      name="avatar"
+                      onChange={async (e) => setAvatarUrl(e.target.value)}
+                    />
                 </Form.Field>
+                </Form.Group>
                 <Button color="linkedin" type="submit">
                   Submit
                 </Button>
@@ -125,7 +127,7 @@ const CardProfileSetting = ({ userAcc }) => {
                 <Form.Input placeholder="new pass" required />
               </Form.Field>
               <Form.Field required>
-                <label>Repeat New Password</label>
+              <label>Repeat New Password</label>
                 <Form.Input placeholder="repeat new pass" required />
               </Form.Field>
               <Button color="linkedin" type="submit">
@@ -142,7 +144,7 @@ const CardProfileSetting = ({ userAcc }) => {
 
   useEffect(() => {
     renderPanes().then((components) => setPanes(components));
-  }, [allowEdit, name, email]);
+  }, [allowEdit, name, email, phoneNumber, avatarUrl]);
 
   return <Tab menu={{ secondary: true }} panes={panes} />;
 };

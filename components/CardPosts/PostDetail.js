@@ -33,7 +33,7 @@ const PostDetail = ({ post }) => {
               <span style={{ fontWeight: "bold" }}>Posted By: </span>
               <Link href={`/profile/${post.author.id}`}>
                 <a>{post.author.name}</a>
-              </Link>{" "}
+              </Link>
             </p>
             <p>
               <span style={{ fontWeight: "bold" }}>Comment: </span>

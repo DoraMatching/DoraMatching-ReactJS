@@ -7,7 +7,7 @@ class CardQuestionRight extends Component {
   render() {
     return (
       <div className={styles.cardQuestionRight}>
-        <p className={styles.hotQues}>Hot Questions</p>
+        <p className={styles.hotQues}>Related Questions</p>
         <QuestionRelated />
         {/* <p className={styles.mostUsedTag}>Most Used Tags</p>
         <div className={styles.cardQuestionTagDetailRight}>

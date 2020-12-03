@@ -26,8 +26,6 @@ export default function CardLessonLeft({ classe, lessons }) {
   const [duration, setDuration] = useState(0);
   const [startTime, setStartTime] = useState("");
 
-  console.log("l29", lessons);
-
   const Create = () => {
     if (!user)
       router.push(`/sign-in?forward=${encodeURIComponent(router.asPath)}`);

@@ -11,7 +11,7 @@ class BlogsPage extends Component {
         <div style={{ width: "65%" }}>
           <CardBlogLeft {...this.props} />
         </div>
-        <div style={{ width: "35%", marginLeft: "20px" }}>
+        <div style={{ width: "30%", marginLeft: "20px" }}>
           <CardBlogRight />
         </div>
       </div>

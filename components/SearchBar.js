@@ -24,8 +24,6 @@ function SearchBar() {
     if (!query) return;
   }, [query]);
 
-  console.log("l24", results);
-
   const handleChange = (e) => {
     setQuery(e.target.value);
   };

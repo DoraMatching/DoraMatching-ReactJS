@@ -12,9 +12,6 @@ import { Form, Modal } from "semantic-ui-react";
 import moment from "moment";
 
 function DemoSchedule({user}) {
-  console.log('L15', user);
-  // const { user } = useAuth();
-  // if (!user) return <></>;
   return <Schedule user={user} />;
 }
 
@@ -52,7 +49,6 @@ class Schedule extends Component {
   }
 
   handleModal(infor) {
-    console.log("l108", this);
     this.handleOpen();
     this.setState({ titleDetail: infor.event.title });
     this.setState({ durationDetail: infor.event.duration });

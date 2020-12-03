@@ -283,3 +283,12 @@
   background-color: #bbbbbb;
   transition: 0.4s;
 }
+
+/* QUESTION RELATED */
+.recentPostsContent{
+  margin-bottom: 20px;
+}
+.hotQuesDetail{
+  margin-top: 10px;
+  color: #228099;
+}

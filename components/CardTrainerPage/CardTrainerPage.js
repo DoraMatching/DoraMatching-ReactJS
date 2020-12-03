@@ -3,7 +3,6 @@ import React from "react";
 import styles from "./CardTrainerPage.module.css";
 
 function CardTrainerPage({ user }) {
-  console.log('L666666', user);
   return (
     <div className={styles.topTrainerCardContainer}>
       <img
@@ -21,11 +20,9 @@ function CardTrainerPage({ user }) {
         <button className={styles.primary}>Follow</button>
       </div>
       <div className={styles.topTrainerSkills}>
-        <h4>Top Skills</h4>
+        <h4>Email</h4>
         <ul>
-          <li>JavaScript</li>
-          <li>React Native</li>
-          <li>NodeJS</li>
+          <li>{user.email}</li>
         </ul>
       </div>
     </div>

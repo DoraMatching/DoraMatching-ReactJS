@@ -20,7 +20,6 @@ function CreateBlog(props) {
   const [itemTags, setItemTags] = useState([]);
 
   const requestTagAPI = () => {
-    console.log("l23", "Quy");
     if (content)
       Client("tag-predict", "POST", { predict: content }).then(({ data }) => {
         setTags(_.uniq([...tags, ...data.results]));
@@ -59,7 +58,6 @@ function CreateBlog(props) {
         content,
         tags: itemTags,
       }).then(({ data }) => {
-        console.log("L32", data);
         setTitle("");
         setSubTitle("");
         setFeaturedImage("");
@@ -79,7 +77,6 @@ function CreateBlog(props) {
       event.target.value = "";
     }
   };
-  console.log("l81", tags);
   //const fileInputRef = React.createRef();
   return (
     <Modal

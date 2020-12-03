@@ -229,6 +229,7 @@
           height: 100%;
           user-select: none;
           width: 100%;
+          object-fit: cover;
         }
       }
     }
@@ -286,9 +287,12 @@
   margin-top: 20px;
   .recentPostsImageWrapper{
     margin-right: 10px;
+    height: 60px;
     img{
       max-width: 60px;
       border-radius: 10px;
+      height: 100%;
+      object-fit: cover;
     }
   }
   .metaWrapper{

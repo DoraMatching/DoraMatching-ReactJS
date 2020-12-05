@@ -68,6 +68,21 @@ function CreateBlog(props) {
     }
   };
 
+  const handleImageChange = (e) => {
+    // let reader = new FileReader();
+    if(e.target.files && e.target.files.length){
+      let [img] = e.target.files;
+      setFeaturedImage({
+        featureImage: URL.createObjectURL(img)
+      })
+    }  
+    // reader.onloadend = () => {
+    //   setFeaturedImage(featuredImage);
+    // }
+    // reader.readAsDataURL(featuredImage)
+  }
+  console.log('L82', featuredImage);
+
   const removeTags = (indexToRemove) => {
     setTags([...tags.filter((_, index) => index !== indexToRemove)]);
   };
@@ -109,8 +124,9 @@ function CreateBlog(props) {
             <label>Feature Image</label>
             <Form.Input
               placeholder="Image"
-              value={featuredImage}
-              onChange={(e) => setFeaturedImage(e.target.value)}
+              // value={featuredImage}
+              type="file"
+              onChange={(e) => handleImageChange(e)}
             />
             {/* <Button
               content="Choose Image"

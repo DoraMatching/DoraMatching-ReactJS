@@ -13,6 +13,7 @@ function SignUpPage() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [error, setError] = useState(false);
 
   const { signUp, logout } = useAuth();
@@ -21,7 +22,7 @@ function SignUpPage() {
 
   async function onSubmit(e) {
     try {
-      await signUp(email, username, password);
+      await signUp(email, username, password, phoneNumber);
       router.push(router.query["forward"] || "/");
     } catch (e) {
       setError(true);
@@ -50,6 +51,9 @@ function SignUpPage() {
                 pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
               })}
             />
+            {_.get("email.type", errors) === "required" && (
+              <p style={{ color: "red" }}>This field is required</p>
+            )}
           </FormField>
           <FormField>
             <label>Username</label>
@@ -62,11 +66,35 @@ function SignUpPage() {
                 required: true,
               })}
             />
+            {_.get("username.type", errors) === "required" && (
+              <p style={{ color: "red" }}>This field is required</p>
+            )}
           </FormField>
-          {/* <FormField>
-            <label>Phone number</label>
-            <input name="phonenumber" type="text" />
-          </FormField> */}
+          <FormField>
+            <label>Phone</label>
+            <input
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              name="phoneNumber"
+              type="text"
+              ref={register({
+                required: true,
+                minLength: 10,
+                pattern: /^([0-9-\s\(\)]+)$/,
+              })}
+            />
+            {_.get("phoneNumber.type", errors) === "required" && (
+              <p style={{ color: "red" }}>This field is required</p>
+            )}
+            {_.get("phoneNumber.type", errors) === "minLength" && (
+              <p style={{ color: "red" }}>Phone Number (10 numerics minimum)</p>
+            )}
+            {_.get("phoneNumber.type", errors) === "pattern" && (
+              <p style={{ color: "red" }}>
+                Phone Number must be numeric
+              </p>
+            )}
+          </FormField>
           <FormField>
             <label>Password</label>
             <input
@@ -80,15 +108,15 @@ function SignUpPage() {
               })}
             />
             {_.get("password.type", errors) === "required" && (
-              <p>This field is required</p>
+              <p style={{ color: "red" }}>This field is required</p>
             )}
             {_.get("password.type", errors) === "minLength" && (
-              <p>Password (8 characters minimum)</p>
+              <p style={{ color: "red" }}>Password (8 characters minimum)</p>
             )}
             {_.get("password.type", errors) === "pattern" && (
-              <p>
+              <p style={{ color: "red" }}>
                 Password must container following "A lowercase/uppercase - a
-                special character - a number"{" "}
+                special character - a number"
               </p>
             )}
           </FormField>
@@ -101,10 +129,17 @@ function SignUpPage() {
               ref={register({
                 required: true,
                 validate: (value) => {
-                  return value === watch("password") || "Password does not match"
+                  return (
+                    value === watch("password") || (
+                      <span style={{ color: "red" }}>
+                        Password does not match
+                      </span>
+                    )
+                  );
                 },
               })}
             />
+            {errors.confirmPass && errors.confirmPass.message}
           </FormField>
           {error && (
             <Message

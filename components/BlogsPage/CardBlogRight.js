@@ -6,8 +6,7 @@ import CreateBlog from './CreateBlog';
 export default class CardBlogRight extends Component {
   render() {
     return (
-      <div className={styles.cardBlogRight}>
-          <h3>Related Blogs</h3>
+      <div className={styles.cardBlogRight}> 
           <PostRelated />
       </div>
     );

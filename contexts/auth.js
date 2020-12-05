@@ -51,12 +51,13 @@ export const AuthProvider = ({ children }) => {
       throw error;
     }
   };
-  const signUp = async (email, username, password) => {
+  const signUp = async (email, username, password, phoneNumber) => {
     const res = await api
       .post("/register", {
         email,
         username,
         password,
+        phoneNumber
       })
       .then((res) => res)
       .catch((err) => err.response.data);

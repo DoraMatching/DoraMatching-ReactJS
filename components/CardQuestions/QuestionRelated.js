@@ -9,6 +9,7 @@ function QuestionRelated(props) {
   const { user } = useAuth();
 
   const [data, setData] = useState([]);
+  const [dataQuestion, setDataQuestion] = useState([]);
   const userID = user && user.id;
 
   const getDataFromAPI = async () => {
@@ -29,24 +30,54 @@ function QuestionRelated(props) {
         return await item.then((result) => result);
       })
     );
-    //return data;
     setData(data);
   };
+
+  const getDataQuestion = async () => {
+    const dataQuestion = await Client(
+      `questions?page=1&limit=5&order=ASC`,
+      "GET"
+    ).then((res) => {
+      return res.data.items;
+    });
+    setDataQuestion(dataQuestion);
+  };
+
   useEffect(() => {
     getDataFromAPI();
+    getDataQuestion();
   }, []);
   return (
     <>
-      {data &&
-        data.map((dat, id) => (
-          <div key={id}>
-            <div className={styles.hotQuesDetail}>
-              <Link href={`/questions/${dat.id}`}>
-                <a> {dat.title} </a>
-              </Link>
-            </div>
-          </div>
-        ))}
+      {data && data.length !== 0 ? (
+        <>
+          <p className={styles.hotQues}>Recommend For You</p>
+          {data &&
+            data.map((dat, id) => (
+              <div key={id}>
+                <div className={styles.hotQuesDetail}>
+                  <Link href={`/questions/${dat.id}`}>
+                    <a> {dat.title} </a>
+                  </Link>
+                </div>
+              </div>
+            ))}
+        </>
+      ) : (
+        <>
+          <p className={styles.hotQues}>Oldest Questions</p>
+          {dataQuestion &&
+            dataQuestion.map((dataQues, idx) => (
+              <div key={idx}>
+                <div className={styles.hotQuesDetail}>
+                  <Link href={`/questions/${dataQues.id}`}>
+                    <a> {dataQues.title} </a>
+                  </Link>
+                </div>
+              </div>
+            ))}
+        </>
+      )}
     </>
   );
 }

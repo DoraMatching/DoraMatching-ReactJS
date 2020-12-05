@@ -1,15 +1,18 @@
 import React from "react";
-import styles from "../../../styles/Home.module.css";
-import axios from "axios";
 import BlogsEditPage from "../../../containers/BlogsEditPage";
+import { useAuth } from "../../../contexts/auth";
+import { useRouter } from "next/router";
 import Client from "../../../services/Client";
+import styles from "../../../styles/Home.module.css";
 
 function editBlog({ post, tagPosts }) {
-  return (
+  const { user } = useAuth();
+  const router = useRouter()
+  return user && user ? (
     <div className={styles.container}>
       <BlogsEditPage post={post} tagPosts={tagPosts} />
     </div>
-  );
+  ) : (typeof window !== 'undefined' ? (router.back('/')) : '')  
 }
 
 editBlog.getInitialProps = async ({ query: { id } }) => {

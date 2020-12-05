@@ -298,6 +298,9 @@
       height: 100%;
       object-fit: cover;
     }
+    &:hover{
+      cursor: pointer;
+    }
   }
   .metaWrapper{
     color: #828282;

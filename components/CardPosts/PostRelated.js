@@ -9,16 +9,19 @@ function PostRelated(props) {
   const { user } = useAuth();
 
   const [data, setData] = useState([]);
+  const [dataPost, setDataPost] = useState([]);
   const userID = user && user.id;
 
   const getDataFromAPI = async () => {
     const response = await Client(`recommender/for?userId=${userID}`, "GET")
       .then((res) => {
-        return res.data.filter((item) => item.itemType === "post").map((item) =>
-          Client(`post/${item.itemId}`, "GET")
-            .then((res) => res.data)
-            .catch((err) => {})
-        );
+        return res.data
+          .filter((item) => item.itemType === "post")
+          .map((item) =>
+            Client(`post/${item.itemId}`, "GET")
+              .then((res) => res.data)
+              .catch((err) => {})
+          );
       })
       .catch((err) => err);
     const data = await Promise.all(
@@ -29,30 +32,96 @@ function PostRelated(props) {
     //return data;
     setData(data);
   };
+
+  const getDataPost = async () => {
+    const dataPost = await Client(`posts?page=1&limit=5&order=ASC`, "GET").then(
+      (res) => {
+        return res.data.items;
+      }
+    );
+    setDataPost(dataPost);
+    {
+      console.log("l37", dataPost);
+    }
+  };
   useEffect(() => {
     getDataFromAPI();
+    getDataPost();
   }, []);
   return (
     <>
-      {data && data.map((dat, id) => (
-        <div key={id} className={styles.recentPostsContent}>
-          <div className={styles.recentPostsImageWrapper}>
-            <img src={dat.featuredImage} alt="avt" />
-          </div>
-          <div className={styles.recentPostsContentWrapper}>
-            <div className={styles.postTitle}>
-              <h4>
+      {data && data.length !== 0 ? (
+        <>
+          <h3>Recommend For You</h3>
+          {data.map((dat, id) => (
+            <div key={id} className={styles.recentPostsContent}>
+              <div className={styles.recentPostsImageWrapper}>
                 <Link href={`/posts/${dat.id}`}>
-                  <a> {dat.title} </a>
+                  <img src={dat.featuredImage} alt="avt" />
                 </Link>
-              </h4>
+              </div>
+              <div className={styles.recentPostsContentWrapper}>
+                <div className={styles.postTitle}>
+                  <h4>
+                    <Link href={`/posts/${dat.id}`}>
+                      <a> {dat.title} </a>
+                    </Link>
+                  </h4>
+                </div>
+                <div className={styles.metaWrapper}>
+                  <span>{moment(dat.createAt).format("lll")}</span>
+                </div>
+              </div>
             </div>
-            <div className={styles.metaWrapper}>
-              <span>{moment(dat.createAt).format("lll")}</span>
+          ))}
+        </>
+      ) : (
+        <>
+          <h3>Oldest Blogs</h3>
+          {dataPost.map((datPost, idx) => (
+            <div key={idx} className={styles.recentPostsContent}>
+              <div className={styles.recentPostsImageWrapper}>
+                <Link href={`/posts/${datPost.id}`}>
+                  <img src={datPost.featuredImage} alt="avt" />
+                </Link>
+              </div>
+              <div className={styles.recentPostsContentWrapper}>
+                <div className={styles.postTitle}>
+                  <h4>
+                    <Link href={`/posts/${datPost.id}`}>
+                      <a> {datPost.title} </a>
+                    </Link>
+                  </h4>
+                </div>
+                <div className={styles.metaWrapper}>
+                  <span>{moment(datPost.createAt).format("lll")}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </>
+      )}
+
+      {/* {data &&
+        data.map((dat, id) => (
+          <div key={id} className={styles.recentPostsContent}>
+            <div className={styles.recentPostsImageWrapper}>
+              <img src={dat.featuredImage} alt="avt" />
+            </div>
+            <div className={styles.recentPostsContentWrapper}>
+              <div className={styles.postTitle}>
+                <h4>
+                  <Link href={`/posts/${dat.id}`}>
+                    <a> {dat.title} </a>
+                  </Link>
+                </h4>
+              </div>
+              <div className={styles.metaWrapper}>
+                <span>{moment(dat.createAt).format("lll")}</span>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))} */}
     </>
   );
 }

@@ -148,6 +148,7 @@
 
 .postDetailContent {
   width: 100%;
+  font-size: 1.2rem;
 }
 
 .postDetailContent h3{
@@ -303,9 +304,17 @@
     }
   }
   .metaWrapper{
-    color: #828282;
+    color: #868686;
     font-weight: 600;
     font-size: 12px;
+  }
+  .nameWrapper a{
+    color: #828282 !important;
+    font-size: 12;
+    font-style: italic;
+    &:hover{
+      color: #228099 !important;
+    }
   }
 }
 

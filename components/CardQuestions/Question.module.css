@@ -32,7 +32,7 @@
   text-align: center;
 }
 
-.questionThumb i:hover{
+.questionThumb i:hover {
   cursor: pointer;
 }
 
@@ -182,12 +182,12 @@
   color: #999999;
 }
 
-.questionCardDetailButton:hover{
+.questionCardDetailButton:hover {
   cursor: pointer;
   color: #228099;
 }
 
-.questionCardDetailButton span{
+.questionCardDetailButton span {
   margin-bottom: 5px;
 }
 
@@ -215,8 +215,8 @@
   padding: 5px 12px;
 }
 
-.buttonLink a{
-  color: #645F6D !important;
+.buttonLink a {
+  color: #645f6d !important;
 }
 
 .buttonLink:hover {
@@ -224,12 +224,12 @@
   transition: 0.4s;
 }
 
-.questionAvaDetail{
+.questionAvaDetail {
   display: flex;
   margin-top: 10px;
 }
 
-.questionAuthorDetail{
+.questionAuthorDetail {
   display: flex;
   align-items: center;
   width: 80%;
@@ -245,25 +245,25 @@
   margin-left: 5px;
 }
 
-.questionButtonShareDetail{
+.questionButtonShareDetail {
   align-self: center;
   width: 20%;
   max-width: fit-content;
 }
 
-.questionContentDetail{
+.questionContentDetail {
   width: 90%;
   float: right;
 }
 
-.questionCommentButton{
+.questionCommentButton {
   display: flex;
   border: none;
   background: none;
 }
 
 /* QUESTION CARD COMMENT */
-.questionCardComment{
+.questionCardComment {
   background-color: #ffffff;
   border-radius: 5px;
   border: none;
@@ -276,28 +276,70 @@
 
 /* CARD TAG QUESTION */
 
-.tagQuestionTag a{
-  color: #3aa6ff !important;
+.tagQuestionTag a {
+  color: #645f6d !important;
 }
 
-.tagQuestionTag:hover{
+.tagQuestionTag:hover {
   background-color: #bbbbbb;
   transition: 0.4s;
 }
 
 /* QUESTION RELATED */
-.recentPostsContent{
+.recentPostsContent {
   margin-bottom: 20px;
 }
-.hotQues{
+.hotQues {
   text-transform: uppercase;
   font-weight: bolder;
   border-bottom: 2px solid #228099;
   width: fit-content;
-	margin-top: 40px;
-	margin-bottom: 20px;
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
-.hotQuesDetail{
-  margin-top: 10px;
+
+.hotQuesDetail {
+  margin-bottom: 10px;
+  margin-top: 5px;
   color: #228099;
+  position: relative;
+  display: inline-block;
+}
+
+.hotQuesDetail::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  margin: 5px 0;
+  width:50%;
+  height: 2px;
+  background: #868686;
+}
+
+.titleQuesDetail{
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.titleQuesDetail a{
+  color: #303030 !important;
+}
+
+.titleQuesDetail a:hover{
+  color: #228099 !important;
+}
+
+.nameQuestionDetail{
+  font-style: italic;
+  color: #868686;
+}
+
+.nameQuestionDetail a{
+  color: #9BA9C8 !important;
+}
+
+.nameQuestionDetail a:hover{
+  color: #7185b1 !important;
 }

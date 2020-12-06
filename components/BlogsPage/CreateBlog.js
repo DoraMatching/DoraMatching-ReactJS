@@ -50,6 +50,9 @@ function CreateBlog(props) {
     if (!user)
       router.push(`/sign-in?forward=${encodeURIComponent(router.asPath)}`);
     else {
+      // const formData = new FormData();
+      // formData.append('featuredImage', featuredImage)
+      
       Client("post", "POST", {
         title,
         subTitle,
@@ -64,24 +67,23 @@ function CreateBlog(props) {
         setContent("");
         setTags([]);
         router.push("/posts");
-      });
+      }).then(res => {
+        console.log(res)
+    });
     }
   };
 
-  const handleImageChange = (e) => {
-    // let reader = new FileReader();
-    if(e.target.files && e.target.files.length){
-      let [img] = e.target.files;
-      setFeaturedImage({
-        featureImage: URL.createObjectURL(img)
-      })
-    }  
-    // reader.onloadend = () => {
-    //   setFeaturedImage(featuredImage);
-    // }
-    // reader.readAsDataURL(featuredImage)
-  }
-  console.log('L82', featuredImage);
+  // const handleImageChange = (e) => {
+  //   let featuredImage = e.target.files && e.target.files[0];
+  //   if(featuredImage){
+  //     let reader = new FileReader()
+  //     reader.onloadend = () => {
+  //       setFeaturedImage(reader.result)
+  //     }
+  //     reader.readAsDataURL(featuredImage)
+  //   }
+  // }
+  // console.log('L82', featuredImage);
 
   const removeTags = (indexToRemove) => {
     setTags([...tags.filter((_, index) => index !== indexToRemove)]);
@@ -124,9 +126,8 @@ function CreateBlog(props) {
             <label>Feature Image</label>
             <Form.Input
               placeholder="Image"
-              // value={featuredImage}
-              type="file"
-              onChange={(e) => handleImageChange(e)}
+              type="text"
+              onChange={(e) => setFeaturedImage(e.target.value)}
             />
             {/* <Button
               content="Choose Image"

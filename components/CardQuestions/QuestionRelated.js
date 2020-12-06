@@ -54,12 +54,17 @@ function QuestionRelated(props) {
           <p className={styles.hotQues}>Recommend For You</p>
           {data &&
             data.map((dat, id) => (
-              <div key={id}>
-                <div className={styles.hotQuesDetail}>
+              <div key={id} className={styles.hotQuesDetail}>
+                <div className={styles.titleQuesDetail}>
                   <Link href={`/questions/${dat.id}`}>
                     <a> {dat.title} </a>
                   </Link>
                 </div>
+                <p className={styles.nameQuestionDetail}>
+                    <Link href={`/profile/${dat.author.id}`}>
+                      <a> {dat.author.name} </a>
+                    </Link>
+                </p>
               </div>
             ))}
         </>
@@ -68,12 +73,17 @@ function QuestionRelated(props) {
           <p className={styles.hotQues}>Oldest Questions</p>
           {dataQuestion &&
             dataQuestion.map((dataQues, idx) => (
-              <div key={idx}>
-                <div className={styles.hotQuesDetail}>
+              <div key={idx} className={styles.hotQuesDetail}>
+                <div className={styles.titleQuesDetail}>
                   <Link href={`/questions/${dataQues.id}`}>
                     <a> {dataQues.title} </a>
                   </Link>
                 </div>
+                <p className={styles.nameQuestionDetail}>
+                    <Link href={`/profile/${dataQues.author.id}`}>
+                      <a> {dataQues.author.name} </a>
+                    </Link>
+                </p>
               </div>
             ))}
         </>

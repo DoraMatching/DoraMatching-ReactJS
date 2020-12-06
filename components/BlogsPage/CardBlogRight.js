@@ -1,14 +1,24 @@
-import React, { Component } from 'react'
-import PostRelated from '../CardPosts/PostRelated';
+import React from "react";
+import PostRelated from "../CardPosts/PostRelated";
 import styles from "./CardBlogPage.module.scss";
-import CreateBlog from './CreateBlog';
+import CardTagPost from "../CardPosts/CardTagPost";
 
-export default class CardBlogRight extends Component {
-  render() {
-    return (
-      <div className={styles.cardBlogRight}> 
-          <PostRelated />
+function CardBlogRight({ tagPosts }) {
+  return (
+    <div className={styles.cardBlogRight}>
+      <PostRelated />
+      <div>
+        <h3>Tags</h3>
+        <div style={{ width: "100%" }}>
+          {tagPosts.slice(0, 10).map((tagPost, id) => {
+            return (
+                <CardTagPost tagPost={tagPost} key={id} />
+            );
+          })}
+        </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
+
+export default CardBlogRight;

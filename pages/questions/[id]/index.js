@@ -1,8 +1,7 @@
 import React from "react";
 import QuestionsPageDetail from "../../../containers/QuestionsPageDetail";
-import styles from "../../../styles/Home.module.css";
-import axios from "axios";
 import Client from "../../../services/Client";
+import styles from "../../../styles/Home.module.css";
 
 function question({ question, tagQuestions, comments }) {
   return (

@@ -148,7 +148,7 @@
 
 .postDetailContent {
   width: 100%;
-  font-size: 1.2rem;
+  font-size: 15px;
 }
 
 .postDetailContent h3{
@@ -318,3 +318,16 @@
   }
 }
 
+
+// CARD TAG POST
+
+.tagPost{
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.tagPostTag{
+  border: none;
+  border-radius: 10px;
+  padding: 4px 12px;
+}

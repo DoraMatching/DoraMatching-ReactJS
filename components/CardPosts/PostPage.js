@@ -28,6 +28,18 @@ function PostPage({ post }) {
               </span>
             </span>
           </div>
+          <div className={styles.faTag}>
+            {post.tags &&
+              post.tags.map((tag, idex) => {
+                return (
+                  <button className={styles.faTagButton} key={idex}>
+                    <Link href={`/posts/tag-post/${tag.id}`}>
+                      <a>{tag.name}</a>
+                    </Link>
+                  </button>
+                );
+              })}
+          </div>
           <div className={styles.blogPostMetaWrap}>
             <div className={styles.postCatsAuthor}>
               <span className={styles.blogPostMetaCategories}>Publish by</span>

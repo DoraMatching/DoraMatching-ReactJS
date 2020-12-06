@@ -11,7 +11,7 @@ function tagPost({post, tagPosts, tagItem }) {
 }
 
 tagPost.getInitialProps = async ({ query: { id } }) => {
-  const [post, tagPosts] = await Promise.all([
+  const [tagPosts, post] = await Promise.all([
     Client("tag-post"),
     Client(`post/${id}`),
   ]);

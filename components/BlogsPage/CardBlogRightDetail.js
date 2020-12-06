@@ -4,7 +4,6 @@ import PostRelated from "../CardPosts/PostRelated";
 import styles from "./CardBlogPage.module.scss";
 
 export default function CardBlogRightDetail({ post }) {
-  console.log("l6", post);
   return (
     <div className={styles.cardBlogRightDetail}>
       <div className={styles.ourTeam}>

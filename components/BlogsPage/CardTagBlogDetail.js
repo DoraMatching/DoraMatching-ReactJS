@@ -3,6 +3,7 @@ import styles from "./CardBlogPage.module.scss";
 import PostPage from "../CardPosts/PostPage";
 
 function CardTagBlogDetail({ tagItem }) {
+  console.log('L6666', tagItem);
   const posts = tagItem[0].posts;
 
   return (

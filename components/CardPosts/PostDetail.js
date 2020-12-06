@@ -43,7 +43,7 @@ const PostDetail = ({ post }) => {
               <span style={{ fontWeight: "bold" }}>Tags: </span>
               {post.tags.map((tag, id) => {
                 return (
-                  <Link href="/" key={id}>
+                  <Link href={`/posts/tag-post/${tag.id}`} key={id}>
                     <a> {tag.name}</a>
                   </Link>
                 );
@@ -54,30 +54,6 @@ const PostDetail = ({ post }) => {
             <ReactMarkdown>{post.subTitle}</ReactMarkdown>
           </div>
           <ReactMarkdown>{post.content}</ReactMarkdown>
-          {/* <div className={styles.postMeta}>
-            <div className="extra content">
-              <div
-                className="ui right labeled button"
-                data-variation="tiny"
-                tabIndex="0"
-              >
-                <div className="ui gray icon tiny button">
-                  <i className="thumbs outline up large icon"></i>
-                </div>
-                <a className="ui basic gray left pointing label">20 likes</a>
-              </div>
-              <div
-                className="ui left labeled right floated button"
-                data-variation="tiny"
-                tabIndex="0"
-              >
-                <a className="ui basic red right pointing label">2 shares</a>
-                <div className="ui red icon tiny button">
-                  <i className="external fa-comments-o large icon"></i>
-                </div>
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
     </div>

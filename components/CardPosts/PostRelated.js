@@ -50,32 +50,7 @@ function PostRelated(props) {
   }, []);
   return (
     <>
-      {data && data.length !== 0 ? (
-        <>
-          <h3>Recommend For You</h3>
-          {data.map((dat, id) => (
-            <div key={id} className={styles.recentPostsContent}>
-              <div className={styles.recentPostsImageWrapper}>
-                <Link href={`/posts/${dat.id}`}>
-                  <img src={dat.featuredImage} alt="avt" />
-                </Link>
-              </div>
-              <div className={styles.recentPostsContentWrapper}>
-                <div className={styles.postTitle}>
-                  <h4>
-                    <Link href={`/posts/${dat.id}`}>
-                      <a> {dat.title} </a>
-                    </Link>
-                  </h4>
-                </div>
-                <div className={styles.metaWrapper}>
-                  <span>{moment(dat.createAt).format("lll")}</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </>
-      ) : (
+      {data && data.length === 0 ? (
         <>
           <h3>Oldest Blogs</h3>
           {dataPost.map((datPost, idx) => (
@@ -94,34 +69,52 @@ function PostRelated(props) {
                   </h4>
                 </div>
                 <div className={styles.metaWrapper}>
-                  <span>{moment(datPost.createAt).format("lll")}</span>
+                  <span>{moment(datPost.createdAt).format("lll")}</span>
+                </div>
+                <div className={styles.nameWrapper}>
+                  <span>
+                    <Link href={`/profile/${datPost.author.id}`}>
+                      <a> {datPost.author.name} </a>
+                    </Link>
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </>
+      ) : (
+        <>
+          <h3>Recommend For You</h3>
+          {data.map((dat, id) => (
+            <div key={id} className={styles.recentPostsContent}>
+              <div className={styles.recentPostsImageWrapper}>
+                <Link href={`/posts/${dat.id}`}>
+                  <img src={dat.featuredImage} alt="avt" />
+                </Link>
+              </div>
+              <div className={styles.recentPostsContentWrapper}>
+                <div className={styles.postTitle}>
+                  <h4>
+                    <Link href={`/posts/${dat.id}`}>
+                      <a> {dat.title} </a>
+                    </Link>
+                  </h4>
+                </div>
+                <div className={styles.metaWrapper}>
+                  <span>{moment(dat.createdAt).format("lll")}</span>
+                </div>
+                <div className={styles.nameWrapper}>
+                  <span>
+                    <Link href={`/profile/${dat.author.id}`}>
+                      <a> {dat.author.name} </a>
+                    </Link>
+                  </span>
                 </div>
               </div>
             </div>
           ))}
         </>
       )}
-
-      {/* {data &&
-        data.map((dat, id) => (
-          <div key={id} className={styles.recentPostsContent}>
-            <div className={styles.recentPostsImageWrapper}>
-              <img src={dat.featuredImage} alt="avt" />
-            </div>
-            <div className={styles.recentPostsContentWrapper}>
-              <div className={styles.postTitle}>
-                <h4>
-                  <Link href={`/posts/${dat.id}`}>
-                    <a> {dat.title} </a>
-                  </Link>
-                </h4>
-              </div>
-              <div className={styles.metaWrapper}>
-                <span>{moment(dat.createAt).format("lll")}</span>
-              </div>
-            </div>
-          </div>
-        ))} */}
     </>
   );
 }

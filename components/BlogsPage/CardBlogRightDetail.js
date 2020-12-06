@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import PostRelated from "../CardPosts/PostRelated";
 import styles from "./CardBlogPage.module.scss";
 
 export default function CardBlogRightDetail({ post }) {
@@ -20,10 +21,8 @@ export default function CardBlogRightDetail({ post }) {
             </Link>
           </button>
         </div>
-        {/* <ul className={styles.social}>
-            <button className={styles.button}> </button>
-          </ul> */}
       </div>
+      <PostRelated />
     </div>
   );
 }

@@ -40,7 +40,6 @@
   border: none;
   color: #ffffff;
   font-weight: 700;
-  margin-bottom: 60px;
   padding: 15px;
   width: 100%;
 }
@@ -51,6 +50,10 @@
 
 .cardTrainerPageChoose {
   font-size: 1.5rem;
+}
+
+.cardTrainerPageChoose p {
+  margin-bottom: 25px;
 }
 
 .cardTrainerPageChoose span {

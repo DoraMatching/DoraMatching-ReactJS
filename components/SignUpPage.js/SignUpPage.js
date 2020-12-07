@@ -42,7 +42,7 @@ function SignUpPage() {
           <FormField>
             <label>Email</label>
             <input
-              value={email}
+              // value={email}
               onChange={(e) => setEmail(e.target.value)}
               name="email"
               type="email"
@@ -58,7 +58,7 @@ function SignUpPage() {
           <FormField>
             <label>Username</label>
             <input
-              value={username}
+              // value={username}
               onChange={(e) => setUsername(e.target.value)}
               name="username"
               type="text"
@@ -73,7 +73,7 @@ function SignUpPage() {
           <FormField>
             <label>Phone</label>
             <input
-              value={phoneNumber}
+              // value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               name="phoneNumber"
               type="text"

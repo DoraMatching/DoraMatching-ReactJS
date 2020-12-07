@@ -48,7 +48,7 @@ function CardLessonRight({ classe, lessons }) {
         <li className="duration">
           <i className="fa fa-clock"></i>
           <span className="label">Duration:</span>
-          <span className="value">{classe.duration} days</span>
+          <span className="value">{classe.duration} hours</span>
         </li>
         <li className="Sessions">
           <i className="fa fa-file"></i>

@@ -22,7 +22,7 @@ const CardProfileRight = ({ userAcc, classes }) => {
         render: () => (
           <Tab.Pane attached={false}>
             <List divided verticalAlign="middle">
-              {currentUser.posts.map((post, index) => {
+              {currentUser.posts ? currentUser.posts.map((post, index) => {
                 return (
                   <List.Item
                     key={index}
@@ -55,7 +55,9 @@ const CardProfileRight = ({ userAcc, classes }) => {
                     </List.Header>
                   </List.Item>
                 );
-              })}
+              })
+              : 'There is nothing here.'
+              }
             </List>
           </Tab.Pane>
         ),
@@ -69,7 +71,7 @@ const CardProfileRight = ({ userAcc, classes }) => {
         render: () => (
           <Tab.Pane attached={false}>
             <List divided verticalAlign="middle">
-              {currentUser.questions.map((question, index) => {
+              {currentUser.questions ? currentUser.questions.map((question, index) => {
                 return (
                   <List.Item
                     key={index}
@@ -99,7 +101,7 @@ const CardProfileRight = ({ userAcc, classes }) => {
                     </List.Header>
                   </List.Item>
                 );
-              })}
+              }): 'There is nothing here.'}
             </List>
           </Tab.Pane>
         ),
@@ -108,11 +110,11 @@ const CardProfileRight = ({ userAcc, classes }) => {
         menuItem: { key: "classes", icon: "student", content: "Classes" },
         render: () => (
           <Tab.Pane attached={false}>
-            {classes.map((classe, id) => {
+            {classes ? classes.map((classe, id) => {
               if (allowShowClass(classe)) {
                 return <Classe classe={classe} key={id} />;
               } else return <></>;
-            })}
+            }): 'There is nothing here.'}
           </Tab.Pane>
         ),
       },

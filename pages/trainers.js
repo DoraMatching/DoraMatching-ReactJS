@@ -1,19 +1,20 @@
 import axios from 'axios';
 import React from 'react'
-import TopTrainer from '../components/TopTrainers/TopTrainer';
+import TrainerPage from '../containers/TrainerPage';
+import Client from '../services/Client';
 import styles from '../styles/Home.module.css'
 
-function trainers() {
+function trainers({users}) {
     return (
       <div className={styles.container}>
-        <TopTrainer />
+        <TrainerPage users={users} />
       </div>
     );
 }
 
-// trainers.getInitialProps = async () => {
-//   const {data} = await axios.get('https://api.dev.doramatching.tk/users');
-//   return { users: data.items };
-// }
+trainers.getInitialProps = async () => {
+  const {data} = await Client('trainers');
+  return { users: data.items.map(e => e.user) };
+}
 
 export default trainers;

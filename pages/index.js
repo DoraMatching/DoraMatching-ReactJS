@@ -1,54 +1,57 @@
-import { Grid } from "semantic-ui-react";
-import Class from "../components/CardClasses/Class";
+import React from "react";
+import Classe from "../components/CardClasses/Class";
 import Post from "../components/CardPosts/Post";
 import Question from "../components/CardQuestions/Question";
-import TopTrainer from "../components/TopTrainers/TopTrainer";
+import Schedule from "../components/Schedule/Schedule";
+import { useAuth } from "../contexts/auth";
+import Client from "../services/Client";
 import styles from "../styles/Home.module.css";
-import React, { Component } from "react";
-import axios from "axios";
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
-  }
+function Home({home, classes}) {
+  const {user} = useAuth();
+  const renderComponents = () => {
+    return home.map((item, id) => {
+      switch (item.type) {
+        case "post":
+          return <Post post={item} key={id} />;
+        case "question":
+          return <Question question={item} key={id} />;
+        // case "user-list":
+        //   return <TopTrainer users={item.userList} key={id} />;
+      }
+    });
+  };
 
-  render() {
-    const { home } = this.props;
-    const renderComponents = () => {
-      return home.map((item) => {
-        switch (item.type) {
-          case "post":
-            return <Post post={item} key={item.id} />;
-          case "question":
-            return <Question question={item} key={item.id} />;
-          case "user":
-            console.log('L25', item);
-            return <TopTrainer users={item} key={item.id} />;
-        }
-      });
-    };
-
-    return (
-      <div className={styles.container}>
-        <Grid divided="vertically" columns="12" className={styles.homeGrid}>
-          <Grid.Column width={8}>
-            {renderComponents()}
-          </Grid.Column>
-          <Grid.Column width={4}>
-            <Class />
-            <Class />
-            <Class />
-            <Class />
-          </Grid.Column>
-        </Grid>
+  return (
+    <div
+      style={{ width: "100%" }}
+      className={`${styles.container} ${styles.homeGrid}`}
+    >
+      <div style={{ width: "100%", paddingLeft: "20px", gridColumn: "1/3" }}>
+        {renderComponents()}
       </div>
-    );
-  }
+      <div style={{ width: "100%", paddingRight: "20px", marginTop: "20px" }}>
+        {user && <Schedule user={user} />}
+        <div style={{ marginTop: "20px" }}>
+          {classes.map((classe, id) => {
+            return <Classe classe={classe} key={id} />
+          })}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 Home.getInitialProps = async () => {
-  const { data } = await axios.get("https://api.dev.doramatching.tk/home");
-  return { home: data.items };
+  const [home, classes] = await Promise.all([
+    Client("home"),
+    Client(`classes?page=1&limit=5&order=DESC`)
+  ]);
+  return {
+    home: home.data.items,
+    classes: classes.data.items,
+  };
+
 };
 
 export default Home;

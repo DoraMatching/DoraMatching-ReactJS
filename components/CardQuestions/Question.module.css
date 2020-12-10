@@ -153,6 +153,12 @@
 .questionMetaComment {
   width: 30%;
 }
+
+.questionMetaComment a {
+  width: 30%;
+  color: #606770 !important;
+}
+
 .questionMetaShare {
   width: 30%;
 }
@@ -313,33 +319,33 @@
   right: 0;
   top: 100%;
   margin: 5px 0;
-  width:50%;
+  width: 50%;
   height: 2px;
   background: #868686;
 }
 
-.titleQuesDetail{
+.titleQuesDetail {
   font-size: 1.1rem;
   margin-bottom: 5px;
 }
 
-.titleQuesDetail a{
+.titleQuesDetail a {
   color: #303030 !important;
 }
 
-.titleQuesDetail a:hover{
+.titleQuesDetail a:hover {
   color: #228099 !important;
 }
 
-.nameQuestionDetail{
+.nameQuestionDetail {
   font-style: italic;
   color: #868686;
 }
 
-.nameQuestionDetail a{
-  color: #9BA9C8 !important;
+.nameQuestionDetail a {
+  color: #9ba9c8 !important;
 }
 
-.nameQuestionDetail a:hover{
+.nameQuestionDetail a:hover {
   color: #7185b1 !important;
 }

@@ -116,16 +116,20 @@ const Post = ({ post }) => {
               <div className="ui gray icon tiny button">
                 <i className="thumbs outline up large icon"></i>
               </div>
-              <a className="ui basic gray left pointing label">20 likes</a>
+              <a className="ui basic gray left pointing label">0 like</a>
             </div>
             <div
               className="ui left labeled right floated button"
               data-variation="tiny"
               tabIndex="0"
             >
-              <a className="ui basic red right pointing label">2 shares</a>
+              <Link href={`posts/${post.id}`}>
+                <a className="ui basic red right pointing label">
+                  {post.comments.length} comment{post.comments.length > 1 ? "s" : ""}
+                </a>
+              </Link>
               <div className="ui red icon tiny button">
-                <i className="external share large icon"></i>
+                <i className="external comment large icon"></i>
               </div>
             </div>
           </div>

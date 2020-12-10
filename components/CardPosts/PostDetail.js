@@ -37,7 +37,7 @@ const PostDetail = ({ post }) => {
             </p>
             <p>
               <span style={{ fontWeight: "bold" }}>Comment: </span>
-              {post.comments.length}{" "}
+              {post.comments.length}
             </p>
             <p>
               <span style={{ fontWeight: "bold" }}>Tags: </span>

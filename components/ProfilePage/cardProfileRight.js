@@ -22,42 +22,42 @@ const CardProfileRight = ({ userAcc, classes }) => {
         render: () => (
           <Tab.Pane attached={false}>
             <List divided verticalAlign="middle">
-              {currentUser.posts ? currentUser.posts.map((post, index) => {
-                return (
-                  <List.Item
-                    key={index}
-                    style={{
-                      marginBottom: "10px",
-                      fontSize: "1.2rem",
-                      fontFamily: "sans-serif, Roboto",
-                    }}
-                  >
-                    {allowEdit ? (
-                      <List.Content floated="right">
-                        <Button>
-                          <Link href={`/posts/${post.id}/edit`}>
-                            <a>Edit</a>
-                          </Link>
-                        </Button>
-                        <Button color="red">Delete</Button>
-                      </List.Content>
-                    ) : (
-                      ""
-                    )}
+              {currentUser.posts
+                ? currentUser.posts.map((post, index) => {
+                    return (
+                      <List.Item
+                        key={index}
+                        style={{
+                          marginBottom: "10px",
+                          fontSize: "1.2rem",
+                          fontFamily: "sans-serif, Roboto",
+                        }}
+                      >
+                        {allowEdit ? (
+                          <List.Content floated="right">
+                            <Button>
+                              <Link href={`/posts/${post.id}/edit`}>
+                                <a>Edit</a>
+                              </Link>
+                            </Button>
+                            <Button color="red">Delete</Button>
+                          </List.Content>
+                        ) : (
+                          ""
+                        )}
 
-                    <List.Header>
-                      <Link href={`/posts/${post.id}`}>
-                        <a>{post.title}</a>
-                      </Link>
-                      <List.Description className={styles.ListDescription}>
-                        {post.subTitle}
-                      </List.Description>
-                    </List.Header>
-                  </List.Item>
-                );
-              })
-              : 'There is nothing here.'
-              }
+                        <List.Header>
+                          <Link href={`/posts/${post.id}`}>
+                            <a>{post.title}</a>
+                          </Link>
+                          <List.Description className={styles.ListDescription}>
+                            {post.subTitle}
+                          </List.Description>
+                        </List.Header>
+                      </List.Item>
+                    );
+                  })
+                : "There is nothing here."}
             </List>
           </Tab.Pane>
         ),
@@ -71,37 +71,39 @@ const CardProfileRight = ({ userAcc, classes }) => {
         render: () => (
           <Tab.Pane attached={false}>
             <List divided verticalAlign="middle">
-              {currentUser.questions ? currentUser.questions.map((question, index) => {
-                return (
-                  <List.Item
-                    key={index}
-                    style={{
-                      marginBottom: "10px",
-                      fontSize: "1.2rem",
-                      fontFamily: "sans-serif, Roboto",
-                    }}
-                  >
-                    {allowEdit ? (
-                      <List.Content floated="right">
-                        <Button>
-                          <Link href={`/questions/${question.id}/edit`}>
-                            <a>Edit</a>
-                          </Link>
-                        </Button>
-                        <Button color="red">Delete</Button>
-                      </List.Content>
-                    ) : (
-                      ""
-                    )}
+              {currentUser.questions
+                ? currentUser.questions.map((question, index) => {
+                    return (
+                      <List.Item
+                        key={index}
+                        style={{
+                          marginBottom: "10px",
+                          fontSize: "1.2rem",
+                          fontFamily: "sans-serif, Roboto",
+                        }}
+                      >
+                        {allowEdit ? (
+                          <List.Content floated="right">
+                            <Button>
+                              <Link href={`/questions/${question.id}/edit`}>
+                                <a>Edit</a>
+                              </Link>
+                            </Button>
+                            <Button color="red">Delete</Button>
+                          </List.Content>
+                        ) : (
+                          ""
+                        )}
 
-                    <List.Header>
-                      <Link href={`/questions/${question.id}`}>
-                        <a>{question.title}</a>
-                      </Link>
-                    </List.Header>
-                  </List.Item>
-                );
-              }): 'There is nothing here.'}
+                        <List.Header>
+                          <Link href={`/questions/${question.id}`}>
+                            <a>{question.title}</a>
+                          </Link>
+                        </List.Header>
+                      </List.Item>
+                    );
+                  })
+                : "There is nothing here."}
             </List>
           </Tab.Pane>
         ),
@@ -110,11 +112,12 @@ const CardProfileRight = ({ userAcc, classes }) => {
         menuItem: { key: "classes", icon: "student", content: "Classes" },
         render: () => (
           <Tab.Pane attached={false}>
-            {classes ? classes.map((classe, id) => {
-              if (allowShowClass(classe)) {
-                return <Classe classe={classe} key={id} />;
-              } else return <></>;
-            }): 'There is nothing here.'}
+            {
+              classes.map((classe, id) => {
+                if (allowShowClass(classe)) {
+                  return <Classe classe={classe} key={id} />;
+                } else return <div></div>;
+              })}
           </Tab.Pane>
         ),
       },

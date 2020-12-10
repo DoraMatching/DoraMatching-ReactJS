@@ -28,3 +28,11 @@
 }
 
 /* BLOG PAGE */
+
+/* SEARCH */
+
+.SearchUser{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1em;
+}

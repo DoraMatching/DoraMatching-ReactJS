@@ -26,19 +26,27 @@ function QuestionDetail({ question }) {
             );
           })}
         </div>
-        <ReactMarkdown >{question.content}</ReactMarkdown>
+        <ReactMarkdown>{question.content}</ReactMarkdown>
         <div className={styles.questionAvaDetail}>
           <div className={styles.questionAva}>
-            <figure className={styles.questionThumbImage}>
-              <img
-                src={question.author.avatarUrl}
-                alt="iconQuestion"
-                style={{ width: "40px", borderRadius: "50%" }}
-              />
-            </figure>
+            <Link href={`/profile/${question.author.id}`}>
+              <a>
+                <figure className={styles.questionThumbImage}>
+                  <img
+                    src={question.author.avatarUrl}
+                    alt="iconQuestion"
+                    style={{ width: "40px", borderRadius: "50%" }}
+                  />
+                </figure>
+              </a>
+            </Link>
           </div>
           <span className={styles.questionAuthorDetail}>
-            <span>{question.author.name}</span>{" "}
+            <span>
+              <Link href={`/profile/${question.author.id}`}>
+                <a>{question.author.name}</a>
+              </Link>{" "}
+            </span>
             <p>asked {moment(question.createdAt).format("LLL")}</p>
           </span>
           {/* <div className={styles.questionButtonShareDetail}>

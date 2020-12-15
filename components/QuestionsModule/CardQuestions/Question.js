@@ -14,13 +14,17 @@ function Question({ question }) {
     <div className={styles.questionCard}>
       <div className={styles.questionHeader}>
         <div className={styles.questionAva}>
-          <figure className={styles.questionThumbImage}>
-            <img
-              src={question.author.avatarUrl}
-              alt="iconQuestion"
-              style={{ width: "40px", borderRadius: "50%" }}
-            />
-          </figure>
+          <Link href={`/profile/${question.author.id}`}>
+            <a>
+              <figure className={styles.questionThumbImage}>
+                <img
+                  src={question.author.avatarUrl}
+                  alt="iconQuestion"
+                  style={{ width: "40px", borderRadius: "50%" }}
+                />
+              </figure>
+            </a>
+          </Link>
         </div>
         <div className={styles.questionTitle}>
           <h3 className={styles.questionTitleContent}>

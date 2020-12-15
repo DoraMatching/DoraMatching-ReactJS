@@ -13,13 +13,17 @@ const Post = ({ post }) => {
     <div className={styles.postCard}>
       <div className={styles.postHeader}>
         <div className={styles.postAva}>
-          <figure className={styles.postThumbImage}>
-            <img
-              src={post.author.avatarUrl}
-              alt="iconAuthor"
-              style={{ width: "40px", borderRadius: "50%" }}
-            />
-          </figure>
+          <Link href={`/profile/${post.author.id}`}>
+            <a>
+              <figure className={styles.postThumbImage}>
+                <img
+                  src={post.author.avatarUrl}
+                  alt="iconAuthor"
+                  style={{ width: "40px", borderRadius: "50%" }}
+                />
+              </figure>
+            </a>
+          </Link>
         </div>
         <div className={styles.postTitle}>
           <h3 className={styles.postTitleContent}>
@@ -125,7 +129,8 @@ const Post = ({ post }) => {
             >
               <Link href={`posts/${post.id}`}>
                 <a className="ui basic red right pointing label">
-                  {post.comments.length} comment{post.comments.length > 1 ? "s" : ""}
+                  {post.comments.length} comment
+                  {post.comments.length > 1 ? "s" : ""}
                 </a>
               </Link>
               <div className="ui red icon tiny button">

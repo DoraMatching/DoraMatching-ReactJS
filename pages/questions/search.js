@@ -1,12 +1,11 @@
 import React from "react";
-import PostSearch from "../components/BlogsModule/CardPosts/PostSearch";
-import Question from "../components/QuestionsModule/CardQuestions/Question";
-import Client from "../services/Client";
-import styles from "../styles/Home.module.css";
+import Question from "../../components/QuestionsModule/CardQuestions/Question";
+import SearchQuestion from "../../components/SearchModule/SearchQuestion";
+import Client from "../../services/Client";
+import styles from "../../styles/Home.module.css";
 
 const search = ({ data, query }) => {
-  const { posts, questions, users } = data;
-  console.log("L10", users);
+  const { questions } = data;
   return (
     <div
       style={{ width: "100%" }}
@@ -18,15 +17,24 @@ const search = ({ data, query }) => {
           paddingTop: "20px",
           paddingLeft: "20px",
           fontSize: "1.2rem",
+          gridColumn: "1/3",
         }}
       >
-        <span style={{ fontWeight: "bold" }}>Key word:</span> {query["key"]}{" "}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <div>
+            <span style={{ fontWeight: "bold" }}>Key word:</span>
+            {query["key"]}
+          </div>
+          <SearchQuestion />
+        </div>
       </div>
       <div style={{ width: "100%", paddingLeft: "20px", gridColumn: "1/3" }}>
-        {posts &&
-          posts.map((post, id) => {
-            return <PostSearch post={post} key={id} />;
-          })}
         {questions &&
           questions.map((question, id) => {
             return <Question question={question} key={id} />;
@@ -40,7 +48,7 @@ search.getInitialProps = async (ctx) => {
   const { query } = ctx;
   const { data } = await Client(
     `search?key=${encodeURIComponent(query["key"])}&scope=${encodeURIComponent(
-      `["POST", "QUESTION", "USER"]`
+      `["QUESTION"]`
     )}`,
     "GET"
   );

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import CardBlogRightDetail from '../components/BlogsPage/CardBlogRightDetail';
-import CardTagBlogDetail from '../components/BlogsPage/CardTagBlogDetail';
+import CardBlogRightDetail from '../components/BlogsModule/BlogsPage/CardBlogRightDetail';
+import CardTagBlogDetail from '../components/BlogsModule/BlogsPage/CardTagBlogDetail';
 import styles from '../styles/Home.module.css'
 
 

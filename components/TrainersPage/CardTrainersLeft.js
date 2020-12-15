@@ -1,10 +1,12 @@
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { Button, Form, Modal } from "semantic-ui-react";
-import CardTrainerPage from "../CardTrainerPage/CardTrainerPage";
-import Client from "../../services/Client";
-import styles from "./CardTrainers.module.css";
 import { useAuth } from "../../contexts/auth";
-import { useRouter } from "next/router";
+import Client from "../../services/Client";
+import SearchTrainer from "../SearchModule/SearchTrainer";
+import CardTrainerPage from "./CardTrainerPage/CardTrainerPage";
+
+import styles from "./CardTrainers.module.css";
 
 function CardTrainersLeft({ users }) {
   const breakPoints = [{ width: 200, itemsToShow: 3 }];
@@ -31,12 +33,6 @@ function CardTrainersLeft({ users }) {
 
   return (
     <>
-      {/* <h3 className={styles.cardTrainersLefHeader}>Top Trainer</h3>
-      <Carousel breakPoints={breakPoints} showArrows={false} pagination={true}>
-        {users.map((user, id) => {
-          return <CardTrainer user={user} key={id} />;
-        })}
-      </Carousel> */}
       <div
         style={{
           display: "flex",
@@ -45,6 +41,7 @@ function CardTrainersLeft({ users }) {
         }}
       >
         <h3 className={styles.cardTrainersLefHeader}>All Trainers</h3>
+        <SearchTrainer />
         {user && user.roles.indexOf("TRAINER") !== -1 ? (
           ""
         ) : (

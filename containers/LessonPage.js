@@ -1,6 +1,6 @@
 import React, { Component, createRef, useState } from "react";
-import CardLessonLeft from "../components/TopicPage/CardLessonLeft";
-import CardLessonRight from "../components/TopicPage/CardLessonRight";
+import CardLessonLeft from "../components/LearningModule/TopicPage/CardLessonLeft";
+import CardLessonRight from "../components/LearningModule/TopicPage/CardLessonRight";
 import styles from "../styles/Home.module.css";
 import _ from "lodash";
 

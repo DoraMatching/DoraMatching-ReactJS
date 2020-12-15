@@ -61,10 +61,6 @@ function CardProfileLeft({ userAcc }) {
           </div>
         </div>
       </div>
-
-      {/* <div className={styles.cardProfileLeftUnder}>
-        Topic
-      </div> */}
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import React, { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Form, FormField, Message } from "semantic-ui-react";
-import { useAuth } from "../../contexts/auth";
+import { useAuth } from "../../../contexts/auth";
 import LoginGithub from "../LoginPage/LoginGithub";
 import styles from "./SignUpPage.module.css";
 

@@ -8,6 +8,7 @@ import Client from "../../../services/Client";
 const fileInputRef = React.createRef();
 
 const CardProfileSetting = ({ userAcc }) => {
+  console.log("l11", userAcc);
   const router = useRouter();
   const { user } = useAuth();
   const { handleSubmit } = useForm();

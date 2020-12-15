@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Form, FormField, Message } from "semantic-ui-react";
-import { useAuth } from "../../contexts/auth";
+import { useAuth } from "../../../contexts/auth";
 import LoginGithub from "./LoginGithub";
 import styles from "./LoginPage.module.css";
 

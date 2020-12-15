@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import CardClassesLeft from '../components/TopicPage/CardClassesLeft';
-import CardTopicsRight from '../components/TopicPage/CardTopicsRight';
+import CardClassesLeft from '../components/LearningModule/TopicPage/CardClassesLeft';
+import CardTopicsRight from '../components/LearningModule/TopicPage/CardTopicsRight';
 import styles from '../styles/Home.module.css';
 
 class ClassesPage extends Component {

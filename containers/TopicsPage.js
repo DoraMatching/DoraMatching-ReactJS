@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import CardTopicsLeft from '../components/TopicPage/CardTopicsLeft';
-import CardTopicsRight from '../components/TopicPage/CardTopicsRight';
+import CardTopicsLeft from '../components/LearningModule/TopicPage/CardTopicsLeft'
+import CardTopicsRight from '../components/LearningModule/TopicPage/CardTopicsRight';
 import styles from '../styles/Home.module.css';
 
 class TopicsPage extends Component {

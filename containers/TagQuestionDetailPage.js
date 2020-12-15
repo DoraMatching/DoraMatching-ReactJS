@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import CardQuestionLeft from '../components/QuestionsPage/CardQuestionLeft';
-import CardQuestionRight from '../components/QuestionsPage/CardQuestionRight';
-import CardTagQuestionDetail from '../components/QuestionsPage/CardTagQuestionDetail';
+import CardQuestionLeft from '../components/QuestionsModule/QuestionsPage/CardQuestionLeft';
+import CardQuestionRight from '../components/QuestionsModule/QuestionsPage/CardQuestionRight';
+import CardTagQuestionDetail from '../components/QuestionsModule/QuestionsPage/CardTagQuestionDetail';
 import styles from '../styles/Home.module.css'
 
 

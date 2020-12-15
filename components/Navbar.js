@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { Button } from "./Button";
 import { Dropdown, Image } from "semantic-ui-react";
 import { useAuth } from "../contexts/auth";
-import SearchBar from "./SearchBar";
+import SearchBar from "./SearchModule/SearchBar";
 function Navbar() {
   const router = useRouter();
   let user = {

@@ -31,7 +31,7 @@ function Home({ home, classes }) {
       <div style={{ width: "100%", paddingRight: "20px", marginTop: "20px" }}>
         {user && <Schedule user={user} />}
         <div style={{ marginTop: "20px" }}>
-          {classes.map((classe, id) => {
+          {classes.slice(0,10).map((classe, id) => {
             return <Classe classe={classe} key={id} />;
           })}
         </div>
@@ -43,7 +43,7 @@ function Home({ home, classes }) {
 Home.getInitialProps = async () => {
   const [home, classes] = await Promise.all([
     Client("home"),
-    Client(`classes?page=1&limit=5&order=DESC`),
+    Client(`classes`),
   ]);
   return {
     home: home.data.items,

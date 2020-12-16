@@ -70,7 +70,7 @@ export default function CardLessonLeft({ classe, lessons }) {
   };
 
   const renderPanes = async () => {
-    console.log(activeIndex)
+    console.log(activeIndex);
     return [
       {
         menuItem: "Lessons",
@@ -94,12 +94,16 @@ export default function CardLessonLeft({ classe, lessons }) {
                     </Accordion.Title>
                     <Accordion.Content active={activeIndex.includes(id)}>
                       <p>
-                        <span style={{ fontWeight: "bold", color: '#FF6D34' }}>Duration</span>:{" "}
-                        {lesson.duration} minutes
+                        <span style={{ fontWeight: "bold", color: "#FF6D34" }}>
+                          Duration
+                        </span>
+                        : {lesson.duration} minutes
                       </p>
                       <p>
-                        <span style={{ fontWeight: "bold", color: '#FF6D34' }}>Time start</span>:{" "}
-                        {moment(lesson.startTime).format("lll")}
+                        <span style={{ fontWeight: "bold", color: "#FF6D34" }}>
+                          Time start
+                        </span>
+                        : {moment(lesson.startTime).format("lll")}
                       </p>
                     </Accordion.Content>
                   </div>
@@ -157,17 +161,23 @@ export default function CardLessonLeft({ classe, lessons }) {
         <h1 className={styles.courseTitle}>{classe.name}</h1>
         <div className={styles.courseMeta}>
           <span className={styles.courseAuthor}>
-            <img
-              alt="Admin bar avatar"
-              src={classe.trainer.user.avatarUrl}
-              className="avatar avatar-96 photo"
-              height="96"
-              width="96"
-            />
+            <Link href={`/profile/${classe.trainer.user.id}`}>
+              <a>
+                <img
+                  alt="Admin bar avatar"
+                  src={classe.trainer.user.avatarUrl}
+                  className="avatar avatar-96 photo"
+                  height="96"
+                  width="96"
+                />
+              </a>
+            </Link>
             <span className={styles.authorData}>
               <span className={styles.metaTitle}>Trainer</span>
               <span className="meta_data">
-                <a href="/">{classe.trainer.user.name}</a>
+                <Link href={`/profile/${classe.trainer.user.id}`}>
+                  <a>{classe.trainer.user.name}</a>
+                </Link>
               </span>
             </span>
           </span>
@@ -218,7 +228,7 @@ export default function CardLessonLeft({ classe, lessons }) {
                 />
               </Form.Field>
               <Form.Field required>
-                <label >Time Start</label>
+                <label>Time Start</label>
                 <DatePickerPage
                   value={startTime}
                   onChange={(date) => setStartTime(date)}

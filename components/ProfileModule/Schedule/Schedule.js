@@ -10,7 +10,7 @@ import styles from "./Schedule.module.css";
 import { Form, Modal } from "semantic-ui-react";
 import moment from "moment";
 
-function DemoSchedule({user}) {
+function DemoSchedule({ user }) {
   return <Schedule user={user} />;
 }
 
@@ -78,7 +78,6 @@ class Schedule extends Component {
         return error.response.data;
       });
     res.then((result) => this.setState({ eventCalendar: result }));
-
   }
 
   render() {
@@ -113,9 +112,13 @@ class Schedule extends Component {
           events={this.state.eventCalendar}
           ref={this.calendar}
           aspectRatio={0.95}
-          // dateClick={handleDateClick}
         />
-        <Modal open={this.state.modalOpen} onClose={this.handleClose} closeIcon size="tiny">
+        <Modal
+          open={this.state.modalOpen}
+          onClose={this.handleClose}
+          closeIcon
+          size="tiny"
+        >
           <Modal.Header>Schedule</Modal.Header>
           <Modal.Content>
             <Form>
@@ -123,13 +126,12 @@ class Schedule extends Component {
                 <label>Title</label>
                 <input value={this.state.titleDetail} disabled />
               </Form.Field>
-              {/* <Form.Field>
-                <label>Duration</label>
-                <input value={this.state.durationDetail} disabled />
-              </Form.Field> */}
               <Form.Field>
                 <label>Start At</label>
-                <input value={moment(this.state.startDetail).format("LLL")} disabled />
+                <input
+                  value={moment(this.state.startDetail).format("LLL")}
+                  disabled
+                />
               </Form.Field>
             </Form>
           </Modal.Content>

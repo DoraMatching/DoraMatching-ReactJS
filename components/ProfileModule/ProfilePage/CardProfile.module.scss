@@ -156,3 +156,27 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
   overflow: hidden;
   text-overflow: ellipsis; 
 }
+
+.profileClasses{
+	display: flex;
+	width: 100%;
+}
+
+.profileClassesLeft{
+	width: 45%;
+}
+
+.profileClassesRight{
+	width: 45%;
+	margin-left: auto;
+}
+
+.profileClassesLeft img{
+	width: 100%;
+	border-radius: 10px;
+}
+
+.profileClassesRight img{
+	width: 100%;
+	border-radius: 10px;
+}

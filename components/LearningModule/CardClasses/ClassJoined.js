@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { Icon } from "semantic-ui-react";
 import styles from "./Class.module.scss";
-function Classe({ classe }) {
+function ClassJoined({ classe }) {
   return (
     <div className={styles.classCard}>
       <div className={styles.courseContentWrapper}>
@@ -38,9 +38,9 @@ function Classe({ classe }) {
           </div>
           <div className={styles.courseDivider}></div>
           <div className={styles.courseMeta}>
-            <span className={styles.courseStudents} title="students enrolled">
+            {/* <span className={styles.courseStudents} title="students enrolled">
               <Icon name="user" /> {classe.members.length}
-            </span>
+            </span> */}
             <div className={styles.lpCourseButtons}>
               <button>Free</button>
             </div>
@@ -51,4 +51,4 @@ function Classe({ classe }) {
   );
 }
 
-export default Classe;
+export default ClassJoined;

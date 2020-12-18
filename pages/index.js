@@ -2,7 +2,7 @@ import React from "react";
 import Classe from "../components/LearningModule/CardClasses/Class";
 import Post from "../components/BlogsModule/CardPosts/Post";
 import Question from "../components/QuestionsModule/CardQuestions/Question";
-import Schedule from "../components/ProfileModule/Schedule/Schedule";
+import Schedule from "../components/ProfileModule/Schedule/ScheduleTrainer";
 import { useAuth } from "../contexts/auth";
 import Client from "../services/Client";
 import styles from "../styles/Home.module.css";

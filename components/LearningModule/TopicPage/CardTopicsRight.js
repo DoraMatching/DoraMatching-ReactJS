@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAuth } from '../../../contexts/auth'
-import Schedule from '../../ProfileModule/Schedule/Schedule'
+import Schedule from '../../ProfileModule/Schedule/ScheduleTrainer'
 
 
 export default function CardTopicsRight() {

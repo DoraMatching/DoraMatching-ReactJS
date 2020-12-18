@@ -58,6 +58,7 @@ class Schedule extends Component {
     const start = this.calendar.current._calendarApi.view.activeStart;
     const end = this.calendar.current._calendarApi.view.activeEnd;
     const { user } = this.props;
+    // const role = user.roles.indexOf("TRAINER") !== -1 ? "trainer" : "trainee";
     const res = Client(`trainer?userId=${user.id} `, "GET")
       .then((res) => {
         const dat = Client(
@@ -77,6 +78,7 @@ class Schedule extends Component {
       .catch((error) => {
         return error.response.data;
       });
+    
     res.then((result) => this.setState({ eventCalendar: result }));
   }
 

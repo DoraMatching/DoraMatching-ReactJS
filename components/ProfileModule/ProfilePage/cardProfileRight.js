@@ -5,7 +5,7 @@ import { useAuth } from "../../../contexts/auth";
 import Client from "../../../services/Client";
 import Classe from "../../LearningModule/CardClasses/Class";
 import ClassJoined from "../../LearningModule/CardClasses/ClassJoined";
-import Schedule from "../Schedule/Schedule";
+import Schedule from "../Schedule/ScheduleTrainer";
 import styles from "./CardProfile.module.scss";
 
 const CardProfileRight = ({ userAcc, classes }) => {

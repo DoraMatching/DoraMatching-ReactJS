@@ -10,11 +10,11 @@ import styles from "./Schedule.module.css";
 import { Form, Modal } from "semantic-ui-react";
 import moment from "moment";
 
-function DemoSchedule({ user }) {
-  return <ScheduleTrainer user={user} />;
+function TraineeSchedule({ user }) {
+  return <ScheduleTrainee user={user} />;
 }
 
-class ScheduleTrainer extends Component {
+class ScheduleTrainee extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -58,10 +58,10 @@ class ScheduleTrainer extends Component {
     const start = this.calendar.current._calendarApi.view.activeStart;
     const end = this.calendar.current._calendarApi.view.activeEnd;
     const { user } = this.props;
-    const res = Client(`trainer?userId=${user.id} `, "GET")
+    const res = Client(`trainee?userId=${user.id} `, "GET")
       .then((res) => {
         const dat = Client(
-          `trainer/${res.data.id}/lessons?startTime=${start}&endTime=${end}`,
+          `trainee/${res.data.id}/lessons?startTime=${start}&endTime=${end}`,
           "GET"
         ).then((res2) => {
           return res2.data.map((item) => {
@@ -142,4 +142,4 @@ class ScheduleTrainer extends Component {
   }
 }
 
-export default DemoSchedule;
+export default TraineeSchedule;

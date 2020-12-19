@@ -5,7 +5,8 @@ import { useAuth } from "../../../contexts/auth";
 import Client from "../../../services/Client";
 import Classe from "../../LearningModule/CardClasses/Class";
 import ClassJoined from "../../LearningModule/CardClasses/ClassJoined";
-import Schedule from "../Schedule/ScheduleTrainer";
+import ScheduleTrainer from "../Schedule/ScheduleTrainer";
+import ScheduleTrainee from "../Schedule/ScheduleTrainee";
 import styles from "./CardProfile.module.scss";
 
 const CardProfileRight = ({ userAcc, classes }) => {
@@ -166,15 +167,30 @@ const CardProfileRight = ({ userAcc, classes }) => {
       },
       {
         menuItem: {
-          key: "schedule",
+          key: "schedule-trainer",
           icon: "calendar outline",
-          content: "Schedule",
+          content: "Schedule Trainer",
         },
         render: () => (
           <Tab.Pane attached={false}>
-            <Schedule user={userAcc} />
+            <ScheduleTrainer user={userAcc} />
           </Tab.Pane>
         ),
+      },
+      {
+        menuItem: {
+          key: "schedule-trainee",
+          icon: allowEdit ? "calendar outline" : "",
+          content: allowEdit ? "Schedule Trainee" : "",
+        },
+        render: () =>
+          allowEdit ? (
+            <Tab.Pane attached={false}>
+              <ScheduleTrainee user={userAcc} />
+            </Tab.Pane>
+          ) : (
+            <img src="/static/nocontentyet.jpg" alt="nocontent" width="100%" />
+          ),
       },
     ];
   };

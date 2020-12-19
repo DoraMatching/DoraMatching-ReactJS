@@ -2,7 +2,7 @@ import React from "react";
 import Classe from "../components/LearningModule/CardClasses/Class";
 import Post from "../components/BlogsModule/CardPosts/Post";
 import Question from "../components/QuestionsModule/CardQuestions/Question";
-import Schedule from "../components/ProfileModule/Schedule/ScheduleTrainer";
+import ScheduleTrainer from "../components/ProfileModule/Schedule/ScheduleTrainer";
 import { useAuth } from "../contexts/auth";
 import Client from "../services/Client";
 import styles from "../styles/Home.module.css";
@@ -29,7 +29,7 @@ function Home({ home, classes }) {
         {renderComponents()}
       </div>
       <div style={{ width: "100%", paddingRight: "20px", marginTop: "20px" }}>
-        {user && <Schedule user={user} />}
+        {user && <ScheduleTrainer user={user} />}
         <div style={{ marginTop: "20px" }}>
           {classes.slice(0,10).map((classe, id) => {
             return <Classe classe={classe} key={id} />;

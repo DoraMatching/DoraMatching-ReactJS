@@ -33,7 +33,7 @@ function SearchBar() {
         <Form.Group style={{ margin: "0px" }}>
           <div style={{ width: "250px", position: "relative" }}>
             <FormInput
-              placeholder="Search trainers, questions, blogs"
+              placeholder="Search questions, blogs"
               value={query}
               onChange={handleChange}
             />

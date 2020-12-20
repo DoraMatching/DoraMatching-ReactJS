@@ -2,6 +2,7 @@ import '@fullcalendar/common/main.css'; // @fullcalendar/react imports @fullcale
 import '@fullcalendar/daygrid/main.css'; // @fullcalendar/timegrid imports @fullcalendar/daygrid
 import '@fullcalendar/timegrid/main.css'; // @fullcalendar/timegrid is a direct import
 import 'draft-js/dist/Draft.css';
+import 'react-notifications/lib/notifications.css';
 import React from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import 'react-markdown-editor-lite/lib/index.css';

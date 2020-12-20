@@ -7,6 +7,10 @@ import { useAuth } from "../../../contexts/auth";
 import Client from "../../../services/Client";
 import MdEditor from "../../MdEditor";
 import styles from "./CardQuestionPage.module.scss";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
 
 function CreateQuestion({ questions }) {
   const router = useRouter();
@@ -57,7 +61,12 @@ function CreateQuestion({ questions }) {
           setTags([]);
           router.push("/questions");
         }
-      );
+      ).catch((err) => {
+        NotificationManager.error(
+          "Unsuccessful",
+          "Error"
+        );
+      });
     }
   };
 
@@ -79,6 +88,7 @@ function CreateQuestion({ questions }) {
   };
 
   return (
+    <>
     <Modal
       size="small"
       onClose={() => setOpen(false)}
@@ -150,6 +160,8 @@ function CreateQuestion({ questions }) {
         </div>
       </Modal.Content>
     </Modal>
+    <NotificationContainer />
+    </>
   );
 }
 

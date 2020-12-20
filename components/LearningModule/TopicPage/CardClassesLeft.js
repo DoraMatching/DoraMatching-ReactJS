@@ -4,6 +4,7 @@ import Classe from "../CardClasses/Class";
 import styles from "./CardTopicsPage.module.scss";
 import CreateClass from "./CreateClass";
 import CreateTopic from "./CreateTopic";
+import SearchClass from "../../SearchModule/SearchClass"
 
 export default function CardClassesLeft({classes}) {
   const { user } = useAuth();
@@ -15,8 +16,9 @@ export default function CardClassesLeft({classes}) {
         <CardTopicsJoined />
       </div> */}
       {user && user.roles.indexOf("TRAINER") !== -1 ? (
-        <div style={{margin: '10px 0'}}>
+        <div style={{margin: '10px 0', display: 'flex', justifyContent: 'space-between'}}>
           <CreateTopic />
+          <SearchClass />
           <CreateClass />
         </div>
       ) : (

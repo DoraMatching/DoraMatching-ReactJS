@@ -23,8 +23,6 @@ const CardProfileRight = ({ userAcc, classes }) => {
       "GET"
     );
 
-    console.log("L24", currentUserItem.classes);
-
     return [
       {
         menuItem: { key: "blogs", icon: "blogger", content: "Blogs" },

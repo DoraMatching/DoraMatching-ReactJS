@@ -3,17 +3,22 @@ import ProfileSettingPage from '../../../containers/ProfileSettingPage';
 import Client from '../../../services/Client';
 import styles from '../../../styles/Home.module.css'
 
-function settings({userAcc}) {
+function settings({userAcc, trainers}) {
   return (
     <div className={styles.loginContainer}>
-      <ProfileSettingPage userAcc={userAcc} />
+      <ProfileSettingPage userAcc={userAcc} trainers={trainers} />
     </div>
   );
 }
-settings.getInitialProps = async ({ query: { id } }) => {
-  const {data} = await Client(`user/${id}`)
+
+settings.getInitialProps = async ({ query: {id} }) => {
+  const [userAcc, trainers] = await Promise.all([
+    Client(`user/${id}`),
+    Client('trainers')
+  ]);
   return {
-    userAcc: data,
+    userAcc: userAcc.data,
+    trainers: trainers.data.items
   };
 };
 

@@ -4,15 +4,15 @@ import { Popup } from "semantic-ui-react";
 import { useAuth } from "../../../contexts/auth";
 import styles from "./CardProfile.module.scss";
 
-function CardProfileLeft({ userAcc }) {
+function CardProfileLeft({ userAcc, trainers }) {
+
   console.log("usss", userAcc);
   const [email, setEmail] = useState(userAcc.email || "");
   const [phoneNumber, setPhoneNumber] = useState(userAcc.phoneNumber || "");
   const { user } = useAuth();
   useEffect(() => {
     if (user) setEmail(user.email);
-    if (user) setPhoneNumber(user.phoneNumber);
-  }, [user, phoneNumber]);
+  }, [user]);
 
   return (
     <div>

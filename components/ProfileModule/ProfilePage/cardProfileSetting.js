@@ -79,10 +79,10 @@ const CardProfileSetting = ({ userAcc }) => {
                     />
                   </Form.Field>
                   <Form.Input
-                    label="Phone number"
+                    label="Phone Number"
                     value={phoneNumber}
                     type="text"
-                    name="phone number"
+                    name="phoneNumber"
                     onChange={async (e) => setPhoneNumber(e.target.value)}
                   />
                 </Form.Group>

@@ -23,7 +23,6 @@ function QuestionRelated(props) {
           );
       })
       .catch((err) => err);
-    console.log("l24", response);
     const data = await Promise.all(
       response.map(async (item) => {
         return await item.then((result) => result);

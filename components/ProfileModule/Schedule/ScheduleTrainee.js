@@ -22,13 +22,15 @@ class ScheduleTrainee extends Component {
       eventCalendar: [
         {
           title: "",
-          duration: "",
+          timeRange: "",
           start: "",
+          classe: "",
         },
       ],
       titleDetail: "",
       durationDetail: "",
       startDetail: "",
+      classeDetail: "",
     };
     this.calendar = React.createRef();
     this.setCalendarRef = (element) => {
@@ -50,8 +52,9 @@ class ScheduleTrainee extends Component {
   handleModal(infor) {
     this.handleOpen();
     this.setState({ titleDetail: infor.event.title });
-    this.setState({ durationDetail: infor.event.duration });
+    this.setState({ durationDetail: infor.event._def.extendedProps.timeRange });
     this.setState({ startDetail: infor.event.start });
+    this.setState({ classeDetail: infor.event._def.extendedProps.classe });
   }
 
   componentDidMount() {
@@ -69,6 +72,7 @@ class ScheduleTrainee extends Component {
               title: item.name,
               start: item.startTime,
               duration: item.duration,
+              classe: item.classe,
             };
           });
         });
@@ -77,7 +81,7 @@ class ScheduleTrainee extends Component {
       .catch((error) => {
         return error.response.data;
       });
-    
+
     res.then((result) => this.setState({ eventCalendar: result }));
   }
 
@@ -120,12 +124,18 @@ class ScheduleTrainee extends Component {
           closeIcon
           size="tiny"
         >
-          <Modal.Header>Schedule</Modal.Header>
+          <Modal.Header>
+            Class Name: {this.state.classeDetail.name}
+          </Modal.Header>
           <Modal.Content>
             <Form>
               <Form.Field>
                 <label>Title</label>
                 <input value={this.state.titleDetail} disabled />
+              </Form.Field>
+              <Form.Field>
+                <label>Duration (minutes)</label>
+                <input value={this.state.durationDetail} disabled />
               </Form.Field>
               <Form.Field>
                 <label>Start At</label>

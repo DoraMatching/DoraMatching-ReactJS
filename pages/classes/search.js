@@ -1,11 +1,11 @@
 import React from "react";
 import SearchClass from "../../components/SearchModule/SearchClass";
 import Client from "../../services/Client";
-import Class from "../../components/LearningModule/CardClasses/Class"
+import Class from "../../components/LearningModule/CardClasses/Class";
 import styles from "../../styles/Home.module.css";
 
 const search = ({ data, query }) => {
-  const { classes } = data;
+  const classes = data.items;
   console.log("classes", classes);
   return (
     <div
@@ -47,11 +47,12 @@ const search = ({ data, query }) => {
 
 search.getInitialProps = async (ctx) => {
   const { query } = ctx;
-  const { data } = await Client(
-    `classes?page=1&limit=20&order=DESC&key=${encodeURIComponent(query)}`,
+  console.log(query);
+  const {data} = await Client(
+    `classes?page=1&limit=20&order=DESC&key=${encodeURIComponent(query['key'])}`,
     "GET"
   );
-    {console.log("data", data);}
+  console.log("L55", data);
   return { data, query };
 };
 

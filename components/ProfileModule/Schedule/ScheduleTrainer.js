@@ -9,6 +9,7 @@ import { Component } from "react";
 import styles from "./Schedule.module.css";
 import { Form, Modal } from "semantic-ui-react";
 import moment from "moment";
+import Link from 'next/link'
 
 function DemoSchedule({ user }) {
   return <ScheduleTrainer user={user} />;
@@ -22,13 +23,15 @@ class ScheduleTrainer extends Component {
       eventCalendar: [
         {
           title: "",
-          duration: "",
+          timeRange: "",
           start: "",
+          classe: "",
         },
       ],
       titleDetail: "",
       durationDetail: "",
       startDetail: "",
+      classeDetail: "",
     };
     this.calendar = React.createRef();
     this.setCalendarRef = (element) => {
@@ -48,10 +51,12 @@ class ScheduleTrainer extends Component {
   }
 
   handleModal(infor) {
+    console.log("l51", infor);
     this.handleOpen();
     this.setState({ titleDetail: infor.event.title });
-    this.setState({ durationDetail: infor.event.duration });
+    this.setState({ durationDetail: infor.event._def.extendedProps.timeRange });
     this.setState({ startDetail: infor.event.start });
+    this.setState({ classeDetail: infor.event._def.extendedProps.classe });
   }
 
   componentDidMount() {
@@ -68,7 +73,8 @@ class ScheduleTrainer extends Component {
             return {
               title: item.name,
               start: item.startTime,
-              duration: item.duration,
+              timeRange: item.duration,
+              classe: item.classe,
             };
           });
         });
@@ -77,11 +83,12 @@ class ScheduleTrainer extends Component {
       .catch((error) => {
         return error.response.data;
       });
-    
+
     res.then((result) => this.setState({ eventCalendar: result }));
   }
 
   render() {
+    console.log("L85", this.state.eventCalendar);
     return (
       <div className={styles.fullCalendar}>
         <FullCalendar
@@ -120,12 +127,18 @@ class ScheduleTrainer extends Component {
           closeIcon
           size="tiny"
         >
-          <Modal.Header>Schedule</Modal.Header>
+          <Modal.Header>
+            Class Name: {this.state.classeDetail.name}
+          </Modal.Header>
           <Modal.Content>
             <Form>
               <Form.Field>
                 <label>Title</label>
                 <input value={this.state.titleDetail} disabled />
+              </Form.Field>
+              <Form.Field>
+                <label>Duration (minutes)</label>
+                <input value={this.state.durationDetail} disabled />
               </Form.Field>
               <Form.Field>
                 <label>Start At</label>

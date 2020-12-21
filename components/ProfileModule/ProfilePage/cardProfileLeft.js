@@ -2,18 +2,34 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Popup } from "semantic-ui-react";
 import { useAuth } from "../../../contexts/auth";
+import Client from "../../../services/Client";
 import styles from "./CardProfile.module.scss";
 
 function CardProfileLeft({ userAcc, trainers }) {
+  console.log("trainers", trainers);
 
   console.log("usss", userAcc);
-  const [email, setEmail] = useState(userAcc.email || "");
-  const [phoneNumber, setPhoneNumber] = useState(userAcc.phoneNumber || "");
   const { user } = useAuth();
+
+  // const userLogined = user && user.id === trainers.user.id
+  const [email, setEmail] = useState(userAcc.email || "");
+  const [phoneNumber, setPhoneNumber] = useState(userAcc.phoneNumber || "")
+  const [classesTrainer, setClassesTrainer] = useState("")
+
+  const getData = async () => {
+    const {data: currentUserItem} = await Client(
+      `trainer?userId=${userAcc.id} `,
+      "GET"
+    );
+    setClassesTrainer(currentUserItem);
+    console.log("L25", currentUserItem);
+  }
+
   useEffect(() => {
     if (user) setEmail(user.email);
+    getData()
   }, [user]);
-
+  
   return (
     <div>
       <div className={styles.cardProfileLeftWrapper}>
@@ -52,7 +68,7 @@ function CardProfileLeft({ userAcc, trainers }) {
             <p>Blogs</p>
           </div>
           <div className={styles.icon}>
-            <h4>0</h4>
+            <h4> {classesTrainer && classesTrainer.classes.length} </h4>
             <p>Classes</p>
           </div>
           <div className={styles.icon}>

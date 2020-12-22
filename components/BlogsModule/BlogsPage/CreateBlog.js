@@ -68,7 +68,7 @@ function CreateBlog(props) {
         setTags([]);
         router.push("/posts");
       }).then(res => {
-        console.log(res)
+        
     });
     }
   };
@@ -83,7 +83,6 @@ function CreateBlog(props) {
   //     reader.readAsDataURL(featuredImage)
   //   }
   // }
-  // console.log('L82', featuredImage);
 
   const removeTags = (indexToRemove) => {
     setTags([...tags.filter((_, index) => index !== indexToRemove)]);
@@ -169,7 +168,7 @@ function CreateBlog(props) {
           </Form.Field>
           <Form.Field required>
             <label>Content</label>
-            <MdEditor value={content} onChange={handleEditorChange} />
+            <MdEditor type="text" value={content} onChange={handleEditorChange} />
           </Form.Field>
         </Form>
         <div style={{ marginTop: "20px" }}>

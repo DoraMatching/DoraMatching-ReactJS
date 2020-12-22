@@ -104,7 +104,7 @@ function CreateClass(props) {
             <Form.Field>
               <label>Duration (hours)</label>
               <input
-                placeholder="number of sessions"
+                placeholder="number of lessons"
                 value={duration}
                 type="number"
                 onChange={(e) => setDuration(e.target.value)}

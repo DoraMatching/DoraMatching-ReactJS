@@ -16,9 +16,9 @@ function CardTrainerPage({ user }) {
           <a>{user.name}</a>
         </Link>
       </h3>
-      <div className={styles.topTrainerButton}>
+      {/* <div className={styles.topTrainerButton}>
         <button className={styles.primary}>Follow</button>
-      </div>
+      </div> */}
       <div className={styles.topTrainerSkills}>
         <h4>Email</h4>
         <ul>

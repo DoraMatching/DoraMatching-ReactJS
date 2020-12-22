@@ -8,7 +8,6 @@ import Client from "../../../services/Client";
 const fileInputRef = React.createRef();
 
 const CardProfileSetting = ({ userAcc }) => {
-  console.log("l11", userAcc);
   const router = useRouter();
   const { user } = useAuth();
   const { handleSubmit } = useForm();
@@ -35,11 +34,9 @@ const CardProfileSetting = ({ userAcc }) => {
       phoneNumber,
       avatarUrl,
     };
-    console.log("l39", updateUser);
     if (password) updateUser.password = password;
     Client(`user/${userAcc.id}`, "PATCH", updateUser) 
       .then(({ data }) => {
-        console.log("l43", data);
         router.push(`/profile/${userAcc.id}`);
       })
       .catch((error) => {

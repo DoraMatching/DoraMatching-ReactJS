@@ -6,7 +6,6 @@ import styles from "../../styles/Home.module.css";
 
 const search = ({ data, query }) => {
   const classes = data.items;
-  console.log("classes", classes);
   return (
     <div
       style={{ width: "100%" }}
@@ -47,12 +46,10 @@ const search = ({ data, query }) => {
 
 search.getInitialProps = async (ctx) => {
   const { query } = ctx;
-  console.log(query);
   const {data} = await Client(
     `classes?page=1&limit=20&order=DESC&key=${encodeURIComponent(query['key'])}`,
     "GET"
   );
-  console.log("L55", data);
   return { data, query };
 };
 

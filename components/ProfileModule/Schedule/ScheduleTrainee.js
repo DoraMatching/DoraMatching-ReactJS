@@ -9,6 +9,7 @@ import { Component } from "react";
 import styles from "./Schedule.module.css";
 import { Form, Modal } from "semantic-ui-react";
 import moment from "moment";
+import Link from 'next/link'
 
 function TraineeSchedule({ user }) {
   return <ScheduleTrainee user={user} />;
@@ -71,7 +72,7 @@ class ScheduleTrainee extends Component {
             return {
               title: item.name,
               start: item.startTime,
-              duration: item.duration,
+              timeRange: item.duration,
               classe: item.classe,
             };
           });

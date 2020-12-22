@@ -136,7 +136,7 @@ function CreateQuestion({ questions }) {
           </Form.Field>
           <Form.Field required>
             <label>Content</label>
-            <MdEditor value={content} onChange={handleEditorChange} />
+            <MdEditor type="text" value={content} onChange={handleEditorChange} />
           </Form.Field>
         </Form>
         <div style={{ marginTop: "20px" }}>

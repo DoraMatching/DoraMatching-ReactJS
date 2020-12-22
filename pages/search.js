@@ -6,7 +6,6 @@ import styles from "../styles/Home.module.css";
 
 const search = ({ data, query }) => {
   const { posts, questions, users } = data;
-  console.log("L10", users);
   return (
     <div
       style={{ width: "100%" }}

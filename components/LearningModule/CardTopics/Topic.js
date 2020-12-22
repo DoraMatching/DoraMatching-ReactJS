@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { Button } from "semantic-ui-react";
+import { Button, Icon } from "semantic-ui-react";
 import styles from "./Topic.module.scss";
 
 function Topic({ topic }) {
@@ -20,11 +20,16 @@ function Topic({ topic }) {
         <h1>{topic.name}</h1>
         <h2>{topic.author.user.name}</h2>
         <p>{topic.description}</p>
+        <div className={styles.courseMeta}>
+        <span className={styles.courseStudents} title="students enrolled">
+          <Icon name="th large" /> {topic.classes.length}
+        </span>
         <Link href={`/topics/${topic.id}/classes`}>
           <Button className={styles.topicReadmore}>
             <a>See all</a>
           </Button>
         </Link>
+        </div>
       </div>
     </div>
   );

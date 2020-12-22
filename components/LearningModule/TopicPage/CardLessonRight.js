@@ -52,7 +52,7 @@ function CardLessonRight({ classe, lessons }) {
         </li>
         <li className="Sessions">
           <i className="fa fa-file"></i>
-          <span className="label">Sessions:</span>
+          <span className="label">Lessons:</span>
           <span className="value">{classe.lessons.length}</span>
         </li>
         <li className="certificate">

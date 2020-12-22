@@ -42,7 +42,6 @@ function EditBlog({ post }) {
   }, [content]);
 
   const Update = () => {
-    console.log("l43", tags);
     if (!user)
       router.push(`/sign-in?forward=${encodeURIComponent(router.asPath)}`);
     else {

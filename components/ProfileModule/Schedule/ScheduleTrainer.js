@@ -51,7 +51,6 @@ class ScheduleTrainer extends Component {
   }
 
   handleModal(infor) {
-    console.log("l51", infor);
     this.handleOpen();
     this.setState({ titleDetail: infor.event.title });
     this.setState({ durationDetail: infor.event._def.extendedProps.timeRange });
@@ -88,7 +87,6 @@ class ScheduleTrainer extends Component {
   }
 
   render() {
-    console.log("L85", this.state.eventCalendar);
     return (
       <div className={styles.fullCalendar}>
         <FullCalendar

@@ -40,9 +40,6 @@ function PostRelated(props) {
       }
     );
     setDataPost(dataPost);
-    {
-      console.log("l37", dataPost);
-    }
   };
   useEffect(() => {
     getDataFromAPI();

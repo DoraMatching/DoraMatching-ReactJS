@@ -5,31 +5,29 @@ import { useAuth } from "../../../contexts/auth";
 import Client from "../../../services/Client";
 import styles from "./CardProfile.module.scss";
 
-function CardProfileLeft({ userAcc, trainers }) {
-  console.log("trainers", trainers);
-
-  console.log("usss", userAcc);
+function CardProfileLeft({ userAcc }) {
   const { user } = useAuth();
 
-  // const userLogined = user && user.id === trainers.user.id
+  console.log("user", userAcc);
   const [email, setEmail] = useState(userAcc.email || "");
-  const [phoneNumber, setPhoneNumber] = useState(userAcc.phoneNumber || "")
-  const [classesTrainer, setClassesTrainer] = useState("")
+  const [phoneNumber, setPhoneNumber] = useState(userAcc.phoneNumber || "");
+  const [classesTrainer, setClassesTrainer] = useState("");
 
   const getData = async () => {
-    const {data: currentUserItem} = await Client(
-      `trainer?userId=${userAcc.id} `,
+    const role = userAcc.roles && userAcc.roles.indexOf(("TRAINER") !== -1) ? "trainer" : "trainee";
+    const { data: currentUserItem } = await Client(
+      `${role}?userId=${userAcc.id} `,
       "GET"
     );
     setClassesTrainer(currentUserItem);
-    console.log("L25", currentUserItem);
-  }
+    
+  };
 
   useEffect(() => {
     if (user) setEmail(user.email);
-    getData()
+    getData();
   }, [user]);
-  
+
   return (
     <div>
       <div className={styles.cardProfileLeftWrapper}>
@@ -59,6 +57,11 @@ function CardProfileLeft({ userAcc, trainers }) {
               <a>{userAcc.name}</a>
             </Link>
           </h3>
+          <div style={{ display: "flex", justifyContent: "center", margin: "5px" }}>
+            {userAcc.roles && userAcc.roles.map((role, index) => {
+              return <h3 key={index} style={{marginRight: "10px"}}>{role}</h3>;
+            })}
+          </div>
           <p className={styles.title}> {email} </p>
           <p className={styles.description}>{phoneNumber}</p>
         </div>
@@ -68,7 +71,7 @@ function CardProfileLeft({ userAcc, trainers }) {
             <p>Blogs</p>
           </div>
           <div className={styles.icon}>
-            <h4> {classesTrainer && classesTrainer.classes.length} </h4>
+            <h4> {classesTrainer && classesTrainer.classes ? classesTrainer.classes.length : 0} </h4>
             <p>Classes</p>
           </div>
           <div className={styles.icon}>

@@ -70,7 +70,6 @@ export default function CardLessonLeft({ classe, lessons }) {
   };
 
   const renderPanes = async () => {
-    console.log(activeIndex);
     return [
       {
         menuItem: "Lessons",
@@ -119,7 +118,6 @@ export default function CardLessonLeft({ classe, lessons }) {
           <Tab.Pane attached={false}>
             <List divided selection>
               {classe.members.map((member, id) => {
-                console.log("L118", member);
                 return (
                   <List.Item key={id}>
                     <Label horizontal>

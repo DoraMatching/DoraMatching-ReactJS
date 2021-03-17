@@ -1,18 +1,25 @@
-import React, { useState } from "react";
-import { Button, Form, Modal } from "semantic-ui-react";
-import CardTrainerPage from "../CardTrainerPage/CardTrainerPage";
-import Client from "../../services/Client";
-import styles from "./CardTrainers.module.css";
-import { useAuth } from "../../contexts/auth";
 import { useRouter } from "next/router";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import { Button, Form, Modal } from "semantic-ui-react";
+import { useAuth } from "../../contexts/auth";
+import Client from "../../services/Client";
+import SearchTrainer from "../SearchModule/SearchTrainer";
+import CardTrainerPage from "./CardTrainerPage/CardTrainerPage";
+import styles from "./CardTrainers.module.css";
 
 function CardTrainersLeft({ users }) {
   const breakPoints = [{ width: 200, itemsToShow: 3 }];
   const [open, setOpen] = React.useState(false);
 
   const [trainerProfile, setTrainerProfile] = useState("");
-  const router = useRouter()
+  const router = useRouter();
   const { user } = useAuth();
+  const { register, handleSubmit } = useForm();
 
   const Confirm = () => {
     if (!user)
@@ -22,6 +29,11 @@ function CardTrainersLeft({ users }) {
         .then(({ data }) => {
           setTrainerProfile("");
           router.push("/trainers");
+          NotificationManager.success(
+            "Please login again to use the trainer's functions",
+            "Success"
+          );
+          setOpen(false)
         })
         .catch((error) => {
           console.log(error);
@@ -31,12 +43,6 @@ function CardTrainersLeft({ users }) {
 
   return (
     <>
-      {/* <h3 className={styles.cardTrainersLefHeader}>Top Trainer</h3>
-      <Carousel breakPoints={breakPoints} showArrows={false} pagination={true}>
-        {users.map((user, id) => {
-          return <CardTrainer user={user} key={id} />;
-        })}
-      </Carousel> */}
       <div
         style={{
           display: "flex",
@@ -45,6 +51,7 @@ function CardTrainersLeft({ users }) {
         }}
       >
         <h3 className={styles.cardTrainersLefHeader}>All Trainers</h3>
+        <SearchTrainer />
         {user && user.roles.indexOf("TRAINER") !== -1 ? (
           ""
         ) : (
@@ -62,22 +69,21 @@ function CardTrainersLeft({ users }) {
             >
               <Modal.Header>Register Trainer</Modal.Header>
               <Modal.Content>
-                <Form>
+                <Form onSubmit={handleSubmit(Confirm)}>
                   <Form.Field required>
                     <label>Link Your CV</label>
                     <input
                       required
                       value={trainerProfile}
                       onChange={(e) => setTrainerProfile(e.target.value)}
+                      ref={register}
                     />
                   </Form.Field>
                   <Button
+                    type="submit"
                     content="Confirm"
                     labelPosition="left"
                     icon="checkmark"
-                    onClick={(e) => {
-                      Confirm(e), setOpen(false);
-                    }}
                     positive
                   />
                 </Form>
@@ -92,6 +98,7 @@ function CardTrainersLeft({ users }) {
           return <CardTrainerPage user={user} key={id} />;
         })}
       </div>
+      <NotificationContainer />
     </>
   );
 }

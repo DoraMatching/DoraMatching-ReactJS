@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import CardQuestionCenterDetail from '../components/QuestionsPage/CardQuestionCenterDetail';
-import CardQuestionLeft from '../components/QuestionsPage/CardQuestionLeft';
-import CardQuestionRight from '../components/QuestionsPage/CardQuestionRight';
+import CardQuestionCenterDetail from '../components/QuestionsModule/QuestionsPage/CardQuestionCenterDetail';
+import CardQuestionLeft from '../components/QuestionsModule/QuestionsPage/CardQuestionLeft';
+import CardQuestionRight from '../components/QuestionsModule/QuestionsPage/CardQuestionRight';
 import styles from '../styles/Home.module.css'
 
 

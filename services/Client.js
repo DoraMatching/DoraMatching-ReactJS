@@ -3,8 +3,6 @@ import axios from "axios";
 import config from "./Config";
 import headerHelper from "./HeaderHelper";
 
-
-
 const Client = (endpoint, method = 'GET', body) => {
     return axios({
         method,

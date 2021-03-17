@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { Button } from "./Button";
 import { Dropdown, Image } from "semantic-ui-react";
 import { useAuth } from "../contexts/auth";
-import SearchBar from "./SearchBar";
+import SearchBar from "./SearchModule/SearchBar";
 function Navbar() {
   const router = useRouter();
   let user = {
@@ -117,32 +117,32 @@ function Navbar() {
         </div>
         <ul className={clicked ? "navMenu active" : "navMenu"}>
           <li className={router.pathname == "/" ? "actived" : ""}>
-            <Link href="/">
+            <Link href="/" prefetch={false}>
               <a className="navLinks">Home</a>
             </Link>
           </li>
           <li className={router.pathname == "/trainers" ? "actived" : ""}>
-            <Link href="/trainers">
+            <Link href="/trainers" prefetch={false}>
               <a className="navLinks">Trainers</a>
             </Link>
           </li>
           <li className={router.pathname == "/topics" ? "actived" : ""}>
-            <Link href="/topics">
+            <Link href="/topics" prefetch={false}>
               <a className="navLinks">Topics</a>
             </Link>
           </li>
           <li className={router.pathname == "/classes" ? "actived" : ""}>
-            <Link href="/classes">
+            <Link href="/classes" prefetch={false}>
               <a className="navLinks">Classes</a>
             </Link>
           </li>
           <li className={router.pathname == "/questions" ? "actived" : ""}>
-            <Link href="/questions">
+            <Link href="/questions" prefetch={false}>
               <a className="navLinks">Questions</a>
             </Link>
           </li>
           <li className={router.pathname == "/posts" ? "actived" : ""}>
-            <Link href="/posts">
+            <Link href="/posts" prefetch={false}>
               <a className="navLinks">Blogs</a>
             </Link>
           </li>

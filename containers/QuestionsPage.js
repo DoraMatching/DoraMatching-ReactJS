@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import CardQuestionCenter from "../components/QuestionsPage/CardQuestionCenter";
-import CardQuestionLeft from "../components/QuestionsPage/CardQuestionLeft";
-import CardQuestionRight from "../components/QuestionsPage/CardQuestionRight";
+import CardQuestionCenter from "../components/QuestionsModule/QuestionsPage/CardQuestionCenter";
+import CardQuestionLeft from "../components/QuestionsModule/QuestionsPage/CardQuestionLeft";
+import CardQuestionRight from "../components/QuestionsModule/QuestionsPage/CardQuestionRight";
 import styles from "../styles/Home.module.css";
-import TagQuestionsPage from "./TagQuestionPage";
 
 class QuestionsPage extends Component {
   render() {

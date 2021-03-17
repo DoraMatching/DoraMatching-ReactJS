@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import CardProfileLeft from '../components/ProfilePage/cardProfileLeft'
-import CardProfileRight from '../components/ProfilePage/cardProfileRight'
+import CardProfileLeft from '../components/ProfileModule/ProfilePage/cardProfileLeft'
+import CardProfileRight from '../components/ProfileModule/ProfilePage/cardProfileRight'
 import styles from '../styles/Home.module.css'
 
 export default class ProfilePage extends Component {

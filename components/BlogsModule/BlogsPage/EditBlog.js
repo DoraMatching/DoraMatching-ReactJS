@@ -5,8 +5,8 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Button, Form } from "semantic-ui-react";
 import { useAuth } from "../../../contexts/auth";
 import Client from "../../../services/Client";
-import MdEditor from "../MdEditor";
 import styles from "./CardBlogPage.module.scss";
+import MdEditor from "../../MdEditor";
 
 function EditBlog({ post }) {
   const router = useRouter();

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import CardQuestionLeft from '../components/QuestionsPage/CardQuestionLeft';
-import CardQuestionRight from '../components/QuestionsPage/CardQuestionRight';
-import EditQuestion from '../components/QuestionsPage/EditQuestions';
 import styles from '../styles/Home.module.css'
+import CardQuestionLeft from "../components/QuestionsModule/QuestionsPage/CardQuestionLeft";
+import EditQuestion from "../components/QuestionsModule/QuestionsPage/EditQuestions";
+import CardQuestionRight from "../components/QuestionsModule/QuestionsPage/CardQuestionRight";
 
 
 export default class QuestionsEditPage extends Component {

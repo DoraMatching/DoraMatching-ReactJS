@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import CardBlogRight from '../components/BlogsPage/CardBlogRight';
-import EditBlog from '../components/BlogsPage/EditBlog';
 import styles from '../styles/Home.module.css'
+import EditBlog from "../components/BlogsModule/BlogsPage/EditBlog";
+import CardBlogRight from "../components/BlogsModule/BlogsPage/CardBlogRight";
 
 
 class BlogsPage extends Component {

@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from "react";
 import socketIOClient from 'socket.io-client';
-import {commands} from "../notifications/commands";
+import {commands} from "../shared/commands";
 import config from "../services/Config";
 
 const useSocketDataObject = () => {
@@ -12,7 +12,7 @@ const useSocketDataObject = () => {
 
     useEffect(() => {
         socketRef.current = socketIOClient(config.API_URL);
-        socketRef.current.on('serverSendDataObject', (dataObject) => {
+        socketRef.current.on('msgToClient', (dataObject) => {
             setSocketDataObject(dataObject);
         });
 
@@ -22,7 +22,7 @@ const useSocketDataObject = () => {
     }, []);
 
     const sendSocketDataObject = (dataObject) => {
-        socketRef.current.emit('clientSendDataObject', dataObject);
+        socketRef.current.emit('msgToServer', dataObject);
     }
 
     return {socketDataObject, sendSocketDataObject};

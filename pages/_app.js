@@ -10,32 +10,22 @@ import 'semantic-ui-css/semantic.min.css';
 import Layout from '../components/Layout';
 import { AuthProvider } from '../contexts/auth';
 import '../styles/globals.css';
-import useSocket from '../services/socket';
-import config from '../services/Config';
+import RealtimeProvider from "../providers/RealtimeProvider";
+import NotificationModal from "../components/NotificationsModule/NotificationModal";
 
 function MyApp({ Component, pageProps }) {
-    const socket = useSocket(config.API_URL);
-
-    useEffect(() => {
-        function handleEvent(payload) {
-            console.log(payload);
-            // HelloWorld
-        }
-        if (socket) {
-            socket.on('msgToClient', handleEvent);
-        }
-    }, [socket]);
-
-    useEffect(() => console.log('refreshed'));
 
     return (
-        <AuthProvider>
-            {/* <ProtectRoute> */}
-            <Layout>
-                <Component {...pageProps} />
-            </Layout>
-            {/* </ProtectRoute> */}
-        </AuthProvider>
+        <RealtimeProvider>
+            <AuthProvider>
+                {/* <ProtectRoute> */}
+                <Layout>
+                    <Component {...pageProps} />
+                    <NotificationModal/>
+                </Layout>
+                {/* </ProtectRoute> */}
+            </AuthProvider>
+        </RealtimeProvider>
     );
 }
 

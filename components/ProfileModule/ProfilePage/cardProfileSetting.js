@@ -116,15 +116,15 @@ const CardProfileSetting = ({ userAcc }) => {
                         <Form>
                             <Form.Field required>
                                 <label>Old Password</label>
-                                <Form.Input placeholder="old pass" required />
+                                <Form.Input placeholder="Please enter your old password" required />
                             </Form.Field>
                             <Form.Field required>
                                 <label>New Password</label>
-                                <Form.Input placeholder="new pass" required />
+                                <Form.Input placeholder="Please enter your new password" required />
                             </Form.Field>
                             <Form.Field required>
                                 <label>Repeat New Password</label>
-                                <Form.Input placeholder="repeat new pass" required />
+                                <Form.Input placeholder="Please re-enter your new password" required />
                             </Form.Field>
                             <Button color="linkedin" type="submit">
                                 Confirm

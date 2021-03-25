@@ -1,7 +1,6 @@
-
-import axios from "axios";
-import config from "./Config";
-import headerHelper from "./HeaderHelper";
+import axios from 'axios';
+import config from './Config';
+import headerHelper from './HeaderHelper';
 
 const Client = (endpoint, method = 'GET', body) => {
     return axios({
@@ -9,7 +8,7 @@ const Client = (endpoint, method = 'GET', body) => {
         url: `${config.API_URL}/${endpoint}`,
         data: body,
         params: method === 'GET' ? body : undefined,
-        headers: headerHelper()
+        headers: headerHelper(),
     });
 };
 

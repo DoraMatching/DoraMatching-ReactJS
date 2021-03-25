@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
 import Head from 'next/head';
 import Navbar from './Navbar';
 
-const Layout = ({children}) => (
-  <>
-    <Head>
-      <title>Dora Matching</title>
-    </Head>
-    <Navbar />
-    {children}
-  </>
-)
+const Layout = ({ children }) => (
+    <>
+        <Head>
+            <title>Dora Matching</title>
+        </Head>
+        <Navbar />
+        {children}
+    </>
+);
 
 export default Layout;

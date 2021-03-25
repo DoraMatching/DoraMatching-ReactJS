@@ -1,14 +1,14 @@
 import Link from 'next/link';
 import React, { Component } from 'react';
 import QuestionRelated from '../CardQuestions/QuestionRelated';
-import styles from './CardQuestionPage.module.scss'
+import styles from './CardQuestionPage.module.scss';
 
 class CardQuestionRight extends Component {
-  render() {
-    return (
-      <div className={styles.cardQuestionRight}>
-        <QuestionRelated />
-        {/* <p className={styles.mostUsedTag}>Most Used Tags</p>
+    render() {
+        return (
+            <div className={styles.cardQuestionRight}>
+                <QuestionRelated />
+                {/* <p className={styles.mostUsedTag}>Most Used Tags</p>
         <div className={styles.cardQuestionTagDetailRight}>
           <li>
             <button>
@@ -26,9 +26,9 @@ class CardQuestionRight extends Component {
             </button>
           </li>
         </div> */}
-      </div>
-    );
-  }
+            </div>
+        );
+    }
 }
 
 export default CardQuestionRight;

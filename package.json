@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "debug": "node-debug yarn dev"
+    "debug": "node-debug yarn dev",
+    "format": "prettier --write \"**/*.+(js|jsx|css|md)\""
   },
   "dependencies": {
     "@babel/preset-react": "^7.12.1",
@@ -54,6 +55,7 @@
   },
   "devDependencies": {
     "css-loader": "^5.0.0",
-    "debugging-aid": "^0.5.3"
+    "debugging-aid": "^0.5.3",
+    "prettier": "^2.2.1"
   }
 }

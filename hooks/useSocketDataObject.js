@@ -1,12 +1,12 @@
-import {useEffect, useRef, useState} from "react";
+import { useEffect, useRef, useState } from 'react';
 import socketIOClient from 'socket.io-client';
-import {commands} from "../shared/commands";
-import config from "../services/Config";
+import { commands } from '../shared/commands';
+import config from '../services/Config';
 
 const useSocketDataObject = () => {
     const [socketDataObject, setSocketDataObject] = useState({
         command: commands.DEFAULT,
-        payload: {}
+        payload: {},
     });
     const socketRef = useRef();
 
@@ -18,14 +18,14 @@ const useSocketDataObject = () => {
 
         return () => {
             socketRef.current.disconnect();
-        }
+        };
     }, []);
 
     const sendSocketDataObject = (dataObject) => {
         socketRef.current.emit('msgToServer', dataObject);
-    }
+    };
 
-    return {socketDataObject, sendSocketDataObject};
-}
+    return { socketDataObject, sendSocketDataObject };
+};
 
 export default useSocketDataObject;

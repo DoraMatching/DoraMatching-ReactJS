@@ -1,12 +1,12 @@
-import React, {useContext, useEffect, useState} from 'react';
-import useSocketDataObject from "../hooks/useSocketDataObject";
-import {commands} from "../shared/commands";
-import {SocketDataObjectContext} from "../contexts/SocketDataObjectContext";
-import {MeetingContext} from "../contexts/MeetingContext";
+import React, { useContext, useEffect, useState } from 'react';
+import useSocketDataObject from '../hooks/useSocketDataObject';
+import { commands } from '../shared/commands';
+import { SocketDataObjectContext } from '../contexts/SocketDataObjectContext';
+import { MeetingContext } from '../contexts/MeetingContext';
 
-const RealtimeProvider = ({children}) => {
+const RealtimeProvider = ({ children }) => {
     const [meeting, dispatchMeeting] = useState(null);
-    const {socketDataObject, sendSocketDataObject} = useSocketDataObject();
+    const { socketDataObject, sendSocketDataObject } = useSocketDataObject();
 
     useEffect(() => {
         switch (socketDataObject.command) {
@@ -18,7 +18,7 @@ const RealtimeProvider = ({children}) => {
     }, [socketDataObject]);
     return (
         <MeetingContext.Provider value={[meeting, dispatchMeeting]}>
-            <SocketDataObjectContext.Provider value={{socketDataObject, sendSocketDataObject}}>
+            <SocketDataObjectContext.Provider value={{ socketDataObject, sendSocketDataObject }}>
                 {children}
             </SocketDataObjectContext.Provider>
         </MeetingContext.Provider>

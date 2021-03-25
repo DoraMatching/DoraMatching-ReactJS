@@ -4,18 +4,18 @@ import CardTopicsRight from '../components/LearningModule/TopicPage/CardTopicsRi
 import styles from '../styles/Home.module.css';
 
 class ClassesPage extends Component {
-  render() {
-    return (
-      <div className={styles.classesPage}>
-        <div style={{ width: "60%" }}>
-          <CardClassesLeft {...this.props} />
-        </div>
-        <div style={{ width: "30%", marginLeft: "20px" }}>
-          <CardTopicsRight />
-        </div>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className={styles.classesPage}>
+                <div style={{ width: '60%' }}>
+                    <CardClassesLeft {...this.props} />
+                </div>
+                <div style={{ width: '30%', marginLeft: '20px' }}>
+                    <CardTopicsRight />
+                </div>
+            </div>
+        );
+    }
 }
 
 export default ClassesPage;

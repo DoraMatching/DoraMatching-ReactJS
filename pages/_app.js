@@ -10,18 +10,17 @@ import 'semantic-ui-css/semantic.min.css';
 import Layout from '../components/Layout';
 import { AuthProvider } from '../contexts/auth';
 import '../styles/globals.css';
-import RealtimeProvider from "../providers/RealtimeProvider";
-import NotificationModal from "../components/NotificationsModule/NotificationModal";
+import RealtimeProvider from '../providers/RealtimeProvider';
+import NotificationModal from '../components/NotificationsModule/NotificationModal';
 
 function MyApp({ Component, pageProps }) {
-
     return (
         <RealtimeProvider>
             <AuthProvider>
                 {/* <ProtectRoute> */}
                 <Layout>
                     <Component {...pageProps} />
-                    <NotificationModal/>
+                    <NotificationModal />
                 </Layout>
                 {/* </ProtectRoute> */}
             </AuthProvider>

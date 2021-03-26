@@ -3,9 +3,10 @@ import useSocketDataObject from '../hooks/useSocketDataObject';
 import { commands } from '../shared/commands';
 import { SocketDataObjectContext } from '../contexts/SocketDataObjectContext';
 import { MeetingContext } from '../contexts/MeetingContext';
+import MeetingState from '../states/MeetingState';
 
 const RealtimeProvider = ({ children }) => {
-    const [meeting, dispatchMeeting] = useState(null);
+    const [meeting, dispatchMeeting] = useState(MeetingState);
     const { socketDataObject, sendSocketDataObject } = useSocketDataObject();
 
     useEffect(() => {
@@ -18,7 +19,7 @@ const RealtimeProvider = ({ children }) => {
     }, [socketDataObject]);
     return (
         <MeetingContext.Provider value={[meeting, dispatchMeeting]}>
-            <SocketDataObjectContext.Provider value={{ socketDataObject, sendSocketDataObject }}>
+            <SocketDataObjectContext.Provider value={[socketDataObject, sendSocketDataObject]}>
                 {children}
             </SocketDataObjectContext.Provider>
         </MeetingContext.Provider>

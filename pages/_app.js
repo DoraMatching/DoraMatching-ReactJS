@@ -3,7 +3,7 @@ import '@fullcalendar/daygrid/main.css'; // @fullcalendar/timegrid imports @full
 import '@fullcalendar/timegrid/main.css'; // @fullcalendar/timegrid is a direct import
 import 'draft-js/dist/Draft.css';
 import 'react-notifications/lib/notifications.css';
-import React, { useEffect } from 'react';
+import React from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'react-markdown-editor-lite/lib/index.css';
 import 'semantic-ui-css/semantic.min.css';
@@ -15,16 +15,16 @@ import NotificationModal from '../components/NotificationsModule/NotificationMod
 
 function MyApp({ Component, pageProps }) {
     return (
-        <RealtimeProvider>
-            <AuthProvider>
+        <AuthProvider>
+            <RealtimeProvider>
                 {/* <ProtectRoute> */}
                 <Layout>
                     <Component {...pageProps} />
                     <NotificationModal />
                 </Layout>
                 {/* </ProtectRoute> */}
-            </AuthProvider>
-        </RealtimeProvider>
+            </RealtimeProvider>
+        </AuthProvider>
     );
 }
 

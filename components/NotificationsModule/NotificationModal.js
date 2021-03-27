@@ -1,15 +1,17 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button, Header, Modal } from 'semantic-ui-react';
 import { MeetingContext } from '../../contexts/MeetingContext';
 import { commands } from '../../shared/commands';
 import NewMeetingNotification from './NewMeetingNotification';
 import MeetingState from '../../states/MeetingState';
-import useSocketDataObject from '../../hooks/useSocketDataObject';
+import { SocketDataObjectContext } from '../../contexts/SocketDataObjectContext';
+import { useAuth } from '../../contexts/auth';
 
 export default function NotificationModal() {
     const [isOpen, setOpen] = useState(false);
     const [meeting, dispatchMeeting] = useContext(MeetingContext);
-    const { socketDataObject } = useSocketDataObject();
+    const [socketDataObject, , sendSocket] = useContext(SocketDataObjectContext);
+    const { user } = useAuth();
 
     const toggleOpen = () => {
         setOpen(!isOpen);

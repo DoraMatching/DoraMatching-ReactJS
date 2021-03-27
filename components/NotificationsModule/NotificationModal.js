@@ -5,13 +5,11 @@ import { commands } from '../../shared/commands';
 import NewMeetingNotification from './NewMeetingNotification';
 import MeetingState from '../../states/MeetingState';
 import { SocketDataObjectContext } from '../../contexts/SocketDataObjectContext';
-import { useAuth } from '../../contexts/auth';
 
 export default function NotificationModal() {
     const [isOpen, setOpen] = useState(false);
     const [meeting, dispatchMeeting] = useContext(MeetingContext);
     const [socketDataObject, , sendSocket] = useContext(SocketDataObjectContext);
-    const { user } = useAuth();
 
     const toggleOpen = () => {
         setOpen(!isOpen);
@@ -27,6 +25,27 @@ export default function NotificationModal() {
         switch (socketDataObject.command) {
             case commands.NEW_MEETING: {
                 return <NewMeetingNotification meeting={meeting} />;
+            }
+            default: {
+                return <></>;
+            }
+        }
+    };
+
+    const renderButtonAction = () => {
+        switch (socketDataObject.command) {
+            case commands.NEW_MEETING: {
+                return (
+                    <Button
+                        content={'Open this meeting in Zoom'}
+                        labelPosition={'right'}
+                        icon={'video'}
+                        onClick={() => {
+                            window.open(meeting.joinUrl);
+                        }}
+                        positive
+                    />
+                );
             }
             default: {
                 return <></>;
@@ -55,13 +74,7 @@ export default function NotificationModal() {
                 >
                     Close
                 </Button>
-                <Button
-                    content={'Open this meeting in Zoom'}
-                    labelPosition={'right'}
-                    icon={'video'}
-                    onClick={() => setOpen(false)}
-                    positive
-                />
+                {renderButtonAction()}
             </Modal.Actions>
         </Modal>
     );

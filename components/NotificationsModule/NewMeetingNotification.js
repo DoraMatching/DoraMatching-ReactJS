@@ -20,6 +20,20 @@ export default function NewMeetingNotification({ meeting }) {
     return (
         <div>
             <p style={styles.p}>
+                Trainer:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span style={styles.span}>
+                    {meeting.trainer.user.name} ({meeting.trainer.user.email})
+                </span>
+            </p>
+            <p style={styles.p}>
+                Topic:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span style={styles.span}>{meeting.topic}</span>
+            </p>
+            <p style={styles.p}>
+                Agenda:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span style={styles.span}>{meeting.agenda}</span>
+            </p>
+            <p style={styles.p}>
                 Meeting ID:{' '}
                 <CopyToClipboard text={meeting.meetingId} onCopy={() => setA(true)}>
                     <span style={styles.span}>

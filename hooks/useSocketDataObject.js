@@ -13,11 +13,14 @@ const useSocketDataObject = () => {
     const socketRef = useRef();
 
     useEffect(() => {
+        if (user && user.id) {
+            socketRef.current.emit('load_room', user.id);
+        }
+    }, [user]);
+
+    useEffect(() => {
         socketRef.current = socketIOClient(config.API_URL);
         socketRef.current.on('msgToClient', (dataObject) => {
-            setSocketDataObject(dataObject);
-        });
-        socketRef.current.on(user.username, (dataObject) => {
             setSocketDataObject(dataObject);
         });
         return () => {

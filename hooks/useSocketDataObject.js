@@ -5,18 +5,18 @@ import config from '../services/Config';
 import { useAuth } from '../contexts/auth';
 
 const useSocketDataObject = () => {
+    const { user } = useAuth();
     const [socketDataObject, setSocketDataObject] = useState({
         command: commands.DEFAULT,
         payload: {},
     });
-    const { user } = useAuth();
     const socketRef = useRef();
 
     useEffect(() => {
         if (user && user.id) {
             socketRef.current.emit('load_room', user.id);
         }
-    }, [user]);
+    }, [user, socketRef.current]);
 
     useEffect(() => {
         socketRef.current = socketIOClient(config.API_URL);

@@ -1,23 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import useSocketDataObject from '../hooks/useSocketDataObject';
-import { commands } from '../shared/commands';
-import { SocketDataObjectContext } from '../contexts/SocketDataObjectContext';
-import { MeetingContext } from '../contexts/MeetingContext';
+import {commands} from '../shared/commands';
+import {SocketDataObjectContext} from '../contexts/SocketDataObjectContext';
+import {MeetingContext} from '../contexts/MeetingContext';
 import MeetingState from '../states/MeetingState';
 
-const RealtimeProvider = ({ children }) => {
+const RealtimeProvider = ({children}) => {
     const [meeting, dispatchMeeting] = useState(MeetingState);
     const [socket, setSocket] = useState({
         command: commands.DEFAULT,
         payload: {},
     });
-    const { socketDataObject, sendSocketDataObject } = useSocketDataObject();
+    const {socketDataObject, sendSocketDataObject} = useSocketDataObject();
 
     useEffect(() => {
         setSocket(socketDataObject);
         switch (socketDataObject.command) {
             case commands.NEW_MEETING: {
                 dispatchMeeting(socketDataObject.payload);
+                break;
+            }
+            case commands.START_MEETING: {
+                dispatchMeeting(socketDataObject.payload);
+                break;
             }
         }
     }, [socketDataObject]);

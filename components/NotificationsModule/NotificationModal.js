@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Button, Header, Modal } from 'semantic-ui-react';
-import { MeetingContext } from '../../contexts/MeetingContext';
-import { commands } from '../../shared/commands';
+import React, {useContext, useEffect, useState} from 'react';
+import {Button, Header, Modal} from 'semantic-ui-react';
+import {MeetingContext} from '../../contexts/MeetingContext';
+import {commands} from '../../shared/commands';
 import NewMeetingNotification from './NewMeetingNotification';
 import MeetingState from '../../states/MeetingState';
-import { SocketDataObjectContext } from '../../contexts/SocketDataObjectContext';
+import {SocketDataObjectContext} from '../../contexts/SocketDataObjectContext';
 
 export default function NotificationModal() {
     const [isOpen, setOpen] = useState(false);
@@ -19,12 +19,15 @@ export default function NotificationModal() {
         if (meeting && meeting.id) {
             setOpen(true);
         }
-    }, [socketDataObject]);
+    }, [socketDataObject, meeting]);
 
     const renderCardBody = () => {
         switch (socketDataObject.command) {
+            case commands.START_MEETING: {
+                return <NewMeetingNotification meeting={meeting}/>;
+            }
             case commands.NEW_MEETING: {
-                return <NewMeetingNotification meeting={meeting} />;
+                return <NewMeetingNotification meeting={meeting}/>;
             }
             default: {
                 return <></>;
@@ -47,6 +50,19 @@ export default function NotificationModal() {
                     />
                 );
             }
+            case commands.START_MEETING: {
+                return (
+                    <Button
+                        content={'Start your meeting in Zoom'}
+                        labelPosition={'right'}
+                        icon={'video'}
+                        onClick={() => {
+                            window.open(meeting.startUrl);
+                        }}
+                        positive
+                    />
+                );
+            }
             default: {
                 return <></>;
             }
@@ -62,7 +78,7 @@ export default function NotificationModal() {
             onOpen={() => setOpen(true)}
             open={isOpen}
         >
-            <Header icon={'bullhorn'} content={'You got a meeting'} />
+            <Header icon={'bullhorn'} content={'You got a meeting'}/>
             <Modal.Content>{renderCardBody()}</Modal.Content>
             <Modal.Actions>
                 <Button

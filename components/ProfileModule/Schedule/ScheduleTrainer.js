@@ -5,14 +5,14 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import listPlugin from '@fullcalendar/list';
 import Client from '../../../services/Client';
-import { Component } from 'react';
+import {Component} from 'react';
 import styles from './Schedule.module.css';
-import { Form, Modal } from 'semantic-ui-react';
+import {Form, Modal} from 'semantic-ui-react';
 import moment from 'moment';
 import Link from 'next/link';
 
-function DemoSchedule({ user }) {
-    return <ScheduleTrainer user={user} />;
+function DemoSchedule({user}) {
+    return <ScheduleTrainer user={user}/>;
 }
 
 class ScheduleTrainer extends Component {
@@ -43,25 +43,25 @@ class ScheduleTrainer extends Component {
     }
 
     handleOpen() {
-        this.setState({ modalOpen: true });
+        this.setState({modalOpen: true});
     }
 
     handleClose() {
-        this.setState({ modalOpen: false });
+        this.setState({modalOpen: false});
     }
 
     handleModal(infor) {
         this.handleOpen();
-        this.setState({ titleDetail: infor.event.title });
-        this.setState({ durationDetail: infor.event._def.extendedProps.timeRange });
-        this.setState({ startDetail: infor.event.start });
-        this.setState({ classeDetail: infor.event._def.extendedProps.classe });
+        this.setState({titleDetail: infor.event.title});
+        this.setState({durationDetail: infor.event._def.extendedProps.timeRange});
+        this.setState({startDetail: infor.event.start});
+        this.setState({classeDetail: infor.event._def.extendedProps.classe});
     }
 
     componentDidMount() {
         const start = this.calendar.current._calendarApi.view.activeStart;
         const end = this.calendar.current._calendarApi.view.activeEnd;
-        const { user } = this.props;
+        const {user} = this.props;
         const res = Client(`trainer?userId=${user.id} `, 'GET')
             .then((res) => {
                 const dat = Client(
@@ -76,14 +76,14 @@ class ScheduleTrainer extends Component {
                             classe: item.classe,
                         };
                     });
-                });
+                }).catch(e => {});
                 return dat;
             })
             .catch((error) => {
                 return error.response.data;
             });
 
-        res.then((result) => this.setState({ eventCalendar: result }));
+        res.then((result) => this.setState({eventCalendar: result}));
     }
 
     render() {
@@ -102,11 +102,11 @@ class ScheduleTrainer extends Component {
                         right: 'dayGridMonth,timeGridWeek',
                     }}
                     views={{
-                        listDay: { buttonText: 'list day' },
-                        listWeek: { buttonText: 'list week' },
+                        listDay: {buttonText: 'list day'},
+                        listWeek: {buttonText: 'list week'},
                     }}
                     eventClick={this.handleModal}
-                    titleFormat={{ year: 'numeric', month: 'long', day: 'numeric' }}
+                    titleFormat={{year: 'numeric', month: 'long', day: 'numeric'}}
                     initialView="dayGridMonth"
                     nowIndicator={true}
                     editable={true}
@@ -120,15 +120,15 @@ class ScheduleTrainer extends Component {
                         <Form>
                             <Form.Field>
                                 <label>Title</label>
-                                <input value={this.state.titleDetail} disabled />
+                                <input value={this.state.titleDetail} disabled/>
                             </Form.Field>
                             <Form.Field>
                                 <label>Duration (minutes)</label>
-                                <input value={this.state.durationDetail} disabled />
+                                <input value={this.state.durationDetail} disabled/>
                             </Form.Field>
                             <Form.Field>
                                 <label>Start At</label>
-                                <input value={moment(this.state.startDetail).format('LLL')} disabled />
+                                <input value={moment(this.state.startDetail).format('LLL')} disabled/>
                             </Form.Field>
                         </Form>
                     </Modal.Content>

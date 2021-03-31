@@ -8,7 +8,6 @@ import styles from './CardProfile.module.scss';
 function CardProfileLeft({ userAcc }) {
     const { user } = useAuth();
 
-    console.log('user', userAcc);
     const [email, setEmail] = useState(userAcc.email || '');
     const [phoneNumber, setPhoneNumber] = useState(userAcc.phoneNumber || '');
     const [classesTrainer, setClassesTrainer] = useState('');

@@ -8,7 +8,7 @@ import Client from '../../../services/Client';
 import DatePickerPage from '../../DatePicker';
 import styles from './CardTopicsPage.module.scss';
 
-export default function CardLessonLeft({ classe, lessons }) {
+export default function CardLessonLeft({ classe, lessons, fetchData }) {
     const router = useRouter();
     const { user } = useAuth();
     const [panes, setPanes] = useState([]);
@@ -17,7 +17,7 @@ export default function CardLessonLeft({ classe, lessons }) {
     const [duration, setDuration] = useState(0);
     const [startTime, setStartTime] = useState('');
 
-    const Create = () => {
+    const Create = async () => {
         if (!user) router.push(`/sign-in?forward=${encodeURIComponent(router.asPath)}`);
         else {
             Client(`classe/${classe.id}/lesson`, 'POST', {

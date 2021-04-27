@@ -108,7 +108,7 @@ function Navbar() {
                 <Link href="/">
                     <img
                         className="navbarLogo"
-                        src="/static/logo.png"
+                        src="/static/cat-logo-light.png"
                         alt="logo"
                         width="60px"
                         height="auto"

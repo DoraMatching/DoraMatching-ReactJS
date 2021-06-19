@@ -13,7 +13,6 @@ function trainers({ users }) {
 
 trainers.getInitialProps = async () => {
     const { data } = await Client('trainers');
-    console.log('DEBUG', data.items);
     return { users: data.items.map((e) => e.user) };
 };
 

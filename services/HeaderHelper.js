@@ -1,8 +1,7 @@
 import cookie from 'js-cookie';
 
 function getToken() {
-    let token = cookie.get('token') ? 'Bearer ' + cookie.get('token') : null;
-    return token;
+    return cookie.get('token') ? 'Bearer ' + cookie.get('token') : null;
 }
 
 function headerHelper() {

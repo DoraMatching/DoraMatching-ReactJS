@@ -3,15 +3,15 @@ import CardTagPost from '../CardPosts/CardTagPost';
 import PostRelated from '../CardPosts/PostRelated';
 import styles from './CardBlogPage.module.scss';
 
-function CardBlogRight({ tagPosts }) {
+function CardBlogRight({tagPosts}) {
     return (
         <div className={styles.cardBlogRight}>
-            <PostRelated />
+            <PostRelated/>
             <div>
                 <h3>Tags</h3>
-                <div style={{ width: '100%' }}>
+                <div style={{width: '100%', display: 'flex', flexWrap: 'wrap'}}>
                     {tagPosts.slice(0, 10).map((tagPost, id) => {
-                        return <CardTagPost tagPost={tagPost} key={id} />;
+                        return <CardTagPost tagPost={tagPost} key={id}/>;
                     })}
                 </div>
             </div>
